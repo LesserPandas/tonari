@@ -1,0 +1,23 @@
+/* here you can put your own css to customize and override the theme */
+
+/* Apple User */
+/* input, textarea, button, select { 
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	border-radius: 0;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+} */
+
+.bg-white {
+	background: #fff;
+}
+
+.h-40 {
+	height: 40px;
+}
+
+.mg-top-50 {
+	margin-top:50px;
+}

@@ -114,14 +114,7 @@
 		<div class="container">
 
 			<a class="site-logo" href="index.jsp"><img
-<<<<<<< HEAD
-
-				src="assets/corporate/img/logos/logo-shop-green.png"
-=======
-				src="/resources/assets/corporate/img/logos/logo-shop-green.png"
-
->>>>>>> e975288... Merge pull request #17 from LesserPandas/namhyun
-				alt="Metronic Shop UI"></a> <a href="javascript:void(0);"
+</a> <a href="javascript:void(0);"
 				class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
 			<!-- BEGIN CART -->

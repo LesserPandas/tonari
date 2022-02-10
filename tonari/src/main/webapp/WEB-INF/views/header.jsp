@@ -36,6 +36,8 @@
 
 <!-- Global styles START -->
 <link rel="stylesheet"
+
+ 
 	href="/resources/assets/plugins/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet"
 	href="/resources/assets/plugins/bootstrap/css/bootstrap.min.css">
@@ -59,6 +61,10 @@
 <link rel="stylesheet" href="/resources/assets/corporate/css/themes/green.css"
 	id="style-color">
 <link rel="stylesheet" href="/resources/assets/corporate/css/custom.css">
+  
+<!-- 내가 추가-->
+<link rel="stylesheet" href="assets/pages/css/index.css">
+<!-- 내가 추가-->
 <!-- Theme styles END -->
 </head>
 <!-- Head END -->
@@ -101,7 +107,9 @@
 	<!-- BEGIN HEADER -->
 	<div class="header">
 		<div class="container">
-			<a class="site-logo" href="shop-index.html"><img
+
+			<a class="site-logo" href="index.jsp"><img
+
 				src="assets/corporate/img/logos/logo-shop-green.png"
 				alt="Metronic Shop UI"></a> <a href="javascript:void(0);"
 				class="mobi-toggler"><i class="fa fa-bars"></i></a>
@@ -233,6 +241,7 @@
 							<li><a href="shop-product-list.html">내 학생 보기 (강사)</a></li>
 							<li><a href="shop-product-list.html">강사 등록하기 (학생)</a></li>
 						</ul> <!-- END DROPDOWN MENU --></li>
+
 
 				</ul>
 			</div>

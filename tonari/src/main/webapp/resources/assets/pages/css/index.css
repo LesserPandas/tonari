@@ -1,3 +1,4 @@
+
 #myform fieldset{
     display: inline-block; /* 하위 별점 이미지들이 있는 영역만 자리를 차지함.*/
     direction: rtl; /* 이모지 순서 반전 */
@@ -22,4 +23,5 @@
 }
 #myform input[type=radio]:checked ~ label{
     text-shadow: 0 0 0 #67bd3c; /* 마우스 클릭 체크 */
+
 }

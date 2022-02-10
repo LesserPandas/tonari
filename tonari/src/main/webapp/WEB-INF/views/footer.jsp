@@ -110,6 +110,7 @@
 					<div class="product-other-images">
 						<a href="javascript:;" class="active"><img
 
+
 							alt="Berry Lace Dress" src="/resources/assets/pages/img/products/model3.jpg"></a>
 						<a href="javascript:;"><img alt="Berry Lace Dress"
 							src="/resources/assets/pages/img/products/model4.jpg"></a> <a
@@ -168,6 +169,7 @@
 	<!-- END fast view of a product -->
 
 	<!-- Load javascripts at bottom, this will reduce page load time -->
+
 
 	<script src="/resources/assets/plugins/jquery.min.js" type="text/javascript"></script>
 	<script src="/resources/assets/plugins/jquery-migrate.min.js"

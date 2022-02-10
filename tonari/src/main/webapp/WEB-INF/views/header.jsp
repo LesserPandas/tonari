@@ -61,7 +61,12 @@
 <link rel="stylesheet" href="/resources/assets/corporate/css/themes/green.css"
 	id="style-color">
 <link rel="stylesheet" href="/resources/assets/corporate/css/custom.css">
+<<<<<<< HEAD
   
+=======
+
+ 
+>>>>>>> e975288... Merge pull request #17 from LesserPandas/namhyun
 <!-- 내가 추가-->
 <link rel="stylesheet" href="assets/pages/css/index.css">
 <!-- 내가 추가-->
@@ -109,8 +114,13 @@
 		<div class="container">
 
 			<a class="site-logo" href="index.jsp"><img
+<<<<<<< HEAD
 
 				src="assets/corporate/img/logos/logo-shop-green.png"
+=======
+				src="/resources/assets/corporate/img/logos/logo-shop-green.png"
+
+>>>>>>> e975288... Merge pull request #17 from LesserPandas/namhyun
 				alt="Metronic Shop UI"></a> <a href="javascript:void(0);"
 				class="mobi-toggler"><i class="fa fa-bars"></i></a>
 

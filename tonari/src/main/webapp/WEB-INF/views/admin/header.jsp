@@ -14,18 +14,18 @@
     <title>SB Admin 2 - Tables</title>
 
     <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="/resources/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
-		<link href="css/style.css" rel="stylesheet">
-		<link href="css/summernote-lite.css" rel="stylesheet">
-		<link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="/resources/admin/css/sb-admin-2.min.css" rel="stylesheet">
+		<link href="/resources/admin/css/style.css" rel="stylesheet">
+		<link href="/resources/admin/css/summernote-lite.css" rel="stylesheet">
+		<link href="/resources/admin/css/font-awesome.min.css" rel="stylesheet">
     <!-- Custom styles for this page -->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="/resources/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -36,7 +36,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="memberlist.jsp">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="memberlist">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -48,7 +48,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="memberlist.jsp">
+                <a class="nav-link" href="memberlist">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Main</span></a>
             </li>
@@ -71,8 +71,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="memberlist.jsp">회원목록</a>
-                        <a class="collapse-item" href="lectorlist.jsp">강사목록</a>
+                        <a class="collapse-item" href="memberlist">회원목록</a>
+                        <a class="collapse-item" href="teacherlist">강사목록</a>
                     </div>
                 </div>
             </li>
@@ -88,9 +88,9 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="sales.jsp">매출현황</a>
-                        <a class="collapse-item" href="lectorsales.jsp">강사매출</a>
-                        <a class="collapse-item" href="studentsales.jsp">학생매출</a>
+                        <a class="collapse-item" href="sales">매출현황</a>
+                        <a class="collapse-item" href="teachersales">강사매출</a>
+                        <a class="collapse-item" href="studentsales">학생매출</a>
                     </div>
                 </div>
             </li>
@@ -113,7 +113,7 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
-                           <a class="collapse-item" href="adminnotice.jsp">게시판관리</a>
+                           <a class="collapse-item" href="adminnotice">게시판관리</a>
            
                  
                      
@@ -123,14 +123,14 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="adminmail.jsp">
+                <a class="nav-link" href="adminmail">
                      <i class="fas fa-fw fa-table"></i>
                     <span>메일</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item active">
-                <a class="nav-link" href="adminlogin.jsp">
+                <a class="nav-link" href="login">
                     <i class="fas fa-fw fa-table"></i>
                     <span>로그아웃</span></a>
             </li>
@@ -155,44 +155,26 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
+ 
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/resources/admin/vendor/jquery/jquery.min.js"></script>
+    <script src="/resources/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/resources/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="/resources/admin/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="/resources/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/resources/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
+    <script src="/resources/admin/js/demo/datatables-demo.js"></script>
     
-    <script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/summernote-lite.js"></script>
-<script src="js/summernote-ko-KR.js"></script>
+    <script src="/resources/admin/js/jquery-3.3.1.min.js"></script>
+<script src="/resources/admin/js/bootstrap.min.js"></script>
+<script src="/resources/admin/js/summernote-lite.js"></script>
+<script src="/resources/admin/js/summernote-ko-KR.js"></script>

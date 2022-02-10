@@ -239,6 +239,7 @@
 			</div>
 
 			<!-- BEGIN SALE PRODUCT -->
+
 		</div>
 		<!-- END SALE PRODUCT & NEW ARRIVALS -->
 

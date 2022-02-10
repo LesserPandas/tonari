@@ -60,9 +60,12 @@
 <link rel="stylesheet" href="/resources/assets/corporate/css/themes/green.css"
 	id="style-color">
 <link rel="stylesheet" href="/resources/assets/corporate/css/custom.css">
+
+
  
 <!-- 내가 추가-->
-<link rel="stylesheet" href="resources/assets/pages/css/index.css">
+<link rel="stylesheet" href="/resources/assets/pages/css/index.css">
+
 <!-- 내가 추가-->
 
 <!-- Theme styles END -->
@@ -110,8 +113,8 @@
 
 			<a class="site-logo" href="index.jsp"><img
 
+				src="/resources/assets/corporate/img/logos/logo-shop-green.png"
 
-				src="assets/corporate/img/logos/logo-shop-green.png"
 				alt="Metronic Shop UI"></a> <a href="javascript:void(0);"
 				class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
@@ -129,7 +132,9 @@
 						<ul class="scroller" style="height: 250px;">
 
 							<li><a href="shop-item.html"><img
-									src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch"
+
+									src="/resources/assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch"
+
 									width="37" height="34"></a> <span class="cart-content-count">x
 									1</span> <strong><a href="shop-item.html">Rolex Classic
 										Watch</a></strong> <em>$1230</em> <a href="javascript:void(0);"

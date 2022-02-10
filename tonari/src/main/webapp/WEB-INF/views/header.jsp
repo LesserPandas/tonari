@@ -36,36 +36,35 @@
 
 <!-- Global styles START -->
 <link rel="stylesheet"
-	href="assets/plugins/font-awesome/css/font-awesome.min.css">
+
+ 
+	href="/resources/assets/plugins/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet"
-	href="assets/plugins/bootstrap/css/bootstrap.min.css">
-	
+	href="/resources/assets/plugins/bootstrap/css/bootstrap.min.css">
 <!-- Global styles END -->
 
 <!-- Page level plugin styles START -->
-<link rel="stylesheet" href="assets/pages/css/animate.css">
+<link rel="stylesheet" href="/resources/assets/pages/css/animate.css">
 <link rel="stylesheet"
-	href="assets/plugins/fancybox/source/jquery.fancybox.css">
+	href="/resources/assets/plugins/fancybox/source/jquery.fancybox.css">
 <link rel="stylesheet"
-	href="assets/plugins/owl.carousel/assets/owl.carousel.css">
-
+	href="/resources/assets/plugins/owl.carousel/assets/owl.carousel.css">
 <!-- Page level plugin styles END -->
 
 <!-- Theme styles START -->
-<link rel="stylesheet" href="assets/pages/css/components.css">
-<link rel="stylesheet" href="assets/pages/css/slider.css">
-
+<link rel="stylesheet" href="/resources/assets/pages/css/components.css">
+<link rel="stylesheet" href="/resources/assets/pages/css/slider.css">
+<link rel="stylesheet" href="/resources/assets/pages/css/style-shop.css"
+	type="text/css">
+<link rel="stylesheet" href="/resources/assets/corporate/css/style.css">
+<link rel="stylesheet" href="/resources/assets/corporate/css/style-responsive.css">
+<link rel="stylesheet" href="/resources/assets/corporate/css/themes/green.css"
+	id="style-color">
+<link rel="stylesheet" href="/resources/assets/corporate/css/custom.css">
+  
 <!-- 내가 추가-->
 <link rel="stylesheet" href="assets/pages/css/index.css">
 <!-- 내가 추가-->
-
-<link rel="stylesheet" href="assets/pages/css/style-shop.css"
-	type="text/css">
-<link rel="stylesheet" href="assets/corporate/css/style.css">
-<link rel="stylesheet" href="assets/corporate/css/style-responsive.css">
-<link rel="stylesheet" href="assets/corporate/css/themes/green.css"
-	id="style-color">
-<link rel="stylesheet" href="assets/corporate/css/custom.css">
 <!-- Theme styles END -->
 </head>
 <!-- Head END -->
@@ -108,7 +107,9 @@
 	<!-- BEGIN HEADER -->
 	<div class="header">
 		<div class="container">
+
 			<a class="site-logo" href="index.jsp"><img
+
 				src="assets/corporate/img/logos/logo-shop-green.png"
 				alt="Metronic Shop UI"></a> <a href="javascript:void(0);"
 				class="mobi-toggler"><i class="fa fa-bars"></i></a>
@@ -240,46 +241,6 @@
 							<li><a href="shop-product-list.html">내 학생 보기 (강사)</a></li>
 							<li><a href="shop-product-list.html">강사 등록하기 (학생)</a></li>
 						</ul> <!-- END DROPDOWN MENU --></li>
-
- <li class="dropdown active">
-              <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-                Pages 
-                
-              </a>
-                
-              <ul class="dropdown-menu">
-              <li><a href="faq.jsp">FAQ</a></li>
-                <li><a href="index.jsp">index</a></li>
-                <li><a href="teacherlist.jsp">teacherlist</a></li>
-                <li><a href="teacherSearch.jsp">teacherSearch</a></li><!-- side 메뉴 억지로 집어 넣음  -->
-                <li><a href="teacherlike.jsp">teacherLikelist</a></li>
-                <li><a href="intro.jsp">회사소개</a></li>
-              	<li><a href="mypage.jsp">My page</a></li>
-              	<li><a href="join.jsp">회원가입</a></li>
-                <li><a href="location.jsp">지도로 찾기?</a></li>
-                <li><a href="teacherInfo.jsp">선생님 정보</a></li>
-                <li><a href="login.jsp">로그인창</a></li>
-                <li><a href="teacherJoin.jsp">선생님 등록</a></li>
-                <li><a href="teacherModfiy.jsp">선생님 수정</a></li>
-                <li><a href="subscription.jsp">구독</a></li>
-                <li><a href="subResult.jsp">구독확인</a></li>
-                <li><a href="studentInfoModify.jsp.jsp">학생 수정</a></li>
-                
-                
-                
-               
-               
-                
-              
-                
-               <!--  <li><a href="shop-wishlist.html">My Wish List</a></li>
-                <li><a href="shop-goods-compare.html">Product Comparison</a></li>
-                <li><a href="shop-standart-forms.html">Standart Forms</a></li>
-                
-                <li><a href="shop-privacy-policy.html">Privacy Policy</a></li>
-                <li><a href="shop-terms-conditions-page.html">Terms &amp; Conditions</a></li> -->
-              </ul>
-            </li>
 
 
 				</ul>

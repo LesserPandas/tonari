@@ -23,4 +23,5 @@
 }
 #myform input[type=radio]:checked ~ label{
     text-shadow: 0 0 0 #67bd3c; /* 마우스 클릭 체크 */
+
 }

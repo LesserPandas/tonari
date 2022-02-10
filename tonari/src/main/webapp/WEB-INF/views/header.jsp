@@ -63,7 +63,7 @@
 <link rel="stylesheet" href="/resources/assets/corporate/css/custom.css">
   
 <!-- 내가 추가-->
-<link rel="stylesheet" href="assets/pages/css/index.css">
+<link rel="stylesheet" href="resources/assets/pages/css/index.css">
 <!-- 내가 추가-->
 <!-- Theme styles END -->
 </head>

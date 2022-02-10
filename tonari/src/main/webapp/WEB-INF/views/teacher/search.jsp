@@ -66,7 +66,7 @@
                   </div>
                   <h3><a href="shop-item.html">강사명</a></h3>
                   <div class="pi-price">과목명<br>지역</div>
-                  <a href="teacherInfo.jsp" class="btn btn-default add2cart">프로필보기</a>
+                  <a href="info" class="btn btn-default add2cart">프로필보기</a>
                 </div>
               </div>
               <!-- PRODUCT ITEM END -->

@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+
+.teacherdate {
+	width: 100%;
+	text-align: center;
+}
+
+.teacherdate th,td{
+	font-size: 15px;
+	text-align: center;
+}
+
+.teacherdate th{
+	border-bottom: solid;
+}
+
+
+/*teacher button*/
+.largeButton {
+	padding: 5px 10px;
+	border: none;
+	background: #67bd3c;
+	color:white;
+	text-decoration: none;
+	font-size: 18px;
+	margin-left: 5px;
+}
+
+.button:hover{
+	color: white;
+	text-decoration: none;
+}

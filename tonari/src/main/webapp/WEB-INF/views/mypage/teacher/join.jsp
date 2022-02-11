@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 
-<%@ include file="header.jsp"%>
+<%@ include file="../../header.jsp"%>
 
 <link rel="stylesheet" href="/modify/css/imagecheck.css">
 
@@ -17,7 +17,7 @@
 		<!-- BEGIN SIDEBAR & CONTENT -->
 		<div class="row margin-bottom-40">
 			<!-- BEGIN SIDEBAR -->
-			<%@ include file="side.jsp"%>
+			<%@ include file="../../side.jsp"%>
 
 			<!-- END SIDEBAR -->
 
@@ -211,4 +211,4 @@
 		} // sendfile
 	</script>
 	
-<%@ include file="footer.jsp"%>
+<%@ include file="../../footer.jsp"%>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="header.jsp"%>
+<%@ include file="../../header.jsp"%>
 <link rel="stylesheet" href="css/teacher.css">
 
 <div class="main">
@@ -13,7 +13,7 @@
 		<!-- BEGIN SIDEBAR & CONTENT -->
 		<div class="row margin-bottom-40">
 			<!-- BEGIN SIDEBAR -->
-			<%@ include file="side.jsp"%>
+			<%@ include file="../../side.jsp"%>
 
 			<!-- END SIDEBAR -->
 
@@ -211,4 +211,4 @@
 	</div>
 </div>
 </div>
-<%@ include file="footer.jsp"%>
+<%@ include file="../../footer.jsp"%>

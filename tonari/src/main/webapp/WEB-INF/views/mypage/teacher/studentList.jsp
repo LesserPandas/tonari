@@ -3,7 +3,7 @@
  <style>
 
 </style>
-<%@ include file ="header.jsp" %>
+<%@ include file ="../../header.jsp" %>
     
     <div class="main">
       <div class="container">
@@ -15,7 +15,7 @@
         <!-- BEGIN SIDEBAR & CONTENT -->
         <div class="row margin-bottom-40">
           <!-- BEGIN SIDEBAR -->
-          <%@ include file ="side.jsp" %>
+          <%@ include file ="../../side.jsp" %>
           <!-- END SIDEBAR -->
 
           <!-- BEGIN CONTENT -->
@@ -65,4 +65,4 @@
     
 
     <!-- END STEPS -->
-<%@ include file ="footer.jsp" %>
+<%@ include file ="../../footer.jsp" %>

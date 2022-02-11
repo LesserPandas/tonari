@@ -1,5 +1,141 @@
 @charset "UTF-8";
 
+@charset "UTF-8";
+
+.header_top {
+	background: #f0f0e9;
+}
+
+.header-middle .container .row {
+	padding: 20px 0;
+	border-bottom: 1px solid #f5f5f5;
+}
+
+.header-middle .logo {
+	font-size: 22px;
+	font-weight: 500;
+}
+
+.search_box input {
+	background: #f0f0f9;
+	border: none;
+	color: #828282;
+	height: 35px;
+	padding-left: 10px;
+	width: 155px;
+}
+
+#slider {
+	padding: 50px 0;
+}
+
+.item {
+	padding-left: 260px;
+}
+
+.item h1 {
+	margin-top: 100px;
+}
+
+.carousel-control.left {
+	background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0,
+		rgba(255, 255, 255, 0) 0%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000',
+		endColorstr='#00000000', GradientType=1);
+	background-repeat: repeat-x;
+}
+
+.carousel-control.right {
+	background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0,
+		rgba(255, 255, 255, 0) 0%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000',
+		endColorstr='#00000000', GradientType=1);
+	background-repeat: repeat-x;
+}
+
+.carousel-control {
+	position: absolute;
+	top: 50%;
+	font-size: 60px;
+	color: #c2c2c2;
+}
+
+.dropdown:hover .dropdown-menu {
+	display: block;
+	margin-top: 0;
+}
+
+.panel-default {
+	border-color: transparent;
+}
+
+.panel-default>.panel-heading {
+	color: #333;
+	background: none;
+	border: 0 none;
+}
+
+.panel-default>.panel-heading .badge {
+	color: #696969;
+	background: none;
+}
+
+.panel-default>.panel-heading+.panel-collapse>.panel-body {
+	border-top-color: transparent;
+}
+
+.category a {
+	text-decoration: none;
+}
+
+.newproduct h3 {
+	text-align: center;
+	color: #fe980f;
+}
+
+.newproduct p {
+	text-align: center;
+}
+
+.category-tab .nav-tabs {
+	background: #404040;
+	border-bottom: 1px solid #ddd;
+	margin: 0 0 30px;
+	padding: 0;
+	width: 100%;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover
+	{
+	/* color: #fff; */
+	cursor: default;
+	/* background-color: #fe980f; */
+	border: 0 none;
+	border-bottom-color: transparent;
+}
+
+.nav-tabs>li>a {
+	margin-right: 2px;
+	line-height: 1.42857143;
+	border: 0 none;
+	border-radius: 0;
+	color: #fff;
+}
+
+.nav-tabs>li>a:hover {
+	background: #fe980f
+}
+
+.bestproduct .item {
+	padding-left: 0;
+}
+
+#footer {
+	background: #F0F0E9;
+	margin-top: 60px;
+	padding: 40px 0;
+}
+
 .carousel-control.left, .carousel-control.right {
 	background: none;
 	width: 25px;
@@ -103,13 +239,9 @@
 	position: relative;
 }
 
-
-
-
-
 .bg-category {
 	background: #555;
-	padding:14px 0;
+	padding: 14px 0;
 	margin-bottom: 50px;
 }
 

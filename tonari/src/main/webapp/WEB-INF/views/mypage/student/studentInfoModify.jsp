@@ -4,7 +4,7 @@
 
 
 ​
-<%@include file ="header.jsp" %>
+<%@include file ="../../header.jsp" %>
 
     <div class="main">
       <div class="container">
@@ -258,4 +258,4 @@
         element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
     }
 </script>
-<%@include file ="footer.jsp" %>
+<%@include file ="../../footer.jsp" %>

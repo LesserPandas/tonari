@@ -7,7 +7,7 @@
 	<!-- Page Wrapper -->
 	<div id="wrapper">
 
-		<%@ include file="header.jsp"%>
+		<%@ include file="../header.jsp"%>
 
 
 
@@ -93,7 +93,7 @@
                                 <table class="table table-bordered" >
                                     <thead>
                                         <tr>
-                                            <th>회원번호</th>
+                                            <th>번호</th>
                                             <th>이름</th>                                            
                                             <th>나이</th>
                                             <th>구분</th>
@@ -304,7 +304,7 @@
 			<!-- End of Main Content -->
 
 
-			<%@ include file="footer.jsp"%>
+			<%@ include file="../footer.jsp"%>
 
 		</div>
 		<!-- End of Content Wrapper -->

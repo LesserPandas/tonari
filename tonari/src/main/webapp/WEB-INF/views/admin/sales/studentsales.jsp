@@ -7,7 +7,7 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
         
-          <%@ include file="header.jsp"%>
+          <%@ include file="../header.jsp"%>
     
         
         
@@ -218,7 +218,7 @@
             <!-- End of Main Content -->
       
            
-            <%@ include file="footer.jsp"%>
+            <%@ include file="../footer.jsp"%>
            
                   </div>
            <!-- End of Content Wrapper --> 

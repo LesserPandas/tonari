@@ -55,16 +55,17 @@
 <link rel="stylesheet" href="/resources/assets/pages/css/style-shop.css"
 	type="text/css">
 <link rel="stylesheet" href="/resources/assets/corporate/css/style.css">
-<link rel="stylesheet"
-	href="/resources/assets/corporate/css/style-responsive.css">
-<link rel="stylesheet"
-	href="/resources/assets/corporate/css/themes/green.css"
+<link rel="stylesheet" href="/resources/assets/corporate/css/style-responsive.css">
+<link rel="stylesheet" href="/resources/assets/corporate/css/themes/green.css"
 	id="style-color">
 <link rel="stylesheet" href="/resources/assets/corporate/css/custom.css">
 
 <!-- 내가 추가-->
-<link rel="stylesheet" href="/resources/assets/pages/css/index.css">
-
+<link rel="stylesheet" href="/resources/assets/pages/css/index.css">	
+<link rel="stylesheet" href="/resources/custom/css/summernote.min.css">
+<link rel="stylesheet" href="/resources/custom/css/imagecheck.css">
+<link rel="stylesheet" href="/resources/custom/css/teacher.css">
+<script src="/resources/assets/jquery-3.6.0.min.js"></script>
 <!-- 내가 추가-->
 
 <!-- Theme styles END -->
@@ -255,6 +256,13 @@
 							<li><a href="/login">로그인</a></li>
 							<li><a href="/join">회원가입</a></li>
 							<li><a href="/mypage/teacherJoin">강사등록</a></li>
+							<li><a href="/mypage/teacherInfo">강사정보</a></li>
+							<li><a href="/mypage/teacherModify">강사정보수정</a></li>
+							<li><a href="/mypage/subscription">구독하기</a></li>
+							<li><a href="/mypage/subResult">구독결과</a></li>
+							<li><a href="/mypage/studentInfoModify">일반회원 정보 수정</a></li>
+							<li><a href="/mypage/like">선생님 찜한 목록</a></li>
+							
 							<li><h4>남현</h4></li>
 							
 							<li><h4>찬호</h4></li>

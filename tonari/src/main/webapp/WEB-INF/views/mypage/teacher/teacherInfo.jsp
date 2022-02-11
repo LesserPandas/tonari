@@ -45,7 +45,8 @@
 
 
 						<div class="col-md-6 col-sm-6">
-							<div class="pull-right" style="color: #3e4d5c; direction: ltr; font: 400 21px 'Open Sans', Arial, sans-serif;">좋아요 : 155</div>
+							<div class="pull-right"
+								style="color: #3e4d5c; direction: ltr; font: 400 21px 'Open Sans', Arial, sans-serif;"></div>
 							<h1>선생님 프로필</h1>
 							<div class="price-availability-block clearfix">
 								<div class="price">
@@ -60,7 +61,7 @@
 									</ul>
 								</div>
 							</div>
-							<div class="product-page-options" >
+							<div class="product-page-options">
 								<div class="pull-left">
 									<label class="control-label">과목 :</label> <strong style="">헬스PT</strong>
 								</div>
@@ -72,10 +73,10 @@
 							</div>
 
 
-							<div class="form-group" >
+							<div class="form-group">
 								<p>수업이 가능한 날짜</p>
 								<table class="teacherdate">
-									<tr>
+									<tr style="text-align: left;">
 										<th>일</th>
 										<th>월</th>
 										<th>화</th>
@@ -85,7 +86,7 @@
 
 										<th>토</th>
 									</tr>
-									<tr class="">
+									<tr>
 										<td><input type="checkbox" name="checker" id="checker1"><label
 											for="checker1"></label></td>
 										<td><input type="checkbox" name="checker" id="checker2"><label
@@ -109,12 +110,13 @@
 
 							</div>
 						</div>
-				
+
 						<div class="product-page-content ">
-							<ul class="nav nav-tabs" id="myTab" >
-								<li class="active"><a href="#Description" data-toggle="tab">강사 자기 소개</a></li>
+							<ul class="nav nav-tabs" id="myTab">
+								<li class="active"><a href="#Description" data-toggle="tab">강사
+										자기 소개</a></li>
 								<li><a href="#Information" data-toggle="tab">강사 리뷰 보기</a></li>
-								<li ><a href="#Reviews" data-toggle="tab">리뷰 쓰기</a></li>
+								<li><a href="#Reviews" data-toggle="tab">리뷰 쓰기</a></li>
 							</ul>
 							<div id="myTabContent" class="tab-content">
 								<div class="tab-pane fade in active" id="Description">
@@ -125,7 +127,7 @@
 										<tr>
 											<th colspan="2">강사 프로필</th>
 										</tr>
-										
+
 										<tr>
 											<td class="datasheet-features-type">별점</td>
 											<td>★★★★ (부트스트랩이 왜인지 안됩니다.. i태그로 변경하고 싶은데...) <i
@@ -134,7 +136,7 @@
 										</tr>
 										<tr>
 											<td class="datasheet-features-type">좋아요</td>
-											<td> 155 </td>
+											<td>155</td>
 										</tr>
 									</table>
 									<div class="review-item clearfix">
@@ -156,29 +158,38 @@
 								</div>
 								<div class="tab-pane fade in " id="Reviews">
 									<!--<p>There are no reviews for this product.</p>-->
-									
+
 
 									<!-- BEGIN FORM-->
 									<form class="reviews-form" role="form">
 										<h2>Write a review</h2>
-										<div class="form-group">
-										<label for="name">닉네임 <span class="require">*</span></label> <input
-											type="text" class="form-control" id="name" value="닉네임 고정"
-											style="width: 140px; text-align: center;">
-									</div>
 										
+
 										<div name="myform" id="myform" method="post" action="./save">
-											    <fieldset>
-											        <legend> 별점</legend>
-				
-											        <input type="radio" name="rating" value="5" id="rate1"><label for="rate1">⭐</label>
-											        <input type="radio" name="rating" value="4" id="rate2"><label for="rate2">⭐</label>
-											        <input type="radio" name="rating" value="3" id="rate3"><label for="rate3">⭐</label>
-											        <input type="radio" name="rating" value="2" id="rate4"><label for="rate4">⭐</label>
-											        <input type="radio" name="rating" value="1" id="rate5"><label for="rate5">⭐</label>
-											    </fieldset>
-											</div>
-										
+											<fieldset>
+												<legend> 별점</legend>
+
+												<input type="radio" name="rating" value="5" id="rate1"><label
+													for="rate1">⭐</label> <input type="radio" name="rating"
+													value="4" id="rate2"><label for="rate2">⭐</label> <input
+													type="radio" name="rating" value="3" id="rate3"><label
+													for="rate3">⭐</label> <input type="radio" name="rating"
+													value="2" id="rate4"><label for="rate4">⭐</label> <input
+													type="radio" name="rating" value="1" id="rate5"><label
+													for="rate5">⭐</label>
+											</fieldset>
+										</div>
+										<div class="form-group" style="width: 300px;">
+											<label for="country">제목 <span class="require">*</span></label>
+											<select class="form-control input-sm" id="country">
+												<option value="">구분</option>
+												<option value="2">훌륭해요</option>
+												<option value="1">최고에요</option>
+												<option value="1">좋아요</option>
+												<option value="1">보통이에요</option>
+
+											</select>
+										</div>
 										<div class="form-group">
 											<label for="review">Review <span class="require">*</span></label>
 											<textarea class="form-control" rows="8" id="review"></textarea>
@@ -207,7 +218,7 @@
 		<!-- END SIDEBAR & CONTENT -->
 
 		<!-- BEGIN SIMILAR PRODUCTS -->
-		
+
 	</div>
 </div>
 </div>

@@ -4,11 +4,10 @@
 
 <%@ include file="../../header.jsp"%>
 
-<link rel="stylesheet" href="/modify/css/imagecheck.css">
 
 <div class="main">
 	<div class="container">
-	
+
 		<ul class="breadcrumb">
 			<li><a href="index.html">Home</a></li>
 			<li><a href="">마이페이지</a></li>
@@ -27,16 +26,14 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-6">
 							<div class="image-container">
-								    <img style="    display: block;
-    max-width: 100%;
-    height: auto;
-								    " id="preview-image" >
-								   
-								</div>
-							
+								<img style="display: block; max-width: 100%; height: auto;"
+									id="preview-image">
+
+							</div>
+
 						</div>
 						<div class="col-md-6 col-sm-6">
-							
+
 							<h1>선생님 정보 입력</h1>
 							<div class="price-availability-block clearfix">
 								<div class="price">
@@ -79,7 +76,6 @@
 										<th>수</th>
 										<th>목</th>
 										<th>금</th>
-
 										<th>토</th>
 									</tr>
 									<tr class="">
@@ -87,12 +83,10 @@
 											for="checker1"></label></td>
 										<td><input type="checkbox" name="checker" id="checker2"><label
 											for="checker2"></label></td>
-
 										<td><input type="checkbox" name="checker" id="checker1"><label
 											for="checker3"></label></td>
 										<td><input type="checkbox" name="checker" id="checker2"><label
 											for="checker4"></label></td>
-
 										<td><input type="checkbox" name="checker" id="checker1"><label
 											for="checker5"></label></td>
 										<td><input type="checkbox" name="checker" id="checker2"><label
@@ -105,13 +99,13 @@
 								</table>
 
 							</div>
-<div class="description">
+							<div class="description">
 								<div class="form-group">
 									<label for="name">프로필 사진 선택<span class="require">*</span></label>
-									 <input style="display: block;" type="file" id="input-image">
+									<input style="display: block;" type="file" id="input-image">
 								</div>
 
-								
+
 							</div>
 
 							<!-- SNS
@@ -128,7 +122,7 @@
 						<div class="product-page-content">
 							<ul id="myTab" class="nav nav-tabs">
 
-								<li class="active"><a href="#Reviews" data-toggle="tab">자기
+								<li class=""><a href="#Reviews" data-toggle="tab">자기
 										소개</a></li>
 							</ul>
 							<div id="myTabContent" class="tab-content">
@@ -137,7 +131,7 @@
 								<form action="#" class="reviews-form" role="form">
 									<div class="formgroup">
 										<label for="review">자기소개글 작성<span class="require">*</span></label>
-										
+
 										<textarea name="content" id="summernote" class="summernote"></textarea>
 									</div>
 
@@ -156,59 +150,56 @@
 	</div>
 	<!-- END SIDEBAR & CONTENT -->
 
-	
+
 	<!-- END SIMILAR PRODUCTS -->
 </div>
 
-	<script>
-		
-		//summernote jquery
+<script>
+	//summernote jquery
 
-		$(document)
-				.ready(
-						function() {
-							$('#summernote')
-									.summernote(
-											{
-												height : 300,
-												fontNames : [ '맑은고딕', 'Arial',
-														'Arial Black',
-														'Comic Sans MS',
-														'Courier New', ],
-												fontNamesIgnoreCheck : [ '맑은고딕' ],
-												focus : true,
+	$(document)
+			.ready(
+					function() {
+						$('#summernote')
+								.summernote(
+										{
+											height : 300,
+											fontNames : [ '맑은고딕', 'Arial',
+													'Arial Black',
+													'Comic Sans MS',
+													'Courier New', ],
+											fontNamesIgnoreCheck : [ '맑은고딕' ],
+											focus : true,
 
-												callbacks : {
-													onImageUpload : function(
-															files, editor,
-															welEditable) {
-														for (var i = files.length - 1; i >= 0; i--) {
-															sendFile(files[i],
-																	this);  
-														}
+											callbacks : {
+												onImageUpload : function(files,
+														editor, welEditable) {
+													for (var i = files.length - 1; i >= 0; i--) {
+														sendFile(files[i], this);
 													}
 												}
+											}
 
-											});
+										});
 
-						})
-		function sendFile(file, el) {
-			var form_data = new FormData();
-			form_data.append('file', file);
-			$.ajax({
-				data : form_data,
-				type : "POST",
-				url : 'profileImage.do',
-				cache : false,
-				contentType : false,
-				enctype : 'multipart/form-data',
-				processData : false,
-				success : function(img_name) {
-					alert(img_name);
-					$(el).summernote('editor.insertImage', img_name);
-				}
-			});
-		} // sendfile
-	</script>
-	
+					})
+	function sendFile(file, el) {
+		var form_data = new FormData();
+		form_data.append('file', file);
+		$.ajax({
+			data : form_data,
+			type : "POST",
+			url : 'profileImage.do',
+			cache : false,
+			contentType : false,
+			enctype : 'multipart/form-data',
+			processData : false,
+			success : function(img_name) {
+				alert(img_name);
+				$(el).summernote('editor.insertImage', img_name);
+			}
+		});
+	} // sendfile
+</script>
+
 <%@ include file="../../footer.jsp"%>

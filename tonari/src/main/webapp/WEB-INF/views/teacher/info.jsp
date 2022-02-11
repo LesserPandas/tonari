@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file ="../header.jsp" %>
-<link rel="stylesheet" href="css/teacher.css">
+<link rel="stylesheet" href="/resources/custom/css/teacher.css">
     
     <div class="main">
       <div class="container">
@@ -27,7 +27,7 @@
                   <div class="product-other-images">
                     <a href="images/home/mainvisual.png" class="fancybox-button" rel="photos-lib"><img alt="Berry Lace Dress" src="images/home/mainvisual.png"></a>
                     <a href="images/home/tahoe-ZUq6sKVnPfg-unsplash.jpg" class="fancybox-button" rel="photos-lib"><img alt="Berry Lace Dress" src="images/home/tahoe-ZUq6sKVnPfg-unsplash.jpg"></a>
-                    <a href="assets/pages/img/products/model5.jpg" class="fancybox-button" rel="photos-lib"><img alt="Berry Lace Dress" src="assets/pages/img/products/model5.jpg"></a>
+                    <a href="/resources/assets/pages/img/products/model5.jpg" class="fancybox-button" rel="photos-lib"><img alt="Berry Lace Dress" src="/resources/assets/pages/img/products/model5.jpg"></a>
                   </div>
                 </div>
                 <div class="col-md-6 col-sm-6">

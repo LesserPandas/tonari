@@ -147,7 +147,7 @@
                                             <td>Tokyo</td>
                                             <td>33</td>
                                             <td>2008/11/28</td>
-                                            <td><button onclick="location.href='adminnoticeupdate'" style="margin-right: 4%; background-color:purple; border-color:purple; color:white; ">수정</button "><button>삭제</button> </td>
+                                            <td><button onclick="location.href='noticeupdate'" style="margin-right: 4%; background-color:purple; border-color:purple; color:white; ">수정</button "><button>삭제</button> </td>
                                         </tr>
                                         <tr>
                                             <td>Brielle Williamson</td>
@@ -215,7 +215,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                	<a href="adminnoticewrite" class="btn btn-primary btn-icon-split" style="float: right; margin-right: 20%;  ">                                      
+                                	<a href="noticewrite" class="btn btn-primary btn-icon-split" style="float: right; margin-right: 20%;  ">                                      
                                         <span class="text" style="padding: 2%;">글쓰기</span>
                                     </a>
                             </div>

@@ -26,7 +26,7 @@
                 <div class="col-md-6">
                   <form action="#">
                     <div class="input-group">
-						<input type="text" placeholder="개꿀 선생님을 검색해보자" class="form-control">
+						<input type="text" placeholder="개꿀 선생님을 검색해보자" class="form-control" name="searchText">
 						<span class="input-group-btn">
                         <button class="btn btn-primary" type="submit">Search</button>
                       </span>
@@ -43,7 +43,7 @@
               <div class="col-md-10 col-sm-10">
                 <div class="pull-right">
                   <label class="control-label">정렬</label>
-                  <select class="form-control input-sm">
+                  <select class="form-control input-sm" name="orderBy">
                     <option value="new" selected="selected">신규</option>
                     <option value="area">가까운 지역</option>
                     <option value="star">별점</option>
@@ -54,20 +54,27 @@
             <!-- BEGIN PRODUCT LIST -->
             <div class="row product-list">
               <!-- PRODUCT ITEM START -->
-              <div class="col-md-3 col-sm-4 col-xs-6">
+              <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="product-item">
 	                <div style="text-align: right;">
-	                	<span>별점</span>4.1
+	                	<span>별점<i class="bi bi-star-fill"></i> 부트스트랩 별<br>
+	                	<i class="fa-solid fa-star"></i>폰트어썸 별</span>
 	                </div>
                   <div class="pi-img-wrapper">
                     <img src="/resources/assets/pages/img/products/model1.jpg" class="img-responsive" alt="">
                     <div>
-                      <a href="#" class="btn btn-default fancybox-button">찜하기</a>
+                      <a href="#" class=" btn-default fancybox-button" style="border:none; text-align: center; padding:0; margin:0;">
+                      	"<br>내용<br>"
+                      </a>
                     </div>
                   </div>
-                  <h3><a href="shop-item.html">강사명</a></h3>
-                  <div class="pi-price">과목명<br>지역</div>
-                  <a href="info" class="btn btn-default add2cart">프로필보기</a>
+                  <div class="teacherInfo">
+	                  <div class="pull-left">과목명</div>
+	                  <div class="pull-right">지역</div><br>
+                  	<h3><a href="info" style="font-weight: bold; font-size: 18px;">강사명</a></h3>
+                  	<button class="largeButton likeButton">♡</button>
+                  </div>
+                  
                 </div>
               </div>
               <!-- PRODUCT ITEM END -->

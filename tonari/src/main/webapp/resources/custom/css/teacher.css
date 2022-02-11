@@ -1,6 +1,15 @@
 @charset "UTF-8";
 
 
+.teacherInfo{
+	margin:10px 0;
+	padding: 0 10px;
+}
+
+.teacherInfo>div{
+	color: #ccc;
+}
+
 .teacherdate {
 	width: 100%;
 	text-align: center;
@@ -25,6 +34,20 @@
 	text-decoration: none;
 	font-size: 18px;
 	margin-left: 5px;
+}
+
+.likeButton{
+	background: none;
+	border: solid 1px #67bd3c;
+	color: #67bd3c;
+	padding: 0 5px;
+	font-size: 15px;
+	margin: 0;
+}
+
+.likeButton:hover{
+	color: white;
+	background: #67bd3c;
 }
 
 .button:hover{

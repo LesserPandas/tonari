@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <style>
+    .goods-page1{
+    font: 16px "PT Sans Narrow", sans-serif;
+    text-transform: uppercase;
+    border-bottom: solid 1px #ecebeb;
+    padding-bottom: 10px;
+    text-align:center;
+    }
+    </style>
 <%@ include file="../../header.jsp" %>
     <div class="main">
       <div class="container">
@@ -11,69 +20,56 @@
             <div class="goods-page">
               <div class="goods-data clearfix">
                 <div class="table-wrapper-responsive">
+                
                 <table summary="Shopping cart">
+                	
                   <tr>
-                    <th class="goods-page-image">사진</th>
-                    <th class="goods-page-description">설명</th>
-                    <th class="goods-page-ref-no">종목</th>
-                    <th class="goods-page-quantity">기간?</th>
-                    <th class="goods-page-price">가격</th>
-                    <th class="goods-page-total" colspan="2">총가격</th>
+                    <th class="goods-page-image goods-page1">사진</th>
+                    <th class="goods-page-description goods-page1">성명</th>
+                    <th class="goods-page-ref-no goods-page1">과목</th>
+                    <th class="goods-page-quantity goods-page1">기간(일)</th>
+                    <th class="goods-page-price goods-page1">가격</th>
+                    <th class="goods-page-total goods-page1" colspan="2">총 가격  </th>
+                     <th class="goods-page-total goods-page1" colspan="2"></th>
                   </tr>
                   <tr>
-                    <td class="goods-page-image">
+                    <td class="goods-page-image ">
                       <a href="javascript:;"><img src="assets/pages/img/products/model3.jpg" alt="Berry Lace Dress"></a>
                     </td>
                     <td class="goods-page-description">
+                       <p><strong>이름</strong></p>
                       <h3>닉네임</h3>
-                      <p><strong>한마디</strong> 개발자가 진짜 나랑 맞는 걸까?</p>
-                      <a href="javascript:;">선생 정보</a>
+                     
                     </td>
                     <td class="goods-page-ref-no">
                       javc2133
                     </td>
                     <td class="goods-page-quantity">
+                      
                       <div class="product-quantity">
-                          <input id="product-quantity" type="text" value="1" readonly class="form-control input-sm">
-                      </div>
+                      	<input type="text" name="quantity" value="1" class="quantity   " 
+									style=" border: none;    background: #edeff1 !important;    font: 300 23px 'Open Sans', sans-serif;    color: #647484;    height: 38px;    width: 50px;    text-align: center;    padding: 5px;">
+									
+									<div>
+                      <button class="minus" type="button"style="background:#67bd3c;">-</button>
+                      <button class="plus" type="button" style="background:#67bd3c;">+</button>
+                      </div>	
+						</div>
+									
+						
                     </td>
                     <td class="goods-page-price">
                       <strong>1818<span>円</span></strong>
+                      
                     </td>
-                    <td class="goods-page-total">
-                      <strong>1818<span>円</span></strong>
-                    </td>
-                    <td class="del-goods-col">
-                      <a class="del-goods" href="javascript:;">&nbsp;</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="goods-page-image">
-                      <a href="javascript:;"><img src="assets/pages/img/products/model4.jpg" alt="Berry Lace Dress"></a>
-                    </td>
-                    <td class="goods-page-description">
-                      <h3>닉네임</h3>
-                      <p><strong>한마디</strong> 개발자가 진짜 나랑 맞는 걸까?</p>
-                      <a href="javascript:;">선생 정보</a>
-                    </td>
-                    <td class="goods-page-ref-no">
-                      javc2133
-                    </td>
-                    <td class="goods-page-quantity">
-                      <div class="product-quantity">
-                          <input id="product-quantity" type="text" value="1" readonly class="form-control input-sm">
-                      </div>
-                    </td>
-                    <td class="goods-page-price">
-                      <strong>1818<span>円</span></strong>
-                    </td>
-                    <td class="goods-page-total">
-                      <strong>1818<span>円</span></strong>
+                    <td class="goods-page-total" style="text-align: right;">
+                      <strong class="total">1818<span>円</span></strong>
                     </td>
                     <td class="del-goods-col">
-                      <a class="del-goods" href="javascript:;">&nbsp;</a>
+                      <a class="del-goods" href="javascript:;"></a>
                     </td>
                   </tr>
+                
                 
                 </table>
                 </div>
@@ -81,12 +77,13 @@
                 <div class="shopping-total">
                   <ul>
                     <li>
-                      <em>Sub total</em>
+                      <em>1회 수강료</em>
                       <strong class="price"><span>$</span>47.00</strong>
                     </li>
                     <li>
-                      <em>할인?</em>
-                      <strong class="price"><span>$</span>3.00</strong>
+                      <em>강의일 </em>
+                     
+                      <strong class="price">3<span>일</span></strong>
                     </li>
                     <li class="shopping-total-price">
                       <em>Total</em>

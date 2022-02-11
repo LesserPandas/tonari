@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Tables</title>
+    <title>隣の先生</title>
 
     <!-- Custom fonts for this template -->
     <link href="/resources/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -113,7 +113,7 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
-                           <a class="collapse-item" href="adminnotice">게시판관리</a>
+                           <a class="collapse-item" href="notice">게시판관리</a>
            
                  
                      
@@ -123,7 +123,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="adminmail">
+                <a class="nav-link" href="mail">
                      <i class="fas fa-fw fa-table"></i>
                     <span>메일</span></a>
             </li>

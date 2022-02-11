@@ -61,8 +61,6 @@
 	id="style-color">
 <link rel="stylesheet" href="/resources/assets/corporate/css/custom.css">
 
-
- 
 <!-- 내가 추가-->
 <link rel="stylesheet" href="/resources/assets/pages/css/index.css">
 
@@ -112,9 +110,7 @@
 		<div class="container">
 
 			<a class="site-logo" href="index.jsp"><img
-
 				src="/resources/assets/corporate/img/logos/logo-shop-green.png"
-
 				alt="Metronic Shop UI"></a> <a href="javascript:void(0);"
 				class="mobi-toggler"><i class="fa fa-bars"></i></a>
 

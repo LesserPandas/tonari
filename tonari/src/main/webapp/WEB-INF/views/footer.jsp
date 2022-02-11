@@ -73,6 +73,7 @@
 				<div class="col-md-4 col-sm-4">
 					<!-- <ul class="list-unstyled list-inline pull-right">
 
+
               <li><img src="/resources/assets/corporate/img/payments/western-union.jpg" alt="We accept Western Union" title="We accept Western Union"></li>
               <li><img src="/resources/assets/corporate/img/payments/american-express.jpg" alt="We accept American Express" title="We accept American Express"></li>
               <li><img src="/resources/assets/corporate/img/payments/MasterCard.jpg" alt="We accept MasterCard" title="We accept MasterCard"></li>
@@ -104,19 +105,18 @@
 					<div class="product-main-image">
 
 						<img src="/resources/assets/pages/img/products/model7.jpg"
-
-							alt="Cool green dress with red bell" class="img-responsive">
+          alt="Cool green dress with red bell" class="img-responsive">
 					</div>
 					<div class="product-other-images">
 						<a href="javascript:;" class="active"><img
 
-
 							alt="Berry Lace Dress" src="/resources/assets/pages/img/products/model3.jpg"></a>
+
 						<a href="javascript:;"><img alt="Berry Lace Dress"
 							src="/resources/assets/pages/img/products/model4.jpg"></a> <a
 							href="javascript:;"><img alt="Berry Lace Dress"
-							src="/resources/assets/pages/img/products/model5.jpg"></a>
 
+							src="/resources/assets/pages/img/products/model5.jpg"></a>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-6 col-xs-9">
@@ -170,7 +170,6 @@
 
 	<!-- Load javascripts at bottom, this will reduce page load time -->
 
-
 	<script src="/resources/assets/plugins/jquery.min.js" type="text/javascript"></script>
 	<script src="/resources/assets/plugins/jquery-migrate.min.js"
 		type="text/javascript"></script>
@@ -178,8 +177,8 @@
 		type="text/javascript"></script>
 	<script src="/resources/assets/corporate/scripts/back-to-top.js"
 		type="text/javascript"></script>
-	<script src="/resources/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"
 
+	<script src="/resources/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"
 		type="text/javascript"></script>
 	<!-- END CORE PLUGINS -->
 

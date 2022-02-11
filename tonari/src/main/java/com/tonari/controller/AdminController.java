@@ -52,6 +52,4 @@ public class AdminController {
 		return "admin/noticewrite";
 	}
 	
-	
-	
 }

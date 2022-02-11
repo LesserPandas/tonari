@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+.product-details {
+	margin-bottom:40px;
+	overflow:hidden;
+}
+.minus, .plus {
+	width:21px; height:21px; line-height:21px;
+	background:transparent;
+	border:1px solid #dadada;
+	display:inline-block;
+}
+.quantity {
+	width:40px; height:21px; line-height:21px;
+	padding:2px 4px 2px;
+	border:1px solid #dadada;
+	display:inline-block;
+	font-size:14px; text-align:center;
+}
+.total {
+	color:#f40000;	font-size:28px; font-weight:800;
+	padding:20px 0;
+	padding:30px 0;
+}
+
+​
+​
+.teacherdate {
+	width: 100%;
+	text-align: center;
+}
+​
+.teacherdate th,td{
+	font-size: 15px;
+	text-align: center;
+}
+​
+.teacherdate th{
+	border-bottom: solid;
+}

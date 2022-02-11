@@ -204,5 +204,4 @@
     <script src="/resources/admin/js/demo/chart-bar-demo.js"></script>
 
 </body>
-
 </html>

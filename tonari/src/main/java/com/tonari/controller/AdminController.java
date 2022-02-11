@@ -30,26 +30,26 @@ public class AdminController {
 	public String studentsales() {
 		return "admin/studentsales";
 	}
-	@GetMapping("/adminnotice")
-	public String adminnotice() {
-		return "admin/adminnotice";
+	@GetMapping("/notice")
+	public String notice() {
+		return "admin/notice";
 	}
-	@GetMapping("/adminmail")
-	public String adminmail() {
-		return "admin/adminmail";
+	@GetMapping("/mail")
+	public String mail() {
+		return "admin/mail";
 	}
 	@GetMapping("/teacherlist")
 	public String teacherlist() {
 		return "admin/teacherlist";
 	}
-	@GetMapping("/adminnoticeupdate")
-	public String adminnoticeupdate() {
-		return "admin/adminnoticeupdate";
+	@GetMapping("/noticeupdate")
+	public String noticeupdate() {
+		return "admin/noticeupdate";
 	}
 	
-	@GetMapping("/adminnoticewrite")
-	public String adminnoticewrite() {
-		return "admin/adminnoticewrite";
+	@GetMapping("/noticewrite")
+	public String noticewrite() {
+		return "admin/noticewrite";
 	}
 	
 	

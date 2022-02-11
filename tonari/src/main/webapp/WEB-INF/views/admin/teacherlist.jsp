@@ -77,13 +77,58 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">회원관리</h1>
+                    <!-- Page Heading -->              
+                
+                        <div class="card shadow mb-4">
+                        <div class="card-header py-3">        
+				<h6 class="m-0 font-weight-bold text-primary">강사구독승인</h6>             
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" >
+                                    <thead>
+                                        <tr>
+                                            <th>회원번호</th>
+                                            <th>이름</th>                                            
+                                            <th>나이</th>
+                                            <th>구분</th>
+                                            <th>강사승인</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Garrett Winters</td>
+                                            <td>Accountant</td>
+                                            <td>Tokyo</td>
+                                            <td>63</td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+              </div>  
+        
+                   
+             
+                   
+                   
+                        <div class="container-fluid">
+                       <h1 class="h3 mb-2 text-gray-800">회원관리</h1>
                    
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">회원목록</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">강사목록</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -94,7 +139,7 @@
                                             <th>이름</th>                                            
                                             <th>나이</th>
                                             <th>구분</th>
-                                            <th>강사승인</th>
+                                            <th>이메일</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -103,7 +148,7 @@
                                             <th>이름</th>
                                             <th>나이</th>
                                             <th>구분</th>
-                                            <th>강사승인</th>
+                                            <th>이메일</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -140,7 +185,7 @@
                                             <td>Accountant</td>
                                             <td>Tokyo</td>
                                             <td>33</td>
-                                            <td>승인버튼사용예정</td>
+                                            <td>2012/03/29</td>
                                         </tr>
                                         <tr>
                                             <td>Brielle Williamson</td>

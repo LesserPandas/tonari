@@ -77,6 +77,55 @@
 				<!-- End of Topbar -->
 
 
+
+
+ <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->              
+                
+                        <div class="card shadow mb-4">
+                        <div class="card-header py-3">        
+				<h6 class="m-0 font-weight-bold text-primary">강사구독승인</h6>             
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" >
+                                    <thead>
+                                        <tr>
+                                            <th>회원번호</th>
+                                            <th>이름</th>                                            
+                                            <th>나이</th>
+                                            <th>구분</th>
+                                            <th>강사승인</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Garrett Winters</td>
+                                            <td>Accountant</td>
+                                            <td>Tokyo</td>
+                                            <td>63</td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+              </div>  
+        
+
+
+
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
 

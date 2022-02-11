@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
+<link rel="stylesheet" href="/resources/custom/css/teacher.css">
        
     <div class="main">
       <div class="container">
@@ -59,9 +60,9 @@
 	                	<span>별점</span>4.1
 	                </div>
                   <div class="pi-img-wrapper">
-                    <img src="assets/pages/img/products/model1.jpg" class="img-responsive" alt="Berry Lace Dress">
+                    <img src="/resources/assets/pages/img/products/model1.jpg" class="img-responsive" alt="">
                     <div>
-                      <a href="assets/pages/img/products/model1.jpg" class="btn btn-default fancybox-button">찜하기</a>
+                      <a href="#" class="btn btn-default fancybox-button">찜하기</a>
                     </div>
                   </div>
                   <h3><a href="shop-item.html">강사명</a></h3>

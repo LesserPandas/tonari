@@ -1107,9 +1107,9 @@ steps block and steps block elements
 .title-wrapper {
 	margin: -23px 0 23px;
 	position: relative;
-	overflow: hidden;
-	background: #72c2ff url(../../pages/img/title-bg/man.jpg) no-repeat 100% 100%;
-	min-height: 280px;
+	background: linear-gradient(#333, 10%, transparent),
+	 url(../../pages/img/bg-main.jpg) no-repeat 100% 100%;
+	min-height: 500px;
 	padding-top: 79px;
 	width: 100%;
 	overflow: hidden;

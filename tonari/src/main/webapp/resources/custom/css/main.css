@@ -29,14 +29,6 @@
 	padding: 50px 0;
 }
 
-.item {
-	padding-left: 260px;
-}
-
-.item h1 {
-	margin-top: 100px;
-}
-
 .carousel-control.left {
 	background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0,
 		rgba(255, 255, 255, 0) 0%);
@@ -248,7 +240,6 @@
 .btn-category {
 	background: transparent;
 	border: none;
-	color: #fff;
 	width: 270px;
 	height: 50px;
 	font-size: 16px;
@@ -262,18 +253,51 @@
 	font-size: 16px;
 }
 
-.ct-group {
-	border-bottom: 1px solid #888;
+.quote {
+	color: rgba(0, 0, 0, .3);
+	margin-bottom: 10px;
 }
 
-.ct-group:last-child {
-	border-bottom: none;
+#fade-quote-carousel.carousel {
+	padding-bottom: 60px;
 }
 
-.btn-category {
-	border-right: 1px solid #888;
+#fade-quote-carousel.carousel .carousel-inner .item {
+	opacity: 0;
+	-webkit-transition-property: opacity;
+	-ms-transition-property: opacity;
+	transition-property: opacity;
 }
 
-.btn-category:last-child {
+#fade-quote-carousel.carousel .carousel-inner .active {
+	opacity: 1;
+	-webkit-transition-property: opacity;
+	-ms-transition-property: opacity;
+	transition-property: opacity;
+}
+
+#fade-quote-carousel.carousel .carousel-indicators {
+	bottom: 0px;
+}
+
+#fade-quote-carousel.carousel .carousel-indicators>li {
+	background-color: #34ae63;
+	opacity: 0.2;
 	border: none;
+}
+
+#fade-quote-carousel blockquote {
+	font-size: 14px;
+	border: none;
+}
+
+
+.review-title {
+	float:left
+}
+
+.starpoint{
+	float:right;
+	font-size: 12px;
+	color: #333;
 }

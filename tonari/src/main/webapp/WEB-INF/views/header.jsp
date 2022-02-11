@@ -36,7 +36,6 @@
 
 <!-- Global styles START -->
 <link rel="stylesheet"
-
 	href="/resources/assets/plugins/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet"
 	href="/resources/assets/plugins/bootstrap/css/bootstrap.min.css">
@@ -61,11 +60,12 @@
 	id="style-color">
 <link rel="stylesheet" href="/resources/assets/corporate/css/custom.css">
 
-
- 
 <!-- 내가 추가-->
-<link rel="stylesheet" href="/resources/assets/pages/css/index.css">
-
+<link rel="stylesheet" href="/resources/assets/pages/css/index.css">	
+<link rel="stylesheet" href="/resources/custom/css/summernote.min.css">
+<link rel="stylesheet" href="/resources/custom/css/imagecheck.css">
+<link rel="stylesheet" href="/resources/custom/css/teacher.css">
+<script src="/resources/assets/jquery-3.6.0.min.js"></script>
 <!-- 내가 추가-->
 
 <!-- Theme styles END -->
@@ -94,10 +94,10 @@
 				<!-- BEGIN TOP BAR MENU -->
 				<div class="col-md-6 col-sm-6 additional-nav">
 					<ul class="list-unstyled list-inline pull-right">
-						<li><a href="shop-account.html">내 계정</a></li>
-						<li><a href="shop-wishlist.html">즐겨찾기</a></li>
-						<li><a href="page-login.html">로그인</a></li>
-						<li><a href="page-login.html">회원가입</a></li>
+						<li><a href="/mypage">내 계정</a></li>
+						<li><a href="">즐겨찾기</a></li>
+						<li><a href="/login">로그인</a></li>
+						<li><a href="/join">회원가입</a></li>
 					</ul>
 				</div>
 				<!-- END TOP BAR MENU -->
@@ -111,10 +111,8 @@
 	<div class="header">
 		<div class="container">
 
-			<a class="site-logo" href="index.jsp"><img
-
+			<a class="site-logo" href="/"><img
 				src="/resources/assets/corporate/img/logos/logo-shop-green.png"
-
 				alt="Metronic Shop UI"></a> <a href="javascript:void(0);"
 				class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
@@ -132,13 +130,11 @@
 						<ul class="scroller" style="height: 250px;">
 
 							<li><a href="shop-item.html"><img
-
-									src="/resources/assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch"
-
-									width="37" height="34"></a> <span class="cart-content-count">x
-									1</span> <strong><a href="shop-item.html">Rolex Classic
-										Watch</a></strong> <em>$1230</em> <a href="javascript:void(0);"
-								class="del-goods">&nbsp;</a></li>
+									src="/resources/assets/pages/img/cart-img.jpg"
+									alt="Rolex Classic Watch" width="37" height="34"></a> <span
+								class="cart-content-count">x 1</span> <strong><a
+									href="shop-item.html">Rolex Classic Watch</a></strong> <em>$1230</em> <a
+								href="javascript:void(0);" class="del-goods">&nbsp;</a></li>
 
 						</ul>
 						<div class="text-right">
@@ -246,6 +242,34 @@
 							<li><a href="shop-product-list.html">즐겨찾기한 강사</a></li>
 							<li><a href="shop-product-list.html">내 학생 보기 (강사)</a></li>
 							<li><a href="shop-product-list.html">강사 등록하기 (학생)</a></li>
+						</ul> <!-- END DROPDOWN MENU --></li>
+						
+						
+						
+					<!-- 개발용 링크 넣기  -->
+
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" data-target="#" href="javascript:;">
+							테스트페이지 </a> <!-- BEGIN DROPDOWN MENU -->
+						<ul class="dropdown-menu">
+							<li><h4>준희</h4></li>
+							<li><a href="/login">로그인</a></li>
+							<li><a href="/join">회원가입</a></li>
+							<li><a href="/mypage/teacherJoin">강사등록</a></li>
+							<li><a href="/mypage/teacherInfo">강사정보</a></li>
+							<li><a href="/mypage/teacherModify">강사정보수정</a></li>
+							<li><a href="/mypage/subscription">구독하기</a></li>
+							<li><a href="/mypage/subResult">구독결과</a></li>
+							<li><a href="/mypage/studentInfoModify">일반회원 정보 수정</a></li>
+							<li><a href="/mypage/like">선생님 찜한 목록</a></li>
+							
+							<li><h4>남현</h4></li>
+							
+							<li><h4>찬호</h4></li>
+							
+							<li><h4>두홍</h4></li>
+							<li><a href="/admin">Admin-로그인</a></li>
+							<li><a href="/admin/memberlist">Admin-멤버리스트</a></li>
 						</ul> <!-- END DROPDOWN MENU --></li>
 
 				</ul>

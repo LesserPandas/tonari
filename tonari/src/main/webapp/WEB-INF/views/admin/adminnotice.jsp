@@ -78,34 +78,34 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">매출관리</h1>
+                    <h1 class="h3 mb-2 text-gray-800">게시판관리</h1>
                    
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">강사매출</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">게시판목록</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>회원번호</th>                                       
+                                            <th>번호</th>
+                                            <th>제목</th>
                                             <th>구분</th>
-                                            <th>금액</th>
-                                            <th>결제날짜</th>
-                                            <th>결제유무</th>
-                                            <th>구독유무</th>
+                                            <th>조회수</th>
+                                            <th>작성날짜</th>
+                                            <th>비고</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>회원번호</th>                                       
+                                            <th>번호</th>
+                                            <th>제목</th>
                                             <th>구분</th>
-                                            <th>금액</th>
-                                            <th>결제날짜</th>
-                                            <th>결제유무</th>
-                                            <th>구독유무</th>
+                                            <th>조회수</th>
+                                            <th>작성날짜</th>
+                                            <th>비고</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -147,7 +147,7 @@
                                             <td>Tokyo</td>
                                             <td>33</td>
                                             <td>2008/11/28</td>
-                                            <td>$162,700</td>
+                                            <td><button onclick="location.href='adminnoticeupdate'" style="margin-right: 4%; background-color:purple; border-color:purple; color:white; ">수정</button "><button>삭제</button> </td>
                                         </tr>
                                         <tr>
                                             <td>Brielle Williamson</td>
@@ -215,6 +215,9 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                                	<a href="adminnoticewrite" class="btn btn-primary btn-icon-split" style="float: right; margin-right: 20%;  ">                                      
+                                        <span class="text" style="padding: 2%;">글쓰기</span>
+                                    </a>
                             </div>
                         </div>
                     </div>
@@ -231,4 +234,4 @@
                   </div>
            <!-- End of Content Wrapper --> 
            </div>
- </body>
+ </body>      

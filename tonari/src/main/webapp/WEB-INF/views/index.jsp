@@ -16,26 +16,86 @@
 	<div class="title-wrapper simple-linear ">
 		<!-- 메인 배너 이미지 -->
 		<div class="container">
-			<div class="container-inner col-md-4">
+			<div class="container-inner col-md-6 col-md-offset-3">
 				<h1>
-					내 주변 <span>선생님</span> 찾기
+					내 주변 <span class="title-appeal">선생님</span> 찾기
 				</h1>
 				<em>내 주변 숨어있는 선생님을 찾아보세요</em>
 			</div>
-			<div class="col-md-1"></div>
-			<div class="search-box col-md-6">
-				<form action="#">
-					<div class="input-group mg-top-50">
-						<input type="text" placeholder="Search" class="form-control h-40">
-						<span class="input-group-btn">
-							<button class="btn btn-primary h-40" type="submit">Search</button>
-						</span>
+
+			<div class="search-box col-md-12"
+				style="padding-left: 80px; margin: 50px 0">
+				<form id="" method="post" action="">
+					<div class="col-md-3">
+						<div class="input-group">
+							<span class="input-group-addon btn-green">과목</span> <select
+								class="form-control border-radius option-select ht-45" id="sel1">
+								<option>전체선택</option>
+								<option>일본어</option>
+								<option>Java</option>
+								<option>Python</option>
+								<option>Javascript</option>
+								<option>Spring</option>
+								<option>HTML5+CSS3</option>
+								<option>Database</option>
+							</select>
+						</div>
 					</div>
+					<div class="col-md-2">
+						<div class="input-group">
+							<span class="input-group-addon btn-green">지역</span> <select
+								class="form-control border-radius option-select ht-45" id="sel1">
+								<option>전체선택</option>
+								<option>용두동</option>
+								<option>선화동</option>
+								<option>갈마동</option>
+								<option>은행동</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-5 search-mg-15">
+						<div class="input-group">
+							<!-- <span class="input-group-addon btn-green">검색어</span> -->
+							<input type="text" class="form-control ht-45" name=""
+								placeholder="입력" style="width: 435px; display: inline-block">
+							<span class="input-group-btn">
+								<button class="btn btn-primary btn-green ht-45" type="button"
+									style="width: 100px">검색</button>
+							</span>
+						</div>
+
+					</div>
+
+
+
 				</form>
 			</div>
 
 		</div>
+
+
+
 	</div>
+
+	<nav class="navbar navbar-inverse nav-category ht-100">
+		<div class="container" style="margin-top:10px">
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="#" class="category-link underline green">일본어</a></li>
+					<li><a href="#" class="category-link underline green">Java</a></li>
+					<li><a href="#" class="category-link underline green">Python</a></li>
+					<li><a href="#" class="category-link underline green">Javascript</a></li>
+					<li><a href="#" class="category-link underline green">Spring</a></li>
+					<li><a href="#" class="category-link underline green">HTML5+CSS3</a></li>
+					<li><a href="#" class="category-link underline green">DB</a></li>
+
+				</ul>
+
+			</div>
+		</div>
+	</nav>
+
+
 
 
 	<div class="main">
@@ -232,51 +292,56 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="carousel slide" id="fade-quote-carousel"
-						data-ride="carousel" data-interval="4000">
-						<!-- Carousel indicators -->
-						<ol class="carousel-indicators">
-							<li data-target="#fade-quote-carousel" data-slide-to="0"
-								class="active"></li>
-							<li data-target="#fade-quote-carousel" data-slide-to="1"></li>
-							<li data-target="#fade-quote-carousel" data-slide-to="2"></li>
-						</ol>
+						data-ride="carousel">
 						<!-- Carousel items -->
 						<div class="carousel-inner">
 							<div class="active item">
+								<div class="col-md-3 border">
+									<blockquote>
+										<div>
+											<h4 class="review-title">너무 좋아요!</h4>
+											<span class="starpoint">⭐⭐⭐⭐⭐</span>
+										</div>
+									</blockquote>
+									<div>박***</div>
+									<div>에베베베베베베베베베베베베베베베베베...</div>
+								</div>
+								<div class="col-md-3 border">
+									<blockquote>
+										<div>
+											<h4 class="review-title">너무 좋아요!</h4>
+											<span class="starpoint">⭐⭐⭐⭐⭐</span>
+										</div>
+									</blockquote>
+									<div>박***</div>
+									<div>에베베베베베베베베베베베베베베베베베...</div>
+								</div>
+								<div class="col-md-3 border">
+									<blockquote>
+										<div>
+											<h4 class="review-title">너무 좋아요!</h4>
+											<span class="starpoint">⭐⭐⭐⭐⭐</span>
+										</div>
+									</blockquote>
+									<div>박***</div>
+									<div>에베베베베베베베베베베베베베베베베베...</div>
+								</div>
+								<div class="col-md-3 border">
+									<blockquote>
+										<div>
+											<h4 class="review-title">너무 좋아요!</h4>
+											<span class="starpoint">⭐⭐⭐⭐⭐</span>
+										</div>
+									</blockquote>
+									<div>박***</div>
+									<div>에베베베베베베베베베베베베베베베베베...</div>
+								</div>
 
-								<div class="col-md-3 border">
-									<blockquote>
-										<div>
-											<h4 class="review-title">너무 좋아요!</h4>
-											<span class="starpoint">⭐⭐⭐⭐⭐</span>
-										</div>
-									</blockquote>
-									<div>박***</div>
-									<div>에베베베베베베베베베베베베베베베베베...</div>
-								</div>
-								<div class="col-md-3 border">
-									<blockquote>
-										<div>
-											<h4 class="review-title">너무 좋아요!</h4>
-											<span class="starpoint">⭐⭐⭐⭐⭐</span>
-										</div>
-									</blockquote>
-									<div>박***</div>
-									<div>에베베베베베베베베베베베베베베베베베...</div>
-								</div>
-								<div class="col-md-3 border">
-									<blockquote>
-										<div>
-											<h4 class="review-title">너무 좋아요!</h4>
-											<span class="starpoint">⭐⭐⭐⭐⭐</span>
-										</div>
-									</blockquote>
-									<div>박***</div>
-									<div>에베베베베베베베베베베베베베베베베베...</div>
-								</div>
-	
 
 							</div>
+
+
+
 
 						</div>
 					</div>

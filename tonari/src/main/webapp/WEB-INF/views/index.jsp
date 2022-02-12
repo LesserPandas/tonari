@@ -82,12 +82,12 @@
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="#" class="category-link underline green">일본어</a></li>
-					<li><a href="#" class="category-link">Java</a></li>
-					<li><a href="#" class="category-link">Python</a></li>
-					<li><a href="#" class="category-link">Javascript</a></li>
-					<li><a href="#" class="category-link">Spring</a></li>
-					<li><a href="#" class="category-link">HTML5+CSS3</a></li>
-					<li><a href="#" class="category-link">DB</a></li>
+					<li><a href="#" class="category-link underline green">Java</a></li>
+					<li><a href="#" class="category-link underline green">Python</a></li>
+					<li><a href="#" class="category-link underline green">Javascript</a></li>
+					<li><a href="#" class="category-link underline green">Spring</a></li>
+					<li><a href="#" class="category-link underline green">HTML5+CSS3</a></li>
+					<li><a href="#" class="category-link underline green">DB</a></li>
 
 				</ul>
 

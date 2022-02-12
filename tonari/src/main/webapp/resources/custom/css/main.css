@@ -349,7 +349,7 @@
 	font-weight:100;
 	width:158px;
 	text-align:center;
-	height:80px;
+	height:55px;
 	border-right:1px solid #373737;
 	color:#666 !important;
 	line-height:40px;
@@ -362,16 +362,15 @@
 
 
 .underline {
-  background-image: linear-gradient(transparent calc(100% - 3px), #000 3px);
+  background-image: linear-gradient(transparent calc(100% - 50px), #000 50px);
   background-repeat: no-repeat;
   background-size: 0% 100%;
-  transition: background-size 0.5s;
-  color: #000;
+  transition: background-size 0.3s;
   cursor: pointer;
 }
 
 .underline.green {
-  background-image: linear-gradient(transparent 60%, #67bd3c 40%);
+  background-image: linear-gradient(transparent 40%, #67bd3c 10%);
 }
 .underline:hover {
   background-size: 100% 100%;

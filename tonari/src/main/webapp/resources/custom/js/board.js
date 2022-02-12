@@ -19,3 +19,11 @@ window.open(url, name, "width=500, height=230");
 
 }
 
+function like(){
+	var like = document.getElementById("like").style.backgroundColor;
+	if(like == "rgb(204, 204, 204)"){
+		document.getElementById("like").style.backgroundColor = "#67bd3c";
+	}else{
+		document.getElementById("like").style.backgroundColor = "#ccc";
+	}
+}

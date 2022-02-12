@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/teacher/*")
-public class TeacherController {
+@RequestMapping("/board/*")
+public class BoardController {
 	
 	@GetMapping("/search")
 	public String search(/*@RequestParam("searchText")String search , @RequestParam("orderBy")String orderBy*/Model model){
 //		List<TeacherVO> list = mapper.---
 //		model.addAttribute("list" , list);
-		return "/teacher/search";
+		return "/board/search";
 	}
 	
 	@GetMapping("/info")

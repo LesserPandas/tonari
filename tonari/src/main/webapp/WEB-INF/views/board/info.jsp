@@ -131,7 +131,7 @@ pageEncoding="UTF-8"%>
 											<label for="review">Review <span class="require">*</span></label>
 											<textarea class="form-control" rows="8" id="review"></textarea>
 										</div>
-										<div class="padding-top-20">
+										<div class="padding-top-20 pull-right">
 											<button type="submit" class="btn btn-primary">리뷰쓰기</button>
 										</div>
 									</form>

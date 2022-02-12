@@ -1,33 +1,81 @@
 @charset "UTF-8";
 
+.teacherInfo {
+	margin: 10px 0 5px;
+	padding-left: 10px;
+}
+
+.teacherInfo>div {
+	color: #ccc;
+}
 
 .teacherdate {
 	width: 100%;
 	text-align: center;
 }
 
-.teacherdate th,td{
+.teacherdate th, td {
 	font-size: 15px;
 	text-align: center;
 }
 
-.teacherdate th{
+.teacherdate th {
 	border-bottom: solid;
 }
 
+.starTeacher {
+	margin-top: -8px;
+	width: 38px;
+	height: 38px;
+	background-image: url('/resources/custom/images/starTeacher.png');
+	background-color: #00000000;
+	text-align: center;
+	position: absolute;
+	right:0;
+}
+
+.starTeacher>span{
+	margin-top:30px;
+	position: relative;
+	top:30%;
+}
 
 /*teacher button*/
-.largeButton {
-	padding: 5px 10px;
+.button {
 	border: none;
 	background: #67bd3c;
-	color:white;
+	color: white;
 	text-decoration: none;
 	font-size: 18px;
 	margin-left: 5px;
 }
 
-.button:hover{
+.largeButton {
+	min-width: 140px;
+	height: 45px;
+	padding: 5px 10px;
+}
+
+.smallButton {
+	
+}
+
+.squareButton {
+	min-width: 45px;
+	height: 45px;
+	padding: 5px;
+}
+
+.likeButton {
+	background: #ccc;
+}
+
+.likeButton:hover,.likeButtonActive {
+	color: white;
+	background: #67bd3c;
+}
+
+.button:hover {
 	color: white;
 	text-decoration: none;
 }

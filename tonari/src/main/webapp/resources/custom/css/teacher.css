@@ -68,14 +68,9 @@
 
 .likeButton {
 	background: #ccc;
-	border: solid 1px #ccc;
-	color: white;
-	padding: 0 5px;
-	font-size: 15px;
-	margin: 0;
 }
 
-.likeButton:hover {
+.likeButton:hover,.likeButtonActive {
 	color: white;
 	background: #67bd3c;
 }

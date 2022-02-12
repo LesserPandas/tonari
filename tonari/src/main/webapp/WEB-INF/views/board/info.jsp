@@ -30,7 +30,6 @@ pageEncoding="UTF-8"%>
 								<a href="/resources/assets/pages/img/products/model5.jpg" class="fancybox-button" rel="photos-lib"><img alt="Berry Lace Dress" src="/resources/assets/pages/img/products/model5.jpg"></a>
 							</div>
 						</div>
-						<!-- style="background-image: url('/resources/custom/images/starTeacher.png')" -->
 						<div class="col-md-6 col-sm-6">
 							<div class="pull-right starTeacher">
 								<span>4.1</span>
@@ -58,22 +57,9 @@ pageEncoding="UTF-8"%>
 								<span style="font-size:16px;">가능 한 날짜:</span>
 								<strong style="font-size:18px;">월,수</strong>
 							</div>
-							<!-- 
-							<div>
-								<ul class="social-icons">
-									<li><a class="facebook" data-original-title="facebook" href="javascript:;"></a></li>
-									<li><a class="twitter" data-original-title="twitter" href="javascript:;"></a></li>
-									<li><a class="googleplus" data-original-title="googleplus" href="javascript:;"></a></li>
-									<li><a class="evernote" data-original-title="evernote" href="javascript:;"></a></li>
-									<li><a class="tumblr" data-original-title="tumblr" href="javascript:;"></a></li>
-								</ul>
-							 </div>
-							-->
 							<div class="pull-right">
 								<button class="button largeButton">1:1 채팅</button>
-								<button class="button squareButton" style="background:#ccc" id="like" onclick="like()">♡</button>
-								<p>i태그 되면 바꿀것</p>
-								<!-- when으로 좋아요 확인 후 변경 -->
+								<button class="pull-right button squareButton likeButton" id="like" onclick="like()">♡</button>
 							</div>
 							
 						</div>
@@ -111,22 +97,23 @@ pageEncoding="UTF-8"%>
 
 
 									<!-- BEGIN FORM-->
-									<form class="reviews-form" role="form">
+									<form class="reviews-form" role="form" method="post" action="#" onsubmit="return checkReview()">
 										<h2>Write a review</h2>
 
 
-										<div name="myform" id="myform" method="post" action="./save">
+										<div name="myform" id="myform">
 											<fieldset>
 												<legend> 별점</legend>
-
-												<input type="radio" name="rating" value="5" id="rate1"><label
-													for="rate1">⭐</label> <input type="radio" name="rating"
-													value="4" id="rate2"><label for="rate2">⭐</label> <input
-													type="radio" name="rating" value="3" id="rate3"><label
-													for="rate3">⭐</label> <input type="radio" name="rating"
-													value="2" id="rate4"><label for="rate4">⭐</label> <input
-													type="radio" name="rating" value="1" id="rate5"><label
-													for="rate5">⭐</label>
+												<input type="radio" name="rating" value="5" id="rate1">
+												<label for="rate1">⭐</label> 
+												<input type="radio" name="rating" value="4" id="rate2">
+												<label for="rate2">⭐</label> 
+												<input type="radio" name="rating" value="3" id="rate3">
+												<label for="rate3">⭐</label> 
+												<input type="radio" name="rating" value="2" id="rate4">
+												<label for="rate4">⭐</label> 
+												<input type="radio" name="rating" value="1" id="rate5">
+												<label for="rate5">⭐</label>
 											</fieldset>
 										</div>
 										<div class="form-group" style="width: 300px;">
@@ -144,14 +131,6 @@ pageEncoding="UTF-8"%>
 											<label for="review">Review <span class="require">*</span></label>
 											<textarea class="form-control" rows="8" id="review"></textarea>
 										</div>
-										<!-- <div class="form-group">
-						 <label for="email">Rating</label>
-						 <input type="range" value="4" step="0.25" id="backing5">
-						 <div class="rateit" data-rateit-backingfld="#backing5"
-						data-rateit-resetable="false" data-rateit-ispreset="true"
-						data-rateit-min="0" data-rateit-max="5"></div>
-						 
-						</div> -->
 										<div class="padding-top-20">
 											<button type="submit" class="btn btn-primary">리뷰쓰기</button>
 										</div>
@@ -168,5 +147,5 @@ pageEncoding="UTF-8"%>
 	<!-- END SIDEBAR & CONTENT -->
 	</div>
 </div>
-<script src="/resources/custom/js/boards.js" type="text/javascript"></script>
+<script src="/resources/custom/js/board.js" type="text/javascript"></script>
 <%@ include file ="../footer.jsp" %>

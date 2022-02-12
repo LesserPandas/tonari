@@ -81,7 +81,7 @@
 								<h3 style="display: inline">
 									<a href="info" style="font-weight: bold; font-size: 18px;">강사명</a>
 								</h3>
-								<button class="largeButton likeButton pull-right">♡</button>
+								<button class="pull-right button squareButton likeButton" id="like" onclick="like()">♡</button>
 							</div>
 						</div>
 					</div>
@@ -109,4 +109,5 @@
 		<!-- END SIDEBAR & CONTENT -->
 	</div>
 </div>
+<script src="/resources/custom/js/board.js" type="text/javascript"></script>
 <%@ include file="../footer.jsp"%>

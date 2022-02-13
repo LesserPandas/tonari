@@ -88,9 +88,9 @@
                                 <table class="table table-bordered" >
                                     <thead>
                                         <tr>
-                                            <th>회원번호</th>
+                                            <th>번호</th>
                                             <th>이름</th>                                            
-                                            <th>나이</th>
+                                            <th>가입날짜</th>
                                             <th>구분</th>
                                             <th>강사승인</th>
                                         </tr>
@@ -102,7 +102,7 @@
                                             <td>System Architect</td>
                                             <td>Edinburgh</td>
                                             <td>61</td>
-                                            <td></td>
+                                            <td><button type="button" onclick="location.href=''" class="btn btn-primary btn-sm">승인</button></td>
                                         </tr>
                                         <tr>
                                             <td>Garrett Winters</td>
@@ -135,20 +135,20 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>회원번호</th>
-                                            <th>이름</th>                                            
-                                            <th>나이</th>
+                                            <th>번호</th>
+                                            <th>이름</th>
+                                            <th>가입날짜</th>                                            
                                             <th>구분</th>
-                                            <th>이메일</th>
+                                            <th>강사승인</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                          	<th>회원번호</th>
+                                            <th>번호</th>
                                             <th>이름</th>
-                                            <th>나이</th>
+                                            <th>가입날짜</th>                                            
                                             <th>구분</th>
-                                            <th>이메일</th>
+                                            <th>강사승인</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -185,7 +185,7 @@
                                             <td>Accountant</td>
                                             <td>Tokyo</td>
                                             <td>33</td>
-                                            <td>2012/03/29</td>
+                                            <td><button type="button" onclick="location.href=''" class="btn btn-primary btn-sm">승인</button></td>
                                         </tr>
                                         <tr>
                                             <td>Brielle Williamson</td>

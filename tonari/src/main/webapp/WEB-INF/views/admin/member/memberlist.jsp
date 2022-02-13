@@ -70,9 +70,9 @@
 										</div>
 									</div>
 								</form>
-							</div></li>
+							</div>
+						</li>
 					</ul>
-
 				</nav>
 				<!-- End of Topbar -->
 
@@ -95,19 +95,18 @@
                                         <tr>
                                             <th>번호</th>
                                             <th>이름</th>                                            
-                                            <th>나이</th>
+                                            <th>가입날짜</th>
                                             <th>구분</th>
                                             <th>강사승인</th>
                                         </tr>
                                     </thead>
-
                                     <tbody>
                                         <tr>
                                             <td>Tiger Nixon</td>
                                             <td>System Architect</td>
                                             <td>Edinburgh</td>
                                             <td>61</td>
-                                            <td></td>
+                                            <td>	<button type="button" onclick="location.href=''" class="btn btn-primary btn-sm">승인</button></td>
                                         </tr>
                                         <tr>
                                             <td>Garrett Winters</td>
@@ -143,21 +142,21 @@
 									cellspacing="0">
 									<thead>
 										<tr>
+											<th>번호</th>
+											<th>권한</th>
 											<th>이름</th>
 											<th>메일</th>
-											<th>전화번호</th>
-											<th>구분</th>
-											<th>가입일</th>
+											<th>가입날짜</th>
 											<th>회원삭제</th>
 										</tr>
 									</thead>
 									<tfoot>
 										<tr>
+											<th>번호</th>
+											<th>권한</th>
 											<th>이름</th>
 											<th>메일</th>
-											<th>전화번호</th>
-											<th>구분</th>
-											<th>가입일</th>
+											<th>가입날짜</th>
 											<th>회원삭제</th>
 										</tr>
 									</tfoot>
@@ -200,7 +199,7 @@
 											<td>Tokyo</td>
 											<td>33</td>
 											<td>2008/11/28</td>
-											<td>삭제버튼 사용예정</td>
+											<td><button type="button" onclick="location.href=''" class="btn btn-danger btn-sm">삭제</button></td>
 										</tr>
 										<tr>
 											<td>Brielle Williamson</td>

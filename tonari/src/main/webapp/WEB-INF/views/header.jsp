@@ -270,6 +270,13 @@
 							<li><h4>두홍</h4></li>
 							<li><a href="/admin">Admin-로그인</a></li>
 							<li><a href="/admin/memberlist">Admin-멤버리스트</a></li>
+							<li><a href="/admin/teacherlist">Admin-강사리스트</a></li>
+							<li><a href="/admin/board">Admin-게시판</a></li>
+							<li><a href="/admin/write">Admin-게시판 글작성</a></li>
+							<li><a href="/admin/update">Admin-게시판 글수정</a></li>
+							<li><a href="/admin/mail">Admin-메일</a></li>
+
+
 						</ul> <!-- END DROPDOWN MENU --></li>
 
 				</ul>

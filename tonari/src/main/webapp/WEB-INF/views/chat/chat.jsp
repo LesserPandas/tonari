@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="/resources/custom/js/chat.js"></script>
 <link rel="stylesheet" href="/resources/custom/css/chat.css">
 </head>
 <body>
@@ -13,12 +12,83 @@
 		<div class="row chat-window col-xs-5 col-md-3" id="chat_window"
 			style="margin-left: 10px;">
 			<div class="col-xs-12 col-md-12">
-				<div class="panel panel-default">
+				<div class="panel panel-list" id="panel-list">
 					<div class="panel-heading top-bar">
-						<div class="col-md-8 col-xs-8">
-							<h3 class="panel-title">
-								<span class="glyphicon glyphicon-comment"></span> Chat - Miguel
-							</h3>
+						<div class="col-md-1 padd-0"></div>
+						<div class="col-md-10 col-xs-10">
+							<h3 class="panel-title">채팅목록</h3>
+						</div>
+
+					</div>
+					<div class="panel-body msg_container_base">
+
+						<div class="row msg_container chat-now">
+							<div class="col-md-12 col-xs-12">
+								<div class="" onclick="chatContentPopup()">
+									<span class="chat-profile col-md-1"></span>
+									<p class="chat-sender">김찬호</p>
+									<p class="chat-content">채팅창목록도 새로 추가했습니다.</p>
+									<p class="chat-timeline">52분 전</p>
+								</div>
+							</div>
+						</div>
+						<div class="row msg_container chat-now">
+							<div class="col-md-12 col-xs-12">
+								<div class="" onclick="chatContentPopup()">
+									<span class="chat-profile col-md-1"></span>
+									<p class="chat-sender">김두홍</p>
+									<p class="chat-content">관리자페이지는 별도 템플릿을 사용했습니다.</p>
+									<p class="chat-timeline">1시간 전</p>
+								</div>
+							</div>
+						</div>
+						<div class="row msg_container chat-now">
+							<div class="col-md-12 col-xs-12">
+								<div class="" onclick="chatContentPopup()">
+									<span class="chat-profile col-md-1"></span>
+									<p class="chat-sender">김남현</p>
+									<p class="chat-content">강사 찾기/ 정보 페이지 업데이트했습니다.</p>
+									<p class="chat-timeline">하루 전</p>
+								</div>
+							</div>
+						</div>
+						<div class="row msg_container chat-now">
+							<div class="col-md-12 col-xs-12">
+								<div class="" onclick="chatContentPopup()">
+									<span class="chat-profile col-md-1"></span>
+									<p class="chat-sender">한준희</p>
+									<p class="chat-content">마이페이지에서 개인정보를 확인해주세요.</p>
+									<p class="chat-timeline">1분 전</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="panel-footer">
+						<div class="input-group">
+							<input id="btn-input" type="text"
+								class="form-control input-sm chat_input"
+								placeholder="Write your message here..." /> <span
+								class="input-group-btn">
+								<button class="btn btn-primary btn-sm" id="btn-chat">Send</button>
+							</span>
+						</div>
+					</div>
+				</div>
+
+
+
+				<!-- Chat -->
+				<div class="panel panel-chat" id="panel-chat">
+					<div class="panel-heading top-bar">
+						<div class="col-md-1 padd-0">
+							<button type="button" class="btn-chat btn-reset"
+								onclick="chatContentPopup()" style="height: 20px;">
+								<img src="/resources/custom/images/angle-left.png"
+									class="arrow-left">
+							</button>
+						</div>
+						<div class="col-md-10 col-xs-10">
+							<h3 class="panel-title">김찬호</h3>
 						</div>
 
 					</div>
@@ -98,11 +168,14 @@
 		</div>
 
 		<div class="btn-group dropup">
-			<button type="button" class="btn btn-default" onclick="chatPopup()">x</button>
+			<button type="button" class="btn-chat wh-50" onclick="chatPopup()">
+				<img class="btn-chat-img" src="/resources/custom/images/chat.png">
+			</button>
 
 		</div>
 	</div>
 </body>
 
 
+<script src="/resources/custom/js/chat.js"></script>
 </html>

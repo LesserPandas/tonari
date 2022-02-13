@@ -175,8 +175,6 @@
 		type="text/javascript"></script>
 	<script src="/resources/assets/plugins/bootstrap/js/bootstrap.min.js"
 		type="text/javascript"></script>
-	<script src="/resources/assets/corporate/scripts/back-to-top.js"
-		type="text/javascript"></script>
 
 	<script src="/resources/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"
 		type="text/javascript"></script>

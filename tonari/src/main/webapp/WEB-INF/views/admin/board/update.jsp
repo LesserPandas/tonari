@@ -7,7 +7,7 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
         
-          <%@ include file="header.jsp"%>
+          <%@ include file="../header.jsp"%>
     
         
         
@@ -76,13 +76,13 @@
         <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">관리자 글작성</h1>
+                    <h1 class="h3 mb-4 text-gray-800">관리자 글수정</h1>
 <div class="row">
                         
                             <div class="col-lg-9">
                                 <div class="p-5">
                                      <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4" style="margin-left: 20%; font-size: 30px;">관리자 글작성</h1>
+                                        <h1 class="h4 text-gray-900 mb-4" style="margin-left: 20%; font-size: 30px;">관리자 글 수정하기</h1>
                                     </div>
                                 <div class="email-right-box">
                                     <div class="toolbar" role="toolbar">
@@ -101,8 +101,7 @@
                                             </div>
                                             <select style="margin-bottom: 1%;">
                                             		<option>공지사항</option>
-                                            		<option>이벤트</option>
-                                            		<option>강사홍보</option>
+                                            		<option>홍보/이벤트</option>
                                             </select>
                                             <div class="form-group" >
                                                 <textarea class="textarea_editor form-control bg-light" id="summernote" rows="15" placeholder="내용"  ></textarea>

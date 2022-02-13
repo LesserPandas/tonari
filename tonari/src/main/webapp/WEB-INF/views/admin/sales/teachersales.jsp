@@ -7,7 +7,7 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
         
-          <%@ include file="header.jsp"%>
+          <%@ include file="../header.jsp"%>
     
         
         
@@ -83,29 +83,29 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">학생매출</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">강사매출</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                        	<th>번호</th>
                                             <th>회원번호</th>                                       
                                             <th>구분</th>
                                             <th>금액</th>
                                             <th>결제날짜</th>
                                             <th>결제유무</th>
+                                            <th>구독유무</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                        	<th>번호</th>
                                             <th>회원번호</th>                                       
                                             <th>구분</th>
                                             <th>금액</th>
                                             <th>결제날짜</th>
                                             <th>결제유무</th>
+                                            <th>구독유무</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -205,6 +205,14 @@
                                             <td>2013/03/03</td>
                                             <td>$342,000</td>
                                         </tr>
+                                        <tr>
+                                            <td>Charde Marshall</td>
+                                            <td>Regional Director</td>
+                                            <td>San Francisco</td>
+                                            <td>36</td>
+                                            <td>2008/10/16</td>
+                                            <td>$470,600</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -218,9 +226,9 @@
             <!-- End of Main Content -->
       
            
-            <%@ include file="footer.jsp"%>
+            <%@ include file="../footer.jsp"%>
            
                   </div>
            <!-- End of Content Wrapper --> 
            </div>
- </body>      
+ </body>

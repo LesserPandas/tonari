@@ -22,6 +22,18 @@ $(document).on('focus', '.panel-footer input.chat_input', function(e) {
 
 function chatPopup() {
 	var stat = document.getElementById("chat_window").style.display;
-	if (stat == "block") { document.getElementById("chat_window").style.display = "none"; }
+	if (stat == "block") { document.getElementById("chat_window").style.display = "none"; 
+	document.getElementById("panel-chat").style.display = "none";
+	}
 	else { document.getElementById("chat_window").style.display = "block"; }
+}
+
+function chatContentPopup() {
+	var list = document.getElementById("panel-list").style.display;
+	var content = document.getElementById("panel-chat").style.display;
+	if (content == "block") { document.getElementById("panel-chat").style.display = "none";
+	document.getElementById("panel-list").style.display = "block";
+	}
+	else { document.getElementById("panel-chat").style.display = "block"; 
+	document.getElementById("panel-list").style.display = "none";}
 }

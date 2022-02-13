@@ -278,13 +278,13 @@
 											<li><a href="/board/info">강사 정보</a></li>
 
 											<li><h4 style="padding: 10px 10px 0">두홍</h4></li>
-                      <li><a href="/admin">Admin-로그인</a></li>
-                      <li><a href="/admin/memberlist">Admin-멤버리스트</a></li>
-                      <li><a href="/admin/teacherlist">Admin-강사리스트</a></li>
-                      <li><a href="/admin/board">Admin-게시판</a></li>
-                      <li><a href="/admin/write">Admin-게시판 글작성</a></li>
-                      <li><a href="/admin/update">Admin-게시판 글수정</a></li>
-                      <li><a href="/admin/mail">Admin-메일</a></li>
+						                    <li><a href="/admin">Admin-로그인</a></li>
+						                    <li><a href="/admin/memberlist">Admin-멤버리스트</a></li>
+						                    <li><a href="/admin/teacherlist">Admin-강사리스트</a></li>
+						                    <li><a href="/admin/board">Admin-게시판</a></li>
+						                    <li><a href="/admin/write">Admin-게시판 글작성</a></li>
+						                    <li><a href="/admin/update">Admin-게시판 글수정</a></li>
+						                    <li><a href="/admin/mail">Admin-메일</a></li>
 										</ul>
 									</div>
 								</div>

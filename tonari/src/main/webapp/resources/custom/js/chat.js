@@ -25,7 +25,8 @@ function chatPopup() {
 	if (stat == "block") { document.getElementById("chat_window").style.display = "none"; 
 	document.getElementById("panel-chat").style.display = "none";
 	}
-	else { document.getElementById("chat_window").style.display = "block"; }
+	else { document.getElementById("chat_window").style.display = "block"; 
+	document.getElementById("panel-list").style.display = "block";}
 }
 
 function chatContentPopup() {

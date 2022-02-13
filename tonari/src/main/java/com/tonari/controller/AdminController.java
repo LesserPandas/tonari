@@ -10,29 +10,29 @@ public class AdminController {
 	
 	@GetMapping("/login")
 	public String main() {
-		return "admin/login";
+		return "admin/member/login";
 	}
 	
 	@GetMapping("/memberlist")
 	public String memberlist() {
-		return "admin/memberlist";
+		return "admin/member/memberlist";
 	}
 	
 	@GetMapping("/teachersales")
 	public String teachersales() {
-		return "admin/teachersales";
+		return "admin/sales/teachersales";
 	}
 	@GetMapping("/sales")
 	public String sales() {
-		return "admin/sales";
+		return "admin/sales/sales";
 	}
 	@GetMapping("/studentsales")
 	public String studentsales() {
-		return "admin/studentsales";
+		return "admin/sales/studentsales";
 	}
-	@GetMapping("/notice")
-	public String notice() {
-		return "admin/notice";
+	@GetMapping("/board")
+	public String board() {
+		return "admin/board/board";
 	}
 	@GetMapping("/mail")
 	public String mail() {
@@ -40,16 +40,18 @@ public class AdminController {
 	}
 	@GetMapping("/teacherlist")
 	public String teacherlist() {
-		return "admin/teacherlist";
+		return "admin/member/teacherlist";
 	}
-	@GetMapping("/noticeupdate")
-	public String noticeupdate() {
-		return "admin/noticeupdate";
+	@GetMapping("/update")
+	public String update() {
+		return "admin/board/update";
 	}
 	
-	@GetMapping("/noticewrite")
-	public String noticewrite() {
-		return "admin/noticewrite";
+	@GetMapping("/write")
+	public String write() {
+		return "admin/board/write";
 	}
+	
+	
 	
 }

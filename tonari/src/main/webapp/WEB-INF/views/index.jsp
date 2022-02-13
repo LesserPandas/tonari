@@ -24,7 +24,7 @@
 			</div>
 
 			<div class="search-box col-md-12"
-				style="padding-left: 80px; margin: 50px 0">
+				style="padding-left: 80px; margin: 80px 0 0">
 				<form id="" method="post" action="">
 					<div class="col-md-3">
 						<div class="input-group">
@@ -78,7 +78,7 @@
 	</div>
 
 	<nav class="navbar navbar-inverse nav-category ht-100">
-		<div class="container" style="margin-top:10px">
+		<div class="container" style="margin-top: 10px">
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="#" class="category-link underline green">일본어</a></li>
@@ -287,7 +287,7 @@
 		</div>
 	</div>
 
-	<section id="carousel">
+	<section id="carousel" style="margin-bottom:80px;">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
@@ -340,9 +340,6 @@
 
 							</div>
 
-
-
-
 						</div>
 					</div>
 				</div>
@@ -350,6 +347,86 @@
 		</div>
 	</section>
 
+	<div class="container" style="margin-bottom: 60px">
+		<div class="row">
+			<div class="col-md-12 search-mg-0 bg-success">
+				<div
+					style="padding: 10px; width: 50%; padding: 30px; background: #fff; float: left"">
+					<h2>공지사항</h2>
+					<table class="table">
+						<thead>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>공지사항 예시1</td>
+								<td>2022/02/13</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>공지사항 예시2</td>
+								<td>2022/02/13</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>공지사항 예시3</td>
+								<td>2022/02/13</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div style="padding: 10px; width: 50%; float: left; padding: 30px">
+					<h2>이벤트</h2>
+					<table class="table">
+						<thead>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>이벤트 예시1</td>
+								<td>2022/02/13</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>이벤트 예시2</td>
+								<td>2022/02/13</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>이벤트 예시3</td>
+								<td>2022/02/13</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<!-- <div style="width: 50%; float: left; padding: 30px">
+						<h2>FAQ</h2>
+						<div class="input-group col-md-11" style="margin:15px 0">
+							<input type="text" class="form-control" placeholder="질문 검색하기"><span
+								class="input-group-btn"><button type="button"
+									class="btn btn-primary">검색</button></span>
+						</div>
+						<table class="table">
+							<tr>
+								<td>1</td>
+								<td>질문 예시1</td>
+								<td>2022/02/13</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>질문 예시2</td>
+								<td>2022/02/13</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>질문 예시3</td>
+								<td>2022/02/13</td>
+							</tr>
+						</table>
+					</div> -->
+		</div>
+	</div>
 
 </body>
 </html>

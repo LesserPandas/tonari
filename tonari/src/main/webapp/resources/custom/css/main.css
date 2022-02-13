@@ -375,3 +375,8 @@
 .underline:hover {
   background-size: 100% 100%;
 }
+
+
+.list-none {
+	list-style: none;
+}

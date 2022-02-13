@@ -266,7 +266,6 @@
 							<li><h4>남현</h4></li>
 							<li><a href="/board/search">강사 찾기</a></li>
 							<li><a href="/board/info">강사 정보</a></li>
-							<li><h4>찬호</h4></li>
 							
 							<li><h4>두홍</h4></li>
 							<li><a href="/admin">Admin-로그인</a></li>

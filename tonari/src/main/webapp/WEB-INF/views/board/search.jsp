@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
-<link rel="stylesheet" href="/resources/custom/css/teacher.css">
+<link rel="stylesheet" href="/resources/custom/css/board.css">
 
 <div class="main">
 	<div class="container">
@@ -81,7 +81,7 @@
 								<h3 style="display: inline">
 									<a href="info" style="font-weight: bold; font-size: 18px;">강사명</a>
 								</h3>
-								<button class="pull-right button squareButton likeButton" id="like" onclick="like()">♡</button>
+								<button class="pull-right squareButton likeButton" id="like" onclick="like()">♥</button>
 							</div>
 						</div>
 					</div>

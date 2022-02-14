@@ -1,5 +1,5 @@
 package com.tonari.mapper;
 
-public class Mapper {
+public class MypageMapper {
 
 }

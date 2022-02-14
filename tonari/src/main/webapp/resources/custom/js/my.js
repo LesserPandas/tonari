@@ -6,13 +6,17 @@ $(document).ready(function() {
 		var amount = amount + n;
 		if(amount < 1) {
 			amount=1;
-			alert("최소 수량은 1개 입니다");
+			alert("1일 이상부터 수강이 가능합니다!");
 		}
+		
+		
 		var tot = price * amount;
 		$(".quantity").attr("value",amount);
 		var regexp = /\B(?=(\d{3})+(?!\d))/g;
 		var tot = tot.toString().replace(regexp,',');
-		$(".total").html(tot + "("+amount+"개)");
+		
+		$(".total").html(tot + "("+amount+"일)");
+		$(".amount").html("amount");
 	}
 	total(0);
 	$(".plus").on("click",function() {

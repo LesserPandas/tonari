@@ -168,8 +168,11 @@
 	</div>
 	<!-- END fast view of a product -->
 
+<!-- 내가 추가한 것 -->
+<script src="/resources/custom/js/my.js"></script>
+<!-- 내가 추가한 것 -->
 	<!-- Load javascripts at bottom, this will reduce page load time -->
-
+	
 	<script src="/resources/assets/plugins/jquery.min.js" type="text/javascript"></script>
 	<script src="/resources/assets/plugins/jquery-migrate.min.js"
 		type="text/javascript"></script>

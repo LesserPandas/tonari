@@ -55,13 +55,15 @@
 <link rel="stylesheet" href="/resources/assets/pages/css/style-shop.css"
 	type="text/css">
 <link rel="stylesheet" href="/resources/assets/corporate/css/style.css">
-<link rel="stylesheet" href="/resources/assets/corporate/css/style-responsive.css">
-<link rel="stylesheet" href="/resources/assets/corporate/css/themes/green.css"
+<link rel="stylesheet"
+	href="/resources/assets/corporate/css/style-responsive.css">
+<link rel="stylesheet"
+	href="/resources/assets/corporate/css/themes/green.css"
 	id="style-color">
 <link rel="stylesheet" href="/resources/assets/corporate/css/custom.css">
 
 <!-- 내가 추가-->
-<link rel="stylesheet" href="/resources/assets/pages/css/index.css">	
+<link rel="stylesheet" href="/resources/assets/pages/css/index.css">
 <link rel="stylesheet" href="/resources/custom/css/summernote.min.css">
 <link rel="stylesheet" href="/resources/custom/css/imagecheck.css">
 <link rel="stylesheet" href="/resources/custom/css/teacher.css">
@@ -243,33 +245,50 @@
 							<li><a href="shop-product-list.html">내 학생 보기 (강사)</a></li>
 							<li><a href="shop-product-list.html">강사 등록하기 (학생)</a></li>
 						</ul> <!-- END DROPDOWN MENU --></li>
-						
-						
-						
+
+
+
 					<!-- 개발용 링크 넣기  -->
 
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" data-target="#" href="javascript:;">
 							테스트페이지 </a> <!-- BEGIN DROPDOWN MENU -->
 						<ul class="dropdown-menu">
-							<li><h4>준희</h4></li>
-							<li><a href="/login">로그인</a></li>
-							<li><a href="/join">회원가입</a></li>
-							<li><a href="/mypage/teacherJoin">강사등록</a></li>
-							<li><a href="/mypage/teacherInfo">강사정보</a></li>
-							<li><a href="/mypage/teacherModify">강사정보수정</a></li>
-							<li><a href="/mypage/subscription">구독하기</a></li>
-							<li><a href="/mypage/subResult">구독결과</a></li>
-							<li><a href="/mypage/studentInfoModify">일반회원 정보 수정</a></li>
-							<li><a href="/mypage/like">선생님 찜한 목록</a></li>
-							
-							<li><h4>남현</h4></li>
-							
-							<li><h4>찬호</h4></li>
-							
-							<li><h4>두홍</h4></li>
-							<li><a href="/admin">Admin-로그인</a></li>
-							<li><a href="/admin/memberlist">Admin-멤버리스트</a></li>
+							<li>
+								<div class="row" style="width:400px;">
+									<div class="col-md-6">
+										<ul>
+											<li><h4 style="padding: 10px 10px 0">준희</h4></li>
+											<li><a href="/login">로그인</a></li>
+											<li><a href="/join">회원가입</a></li>
+											<li><a href="/mypage/teacherJoin">강사등록</a></li>
+											<li><a href="/mypage/teacherInfo">강사정보</a></li>
+											<li><a href="/mypage/teacherModify">강사정보수정</a></li>
+											<li><a href="/mypage/subscription">구독하기</a></li>
+											<li><a href="/mypage/subResult">구독결과</a></li>
+											<li><a href="/mypage/studentInfoModify">일반회원 정보 수정</a></li>
+											<li><a href="/mypage/like">선생님 찜한 목록</a></li>
+										</ul>
+									</div>
+
+									<div class="col-md-6">
+										<ul>
+											<li><h4 style="padding: 10px 10px 0">남현</h4></li>
+											<li><a href="/board/search">강사 찾기</a></li>
+											<li><a href="/board/info">강사 정보</a></li>
+
+											<li><h4 style="padding: 10px 10px 0">두홍</h4></li>
+						                    <li><a href="/admin">Admin-로그인</a></li>
+						                    <li><a href="/admin/memberlist">Admin-멤버리스트</a></li>
+						                    <li><a href="/admin/teacherlist">Admin-강사리스트</a></li>
+						                    <li><a href="/admin/board">Admin-게시판</a></li>
+						                    <li><a href="/admin/write">Admin-게시판 글작성</a></li>
+						                    <li><a href="/admin/update">Admin-게시판 글수정</a></li>
+						                    <li><a href="/admin/mail">Admin-메일</a></li>
+										</ul>
+									</div>
+								</div>
+							</li>
 						</ul> <!-- END DROPDOWN MENU --></li>
 
 				</ul>

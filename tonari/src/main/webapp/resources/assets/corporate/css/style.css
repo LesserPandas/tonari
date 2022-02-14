@@ -1105,12 +1105,12 @@ steps block and steps block elements
 
 /* title wrapper */
 .title-wrapper {
-	margin: -23px 0 23px;
+	margin: -23px 0 0;
 	position: relative;
-	overflow: hidden;
-	background: #72c2ff url(../../pages/img/title-bg/man.jpg) no-repeat 100% 100%;
-	min-height: 280px;
-	padding-top: 79px;
+	background: linear-gradient(#333, 10%, transparent),
+	 url(../../pages/img/bg-main.jpg) no-repeat 100% 100%;
+	min-height: 550px;
+	padding-top: 150px;
 	width: 100%;
 	overflow: hidden;
 }
@@ -1120,11 +1120,11 @@ steps block and steps block elements
 .ecommerce .title-wrapper h1, .title-wrapper em {
 	font-family: 'Open Sans', sans-serif;
 	color: #fff;
-	font-weight: 400;
+	font-weight: 600;
 }
 .ecommerce .title-wrapper h1 {
-	font-size: 45px;
-	padding: 0 9px 13px;
+	font-size: 65px;
+	padding: 0 9px 10px;
 	border-bottom: solid 1px rgba(255,255,255,0.6);
 	margin: 0 -9px 17px;
 }
@@ -1132,7 +1132,7 @@ steps block and steps block elements
 	color: #e6400c;
 }
 .title-wrapper em {
-	font-size: 20px;
+	font-size: 30px;
 	font-style: normal;
 	display: block;
 	text-align: center;

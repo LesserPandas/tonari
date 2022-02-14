@@ -59,7 +59,7 @@ pageEncoding="UTF-8"%>
 							</div>
 							<div class="pull-right">
 								<button class="button largeButton">1:1 채팅</button>
-								<button class="pull-right button squareButton likeButton" id="like" onclick="like()">♡</button>
+								<button class="pull-right squareButton likeButton" id="like" onclick="like()">♥</button>
 							</div>
 							
 						</div>

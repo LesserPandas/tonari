@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MypageController {
 	
 	@GetMapping("/teacherJoin")
-	public String join() {
+	public String tjoin() {
 		return "/mypage/teacher/teacherJoin";
 	}
 	@GetMapping("/teacherInfo")
-	public String info() {
+	public String tinfo() {
 		return "/mypage/teacher/teacherInfo";
 	}
 	@GetMapping("/teacherModify")

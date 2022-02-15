@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+	
 <!DOCTYPE html>
 <html lang="jp">
 
@@ -68,6 +73,7 @@
 <link rel="stylesheet" href="/resources/custom/css/imagecheck.css">
 <link rel="stylesheet" href="/resources/custom/css/teacher.css">
 <script src="/resources/assets/jquery-3.6.0.min.js"></script>
+
 <!-- 내가 추가-->
 
 <!-- Theme styles END -->
@@ -96,8 +102,9 @@
 				<!-- BEGIN TOP BAR MENU -->
 				<div class="col-md-6 col-sm-6 additional-nav">
 					<ul class="list-unstyled list-inline pull-right">
-						<li><a href="/mypage">내 계정</a></li>
-						<li><a href="">즐겨찾기</a></li>
+					
+						<li><a href="/">HOME</a></li>
+						<li><a href="">마이페이지</a></li>
 						<li><a href="/login">로그인</a></li>
 						<li><a href="/join">회원가입</a></li>
 					</ul>

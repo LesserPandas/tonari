@@ -30,50 +30,57 @@
                 <div class="panel-heading">
                   <h2 class="panel-title">
                     <a data-toggle="collapse" data-parent="#checkout-page" href="#payment-address-content" class="accordion-toggle">
-                      회원 가입
+                   			   회원 가입
                     </a>
                   </h2>
                 </div>
+               
                 <div id="payment-address-content" class="panel-collapse collapse in">
+                <form class="" name="formm" method="post" action="/join/memberinsertpro.do" onSubmit="return go_save()">
                   <div class="panel-body row">
+                   
+                    
                     <div class="col-md-6 col-sm-6">
                       <h3>개인 정보</h3>
                       <div class="form-group" style="width: 300px;">
-                        <label for="firstname">이름 <span class="require">*</span></label>
-                        <input type="text" id="firstname" class="form-control">
+                        <label for="firstname" for="name">이름 <span class="require">*</span></label>
+                        <input type="text" id="name" name="name" class="form-control">
                       </div>
                       <div class="form-group" style="width: 300px;">
                         <label for="country">성별 <span class="require">*</span></label>
-                        <select class="form-control input-sm" id="country">
-                          <option value=""> 구분 </option>
-                          <option value="244">남자</option>
-                          <option value="1">여자</option>
+                        <select class="form-control input-sm" name="sex" id="sex">
+                          <option> 구분 </option>
+                          <option value="m">남자</option>
+                          <option value="f">여자</option>
                           
                         </select>
                       </div>
                       <div class="form-group"style="width: 300px;">
-                        <label for="telephone">전화번호<span class="require">*</span></label>
-                        <input type="text" id="telephone" class="form-control">
+                        <label for="phone">전화번호<span class="require">*</span></label>
+                        <input type="text" id="phone" id="phone" name="phone" class="form-control" placeholder="전화번호를 입력해주세요.">
                       </div>
                       
 
                       <h3>계정 정보</h3>
                       <div class="form-group" style="width: 300px;">
-                        <label for="fax">닉네임</label>
-                        <input type="text" id="fax" class="form-control">
+                        <label for="nick">닉네임</label>
+                        <input type="text" id="nick" name="nick" class="form-control">
                       </div>
                       <div class="form-group" style="width: 300px;"> 
                         <label for="email">E-Mail <span class="require">*</span></label>
-                        <input type="text" id="email" class="form-control">
+                        <input type="text" id="email" name="email" class="form-control"placeholder="이메일 입력">
+                        <span id="msg" style="display:block; padding:5px 0;"></span>
                       </div>
                       <div class="form-group">
                         <label for="password">Password <span class="require">*</span></label>
-                        <input type="password" id="password" class="form-control">
+                        <input type="password" id="passwd" name="passwd" class="form-control">
                       </div>
                       <div class="form-group">
-                        <label for="password-confirm">Password Confirm <span class="require">*</span></label>
-                        <input type="text" id="password-confirm" class="form-control">
+                        <label for="password">Password check <span class="require">*</span></label>
+                        <input type="password" id="pwdcheck" name="pwdcheck" class="form-control">
                       </div>
+                      </div>
+                     
                     </div>
                     
                     <div class="col-md-6 col-sm-6">
@@ -83,23 +90,23 @@
 <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
 </div>
  <div class="form-group" style="display: flex;">
-<input type="text" class="form-control" id="sample2_postcode" placeholder="우편번호" style="text-align: center; width: 150px;  margin:0px 5px 0px 0;">
+<input type="text" name="zipcode" class="form-control" id="sample2_postcode" placeholder="우편번호" style="text-align: center; width: 150px;  margin:0px 5px 0px 0;">
 <input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기" class="form-control"  style="width: 300px;"><br>
 </div>
 <div class="form-group">
                         <label for="address1">주소</label>
-<input type="text" id="sample2_address" placeholder="전체 주소" class="form-control"><br>
+<input type="text" id="sample2_address" name="address" placeholder="전체 주소" class="form-control"><br>
 </div>
 <div class="form-group" style="display: flex;">
                         
-<input type="text" id="sample2_guAddr" placeholder="구" class="form-control" style="width: 100px; text-align: center; margin: -20px 39px 0px 0;">
+<input type="text" id="sample2_guAddr" name="gu" placeholder="구" class="form-control" style="width: 100px; text-align: center; margin: -20px 39px 0px 0;">
 
                        
-<input type="text" id="sample2_extraAddress" placeholder="동" class="form-control" style="width: 100px; text-align: center;     margin: -20px 39px 0px 0;">
+<input type="text" id="sample2_extraAddress" name="dong" placeholder="동" class="form-control" style="width: 100px; text-align: center;     margin: -20px 39px 0px 0;">
 </div>
                       <div class="form-group">
                         <label for="address1">상세주소</label>
-                        <input type="text" id="address1" class="form-control">
+                        <input type="text" id="address1" name="o_addr" class="form-control">
                       </div>
                      <!--  <div class="form-group">
                         <label for="address2">Address 2</label>
@@ -124,14 +131,24 @@
                     <hr>
                     <div class="col-md-12">                      
                       
-                      <button class="btn btn-primary  pull-right" type="submit" data-toggle="collapse" data-parent="#checkout-page" data-target="#shipping-address-content" id="button-payment-address">회원가입하기</button>
+<!--                       <button class="btn btn-primary  pull-right"  -->
+<!--                       type="submit" data-toggle="collapse"  -->
+<!--                       data-parent="#checkout-page"  -->
+<!--                       data-target="#shipping-address-content"  -->
+<!--                       id="button-payment-address" -->
+<!--                        onclick="go_save()">회원가입하기</button> -->
+						<button type="submit">회원가입</button>
                       <div class="checkbox pull-right">
                         <label>
                           <input type="checkbox"> I have read and agree to the <a title="Privacy Policy" href="javascript:;">Privacy Policy</a> &nbsp;&nbsp;&nbsp; 
                         </label>
                       </div>                        
+                   
                     </div>
+                    </form>
                   </div>
+                  
+                  <!--  -->
                 </div>
               </div>
               <!-- END PAYMENT ADDRESS -->
@@ -257,5 +274,24 @@
         element_layer.style.left = (((window.innerWidth || document.documentElement.clientWidth) - width)/2 - borderWidth) + 'px';
         element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
     }
+    
+    
+    /* 내가 추가한 것 */
+ /*      function emailCheck(){
+        var id = $('#email').val(); //id값이 "id"인 입력란의 값을 저장
+        $.ajax({
+            url:'emailCheck.do', //Controller에서 인식할 주소
+            type:'post', //POST 방식으로 전달
+            data:{id:id},
+            success:function(){
+                console.log("처리 성공 시 변경되는 내용");
+            },
+            error:function(){
+                alert("에러입니다");
+            }
+        });
+    }; */
+    /* 내가 추가한 것 */
+    
 </script>
 <%@include file ="../footer.jsp" %>

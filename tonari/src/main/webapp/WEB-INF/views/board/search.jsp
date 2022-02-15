@@ -45,10 +45,25 @@
 					<div class="col-md-10 col-sm-10">
 						<div class="pull-right">
 							<label class="control-label">정렬</label>
-							<select class="form-control input-sm" name="orderBy" onchange="if(this.value) location.href=(this.value);">
-								<option value="/board/search?orderby=teacher_bno" selected="selected">신규</option>
-								<option value="/board/search?orderby=ㅊㅊㅊ">가까운 지역</option>
-								<option value="/board/search?orderby=score">별점</option>
+							<select class="form-control input-sm" onchange="if(this.value) location.href=(this.value);">
+								<c:choose>
+									<c:when test="${orderby=='teacher'}">
+										<option value="/board/search?orderby=teacher" selected="selected">신규</option>
+										<option value="/board/search?orderby=a">가까운 지역</option>
+										<option value="/board/search?orderby=score">별점</option>
+									</c:when>
+									<c:when test="${orderby=='score' }">
+										<option value="/board/search?orderby=teacher">신규</option>
+										<!-- 멤버의 위치 받아올것 -->
+										<option value="/board/search?orderby=a">가까운 지역</option>
+										<option value="/board/search?orderby=score" selected="selected">별점</option>
+									</c:when>
+									<c:otherwise>
+										<option value="/board/search?orderby=teacher">신규</option>
+										<option value="/board/search?orderby=a" selected="selected">가까운 지역</option>
+										<option value="/board/search?orderby=score">별점</option>
+									</c:otherwise>
+								</c:choose>
 							</select>
 						</div>
 					</div>

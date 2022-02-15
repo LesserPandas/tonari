@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.tonari.mapper.BoardMapper">
-	<select id="searchBoardNew" resultType="com.tonari.domain.VBoardSearchVO">
+	<select id="searchBoardTeacherbno" resultType="com.tonari.domain.VBoardSearchVO">
 		select * from board_search_view order by teacher_bno
+	</select>
+	<select id ="searchBoardScore" resultType="com.tonari.domain.VBoardSearchVO">
+		select * from board_search_view order by score desc nulls last
+	</select>
+	<select id ="shortarea" resultType="com.tonari.domain.Addr_searchVO">
+		select * from addr_search where rank1= #{orderby}
+	</select>
+	<select id = "searchBoardArea" resultType="com.tonari.domain.VBoardSearchVO" parameterType="com.tonari.domain.Addr_searchVO">
+		select * from board_search_view order by(case when dong = #{rank1} then 1 when dong = #{rank2} then 2 when dong = #{rank3} then 3 else 4 end)
 	</select>
 </mapper>

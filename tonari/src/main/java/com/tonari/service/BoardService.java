@@ -6,5 +6,5 @@ import com.tonari.domain.VBoardSearchVO;
 
 public interface BoardService {
 	
-	public List<VBoardSearchVO> searchBoardNew();
+	public List<VBoardSearchVO> searchBoard(String orderby);
 }

@@ -34,6 +34,10 @@ public class BoardServiceImpl implements BoardService {
 				break;
 			default: 
 				Addr_searchVO vo = mapper.shortarea(orderby);
+				if(vo == null) {
+					searchBoard("teacher");
+					break;
+				}
 				list = mapper.searchBoardArea(vo);
 				break;
 			}

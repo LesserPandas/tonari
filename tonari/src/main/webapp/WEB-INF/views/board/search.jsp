@@ -54,7 +54,7 @@
 									</c:when>
 									<c:when test="${orderby=='score' }">
 										<option value="/board/search?orderby=teacher">신규</option>
-										<!-- 멤버의 위치 받아올것 -->
+										<!-- member의 위치 받아올것 -->
 										<option value="/board/search?orderby=a">가까운 지역</option>
 										<option value="/board/search?orderby=score" selected="selected">별점</option>
 									</c:when>

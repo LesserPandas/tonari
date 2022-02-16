@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.tonari.domain.MemberAuthVO;
 import com.tonari.domain.MemberVO;
 import com.tonari.domain.TeacherPermissionListVO;
+import com.tonari.domain.TeacherVO;
 import com.tonari.mapper.AdminMapper;
 
 import lombok.AllArgsConstructor;
@@ -38,5 +39,11 @@ public class AdminServiceImpl implements AdminService {
 		
 		return mapper.TeacherPermissionList();
 	}
+
 	
+	@Override
+	public int permission(int bno) {
+	// TODO Auto-generated method stub
+		return mapper.permission(bno);
+}
 }

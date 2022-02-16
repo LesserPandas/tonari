@@ -70,8 +70,7 @@
 										</div>
 									</div>
 								</form>
-							</div>
-						</li>
+							</div></li>
 					</ul>
 				</nav>
 				<!-- End of Topbar -->
@@ -79,57 +78,62 @@
 
 
 
- <!-- Begin Page Content -->
-                <div class="container-fluid">
+				<!-- Begin Page Content -->
+				<c:set var="list" value="${TeacherPermissionList}" />
+				<c:if test="${not empty list}">
+					<div class="container-fluid">
 
-                    <!-- Page Heading -->              
-                
-                        <div class="card shadow mb-4">
-                        <div class="card-header py-3">        
-				<h6 class="m-0 font-weight-bold text-primary">강사구독승인</h6>             
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" >
-                                    <thead>
-                                        <tr>
-                                            <th>번호</th>
-                                            <th>이름</th>                                            
-                                            <th>가입날짜</th>
-                                            <th>구분</th>
-                                            <th>강사승인</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    <c:forEach items="${TeacherPermissionList}" var="TeacherPermissionList">	
-                                        <tr>
-                                            <td>${TeacherPermissionList.bno}</td>
-                                            <td>${TeacherPermissionList.name}</td>
-                                            <td>${TeacherPermissionList.join_date}</td>
-                                            <td>${TeacherPermissionList.category_name}</td>
-                                                  <td><button type="button" onclick="location.href=''" class="btn btn-primary btn-sm">승인</button></td>
-                                       	<!--  	<td><a href="permission.do?bno=${lectorpermitlist.bno}" class="btn btn-danger btn-sm">승인</a></td>  -->
-                                        </tr>
-                                        </c:forEach>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-              </div>  
-        
+						<!-- Page Heading -->
 
+						<div class="card shadow mb-4">
+							<div class="card-header py-3">
+								<h6 class="m-0 font-weight-bold text-primary">강사구독승인</h6>
+							</div>
+							<div class="card-body">
+								<div class="table-responsive">
+									<table class="table table-bordered">
+										<thead>
+											<tr>
+												<th>번호</th>
+												<th>이름</th>
+												<th>가입날짜</th>
+												<th>구분</th>
+												<th>구독승인</th>
+											</tr>
+										</thead>
+										<tbody>
 
+											<c:forEach items="${list}"
+												var="TeacherPermissionList">
+												<tr>
+													<td>${TeacherPermissionList.bno}</td>
+													<td>${TeacherPermissionList.name}</td>
+													<td>${TeacherPermissionList.join_date}</td>
+													<td>${TeacherPermissionList.category_name}</td>
+													<td><a onClick="return confirm('승인하시겠습니까?')"
+														href="permission.do?bno=${TeacherPermissionList.bno}"
+														class="btn btn-primary btn-sm">승인</a></td>
+													<!--  	<td><a href="permission.do?bno=${lectorpermitlist.bno}" class="btn btn-danger btn-sm">승인</a></td>  -->
+												</tr>
+											</c:forEach>
+
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</c:if>
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
-						
+
 					<!-- Page Heading -->
 					<h1 class="h3 mb-2 text-gray-800">회원관리</h1>
 
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
-												
+
 						<div class="card-header py-3">
 							<h6 class="m-0 font-weight-bold text-primary">회원목록</h6>
 						</div>
@@ -139,7 +143,7 @@
 									cellspacing="0">
 									<thead>
 										<tr>
-											<th>번호</th>
+											<th>회원번호</th>
 											<th>권한</th>
 											<th>이름</th>
 											<th>메일</th>
@@ -149,7 +153,7 @@
 									</thead>
 									<tfoot>
 										<tr>
-											<th>번호</th>
+											<th>회원번호</th>
 											<th>권한</th>
 											<th>이름</th>
 											<th>메일</th>
@@ -158,24 +162,26 @@
 										</tr>
 									</tfoot>
 									<tbody>
-									<c:forEach items="${memberlist}" var="memberlist">	
-										<tr>
-											<td>${memberlist.bno}</td>
-											 <td>${memberlist.auth}</td> 
-											<td>${memberlist.name}</td>
-											<td>${memberlist.email}</td>
-											<td>${memberlist.join_date}</td>
-											<td><a href="delete.do?bno=${memberlist.bno}" class="btn btn-danger btn-sm">삭제</a></td>
-										</tr>
+										<c:forEach items="${memberlist}" var="memberlist">
+											<tr>
+												<td>${memberlist.bno}</td>
+												<td>${memberlist.auth}</td>
+												<td>${memberlist.name}</td>
+												<td>${memberlist.email}</td>
+												<td>${memberlist.join_date}</td>
+												<td><a onClick="return confirm('삭제하시겠어요?')"
+													href="delete.do?bno=${memberlist.bno}"
+													class="btn btn-danger btn-sm">삭제</a></td>
+											</tr>
 										</c:forEach>
-											
+
 									</tbody>
 								</table>
-						
+
 							</div>
 						</div>
 					</div>
-				
+
 				</div>
 				<!-- /.container-fluid -->
 
@@ -188,4 +194,7 @@
 		</div>
 		<!-- End of Content Wrapper -->
 	</div>
+
+
+	s
 </body>

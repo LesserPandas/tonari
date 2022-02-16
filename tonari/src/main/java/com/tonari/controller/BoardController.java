@@ -22,6 +22,7 @@ public class BoardController {
 	
 	@GetMapping("/search")
 	public void search(Model model, @RequestParam("orderby") String orderby){
+		log.info(orderby);
 		model.addAttribute("list" , service.searchBoard(orderby));
 		model.addAttribute("orderby", orderby);
 	}

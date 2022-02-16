@@ -24,6 +24,7 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 		public List<VBoardSearchVO> searchBoard(String orderby) {
+			log.info(orderby);
 			List<VBoardSearchVO> list = new ArrayList<VBoardSearchVO>();
 			switch(orderby) {
 			case "teacher":
@@ -34,10 +35,6 @@ public class BoardServiceImpl implements BoardService {
 				break;
 			default: 
 				Addr_searchVO vo = mapper.shortarea(orderby);
-				if(vo == null) {
-					searchBoard("teacher");
-					break;
-				}
 				list = mapper.searchBoardArea(vo);
 				break;
 			}

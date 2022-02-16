@@ -95,14 +95,7 @@
 									<h3 style="display: inline">
 										<a href="info" style="font-weight: bold; font-size: 18px;">${list.title }</a>
 									</h3>
-									<c:choose>
-										<c:when test="">
-											<button class="pull-right squareButton likeButton likeButtonActive" id="like" onclick="like()">♥</button>
-										</c:when>
-										<c:otherwise>
-											<button class="pull-right squareButton likeButton" id="like" onclick="like()">♥</button>
-										</c:otherwise>
-									</c:choose>
+									<button class="pull-right squareButton likeButton likeButtonActive" id="like" onclick="like()">♥</button>
 								</div>
 							</div>
 						</div>

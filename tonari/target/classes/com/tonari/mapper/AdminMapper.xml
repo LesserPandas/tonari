@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.tonari.mapper.AdminMapper">
+
+	<!-- 회원목록 -->
+	<select id="selectmemberlist"
+		resultType="com.tonari.domain.MemberAuthVO">
+		select m.bno,m.email, m.passwd, m.nick,m.name,m.sex,m.zipcode,m.address,
+		m.o_addr,m.gu,m.dong,m.phone,m.join_date,m.recent_login_date, a.auth
+		from member m LEFT OUTER JOIN auth a on m.bno = a.member_bno
+	</select>
+
+
+
+<delete id="delete" >
+		delete member where bno = #{bno}
+	</delete>
+
+<select id="TeacherPermissionList"
+		resultType="com.tonari.domain.TeacherPermissionListVO">
+	   select m.bno,m.name, m.join_date, c.category_name
+		from member m, teacher t, category c
+        where m.bno= t.member_bno and t.category= c.category_bno
+	</select>
+
+  
+
+</mapper>

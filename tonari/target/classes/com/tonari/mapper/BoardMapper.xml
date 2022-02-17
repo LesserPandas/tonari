@@ -1,16 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.tonari.mapper.BoardMapper">
-	<select id="searchBoardTeacherbno" resultType="com.tonari.domain.VBoardSearchVO">
-		select * from board_search_view order by teacher_bno
+	
+	<!-- 서치 -->
+	<select id="searchBoardTeacherbno" resultType="com.tonari.domain.BoardSearch_viewVO">
+		select * from board_search_view order by teacher_bno desc
 	</select>
-	<select id ="searchBoardScore" resultType="com.tonari.domain.VBoardSearchVO">
+	<select id ="searchBoardScore" resultType="com.tonari.domain.BoardSearch_viewVO">
 		select * from board_search_view order by score desc nulls last
 	</select>
 	<select id ="shortarea" resultType="com.tonari.domain.Addr_searchVO">
 		select * from addr_search where rank1= #{orderby}
 	</select>
-	<select id = "searchBoardArea" resultType="com.tonari.domain.VBoardSearchVO" parameterType="com.tonari.domain.Addr_searchVO">
+	<select id = "searchBoardArea" resultType="com.tonari.domain.BoardSearch_viewVO" parameterType="com.tonari.domain.Addr_searchVO">
 		select * from board_search_view order by(case when dong = #{rank1} then 1 when dong = #{rank2} then 2 when dong = #{rank3} then 3 else 4 end)
 	</select>
+	<select id="searchcategory" resultType="com.tonari.domain.BoardSearch_viewVO">
+		select * from board_search_view where category_bno = #{category}
+	</select>
+	<select id = "searchall" resultType="com.tonari.domain.BoardSearch_viewVO">
+		(select * from board_search_view where bno like '%'#{word}'%')
+		union (select * from board_search_view where title like '%'#{word}'%')
+		union (select * from board_search_view where gu like '%'#{word}'%')
+		union (select * from board_search_view where dong like '%'#{word}'%')
+		union (select * from board_search_view where category_name like '%'#{word}'%')
+		union (select * from board_search_view where coment like '%'#{word}'%')
+	</select>
+	<!-- 서치 끝 -->
+	
+	<!-- 사이드 메뉴바 -->
+	<select id="sidelist" resultType="com.tonari.domain.CategoryVO">
+		select * from category order by category_bno
+	</select>
+	<!-- 사이드 메뉴바 -->
+	<!-- 선생님 정보 -->
+	<select id="teacherinfo" resultType="com.tonari.domain.Teacherinfo_viewVO">
+		select * from board_info_view where bno = #{bno}
+	</select>
+	<select id ="review" resultType="com.tonari.domain.Review_viewVO">
+		select * from review_view where teacher_bno = #{bno}
+	</select>
+	
+	<insert id= "writeReview" parameterType="com.tonari.domain.ReviewVO">
+		insert into review (bno,member_bno,teacher_bno,content,score,scorestar,nick) values
+		(#{bno},#{member_bno},#{teacher_bno},#{content},#{score},#{scorestar},#{nick})
+	</insert>
 </mapper>

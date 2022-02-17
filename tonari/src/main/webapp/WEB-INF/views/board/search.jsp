@@ -14,7 +14,19 @@
 
 		<div class="row margin-bottom-40">
 			<!-- BEGIN SIDEBAR -->
-			<%@ include file="side_board.jsp"%>
+			<div class="sidebar col-md-3 col-sm-5">
+				<div class="sidebar-filter margin-bottom-25">
+					<ul class="list-group margin-bottom-25 sidebar-menu">
+						<c:forEach items="${sidelist }" var="sidelist">
+							<li class="list-group-item clearfix">
+								<a href="/board/category?category=${sidelist.category_bno }"> 
+									<i class="fa fa-angle-right"></i>${sidelist.category_name }
+								</a>
+							</li>
+						</c:forEach>
+					</ul>
+				</div>
+			</div>
 			<!-- END SIDEBAR -->
 			<!-- BEGIN CONTENT -->
 			<div class="col-md-9 col-sm-7">
@@ -26,9 +38,9 @@
 							</h1>
 						</div>
 						<div class="col-md-6">
-							<form action="#">
+							<form action="searchall" method="get">
 								<div class="input-group">
-									<input type="text" placeholder="개꿀 선생님을 검색해보자" class="form-control" name="searchText"> 
+									<input type="text" placeholder="개꿀 선생님을 검색해보자" class="form-control" name="searchword"> 
 									<span class="input-group-btn">
 										<button class="btn btn-primary" type="submit">Search</button>
 									</span>
@@ -45,7 +57,14 @@
 					<div class="col-md-10 col-sm-10">
 						<div class="pull-right">
 							<label class="control-label">정렬</label>
-							<select class="form-control input-sm" onchange="if(this.value) location.href=(this.value);">
+							<!-- <select class="form-control input-sm" name="orderby" id="orderby" onchange="orderby()">
+								<option value="teacher" selected="selected">신규</option>
+								<option value="a">가까운 지역</option>
+								<option value="score">별점</option>
+							 
+							 ajax 나중에 해볼것
+							 -->
+							 <select class="form-control input-sm" onchange="if(this.value) location.href=(this.value);">
 								<c:choose>
 									<c:when test="${orderby=='teacher'}">
 										<option value="/board/search?orderby=teacher" selected="selected">신규</option>
@@ -54,7 +73,6 @@
 									</c:when>
 									<c:when test="${orderby=='score' }">
 										<option value="/board/search?orderby=teacher">신규</option>
-										<!-- member의 위치 받아올것 -->
 										<option value="/board/search?orderby=a">가까운 지역</option>
 										<option value="/board/search?orderby=score" selected="selected">별점</option>
 									</c:when>
@@ -63,7 +81,7 @@
 										<option value="/board/search?orderby=a" selected="selected">가까운 지역</option>
 										<option value="/board/search?orderby=score">별점</option>
 									</c:otherwise>
-								</c:choose>
+								</c:choose> 
 							</select>
 						</div>
 					</div>
@@ -71,6 +89,9 @@
 				<!-- BEGIN PRODUCT LIST -->
 				<div class="row product-list">
 					<!-- PRODUCT ITEM START -->
+					<c:if test="${empty list}">
+						해당 검색의 강사가 없음
+					</c:if>
 					<c:forEach items="${list}" var="list">
 						<div class="col-md-4 col-sm-6 col-xs-12">
 							<div class="product-item">
@@ -88,12 +109,12 @@
 									</div>
 								</div>
 								<div class="teacherInfo">
-									<div style="display: inline"> ${list.category}</div>
+									<div style="display: inline"> ${list.category_name}</div>
 									<div class="pull-right">${list.gu}구&nbsp;${list.dong}동</div>
 								</div>
 								<div class="teacherInfo">
 									<h3 style="display: inline">
-										<a href="info" style="font-weight: bold; font-size: 18px;">${list.title }</a>
+										<a href="info?board_bno=${list.bno }" style="font-weight: bold; font-size: 18px;">${list.title }</a>
 									</h3>
 									<button class="pull-right squareButton likeButton likeButtonActive" id="like" onclick="like()">♥</button>
 								</div>

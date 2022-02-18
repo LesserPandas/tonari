@@ -36,10 +36,18 @@ public class AdminController {
 	@Setter(onMethod_ = @Autowired)
 	private AdminService service;
 	
-	
+	//로그인
 	@GetMapping("/login")
 	public String main() {
 		return "admin/member/login";
+	}
+	
+	@PostMapping("/login.do")
+	public String login(MemberAuthVO MemberAuth, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
+				
+		MemberAuth = service.login(MemberAuth);
+				
+		return "redirect:/admin/memberlist";
 	}
 	
 
@@ -68,6 +76,8 @@ public class AdminController {
 	public String studentsales() {
 		return "admin/sales/studentsales";
 	}
+	
+	//게시판
 	@GetMapping("/board")
 	public String board(Model model) {
 		
@@ -76,10 +86,13 @@ public class AdminController {
 		
 		return "admin/board/board";
 	}
+	
+	//메일
 	@GetMapping("/mail")
 	public String mail() {
 		return "admin/mail";
 	}
+	//강사목록
 	@GetMapping("/teacherlist")
 	public String teacherlist(Model model,TeacherListVO tvo) {
 
@@ -94,6 +107,8 @@ public class AdminController {
 		
 		return "admin/member/teacherlist";
 	}
+	
+	//글수정
 	@GetMapping("/update")
 	public String update(@RequestParam("bno") int bno, Model model)  {
 	//	model.addAttribute("boardlist", service.selectboardlist(bno));
@@ -120,18 +135,14 @@ public class AdminController {
 	}
 	
 	
-
-	
-	
-
-	
-	
+	//글작성페이지
 	@GetMapping("/write")
 	public String write(Model model) {
 		
 		return "admin/board/write";
 	}
 	
+	//게시글작성
 	@PostMapping("/insert")
 	public String insertboard(BoardVO board){
 		service.insertboard(board);

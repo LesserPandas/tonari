@@ -90,5 +90,10 @@ public class AdminServiceImpl implements AdminService {
 		mapper.insertboard(board);
 		
 	}
+	@Override
+	public MemberAuthVO login(MemberAuthVO MemberAuth) {
+		// TODO Auto-generated method stub
+		return mapper.login(MemberAuth);
+	}
 	
 }

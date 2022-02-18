@@ -46,7 +46,7 @@ public interface AdminService {
 	//게시글쓰기
 	public void insertboard(BoardVO board);
 
-	
+	public MemberAuthVO login(MemberAuthVO MemberAuth);
 
 	
 }

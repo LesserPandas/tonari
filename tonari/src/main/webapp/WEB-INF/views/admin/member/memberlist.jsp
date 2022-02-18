@@ -165,7 +165,9 @@
 										<c:forEach items="${memberlist}" var="memberlist">
 											<tr>
 												<td>${memberlist.bno}</td>
-												<td>${memberlist.auth}</td>
+											<c:if test="${memberlist.auth eq'ROLE_ADMIN'}">	
+												<td>관리자</td>
+											</c:if>	
 												<td>${memberlist.name}</td>
 												<td>${memberlist.email}</td>
 												<td>${memberlist.join_date}</td>

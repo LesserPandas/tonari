@@ -75,4 +75,11 @@
 	</insert>
 	
 	
+	<select id="login" resultType="com.tonari.domain.MemberAuthVO">
+		select m.email, m.passwd, a.auth 
+		  from member m, auth a
+		 where email = #{email}
+		   and passwd = #{passwd}   
+	</select>
+	
 </mapper>

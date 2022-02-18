@@ -33,6 +33,8 @@ public interface AdminMapper {
 	
 	public void insertboard(BoardVO board);
 	
+	public MemberAuthVO login(MemberAuthVO MemberAuth);
+	
 
 	
 }

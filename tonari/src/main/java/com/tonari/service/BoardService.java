@@ -10,7 +10,11 @@ import com.tonari.domain.Teacherinfo_viewVO;
 
 public interface BoardService {
 	public List<CategoryVO> sidelist();
+<<<<<<< HEAD
 	public List<BoardSearch_viewVO> orderby(String orderby);
+=======
+	public List<BoardSearch_viewVO> searchBoard(String orderby);
+>>>>>>> namhyun
 	public List<BoardSearch_viewVO> searchcategory(String category);
 	public List<BoardSearch_viewVO> searchall(String word);
 	public Teacherinfo_viewVO teacherinfo(int bno);

@@ -72,9 +72,15 @@
 										<option value="/board/orderby?orderby=score">별점</option>
 									</c:when>
 									<c:when test="${orderby=='score' }">
+<<<<<<< HEAD
 										<option value="/board/orderby?orderby=teacher">신규</option>
 										<option value="/board/orderby?orderby=a">가까운 지역</option>
 										<option value="/board/orderby?orderby=score" selected="selected">별점</option>
+=======
+										<option value="/board/search?orderby=teacher">신규</option>
+										<option value="/board/search?orderby=a">가까운 지역</option>
+										<option value="/board/search?orderby=score" selected="selected">별점</option>
+>>>>>>> namhyun
 									</c:when>
 									<c:otherwise>
 										<option value="/board/orderby?orderby=teacher">신규</option>

@@ -13,6 +13,7 @@ import com.tonari.domain.ReviewVO;
 import com.tonari.domain.Review_viewVO;
 import com.tonari.domain.Teacherinfo_viewVO;
 import com.tonari.mapper.BoardMapper;
+import com.tonari.util.Criteria;
 
 import lombok.AllArgsConstructor;
 import lombok.Setter;
@@ -27,53 +28,32 @@ public class BoardServiceImpl implements BoardService {
 	private BoardMapper mapper;
 	
 	@Override
-<<<<<<< HEAD
-		public List<BoardSearch_viewVO> orderby(String orderby) { //검색
-			List<BoardSearch_viewVO> list = new ArrayList<BoardSearch_viewVO>();
-			switch(orderby) {
-			case "teacher": //신규선생님
-				 list = mapper.orderbyTeacherbno();
-				break;
-			case "score": //별점 점수
-				list = mapper.orderbyScore();
-=======
-		public List<BoardSearch_viewVO> searchBoard(String orderby) { //검색
-			List<BoardSearch_viewVO> list = new ArrayList<BoardSearch_viewVO>();
-			switch(orderby) {
-			case "teacher": //신규선생님
-				 list = mapper.searchBoardTeacherbno();
-				break;
-			case "score": //별점 점수
-				list = mapper.searchBoardScore();
->>>>>>> namhyun
-				break;
-			default: 
-				Addr_searchVO Avo = mapper.shortarea(orderby); //지역구 rank검색
-				if(Avo !=null) {
-<<<<<<< HEAD
-					list = mapper.orderbyArea(Avo); //지역구 순 나열
-=======
-					list = mapper.searchBoardArea(Avo); //지역구 순 나열
->>>>>>> namhyun
-					break;
-				}
-			}
-			return list;
-		}
-	
-	@Override
-	public List<BoardSearch_viewVO> searchcategory(String category) {
-		return mapper.searchcategory(category);
-	}
-	
-	@Override
-	public List<BoardSearch_viewVO> searchall(String word) {
-		return mapper.searchall(word);
-	}
-	
-	@Override
 	public List<CategoryVO> sidelist() { //사이드메뉴
 		return mapper.sidelist();
+	}
+	
+	@Override
+	public List<BoardSearch_viewVO> OrderbyList(Criteria cri) {
+		List<BoardSearch_viewVO> list = new ArrayList<BoardSearch_viewVO>();
+		switch(cri.getType()) {
+		case "orderby" :
+			list = mapper.OrderbyList(cri);
+			break;
+		case "area" :
+			Addr_searchVO avo = mapper.shortarea(cri.getKeyword());
+			cri.setRank1(avo.getRank1());
+			cri.setRank2(avo.getRank2());
+			cri.setRank3(avo.getRank3());
+			list = mapper.OrderbyList(cri);
+			break;
+		case "category":
+			list = mapper.OrderbyList(cri);
+			break;
+		default:
+			list = mapper.OrderbyList(cri);
+			break;
+		}
+			return list;
 	}
 	
 	@Override
@@ -103,16 +83,18 @@ public class BoardServiceImpl implements BoardService {
 		nick=nick.substring(1);
 		sb.setLength(0);
 		sb.append(firstname);
-<<<<<<< HEAD
 		for(int i=0; i<nick.length();i++) sb.append("*");
-=======
-		for(int i=0; i<nick.length()-1;i++) sb.append("*");
->>>>>>> namhyun
 		String nickname = sb.toString();
 		rvo.setNick(nickname);
 		mapper.writeReview(rvo);
 	}
-
+	
+	@Override
+	public int total(Criteria cri) {
+		return mapper.total(cri);
+	}
+	
+	
 }
 
 

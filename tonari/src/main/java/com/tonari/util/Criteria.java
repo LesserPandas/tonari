@@ -15,8 +15,12 @@ public class Criteria {
 	private String type;
 	private String keyword;
 	
+	private String rank1;
+	private String rank2;
+	private String rank3;
+	
 	public Criteria() {
-		this(1,10);
+		this(1,9);
 	}
 	
 	public Criteria(int pageNum, int amount) {
@@ -24,8 +28,6 @@ public class Criteria {
 		this.amount = amount;
 	}
 	
-	public String[] getTypeArr() {
-		return type==null ? new String[] {} : type.split("");
-	}
+	
 	
 }

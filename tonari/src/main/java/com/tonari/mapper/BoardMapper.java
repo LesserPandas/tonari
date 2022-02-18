@@ -7,28 +7,18 @@ import com.tonari.domain.CategoryVO;
 import com.tonari.domain.ReviewVO;
 import com.tonari.domain.Review_viewVO;
 import com.tonari.domain.Teacherinfo_viewVO;
+import com.tonari.util.Criteria;
 import com.tonari.domain.BoardSearch_viewVO;
 
 public interface BoardMapper {
 
 	public List<CategoryVO> sidelist(); //사이드 바 메뉴
-<<<<<<< HEAD
-	public List<BoardSearch_viewVO> orderbyTeacherbno(); //신규 순
-	public List<BoardSearch_viewVO> orderbyScore(); //별점 순
-	// 거리 순
-	public Addr_searchVO shortarea(String orderby);
-	public List<BoardSearch_viewVO> orderbyArea(Addr_searchVO vo);
-=======
-	public List<BoardSearch_viewVO> searchBoardTeacherbno(); //신규 순
-	public List<BoardSearch_viewVO> searchBoardScore(); //별점 순
-	// 거리 순
-	public Addr_searchVO shortarea(String orderby);
-	public List<BoardSearch_viewVO> searchBoardArea(Addr_searchVO vo);
->>>>>>> namhyun
-	// 거리 순
-	public List<BoardSearch_viewVO> searchall(String word); //전체 조회
-	public List<BoardSearch_viewVO> searchcategory(String category);//카테고리
+	public List<BoardSearch_viewVO> OrderbyList(Criteria cri);
+	public Addr_searchVO shortarea(String area);//거리 순 나열
 	public Teacherinfo_viewVO teacherinfo(int bno);
 	public List<Review_viewVO> review(int bno);
 	public void writeReview(ReviewVO rvo);
+	
+	public int total(Criteria cri);//전체 게시물 조회
+	
 }

@@ -9,12 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.tonari.domain.PageVO;
 import com.tonari.domain.ReviewVO;
-<<<<<<< HEAD
-=======
-import com.tonari.domain.Review_viewVO;
->>>>>>> namhyun
 import com.tonari.service.BoardService;
+import com.tonari.util.Criteria;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -28,52 +26,14 @@ public class BoardController {
 	private BoardService service;
 	
 	@GetMapping("/search")
-<<<<<<< HEAD
-	public void search(Model model) {
-		
-	}
-	
-	@GetMapping("/orderby")
-	public String orderby(Model model, @RequestParam("orderby") String orderby){
-		log.info(orderby);
+	public void search(Model model, Criteria cri) {
+		if(cri.getType()==null)cri.setType("all");
 		model.addAttribute("sidelist", service.sidelist());
-		model.addAttribute("list" , service.orderby(orderby));
-=======
-	public void search(Model model, @RequestParam("orderby") String orderby){
-		log.info(orderby);
-		model.addAttribute("sidelist", service.sidelist());
-		model.addAttribute("list" , service.searchBoard(orderby));
->>>>>>> namhyun
-		model.addAttribute("orderby", orderby);
-		return "/board/search";
-	}
-	
-	@GetMapping("/category")
-	public String searchCategory(Model model, @RequestParam("category") String category) {
-		model.addAttribute("sidelist", service.sidelist());
-		model.addAttribute("list",service.searchcategory(category));
-		return "/board/search";
-	}
-	
-	@GetMapping("/searchall")
-	public String searchAll(Model model, @RequestParam("searchword") String word) {
-		model.addAttribute("sidelist", service.sidelist());
-		model.addAttribute("list",service.searchall(word));
-		return "/board/search";
-	}
-	
-	@GetMapping("/category")
-	public String searchCategory(Model model, @RequestParam("category") String category) {
-		model.addAttribute("sidelist", service.sidelist());
-		model.addAttribute("list",service.searchcategory(category));
-		return "/board/search";
-	}
-	
-	@GetMapping("/searchall")
-	public String searchAll(Model model, @RequestParam("searchword") String word) {
-		model.addAttribute("sidelist", service.sidelist());
-		model.addAttribute("list",service.searchall(word));
-		return "/board/search";
+		model.addAttribute("list",service.OrderbyList(cri));
+		int total = service.total(cri);
+		model.addAttribute("pageMaker",new PageVO(cri, total));
+		model.addAttribute("orderby", cri.getKeyword());
+		model.addAttribute("type",cri.getType());
 	}
 	
 	@GetMapping("/info")

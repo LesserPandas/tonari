@@ -19,7 +19,7 @@
 					<ul class="list-group margin-bottom-25 sidebar-menu">
 						<c:forEach items="${sidelist }" var="sidelist">
 							<li class="list-group-item clearfix">
-								<a href="/board/category?category=${sidelist.category_bno }"> 
+								<a href="/board/search?type=category&&keyword=${sidelist.category_bno}"> 
 									<i class="fa fa-angle-right"></i>${sidelist.category_name }
 								</a>
 							</li>
@@ -38,9 +38,9 @@
 							</h1>
 						</div>
 						<div class="col-md-6">
-							<form action="searchall" method="get">
+							<form action="search" method="get">
 								<div class="input-group">
-									<input type="text" placeholder="개꿀 선생님을 검색해보자" class="form-control" name="searchword"> 
+									<input type="text" placeholder="개꿀 선생님을 검색해보자" class="form-control" name="keyword" id="keyword"> 
 									<span class="input-group-btn">
 										<button class="btn btn-primary" type="submit">Search</button>
 									</span>
@@ -67,25 +67,19 @@
 							 <select class="form-control input-sm" onchange="if(this.value) location.href=(this.value);">
 								<c:choose>
 									<c:when test="${orderby=='teacher'}">
-										<option value="/board/orderby?orderby=teacher" selected="selected">신규</option>
-										<option value="/board/orderby?orderby=a">가까운 지역</option>
-										<option value="/board/orderby?orderby=score">별점</option>
+										<option value="/board/search?type=orderby&&keyword=teacher" selected="selected">신규</option>
+										<option value="/board/search?type=area&&keyword=a">가까운 지역</option>
+										<option value="/board/search?type=orderby&&keyword=score">별점</option>
 									</c:when>
 									<c:when test="${orderby=='score' }">
-<<<<<<< HEAD
-										<option value="/board/orderby?orderby=teacher">신규</option>
-										<option value="/board/orderby?orderby=a">가까운 지역</option>
-										<option value="/board/orderby?orderby=score" selected="selected">별점</option>
-=======
-										<option value="/board/search?orderby=teacher">신규</option>
-										<option value="/board/search?orderby=a">가까운 지역</option>
-										<option value="/board/search?orderby=score" selected="selected">별점</option>
->>>>>>> namhyun
+										<option value="/board/search?type=orderby&&keyword=teacher">신규</option>
+										<option value="/board/search?type=area&&keyword=a">가까운 지역</option>
+										<option value="/board/search?type=orderby&&keyword=score" selected="selected">별점</option>
 									</c:when>
 									<c:otherwise>
-										<option value="/board/orderby?orderby=teacher">신규</option>
-										<option value="/board/orderby?orderby=a" selected="selected">가까운 지역</option>
-										<option value="/board/orderby?orderby=score">별점</option>
+										<option value="/board/search?type=orderby&&keyword=teacher">신규</option>
+										<option value="/board/search?type=area&&keyword=a" selected="selected">가까운 지역</option>
+										<option value="/board/search?type=orderby&&keyword=score">별점</option>
 									</c:otherwise>
 								</c:choose> 
 							</select>
@@ -133,14 +127,18 @@
 				<!-- BEGIN PAGINATOR -->
 				<div class="row">
 					<div class="col-md-12 col-sm-12" style="text-align: center">
-						<ul class="pagination">
-							<li><a href="javascript:;">&laquo;</a></li>
-							<li><a href="javascript:;">1</a></li>
-							<li><span>2</span></li>
-							<li><a href="javascript:;">3</a></li>
-							<li><a href="javascript:;">4</a></li>
-							<li><a href="javascript:;">5</a></li>
-							<li><a href="javascript:;">&raquo;</a></li>
+						<ul class="pagination paging">
+							<c:if test="${pageMaker.prev }">
+								<li><a href="${pageMaker.startPage-1 }">&laquo;</a></li>
+							</c:if>
+							<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage }">
+								<li>
+									<a href="search?pageNum=${num }&&type=${type}&&keyword=${keyword}">${num }</a>
+								</li>
+							</c:forEach>
+							<c:if test="${pageMaker.next }">
+								<li><a href="${pageMaker.startPage+1 }">&raquo;</a></li>
+							</c:if>
 						</ul>
 					</div>
 				</div>

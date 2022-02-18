@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tonari.domain.ReviewVO;
-import com.tonari.domain.Review_viewVO;
 import com.tonari.service.BoardService;
 
 import lombok.Setter;
@@ -25,11 +24,17 @@ public class BoardController {
 	private BoardService service;
 	
 	@GetMapping("/search")
-	public void search(Model model, @RequestParam("orderby") String orderby){
+	public void search(Model model) {
+		
+	}
+	
+	@GetMapping("/orderby")
+	public String orderby(Model model, @RequestParam("orderby") String orderby){
 		log.info(orderby);
 		model.addAttribute("sidelist", service.sidelist());
-		model.addAttribute("list" , service.searchBoard(orderby));
+		model.addAttribute("list" , service.orderby(orderby));
 		model.addAttribute("orderby", orderby);
+		return "/board/search";
 	}
 	
 	@GetMapping("/category")

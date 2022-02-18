@@ -27,19 +27,19 @@ public class BoardServiceImpl implements BoardService {
 	private BoardMapper mapper;
 	
 	@Override
-		public List<BoardSearch_viewVO> searchBoard(String orderby) { //검색
+		public List<BoardSearch_viewVO> orderby(String orderby) { //검색
 			List<BoardSearch_viewVO> list = new ArrayList<BoardSearch_viewVO>();
 			switch(orderby) {
 			case "teacher": //신규선생님
-				 list = mapper.searchBoardTeacherbno();
+				 list = mapper.orderbyTeacherbno();
 				break;
 			case "score": //별점 점수
-				list = mapper.searchBoardScore();
+				list = mapper.orderbyScore();
 				break;
 			default: 
 				Addr_searchVO Avo = mapper.shortarea(orderby); //지역구 rank검색
 				if(Avo !=null) {
-					list = mapper.searchBoardArea(Avo); //지역구 순 나열
+					list = mapper.orderbyArea(Avo); //지역구 순 나열
 					break;
 				}
 			}
@@ -88,7 +88,7 @@ public class BoardServiceImpl implements BoardService {
 		nick=nick.substring(1);
 		sb.setLength(0);
 		sb.append(firstname);
-		for(int i=0; i<nick.length()-1;i++) sb.append("*");
+		for(int i=0; i<nick.length();i++) sb.append("*");
 		String nickname = sb.toString();
 		rvo.setNick(nickname);
 		mapper.writeReview(rvo);

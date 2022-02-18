@@ -116,7 +116,6 @@ pageEncoding="UTF-8"%>
 										<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 										<input type="hidden" name="teacher_bno" value="${teacher.teacher_bno }">
 										<input type="hidden" name="member_bno" value="5">
-										<input type="hidden" name="bno" value="36">
 										<input type="hidden" name="nick" value="임시연습용">
 										
 										<h2>Write a review</h2>

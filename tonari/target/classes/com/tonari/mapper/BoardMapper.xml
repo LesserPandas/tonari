@@ -3,28 +3,29 @@
 <mapper namespace="com.tonari.mapper.BoardMapper">
 	
 	<!-- 서치 -->
-	<select id="searchBoardTeacherbno" resultType="com.tonari.domain.BoardSearch_viewVO">
+	<select id="orderbyTeacherbno" resultType="com.tonari.domain.BoardSearch_viewVO">
 		select * from board_search_view order by teacher_bno desc
 	</select>
-	<select id ="searchBoardScore" resultType="com.tonari.domain.BoardSearch_viewVO">
+	<select id ="orderbyScore" resultType="com.tonari.domain.BoardSearch_viewVO">
 		select * from board_search_view order by score desc nulls last
 	</select>
 	<select id ="shortarea" resultType="com.tonari.domain.Addr_searchVO">
 		select * from addr_search where rank1= #{orderby}
 	</select>
-	<select id = "searchBoardArea" resultType="com.tonari.domain.BoardSearch_viewVO" parameterType="com.tonari.domain.Addr_searchVO">
+	<select id = "orderbyArea" resultType="com.tonari.domain.BoardSearch_viewVO" parameterType="com.tonari.domain.Addr_searchVO">
 		select * from board_search_view order by(case when dong = #{rank1} then 1 when dong = #{rank2} then 2 when dong = #{rank3} then 3 else 4 end)
 	</select>
 	<select id="searchcategory" resultType="com.tonari.domain.BoardSearch_viewVO">
 		select * from board_search_view where category_bno = #{category}
 	</select>
 	<select id = "searchall" resultType="com.tonari.domain.BoardSearch_viewVO">
-		(select * from board_search_view where bno like '%'#{word}'%')
-		union (select * from board_search_view where title like '%'#{word}'%')
-		union (select * from board_search_view where gu like '%'#{word}'%')
-		union (select * from board_search_view where dong like '%'#{word}'%')
-		union (select * from board_search_view where category_name like '%'#{word}'%')
-		union (select * from board_search_view where coment like '%'#{word}'%')
+		(select * from board_search_view where bno like '%' || #{word}||'%')
+		union (select * from board_search_view where title like '%' || #{word}||'%')
+		union (select * from board_search_view where gu like '%' || #{word}||'%')
+		union (select * from board_search_view where dong like '%' || #{word}||'%')
+		union (select * from board_search_view where category_name like '%' || #{word}||'%')
+		union (select * from board_search_view where coment like '%' || #{word}||'%')
+
 	</select>
 	<!-- 서치 끝 -->
 	
@@ -42,6 +43,9 @@
 	</select>
 	
 	<insert id= "writeReview" parameterType="com.tonari.domain.ReviewVO">
+		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
+			select review_seq.nextval from dual
+		</selectKey>
 		insert into review (bno,member_bno,teacher_bno,content,score,scorestar,nick) values
 		(#{bno},#{member_bno},#{teacher_bno},#{content},#{score},#{scorestar},#{nick})
 	</insert>

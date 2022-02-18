@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tonari.domain.BoardVO;
+import com.tonari.domain.BoardlistVO;
 import com.tonari.domain.MemberAuthVO;
-import com.tonari.domain.MemberVO;
+import com.tonari.domain.TeacherListVO;
 import com.tonari.domain.TeacherPermissionListVO;
 import com.tonari.domain.TeacherVO;
 import com.tonari.mapper.AdminMapper;
@@ -35,6 +37,12 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	@Override
+	public boolean boarddelete(BoardlistVO Boardlist) {
+		// TODO Auto-generated method stub
+		return mapper.boarddelete(Boardlist)==1;
+	}
+	
+	@Override
 	public List<TeacherPermissionListVO> TeacherPermissionList() {
 		
 		return mapper.TeacherPermissionList();
@@ -46,4 +54,41 @@ public class AdminServiceImpl implements AdminService {
 	// TODO Auto-generated method stub
 		return mapper.permission(bno);
 }
+	
+	@Override
+	public List<TeacherListVO> selectteacherlist() {
+		// TODO Auto-generated method stub
+		return mapper.selectteacherlist();
+	}
+	
+	@Override
+	public List<BoardlistVO> selectboardlist() {
+		// TODO Auto-generated method stub
+		return mapper.selectboardlist();
+	}
+	
+	@Override
+	public void updateboard(BoardlistVO Boardlist) {
+		
+		mapper.updateboard(Boardlist);
+		
+	}
+	
+	@Override
+	public BoardVO selectBoard(int bno) {
+		return mapper.selectboard(bno);
+	}
+	
+	@Override
+	public boolean updateboardpro(BoardVO board) {
+		// TODO Auto-generated method stub
+		return mapper.updateboardpro(board)==1;
+	}
+	@Override
+	public void insertboard(BoardVO board) {
+		
+		mapper.insertboard(board);
+		
+	}
+	
 }

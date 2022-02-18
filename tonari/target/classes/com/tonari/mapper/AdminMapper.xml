@@ -17,6 +17,14 @@
 <delete id="delete" >
 		delete member where bno = #{bno}
 	</delete>
+	
+	<delete id="boarddelete" >
+		delete board where bno = #{bno}
+	</delete>
+	
+<update id="updateboardpro">
+		update board set title=#{title},  content=#{content},  category=#{category}, update_date=sysdate where bno = #{bno}		
+</update>	
 
 <select id="TeacherPermissionList"
 		resultType="com.tonari.domain.TeacherPermissionListVO">
@@ -31,5 +39,40 @@
 		UPDATE teacher SET permission='y' WHERE bno= #{bno}
 </update>
   
+  
+  
+  <select id="selectteacherlist"
+		resultType="com.tonari.domain.TeacherListVO">
+	  select t.member_bno, m.name, t.age,m.address, m.join_date, c.category_name 
+		from  teacher t, member m, category c
+        where m.bno= t.member_bno and t.category= c.category_bno and t.permission = 'y'
+	</select>
+	
+	<select id="selectboardlist"
+		resultType="com.tonari.domain.BoardlistVO">
+	    select b.bno, b.category, b.title, m.name,b.write_date, b.viewcount
+		from board b , member m 
+        where b.member_bno = m.bno
+        order by bno
+	</select>
 
+
+	<select id="selectboard"
+		resultType="com.tonari.domain.BoardVO">
+	    select *
+		from board
+        where bno = #{bno}
+	</select>
+	
+	<insert id="insertboard">
+        <selectKey keyProperty="bno" order="BEFORE" resultType="int">
+           select board_seq.nextval from dual
+        </selectKey>
+     
+		insert into board
+		(bno, member_bno,category, title,content,viewcount,write_date, update_date) 
+		values (#{bno}, #{member_bno},#{category},#{title},#{content},#{viewcount}, sysdate,sysdate)
+	</insert>
+	
+	
 </mapper>

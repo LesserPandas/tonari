@@ -138,32 +138,33 @@
                                         <tr>
                                             <th>회원번호</th>
                                             <th>이름</th>
+                                            <th>나이</th>
+                                             <th>주소</th>
                                             <th>가입날짜</th>                                            
                                             <th>구분</th>
-                                            <th>구독승인</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>회원번호</th>
                                             <th>이름</th>
+                                            <th>나이</th>
+                                             <th>주소</th>
                                             <th>가입날짜</th>                                            
                                             <th>구분</th>
-                                            <th>구독승인</th>
+                                           
                                         </tr>
                                     </tfoot>
                                     <tbody>
-               									<c:forEach items="${Teacher}"
-												var="Teacher">
+               									<c:forEach items="${teacherlist}"
+												var="Teacherlist">
 												<tr>
-													<td>${Teacher.bno}</td>
-													<td>${Teacher.name}</td>
-													<td>${Teacher.join_date}</td>
-													<td>${Teacher.category_name}</td>
-													<td><a onClick="return confirm('승인하시겠습니까?')"
-														href="permission.do?bno=${Teacher.bno}"
-														class="btn btn-primary btn-sm">승인</a></td>
-													<!--  	<td><a href="permission.do?bno=${lectorpermitlist.bno}" class="btn btn-danger btn-sm">승인</a></td>  -->
+													<td>${Teacherlist.member_bno}</td>
+													<td>${Teacherlist.name}</td>
+													<td>${Teacherlist.age}</td>
+													<td>${Teacherlist.address}</td>
+													<td>${Teacherlist.join_date}</td>
+													<td>${Teacherlist.category_name}</td>								
 												</tr>
 											</c:forEach>
                                     </tbody>

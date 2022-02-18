@@ -115,18 +115,29 @@
 										</tr>
 									</tfoot>
 									<tbody>
-
-										<tr>
-											<td>Airi Satou</td>
-											<td>Accountant</td>
-											<td>Tokyo</td>
-											<td>33</td>
-											<td>2008/11/28</td>
-											<td>$320,800</td>
-											<td>	<button type="button" onclick="location.href='update'" class="btn btn-primary btn-sm">수정</button>
-												<button type="button" onclick="location.href=''" class="btn btn-danger btn-sm">삭제</button></td>
-										</tr>
-										
+										<c:forEach items="${boardlist}" var="boardlist">
+											<tr>
+												<td>${boardlist.bno}</td>
+											<c:if test="${boardlist.category==1}" >												
+												<td>공지사항</td>
+											</c:if>
+											<c:if test="${boardlist.category==2}" >												
+												<td>홍보/이벤트</td>
+											</c:if>		
+												<td>${boardlist.title}</td>
+												<td>${boardlist.name}</td>
+												<td>${boardlist.write_date}</td>
+												<td>${boardlist.viewcount}</td>
+												<td>
+											  	<a href="updateboard.do?bno=${boardlist.bno}"
+													class="btn btn-danger btn-sm">수정</a>	
+													<a
+													onClick="return confirm('삭제하시겠어요?')"
+													href="boarddelete.do?bno=${boardlist.bno}"
+													class="btn btn-danger btn-sm">삭제</a>
+												</td>
+											</tr>
+										</c:forEach>
 									</tbody>
 								</table>
 								<a href="write" class="btn btn-primary btn-icon-split"

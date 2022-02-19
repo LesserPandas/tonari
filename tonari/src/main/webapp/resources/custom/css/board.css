@@ -40,6 +40,10 @@
 	top:30%;
 }
 
+.product-item{
+	height: 450px;
+}
+
 /*teacher button*/
 .button {
 	border: none;

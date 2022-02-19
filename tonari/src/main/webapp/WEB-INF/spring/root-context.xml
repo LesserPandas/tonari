@@ -3,41 +3,27 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
-	xmlns:websocket="http://www.springframework.org/schema/websocket"
-	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
-		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
+	<!-- Root Context: 스프링 프레임워크에서 관리해야 하는 객체를 설정하는 파일이다 -->
+	<!-- 연습 -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-		<property name="driverClassName"
-			value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
-		<property name="jdbcUrl"
-			value="jdbc:log4jdbc:oracle:thin:@10.211.55.3:1521:xe" />
-		<property name="username" value="tonari" />
-		<property name="password" value="1234" />
-	</bean>
-	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
-		destroy-method="close">
-		<constructor-arg ref="hikariConfig" />
-	</bean>
-
-	<bean id="sqlSessionFactory"
-		class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
-
-	<websocket:handlers>
-		<websocket:mapping handler="chattingHandler"
-			path="/chatting" />
-		<websocket:sockjs></websocket:sockjs>
-	</websocket:handlers>
+ 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
+		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:xe"></property> 
+		<property name="username" value="tonari"></property>
+		<property name="password" value="1234"></property>
+	</bean>	
 	
-	<beans:bean id="chattingHandler" class="com.tonari.handler.ChatHandler"/>
+	 <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+      <constructor-arg ref="hikariConfig" />
+   </bean>
+	 <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+      <property name="dataSource" ref="dataSource"/>
+   </bean> 
 
-	<context:component-scan
-		base-package="com.tonari.service" />
-	<mybatis-spring:scan
-		base-package="com.tonari.mapper" />
-
+   <context:component-scan base-package="com.tonari.service"/>
+   <mybatis-spring:scan base-package="com.tonari.mapper"/>
+  
 </beans>

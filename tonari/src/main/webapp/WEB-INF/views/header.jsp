@@ -273,8 +273,8 @@
 									<div class="col-md-6">
 										<ul>
 											<li><h4 style="padding: 10px 10px 0">남현</h4></li>
-											<li><a href="/board/search">강사 찾기</a></li>
-											<li><a href="/board/info">강사 정보</a></li>
+											<li><a href="/board/search?type=orderby&&keyword=teacher">강사 찾기</a></li>
+											<li><a href="/board/info?board_bno=4">강사 정보</a></li>
 
 											<li><h4 style="padding: 10px 10px 0">두홍</h4></li>
 						                    <li><a href="/admin">Admin-로그인</a></li>

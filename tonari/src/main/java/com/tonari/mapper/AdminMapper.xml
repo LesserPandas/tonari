@@ -82,4 +82,8 @@
 		   and passwd = #{passwd}   
 	</select>
 	
+	<select id="selectMail" resultType="com.tonari.domain.MailVO">
+		select email from member
+	</select>
+	
 </mapper>

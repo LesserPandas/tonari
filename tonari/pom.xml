@@ -24,7 +24,19 @@
 		</dependency>
 		<!-- 내가 추가한 것 -->
 
+		<!--두홍메일 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.5.6</version>
+		</dependency>
 
+		
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>

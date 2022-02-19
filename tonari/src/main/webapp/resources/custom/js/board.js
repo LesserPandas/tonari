@@ -102,10 +102,14 @@ function addlike(board_bno,member_bno) {
 	})
 }
 
-//function removelike(board_bno,member_bno) {
-//	$.ajax({
-//		type:"post",
-//		url:"/board/removelike",
-//		data:{board_bno: board_bno,member_bno:member_bno}
-//	})
-//}
+function removelike(board_bno,member_bno) {
+	$.ajax({
+		type:"post",
+		url:"/board/removelike",
+		data:{board_bno: board_bno,member_bno:member_bno}
+	})
+}
+
+//$(document).ready(function(){
+//	alert("됩니까");
+//});

@@ -3,6 +3,7 @@ package com.tonari.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Service;
 
 import com.tonari.domain.BoardVO;
@@ -95,5 +96,9 @@ public class AdminServiceImpl implements AdminService {
 		// TODO Auto-generated method stub
 		return mapper.login(MemberAuth);
 	}
-	
+	@Override
+	public void sendMail(MimeMessagePreparator preparator) {
+		
+		
+	}
 }

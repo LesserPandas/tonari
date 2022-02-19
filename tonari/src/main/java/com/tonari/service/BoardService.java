@@ -19,7 +19,7 @@ public interface BoardService {
 	public void addlike(LikeMarkVO like);
 	public void removelike(LikeMarkVO like);
 //	public Map<String, Object> chkLike(LikeMarkVO lvo);
-	public List<LikeMarkVO> chkLike(LikeMarkVO lvo);
+	public List<LikeMarkVO> chkLike(int i);
 	public LikeMarkVO chkLikeone(LikeMarkVO lvo);
 	
 	public int total(Criteria cri);//전체 게시물 조회

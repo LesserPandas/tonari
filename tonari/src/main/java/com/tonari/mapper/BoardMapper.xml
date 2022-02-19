@@ -1,88 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.tonari.mapper.BoardMapper">
-	
-	<select id ="shortarea" resultType="com.tonari.domain.Addr_searchVO">
+
+	<select id="shortarea"
+		resultType="com.tonari.domain.Addr_searchVO">
 		select * from addr_search where rank1= #{keyword}
 	</select>
-	<sql id ="searchall">
-		(select * from board_search_view where bno like '%' || #{keyword}||'%')
-		union (select * from board_search_view where title like '%' || #{keyword}||'%')
-		union (select * from board_search_view where gu like '%' || #{keyword}||'%')
-		union (select * from board_search_view where dong like '%' || #{keyword}||'%')
-		union (select * from board_search_view where category_name like '%' || #{keyword}||'%')
-		union (select * from board_search_view where coment like '%' || #{keyword}||'%')
+	<sql id="searchall">
+		(select * from board_search_view where bno like '%' ||
+		#{keyword}||'%')
+		union (select * from board_search_view where title
+		like '%' || #{keyword}||'%')
+		union (select * from board_search_view
+		where gu like '%' || #{keyword}||'%')
+		union (select * from
+		board_search_view where dong like '%' || #{keyword}||'%')
+		union (select
+		* from board_search_view where category_name like '%' ||
+		#{keyword}||'%')
+		union (select * from board_search_view where coment
+		like '%' || #{keyword}||'%')
 	</sql>
-	
+
 	<!-- 사이드 메뉴바 -->
 	<select id="sidelist" resultType="com.tonari.domain.CategoryVO">
-		select * from category order by category_bno
+		select * from category order by
+		category_bno
 	</select>
 	<!-- 사이드 메뉴바 -->
 	<!-- 선생님 정보 -->
-	<select id="teacherinfo" resultType="com.tonari.domain.Teacherinfo_viewVO">
+	<select id="teacherinfo"
+		resultType="com.tonari.domain.Teacherinfo_viewVO">
 		select * from board_info_view where bno = #{bno}
 	</select>
-	<select id ="review" resultType="com.tonari.domain.Review_viewVO">
-		select * from review_view where teacher_bno = #{bno}
+	<select id="review" resultType="com.tonari.domain.Review_viewVO">
+		select * from review_view where
+		teacher_bno = #{bno}
 	</select>
-	
-	<insert id= "writeReview" parameterType="com.tonari.domain.ReviewVO">
+
+	<insert id="writeReview"
+		parameterType="com.tonari.domain.ReviewVO">
 		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
 			select review_seq.nextval from dual
 		</selectKey>
-		insert into review (bno,member_bno,teacher_bno,content,score,scorestar,nick) values
+		insert into review
+		(bno,member_bno,teacher_bno,content,score,scorestar,nick) values
 		(#{bno},#{member_bno},#{teacher_bno},#{content},#{score},#{scorestar},#{nick})
 	</insert>
-	
-	<select id ="getnickname" resultType="String" parameterType="int">
+
+	<select id="getnickname" resultType="String" parameterType="int">
 		select nick from member where bno = #{bno}
 	</select>
-	
+
 	<!-- 페이징 및 search 데이터 가져오기 -->
-	<sql id ="criteria">
+	<sql id="criteria">
 		<choose>
 			<when test="type == 'orderby'.toString()">
 				title like '%' || #{keyword}||'%'
 			</when>
 		</choose>
 	</sql>
-	
-	<select id = "total" resultType="int" parameterType="com.tonari.util.Criteria">
+
+	<select id="total" resultType="int"
+		parameterType="com.tonari.util.Criteria">
 		select count(*) from
-			<choose>
-				<when test = "type == 'category'.toString()">
-					(select * from board_search_view where category_name = #{keyword})
-				</when>
-				<when test= "type == 'all'.toString()">
-					(select * from (<include refid="searchall"/>))
-				</when>
-				<otherwise>
-					 board_search_view 
-				</otherwise>
-			</choose>
+		<choose>
+			<when test="type == 'category'.toString()">
+				(select * from board_search_view where category_name = #{keyword})
+			</when>
+			<when test="type == 'all'.toString()">
+				(select * from (
+				<include refid="searchall" />
+				))
+			</when>
+			<otherwise>
+				board_search_view
+			</otherwise>
+		</choose>
 		where bno > 0
 	</select>
-	
-	<select id ="OrderbyList" resultType="com.tonari.domain.BoardSearch_viewVO" parameterType="com.tonari.util.Criteria">
+
+	<select id="OrderbyList"
+		resultType="com.tonari.domain.BoardSearch_viewVO"
+		parameterType="com.tonari.util.Criteria">
 		<choose>
 			<when test="type == 'orderby'.toString()">
-				select 
-					rn , BNO,MEMBER_BNO,TEACHER_BNO,TITLE,GU,DONG,IMAGE,CATEGORY_BNO,CATEGORY_NAME,SCORE,COMENT 
+				select
+				rn ,
+				BNO,MEMBER_BNO,TEACHER_BNO,TITLE,GU,DONG,IMAGE,CATEGORY_BNO,CATEGORY_NAME,SCORE,COMENT
 				from
-					(select 
-						rownum rn , BNO,MEMBER_BNO,TEACHER_BNO,TITLE,GU,DONG,IMAGE,CATEGORY_BNO,CATEGORY_NAME,SCORE,COMENT
-					from
-						(select * from board_search_view order by 
-						<choose>
-							<when test="keyword == 'score'.toString()">
-								score desc nulls last
-							</when>
-							<otherwise>
-								teacher_bno desc
-							</otherwise>
-						</choose>
-						)
+				(select
+				rownum rn ,
+				BNO,MEMBER_BNO,TEACHER_BNO,TITLE,GU,DONG,IMAGE,CATEGORY_BNO,CATEGORY_NAME,SCORE,COMENT
+				from
+				(select * from board_search_view order by
+				<choose>
+					<when test="keyword == 'score'.toString()">
+						score desc nulls last
+					</when>
+					<otherwise>
+						teacher_bno desc
+					</otherwise>
+				</choose>
+				)
 				<![CDATA[
 					where rownum <= #{pageNum} * #{amount}
 					)
@@ -90,15 +110,18 @@
 				]]>
 			</when>
 			<when test="type == 'area'.toString()">
-				select 
-					rn , BNO,MEMBER_BNO,TEACHER_BNO,TITLE,GU,DONG,IMAGE,CATEGORY_BNO,CATEGORY_NAME,SCORE,COMENT 
+				select
+				rn ,
+				BNO,MEMBER_BNO,TEACHER_BNO,TITLE,GU,DONG,IMAGE,CATEGORY_BNO,CATEGORY_NAME,SCORE,COMENT
 				from
-					(select 
-						rownum rn , BNO,MEMBER_BNO,TEACHER_BNO,TITLE,GU,DONG,IMAGE,CATEGORY_BNO,CATEGORY_NAME,SCORE,COMENT
-					from
-						(select * from board_search_view order by 
-							(case when dong = #{rank1} then 1 when dong = #{rank2} then 2 when dong = #{rank3} then 3 else 4 end)
-						)
+				(select
+				rownum rn ,
+				BNO,MEMBER_BNO,TEACHER_BNO,TITLE,GU,DONG,IMAGE,CATEGORY_BNO,CATEGORY_NAME,SCORE,COMENT
+				from
+				(select * from board_search_view order by
+				(case when dong = #{rank1} then 1 when dong = #{rank2} then 2 when dong =
+				#{rank3} then 3 else 4 end)
+				)
 				<![CDATA[
 					where rownum <= #{pageNum} * #{amount}
 					)
@@ -120,16 +143,18 @@
 				]]>
 			</when>
 			<otherwise>
-				
-				select 
-					rn , BNO,MEMBER_BNO,TEACHER_BNO,TITLE,GU,DONG,IMAGE,CATEGORY_BNO,CATEGORY_NAME,SCORE,COMENT 
+
+				select
+				rn ,
+				BNO,MEMBER_BNO,TEACHER_BNO,TITLE,GU,DONG,IMAGE,CATEGORY_BNO,CATEGORY_NAME,SCORE,COMENT
 				from
-					(select 
-						rownum rn , BNO,MEMBER_BNO,TEACHER_BNO,TITLE,GU,DONG,IMAGE,CATEGORY_BNO,CATEGORY_NAME,SCORE,COMENT
-					from
-						(
-							<include refid="searchall"/>	
-						)
+				(select
+				rownum rn ,
+				BNO,MEMBER_BNO,TEACHER_BNO,TITLE,GU,DONG,IMAGE,CATEGORY_BNO,CATEGORY_NAME,SCORE,COMENT
+				from
+				(
+				<include refid="searchall" />
+				)
 				<![CDATA[
 					where rownum <= #{pageNum} * #{amount}
 					)
@@ -138,19 +163,27 @@
 			</otherwise>
 		</choose>
 	</select>
-	<select id="chkLike" resultType="com.tonari.domain.LikeMarkVO" parameterType="com.tonari.domain.LikeMarkVO">
+	<select id="chkLike" resultType="com.tonari.domain.LikeMarkVO"
+		parameterType="com.tonari.domain.LikeMarkVO">
 		select * from likemark where member_bno = #{member_bno}
 	</select>
-	<insert id ="addlike" parameterType="com.tonari.domain.LikeMarkVO">
+	<insert id="addlike"
+		parameterType="com.tonari.domain.LikeMarkVO">
 		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
 			select likemark_seq.nextval from dual
 		</selectKey>
-		insert into likemark (bno,member_bno,board_bno) values (#{bno},#{member_bno},#{board_bno})
+		insert into likemark (bno,member_bno,board_bno) values
+		(#{bno},#{member_bno},#{board_bno})
 	</insert>
-	<select id="chkLikeone" resultType="com.tonari.domain.LikeMarkVO" parameterType="com.tonari.domain.LikeMarkVO">
-		select * from likemark where member_bno=#{member_bno} and board_bno = #{board_bno}
+	<select id="chkLikeone"
+		resultType="com.tonari.domain.LikeMarkVO"
+		parameterType="com.tonari.domain.LikeMarkVO">
+		select * from likemark where member_bno=#{member_bno}
+		and board_bno = #{board_bno}
 	</select>
-	<delete id ="removelike" parameterType="com.tonari.domain.LikeMarkVO">
-		delete from likemark where member_bno=#{member_bno} and board_bno = ${board_bno}
+	<delete id="removelike"
+		parameterType="com.tonari.domain.LikeMarkVO">
+		delete from likemark where member_bno=#{member_bno} and
+		board_bno = ${board_bno}
 	</delete>
 </mapper>

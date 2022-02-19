@@ -105,8 +105,8 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 //	public Map<String, Object> chkLike(LikeMarkVO lvo) {
-	public List<LikeMarkVO> chkLike(LikeMarkVO lvo){
-		List<LikeMarkVO> like = mapper.chkLike(lvo);
+	public List<LikeMarkVO> chkLike(int i){
+		List<LikeMarkVO> like = mapper.chkLike(i);
 //		Map<String, Object> list = new HashMap<String,Object>();
 //		list.put("like", list);
 		return like;

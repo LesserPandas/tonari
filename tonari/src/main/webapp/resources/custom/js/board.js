@@ -81,3 +81,31 @@ function checkscore(score) {
 	}
 	return true;x
 }
+
+function like(board_bno,member_bno) {
+	var like = $("#board_"+board_bno);
+	var chklike = like.hasClass("likeButtonActive");
+	if(chklike) {
+		removelike(board_bno,member_bno);
+		like.removeClass("likeButtonActive");
+	}else {
+		addlike(board_bno,member_bno);
+		like.addClass("likeButtonActive");
+	}
+}
+
+function addlike(board_bno,member_bno) {
+	$.ajax({
+		type:"post",
+		url:"/board/addlike",
+		data:{board_bno: board_bno,member_bno:member_bno}
+	})
+}
+
+//function removelike(board_bno,member_bno) {
+//	$.ajax({
+//		type:"post",
+//		url:"/board/removelike",
+//		data:{board_bno: board_bno,member_bno:member_bno}
+//	})
+//}

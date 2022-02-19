@@ -14,7 +14,7 @@ public class Teacherinfo_viewVO {
 	private String image;
 	private int category_bno;
 	private String category_name;
-	private int score;
+	private float score;
 	private String content;
 	private String coment;
 	private int dodate;

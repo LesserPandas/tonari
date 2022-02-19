@@ -76,7 +76,18 @@ pageEncoding="UTF-8"%>
 							</div>
 							<div class="pull-right">
 								<button class="button largeButton">1:1 채팅</button>
-								<button class="pull-right squareButton likeButton" id="like" onclick="like()">♥</button>
+								<c:choose>
+									<c:when test="${like.board_bno==board_bno }">
+										<button class="pull-right squareButton likeButton likeButtonActive" 
+											id="board_${board_bno}" onclick="like(${board_bno},3)">♥
+										</button>
+									</c:when>
+									<c:otherwise>
+										<button class="pull-right squareButton likeButton " 
+											id="board_${board_bno}" onclick="like(${board_bno},3)">♥
+										</button>
+									</c:otherwise>
+								</c:choose>
 							</div>
 							
 						</div>

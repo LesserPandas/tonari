@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+	
 <!DOCTYPE html>
 <html lang="jp">
 
@@ -67,6 +72,7 @@
 <link rel="stylesheet" href="/resources/custom/css/summernote.min.css">
 <link rel="stylesheet" href="/resources/custom/css/imagecheck.css">
 <script src="/resources/assets/jquery-3.6.0.min.js"></script>
+
 <!-- 내가 추가-->
 
 <!-- Theme styles END -->
@@ -95,10 +101,24 @@
 				<!-- BEGIN TOP BAR MENU -->
 				<div class="col-md-6 col-sm-6 additional-nav">
 					<ul class="list-unstyled list-inline pull-right">
-						<li><a href="/mypage">내 계정</a></li>
-						<li><a href="">즐겨찾기</a></li>
+						<c:choose>
+						<c:when test="${empty nick}">
+						<li><a href="/">HOME</a></li>
 						<li><a href="/login">로그인</a></li>
 						<li><a href="/join">회원가입</a></li>
+						</c:when>
+						
+						<c:when test="${not empty nick}">
+						<!-- 닉네임 -->
+						<li>${nick}님</li>
+						<!-- 홈으로 -->
+						<li><a href="/">HOME</a></li>
+						<!-- 마이페이지 -->
+						<li><a href="mypage.do">마이페이지</a></li>
+						<!-- 로그아웃 -->
+						<li><a href="/join/logout">로그아웃</a></li>
+						</c:when>
+						</c:choose>
 					</ul>
 				</div>
 				<!-- END TOP BAR MENU -->

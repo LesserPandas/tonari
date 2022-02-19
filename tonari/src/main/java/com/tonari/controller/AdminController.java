@@ -1,11 +1,13 @@
 package com.tonari.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Controller;
@@ -25,7 +27,6 @@ import com.tonari.domain.TeacherPermissionListVO;
 import com.tonari.service.AdminService;
 
 import lombok.AllArgsConstructor;
-import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @Controller
@@ -34,8 +35,10 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class AdminController {
 
-	@Setter(onMethod_ = @Autowired)
 	private AdminService service;
+
+	@Autowired
+	private JavaMailSenderImpl mailSender;
 
 	// 로그인
 	@GetMapping("/login")
@@ -87,8 +90,6 @@ public class AdminController {
 
 		return "admin/board/board";
 	}
-
-
 
 	// 강사목록
 	@GetMapping("/teacherlist")
@@ -174,21 +175,38 @@ public class AdminController {
 
 	}
 
-	//메일전송
+//	 메일전송
 	@GetMapping("/mail")
-	public String sendMail(final MailVO vo) {
-		final MimeMessagePreparator preparator = new MimeMessagePreparator() {
-			@Override
-			public void prepare(MimeMessage mimeMessage) throws Exception {
-				final MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
-				helper.setFrom(vo.getEmail());
-				helper.setTo(vo.getEmail());
-				helper.setSubject(vo.getTitle());
-				helper.setText(vo.getContent(), true);
-			}
-		};
-		service.sendMail(preparator);
-		return "admin/mail";
+	public String mail() {
+		return "/admin/mail";
 	}
 
+	@PostMapping("/sendMail")
+	public String sendMail(MailVO mail) {
+		
+		List<MailVO> mails = new ArrayList<>();
+		mails = service.selectMail();
+		
+		MimeMessagePreparator[] preparators = new MimeMessagePreparator[mails.size()];
+		int i = 0;
+		for (final MailVO vo : mails) {
+			
+			log.info("email : " + vo.getEmail());
+			
+			preparators[i++] = new MimeMessagePreparator() {
+				
+				@Override
+				public void prepare(MimeMessage mimeMessage) throws Exception {
+					final MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
+					helper.setFrom("kdh353866@gmail.com");
+					helper.setTo(vo.getEmail());
+					helper.setSubject(mail.getTitle());
+					helper.setText(mail.getContent(), true);
+				}
+			};
+		}
+		mailSender.send(preparators);
+		
+		return "redirect:/admin/memberlist";
+	}
 }

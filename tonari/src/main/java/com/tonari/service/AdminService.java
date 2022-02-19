@@ -6,6 +6,7 @@ import org.springframework.mail.javamail.MimeMessagePreparator;
 
 import com.tonari.domain.BoardVO;
 import com.tonari.domain.BoardlistVO;
+import com.tonari.domain.MailVO;
 import com.tonari.domain.MemberAuthVO;
 import com.tonari.domain.TeacherListVO;
 import com.tonari.domain.TeacherPermissionListVO;
@@ -50,7 +51,9 @@ public interface AdminService {
 
 	public MemberAuthVO login(MemberAuthVO MemberAuth);
 
+	public List<MailVO> selectMail();
+
 	
-	public void sendMail(MimeMessagePreparator preparator);
+
 	
 }

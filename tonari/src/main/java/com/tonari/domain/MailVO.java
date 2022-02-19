@@ -1,8 +1,9 @@
 package com.tonari.domain;
 
-import java.sql.Date;
+import java.util.Date;
 
 import lombok.Data;
+
 @Data
 public class MailVO {
 	private int bno;

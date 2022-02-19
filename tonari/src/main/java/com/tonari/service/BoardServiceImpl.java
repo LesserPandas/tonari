@@ -1,7 +1,9 @@
 package com.tonari.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.tonari.domain.Addr_searchVO;
 import com.tonari.domain.BoardSearch_viewVO;
 import com.tonari.domain.CategoryVO;
+import com.tonari.domain.LikeMarkVO;
 import com.tonari.domain.ReviewVO;
 import com.tonari.domain.Review_viewVO;
 import com.tonari.domain.Teacherinfo_viewVO;
@@ -77,7 +80,8 @@ public class BoardServiceImpl implements BoardService {
 		for(int i=0; i<5-score;i++) sb.append("☆");
 		stars = sb.toString();
 		rvo.setScorestar(stars);
-		String nick=rvo.getNick();
+		rvo.setNick(mapper.getnickname(rvo.getMember_bno()));
+		String nick = rvo.getNick();
 		System.out.println(nick);
 		String firstname= nick.substring(0, 1);
 		nick=nick.substring(1);
@@ -87,6 +91,30 @@ public class BoardServiceImpl implements BoardService {
 		String nickname = sb.toString();
 		rvo.setNick(nickname);
 		mapper.writeReview(rvo);
+	}
+	
+	@Override
+	public void addlike(LikeMarkVO like) {
+		mapper.addlike(like);
+	}
+	
+	@Override
+	public void removelike(LikeMarkVO like) {
+		mapper.removelike(like);
+	}
+	
+	@Override
+//	public Map<String, Object> chkLike(LikeMarkVO lvo) {
+	public List<LikeMarkVO> chkLike(LikeMarkVO lvo){
+		List<LikeMarkVO> like = mapper.chkLike(lvo);
+//		Map<String, Object> list = new HashMap<String,Object>();
+//		list.put("like", list);
+		return like;
+	}
+	
+	@Override
+	public LikeMarkVO chkLikeone(LikeMarkVO lvo) {
+		return mapper.chkLikeone(lvo);
 	}
 	
 	@Override

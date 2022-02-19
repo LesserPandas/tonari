@@ -35,6 +35,10 @@
 		(#{bno},#{member_bno},#{teacher_bno},#{content},#{score},#{scorestar},#{nick})
 	</insert>
 	
+	<select id ="getnickname" resultType="String" parameterType="int">
+		select nick from member where bno = #{bno}
+	</select>
+	
 	<!-- 페이징 및 search 데이터 가져오기 -->
 	<sql id ="criteria">
 		<choose>
@@ -134,8 +138,19 @@
 			</otherwise>
 		</choose>
 	</select>
-	
-	<select id ="categoryList" resultType="com.tonari.domain.BoardSearch_viewVO" parameterType="com.tonari.util.Criteria">
-	
+	<select id="chkLike" resultType="com.tonari.domain.LikeMarkVO" parameterType="com.tonari.domain.LikeMarkVO">
+		select * from likemark where member_bno = #{member_bno}
 	</select>
+	<insert id ="addlike" parameterType="com.tonari.domain.LikeMarkVO">
+		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
+			select likemark_seq.nextval from dual
+		</selectKey>
+		insert into likemark (bno,member_bno,board_bno) values (#{bno},#{member_bno},#{board_bno})
+	</insert>
+	<select id="chkLikeone" resultType="com.tonari.domain.LikeMarkVO" parameterType="com.tonari.domain.LikeMarkVO">
+		select * from likemark where member_bno=#{member_bno} and board_bno = #{board_bno}
+	</select>
+	<delete id ="removelike" parameterType="com.tonari.domain.LikeMarkVO">
+		delete from likemark where member_bno=#{member_bno} and board_bno = ${board_bno}
+	</delete>
 </mapper>

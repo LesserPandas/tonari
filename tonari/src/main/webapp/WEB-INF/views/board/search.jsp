@@ -116,7 +116,17 @@
 									<h3 style="display: inline">
 										<a href="info?board_bno=${list.bno }" style="font-weight: bold; font-size: 18px;">${list.title }</a>
 									</h3>
-									<button class="pull-right squareButton likeButton likeButtonActive" id="like" onclick="like()">♥</button>
+									<button class="pull-right squareButton likeButton " 
+										id="board_${list.bno}" onclick="like(${list.bno},3)">♥
+									</button>
+									<c:forEach items = "${like }" var="like">
+									<c:if test="${like.board_bno == list.bno}">
+											<script>
+												$("#board_"+${list.bno}).addClass("likeButtonActive")
+											</script>
+										</c:if>
+									</c:forEach>
+									
 								</div>
 							</div>
 						</div>

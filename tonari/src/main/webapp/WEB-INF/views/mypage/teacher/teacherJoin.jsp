@@ -122,8 +122,7 @@
 						<div class="product-page-content">
 							<ul id="myTab" class="nav nav-tabs">
 
-								<li class=""><a href="#Reviews" data-toggle="tab">자기
-										소개</a></li>
+								<li class=""><a href="#Reviews" data-toggle="tab">자기 소개</a></li>
 							</ul>
 							<div id="myTabContent" class="tab-content">
 
@@ -155,51 +154,26 @@
 </div>
 
 <script>
-	//summernote jquery
-
-	$(document)
-			.ready(
-					function() {
-						$('#summernote')
-								.summernote(
-										{
-											height : 300,
-											fontNames : [ '맑은고딕', 'Arial',
-													'Arial Black',
-													'Comic Sans MS',
-													'Courier New', ],
-											fontNamesIgnoreCheck : [ '맑은고딕' ],
-											focus : true,
-
-											callbacks : {
-												onImageUpload : function(files,
-														editor, welEditable) {
-													for (var i = files.length - 1; i >= 0; i--) {
-														sendFile(files[i], this);
-													}
-												}
-											}
-
-										});
-
-					})
-	function sendFile(file, el) {
-		var form_data = new FormData();
-		form_data.append('file', file);
-		$.ajax({
-			data : form_data,
-			type : "POST",
-			url : 'profileImage.do',
-			cache : false,
-			contentType : false,
-			enctype : 'multipart/form-data',
-			processData : false,
-			success : function(img_name) {
-				alert(img_name);
-				$(el).summernote('editor.insertImage', img_name);
-			}
-		});
-	} // sendfile
-</script>
+function readImage(input) {
+    // 인풋 태그에 파일이 있는 경우
+    if(input.files && input.files[0]) {
+        // 이미지 파일인지 검사 (생략)
+        // FileReader 인스턴스 생성
+        const reader = new FileReader()
+        // 이미지가 로드가 된 경우
+        reader.onload = e => {
+            const previewImage = document.getElementById("preview-image")
+            previewImage.src = e.target.result
+        }
+        // reader가 이미지 읽도록 하기
+        reader.readAsDataURL(input.files[0])
+    }
+}
+// input file에 change 이벤트 부여
+const inputImage = document.getElementById("input-image")
+inputImage.addEventListener("change", e => {
+    readImage(e.target)
+}) 
+</script> 
 
 <%@ include file="../../footer.jsp"%>

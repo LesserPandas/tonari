@@ -1,5 +1,52 @@
 package com.tonari.service;
 
-public interface AdminService {
+import java.util.List;
 
+import com.tonari.domain.BoardVO;
+import com.tonari.domain.BoardlistVO;
+import com.tonari.domain.MemberAuthVO;
+import com.tonari.domain.TeacherListVO;
+import com.tonari.domain.TeacherPermissionListVO;
+
+public interface AdminService {
+	
+	//멤버리스트
+	
+	public List<MemberAuthVO> selectmemberlist();
+	
+	public List<TeacherListVO> selectteacherlist();
+
+	//회원삭제
+	public boolean delete(MemberAuthVO MemberAuth);
+	
+	//게시글삭제
+	public boolean boarddelete(BoardlistVO Boardlist);
+	
+	//수정페이지
+	public void updateboard(BoardlistVO Boardlist);
+	
+	public boolean updateboardpro(BoardVO board);
+
+	
+	
+	
+	
+	//강사구독승인리스트
+	public List<TeacherPermissionListVO> TeacherPermissionList();
+	
+	//회원목록강사구독승인	
+	public int permission(int bno);
+	
+	//게시판 목록
+	public List<BoardlistVO> selectboardlist();
+
+	//게시글 하나 불러오기	
+	public BoardVO selectBoard(int bno);
+	
+	//게시글쓰기
+	public void insertboard(BoardVO board);
+
+	public MemberAuthVO login(MemberAuthVO MemberAuth);
+
+	
 }

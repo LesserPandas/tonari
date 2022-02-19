@@ -21,7 +21,7 @@
             <div class="content-page">
               <h3></h3>
               <ul>
-                <li><a href="studentInfoModify.jsp">개인정보 수정</a></li>
+                <li><a href="studentInfoModify">개인정보 수정</a></li>
                 <li><a href="teacherlike.jsp">좋아요 한 선생님 보기</a></li>
                 <li><a href="teacherlist.jsp">나의 선생님 보기(결제된 사람만)</a></li>
                 <li><a href="teacherJoin.jsp">선생님으로 등록</a></li>

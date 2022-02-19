@@ -20,13 +20,14 @@
               
                 <div class="panel-heading">
                   <h2 class="panel-title">
-                    
+                   
                       
-                    </a>
+                    
                   </h2>
                 </div>
                 <div id="checkout-content" class="panel-collapse collapse in">
-                <form class="form-horizontal"  method="post" action="login.do">
+                <form class="form-horizontal" name="login" id="login" method="post" action="/join/login">
+                 <%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> --%>
                   <div class="panel-body row">
                     
                     <div class="col-md-6 col-sm-6" style="left: 25%; ">
@@ -36,16 +37,16 @@
                       
                         <div class="form-group" style="text-align: left;"> 
                          
-                          <input type="text" id="userid" name="userid" class="form-control" placeholder="아이디입력">
+                          <input type="text" id="email" name="email" class="form-control" placeholder="이메일 입력">
                         </div>
                         <div class="form-group"style="text-align: left;">
                       
-                           <input type="password" class="form-control" id="userpwd" name="userpwd" placeholder="패스워드 입력">
+                           <input type="password" class="form-control" id="passwd" name="passwd" placeholder="패스워드 입력">
                         </div>
                         <div class="form-group"style="text-align: left;">
                          <button class="btn btn-primary" type="submit" style="    width: 100%;    height: 40px;    font-size: 20px;">Login</button>
                          </div>
-                        <a href="contract.do" >회원이 아니신가요?</a>
+                        <a href="/join" >회원이 아니신가요?</a>
                         <div class="padding-top-20">                  
                          
                         </div>

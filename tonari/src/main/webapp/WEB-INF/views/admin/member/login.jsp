@@ -40,20 +40,18 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">관리자 로그인</h1>
                                     </div>
-                                    <form class="user">
+                                  <form name="memberauth" method="post" action="login.do" onsubmit="return check()">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
+                                            <input type="text" name="email" class="form-control form-control-user"
+                                                 
                                                 placeholder="Enter login adminID...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
+                                            <input type="password" name="passwd" class="form-control form-control-user"
                                                 id="exampleInputPassword" placeholder="Password">
                                         </div>
                                         
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            Login
-                                        </a>
+                                         <input type="submit" class="btn btn-default"  value="로그인"/>
                                         <hr>
                                       
                                     </form>

@@ -71,7 +71,6 @@
 <link rel="stylesheet" href="/resources/assets/pages/css/index.css">
 <link rel="stylesheet" href="/resources/custom/css/summernote.min.css">
 <link rel="stylesheet" href="/resources/custom/css/imagecheck.css">
-<link rel="stylesheet" href="/resources/custom/css/teacher.css">
 <script src="/resources/assets/jquery-3.6.0.min.js"></script>
 
 <!-- 내가 추가-->
@@ -294,8 +293,8 @@
 									<div class="col-md-6">
 										<ul>
 											<li><h4 style="padding: 10px 10px 0">남현</h4></li>
-											<li><a href="/board/search">강사 찾기</a></li>
-											<li><a href="/board/info">강사 정보</a></li>
+											<li><a href="/board/search?type=orderby&&keyword=teacher">강사 찾기</a></li>
+											<li><a href="/board/info?board_bno=4">강사 정보</a></li>
 
 											<li><h4 style="padding: 10px 10px 0">두홍</h4></li>
 						                    <li><a href="/admin">Admin-로그인</a></li>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
+<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="/resources/custom/css/board.css">
 
 <div class="main">
@@ -13,7 +14,19 @@
 
 		<div class="row margin-bottom-40">
 			<!-- BEGIN SIDEBAR -->
-			<%@ include file="side_board.jsp"%>
+			<div class="sidebar col-md-3 col-sm-5">
+				<div class="sidebar-filter margin-bottom-25">
+					<ul class="list-group margin-bottom-25 sidebar-menu">
+						<c:forEach items="${sidelist }" var="sidelist">
+							<li class="list-group-item clearfix">
+								<a href="/board/search?type=category&&keyword=${sidelist.category_bno}"> 
+									<i class="fa fa-angle-right"></i>${sidelist.category_name }
+								</a>
+							</li>
+						</c:forEach>
+					</ul>
+				</div>
+			</div>
 			<!-- END SIDEBAR -->
 			<!-- BEGIN CONTENT -->
 			<div class="col-md-9 col-sm-7">
@@ -25,11 +38,10 @@
 							</h1>
 						</div>
 						<div class="col-md-6">
-							<form action="#">
+							<form action="search" method="get">
 								<div class="input-group">
-									<input type="text" placeholder="개꿀 선생님을 검색해보자"
-										class="form-control" name="searchText"> <span
-										class="input-group-btn">
+									<input type="text" placeholder="개꿀 선생님을 검색해보자" class="form-control" name="keyword" id="keyword"> 
+									<span class="input-group-btn">
 										<button class="btn btn-primary" type="submit">Search</button>
 									</span>
 								</div>
@@ -45,10 +57,31 @@
 					<div class="col-md-10 col-sm-10">
 						<div class="pull-right">
 							<label class="control-label">정렬</label>
-							<select class="form-control input-sm" name="orderBy">
-								<option value="new" selected="selected">신규</option>
-								<option value="area">가까운 지역</option>
-								<option value="star">별점</option>
+							<!-- <select class="form-control input-sm" name="orderby" id="orderby" onchange="orderby()">
+								<option value="teacher" selected="selected">신규</option>
+								<option value="a">가까운 지역</option>
+								<option value="score">별점</option>
+							 
+							 ajax 나중에 해볼것
+							 -->
+							 <select class="form-control input-sm" onchange="if(this.value) location.href=(this.value);">
+								<c:choose>
+									<c:when test="${orderby=='teacher'}">
+										<option value="/board/search?type=orderby&&keyword=teacher" selected="selected">신규</option>
+										<option value="/board/search?type=area&&keyword=a">가까운 지역</option>
+										<option value="/board/search?type=orderby&&keyword=score">별점</option>
+									</c:when>
+									<c:when test="${orderby=='score' }">
+										<option value="/board/search?type=orderby&&keyword=teacher">신규</option>
+										<option value="/board/search?type=area&&keyword=a">가까운 지역</option>
+										<option value="/board/search?type=orderby&&keyword=score" selected="selected">별점</option>
+									</c:when>
+									<c:otherwise>
+										<option value="/board/search?type=orderby&&keyword=teacher">신규</option>
+										<option value="/board/search?type=area&&keyword=a" selected="selected">가까운 지역</option>
+										<option value="/board/search?type=orderby&&keyword=score">별점</option>
+									</c:otherwise>
+								</c:choose> 
 							</select>
 						</div>
 					</div>
@@ -56,49 +89,56 @@
 				<!-- BEGIN PRODUCT LIST -->
 				<div class="row product-list">
 					<!-- PRODUCT ITEM START -->
-					<div class="col-md-4 col-sm-6 col-xs-12">
-						<div class="product-item">
-							<div style="text-align: right;">
-								<span>별점<i class="bi bi-star-fill"></i> 부트스트랩 별<br>
-									<i class="fa-solid fa-star"></i>폰트어썸 별
-								</span>
-							</div>
-							<div class="pi-img-wrapper">
-								<img src="/resources/assets/pages/img/products/model1.jpg"
-									class="img-responsive" alt="">
-								<div>
-									<a href="#" class=" btn-default fancybox-button"
+					<c:if test="${empty list}">
+						해당 검색의 강사가 없음
+					</c:if>
+					<c:forEach items="${list}" var="list">
+						<div class="col-md-4 col-sm-6 col-xs-12">
+							<div class="product-item">
+								<div style="text-align: right;">
+									<span>별점 :&nbsp;${list.score}</span>
+								</div>
+								<div class="pi-img-wrapper">
+									<img src="/resources/assets/pages/img/products/model1.jpg"
+										class="img-responsive" alt="">
+									<div>
+										<a href="#" class=" btn-default fancybox-button" 
 										style="border: none; text-align: center; padding: 0; margin: 0;">
-										"<br>내용<br>"
-									</a>
+											<!-- "<br>내용<br>" -->
+										</a>
+									</div>
+								</div>
+								<div class="teacherInfo">
+									<div style="display: inline"> ${list.category_name}</div>
+									<div class="pull-right">${list.gu}구&nbsp;${list.dong}동</div>
+								</div>
+								<div class="teacherInfo">
+									<h3 style="display: inline">
+										<a href="info?board_bno=${list.bno }" style="font-weight: bold; font-size: 18px;">${list.title }</a>
+									</h3>
+									<button class="pull-right squareButton likeButton likeButtonActive" id="like" onclick="like()">♥</button>
 								</div>
 							</div>
-							<div class="teacherInfo">
-								<div style="display: inline">과목명</div>
-								<div class="pull-right">지역</div>
-							</div>
-							<div class="teacherInfo">
-								<h3 style="display: inline">
-									<a href="info" style="font-weight: bold; font-size: 18px;">강사명</a>
-								</h3>
-								<button class="pull-right squareButton likeButton" id="like" onclick="like()">♥</button>
-							</div>
 						</div>
-					</div>
+					</c:forEach>
 					<!-- PRODUCT ITEM END -->
 				</div>
 				<!-- END PRODUCT LIST -->
 				<!-- BEGIN PAGINATOR -->
 				<div class="row">
 					<div class="col-md-12 col-sm-12" style="text-align: center">
-						<ul class="pagination">
-							<li><a href="javascript:;">&laquo;</a></li>
-							<li><a href="javascript:;">1</a></li>
-							<li><span>2</span></li>
-							<li><a href="javascript:;">3</a></li>
-							<li><a href="javascript:;">4</a></li>
-							<li><a href="javascript:;">5</a></li>
-							<li><a href="javascript:;">&raquo;</a></li>
+						<ul class="pagination paging">
+							<c:if test="${pageMaker.prev }">
+								<li><a href="${pageMaker.startPage-1 }">&laquo;</a></li>
+							</c:if>
+							<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage }">
+								<li>
+									<a href="search?pageNum=${num }&&type=${type}&&keyword=${keyword}">${num }</a>
+								</li>
+							</c:forEach>
+							<c:if test="${pageMaker.next }">
+								<li><a href="${pageMaker.startPage+1 }">&raquo;</a></li>
+							</c:if>
 						</ul>
 					</div>
 				</div>

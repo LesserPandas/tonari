@@ -3,12 +3,12 @@ package com.tonari.domain;
 import lombok.Data;
 
 @Data
-public class ReviewVO {
-	private int bno;
-	private int member_bno;
-	private int teacher_bno;
+public class Review_viewVO {
+
+	private String scorestar;
+	private int review_bno;
 	private String content;
 	private int score;
-	private String scorestar;
 	private String nick;
+	private int teacher_bno;
 }

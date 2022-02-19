@@ -1,19 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ include file ="../header.jsp" %>
+<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="/resources/custom/css/board.css">
+
 
 <div class="main">
 	<div class="container">
 		<ul class="breadcrumb">
 			<li><a href="index.html">Home</a></li>
-			<li><a href="">선생님 찾기/</a><a href="">일본어(카테고리)</a></li>
-			<li class="active">ㅇㅇㅇ선생님</li>
+			<li>
+				<a href="/board/search?orderby=teacher">선생님 찾기/</a>
+				<a href="/board/category?category=${teacher.category_bno}">${teacher.category_name }</a>
+			</li>
+			<li class="active">${teacher.nick }</li>
 		</ul>
 	<!-- BEGIN SIDEBAR & CONTENT -->
 		<div class="row margin-bottom-40">
 			<!-- BEGIN SIDEBAR -->
-			 <%@ include file ="side_board.jsp" %>
+			<div class="sidebar col-md-3 col-sm-5">
+				<div class="sidebar-filter margin-bottom-25">
+					<ul class="list-group margin-bottom-25 sidebar-menu">
+						<c:forEach items="${sidelist }" var="sidelist">
+							<li class="list-group-item clearfix">
+								<a href="/board/category?category=${sidelist.category_bno }"> 
+									<i class="fa fa-angle-right"></i>${sidelist.category_name }
+								</a>
+							</li>
+						</c:forEach>
+					</ul>
+				</div>
+			</div>
 			<!-- END SIDEBAR -->
 		
 			<!-- BEGIN CONTENT -->
@@ -32,25 +49,25 @@ pageEncoding="UTF-8"%>
 						</div>
 						<div class="col-md-6 col-sm-6">
 							<div class="pull-right starTeacher">
-								<span>4.1</span>
+								<span>${teacher.score }</span>
 							</div>
-							<h1>프로필 타이틀</h1>
+							<h1>${teacher.title }</h1>
 							<div class="price-availability-block clearfix">
 								<div class="price">
-									<strong>닉네임</strong>
+									<strong>${teacher.nick }</strong>
 								</div>
 							</div>
 							<div class="description">
-								<p>간단 소개(한 두줄)</p>
+								<p>${teacher.coment }</p>
 							</div>
 							<div class="product-page-options">
 								<div class="pull-left">
 									<label class="control-label">과목 :</label>
-									<strong>소맥말이</strong>
+									<strong>${teacher.category_name }</strong>
 								</div>
 								<div class="pull-right">
 									<label class="control-label">지역:</label>
-									<strong>중구 용두동</strong>
+									<strong>${teacher.gu }구&nbsp;${teacher.dong }동</strong>
 								</div>
 							</div>
 							<div style="margin-bottom: 30px;">
@@ -71,65 +88,66 @@ pageEncoding="UTF-8"%>
 							</ul>
 							<div id="myTabContent" class="tab-content">
 								<div class="tab-pane fade in active" id="TeacherInfo">
-									<p>자기 소개 글</p>
+									<p>${teacher.content}</p>
 								</div>
 								<div class="tab-pane fade" id="Reviews">
-									<div class="review-item clearfix">
-										<div class="review-item-submitted">
-											<strong style="display: inline">B** (이름 맨첫자만 보이게 하기)</strong>
-											<span class="pull-right" style="display:inline;">★★★★☆</span> 
-											<em>30/12/2013</em>
-											<div class="rateit" data-rateit-value="5"
-												data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+									<c:forEach items="${review }" var="review">
+										<div class="review-item clearfix">
+											<div class="review-item-submitted">
+												<strong style="display: inline">${review.nick }</strong>
+												<span class="pull-right" style="display:inline;">
+													${review.scorestar }
+												</span> 
+												<div class="rateit" data-rateit-value="5"
+													data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+											</div>
+											<div class="review-item-content">
+												<p>${review.content }</p>
+											</div>
 										</div>
-										<div class="review-item-content">
-											<p>Sed velit quam, auctor id semper a, hendrerit eget
-												justo. Cum sociis natoque penatibus et magnis dis parturient
-												montes, nascetur ridiculus mus. Duis vel arcu pulvinar dolor
-												tempus feugiat id in orci. Phasellus sed erat leo. Donec
-												luctus, justo eget ultricies tristique, enim mauris bibendum
-												orci, a sodales lectus purus ut lorem.</p>
-										</div>
-									</div>
+									</c:forEach>
 								</div>
 								<div class="tab-pane fade in " id="ReviewWrite">
 									<!--<p>There are no reviews for this product.</p>-->
 
 
 									<!-- BEGIN FORM-->
-									<form class="reviews-form" role="form" method="post" action="#" onsubmit="return checkReview()">
+									<form class="reviews-form" action="/board/writeReview" method="post" onsubmit="return writeReview()">
+										<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
+										<input type="hidden" name="teacher_bno" value="${teacher.teacher_bno }">
+										<input type="hidden" name="member_bno" value="5">
+										<input type="hidden" name="nick" value="임시연습용">
+										
 										<h2>Write a review</h2>
-
-
 										<div name="myform" id="myform">
 											<fieldset>
 												<legend> 별점</legend>
-												<input type="radio" name="rating" value="5" id="rate1">
+												<input type="radio" name="score" value="5" id="rate1">
 												<label for="rate1">⭐</label> 
-												<input type="radio" name="rating" value="4" id="rate2">
+												<input type="radio" name="score" value="4" id="rate2">
 												<label for="rate2">⭐</label> 
-												<input type="radio" name="rating" value="3" id="rate3">
+												<input type="radio" name="score" value="3" id="rate3">
 												<label for="rate3">⭐</label> 
-												<input type="radio" name="rating" value="2" id="rate4">
+												<input type="radio" name="score" value="2" id="rate4">
 												<label for="rate4">⭐</label> 
-												<input type="radio" name="rating" value="1" id="rate5">
+												<input type="radio" name="score" value="1" id="rate5">
 												<label for="rate5">⭐</label>
 											</fieldset>
 										</div>
 										<div class="form-group" style="width: 300px;">
-											<label for="country">제목 <span class="require">*</span></label>
-											<select class="form-control input-sm" id="country">
-												<option value="">구분</option>
-												<option value="2">훌륭해요</option>
-												<option value="1">최고에요</option>
-												<option value="1">좋아요</option>
-												<option value="1">보통이에요</option>
+											<label for="country">빠른 댓글 <span class="require">*</span></label>
+											<select class="form-control input-sm" id="nocoment" name="nocoment">
+												<option value="">선택</option>
+												<option value="훌륭해요">훌륭해요</option>
+												<option value="최고예요">최고에요</option>
+												<option value="좋아요">좋아요</option>
+												<option value="보통이예요">보통이에요</option>
 
 											</select>
 										</div>
 										<div class="form-group">
-											<label for="review">Review <span class="require">*</span></label>
-											<textarea class="form-control" rows="8" id="review"></textarea>
+											<label for="review">댓글 <span class="require"></span></label>
+											<textarea class="form-control" rows="8" id="content" name="content"></textarea>
 										</div>
 										<div class="padding-top-20 pull-right">
 											<button type="submit" class="btn btn-primary">리뷰쓰기</button>

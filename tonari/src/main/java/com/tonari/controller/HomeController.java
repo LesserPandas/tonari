@@ -28,6 +28,12 @@ public class HomeController {
 		return "/mypage/mypage";
 	}
 	
+	
+	@GetMapping("/studentInfoModify")
+	public String studentInfoModify() {
+		return "/mypage/student/studentInfoModify";
+	}
+	
 	@GetMapping("/admin")
 	public String admin() {
 		return "redirect:/admin/login";

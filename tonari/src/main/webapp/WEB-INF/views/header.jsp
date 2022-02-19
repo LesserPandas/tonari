@@ -102,11 +102,24 @@
 				<!-- BEGIN TOP BAR MENU -->
 				<div class="col-md-6 col-sm-6 additional-nav">
 					<ul class="list-unstyled list-inline pull-right">
-					
+						<c:choose>
+						<c:when test="${empty nick}">
 						<li><a href="/">HOME</a></li>
-						<li><a href="">마이페이지</a></li>
 						<li><a href="/login">로그인</a></li>
 						<li><a href="/join">회원가입</a></li>
+						</c:when>
+						
+						<c:when test="${not empty nick}">
+						<!-- 닉네임 -->
+						<li>${nick}님</li>
+						<!-- 홈으로 -->
+						<li><a href="/">HOME</a></li>
+						<!-- 마이페이지 -->
+						<li><a href="mypage.do">마이페이지</a></li>
+						<!-- 로그아웃 -->
+						<li><a href="/join/logout">로그아웃</a></li>
+						</c:when>
+						</c:choose>
 					</ul>
 				</div>
 				<!-- END TOP BAR MENU -->

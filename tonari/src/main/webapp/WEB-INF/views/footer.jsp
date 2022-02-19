@@ -217,7 +217,7 @@
 			Layout.initNavScrolling();
 		});
 		
-		/* function readImage(input) {
+		 /* function readImage(input) {
 		    // 인풋 태그에 파일이 있는 경우
 		    if(input.files && input.files[0]) {
 		        // 이미지 파일인지 검사 (생략)
@@ -236,7 +236,7 @@
 		const inputImage = document.getElementById("input-image")
 		inputImage.addEventListener("change", e => {
 		    readImage(e.target)
-		}) */
+		})  */
 		
 	</script>
 	<!-- END PAGE LEVEL JAVASCRIPTS -->

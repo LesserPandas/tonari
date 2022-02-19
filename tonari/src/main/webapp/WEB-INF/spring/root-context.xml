@@ -25,4 +25,5 @@
 
    <context:component-scan base-package="com.tonari.service"/>
    <mybatis-spring:scan base-package="com.tonari.mapper"/>
+  
 </beans>

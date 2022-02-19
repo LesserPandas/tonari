@@ -1,6 +1,7 @@
 package com.tonari.controller;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tonari.domain.LikeMarkVO;
 import com.tonari.domain.PageVO;
@@ -66,7 +66,9 @@ public class BoardController {
 		service.removelike(like);
 	}
 	
-//	@RequestMapping
+//	@PostMapping("/board/chklike")
 //	@ResponseBody
-//	public 
+//	public Map<String, Object> chklike(LikeMarkVO lvo){
+//		return service.chkLike(lvo);
+//	}
 }

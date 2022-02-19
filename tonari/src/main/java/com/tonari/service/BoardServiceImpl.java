@@ -1,7 +1,9 @@
 package com.tonari.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -102,8 +104,12 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public List<LikeMarkVO> chkLike(int member_bno) {
-		return mapper.chkLike(member_bno);
+//	public Map<String, Object> chkLike(LikeMarkVO lvo) {
+	public List<LikeMarkVO> chkLike(LikeMarkVO lvo){
+		List<LikeMarkVO> like = mapper.chkLike(lvo);
+//		Map<String, Object> list = new HashMap<String,Object>();
+//		list.put("like", list);
+		return like;
 	}
 	
 	@Override

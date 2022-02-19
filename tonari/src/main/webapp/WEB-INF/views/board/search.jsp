@@ -122,7 +122,7 @@
 									<c:forEach items = "${like }" var="like">
 									<c:if test="${like.board_bno == list.bno}">
 											<script>
-												$("#board_"+${list.bno}).addClass("likeButtonActive");
+												$("#board_"+${list.bno}).addClass("likeButtonActive")
 											</script>
 										</c:if>
 									</c:forEach>
@@ -159,8 +159,5 @@
 		<!-- END SIDEBAR & CONTENT -->
 	</div>
 </div>
-<script>
-
-</script>
 <script src="/resources/custom/js/board.js" type="text/javascript"></script>
 <%@ include file="../footer.jsp"%>

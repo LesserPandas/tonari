@@ -112,8 +112,11 @@
 													<td>${TeacherPermissionList.category_name}</td>
 													<td><a onClick="return confirm('승인하시겠습니까?')"
 														href="permission.do?bno=${TeacherPermissionList.bno}"
-														class="btn btn-primary btn-sm">승인</a></td>
-													<!--  	<td><a href="permission.do?bno=${lectorpermitlist.bno}" class="btn btn-danger btn-sm">승인</a></td>  -->
+														class="btn btn-primary btn-sm">승인</a>
+														<a onClick="return confirm('취소하시겠어요?')"
+													href="deleteteacherlist1.do?bno=${TeacherPermissionList.bno}"
+													class="btn btn-danger btn-sm">취소</a>	
+													</td>
 												</tr>
 											</c:forEach>
 
@@ -151,23 +154,16 @@
 											<th>회원삭제</th>
 										</tr>
 									</thead>
-									<tfoot>
-										<tr>
-											<th>회원번호</th>
-											<th>권한</th>
-											<th>이름</th>
-											<th>메일</th>
-											<th>가입날짜</th>
-											<th>회원삭제</th>
-										</tr>
-									</tfoot>
 									<tbody>
 										<c:forEach items="${memberlist}" var="memberlist">
 											<tr>
 												<td>${memberlist.bno}</td>
 											<c:if test="${memberlist.auth eq'ROLE_ADMIN'}">	
 												<td>관리자</td>
-											</c:if>	
+											</c:if>
+											<c:if test="${memberlist.auth eq'ROLE_MEMBER'}">	
+												<td>일반회원</td>
+											</c:if>		
 												<td>${memberlist.name}</td>
 												<td>${memberlist.email}</td>
 												<td>${memberlist.join_date}</td>

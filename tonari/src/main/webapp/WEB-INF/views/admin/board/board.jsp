@@ -142,7 +142,7 @@
 								</table>
 								<a href="write" class="btn btn-primary btn-icon-split"
 									style="float: right; margin-right: 20%;"> <span
-									class="text" style="padding: 2%;">글쓰기</span>
+									class="text" style="padding: 2%;" >글쓰기</span>
 								</a>
 							</div>
 						</div>

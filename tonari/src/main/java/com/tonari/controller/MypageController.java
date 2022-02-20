@@ -2,6 +2,7 @@ package com.tonari.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -12,6 +13,8 @@ public class MypageController {
 	public String tjoin() {
 		return "/mypage/teacher/teacherJoin";
 	}
+	
+	@PostMapping("/TeacherJoin")
 	@GetMapping("/teacherInfo")
 	public String tinfo() {
 		return "/mypage/teacher/teacherInfo";

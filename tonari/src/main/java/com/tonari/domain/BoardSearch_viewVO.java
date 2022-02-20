@@ -14,4 +14,5 @@ public class BoardSearch_viewVO {
 	private String category_name;
 	private int bno;
 	private float score;
+	private String coment;
 }

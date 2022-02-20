@@ -35,7 +35,7 @@
 										회원 정보 수정 </a>
 								</h2>
 							</div>
-							<form class="" name="formm" method="post" action="/join/memberinfoModify.do">
+							<form class="" name="form1" method="post" >
 							
 								<div id="payment-address-content" class="panel-collapse collapse in">
 									<div class="panel-body row">
@@ -45,12 +45,12 @@
 										<h3>계정 정보</h3>
 											<div class="form-group" style="width: 300px;">
 												<label for="nick">닉네임</label> <input type="text" id="nick"
-													name="nick" class="form-control" value= "${nick}" >
+													name="nick" class="form-control" value= "${member.nick}" >
 											</div>
 											<div class="form-group" style="width: 300px;">
 												<label for="email">E-Mail <span class="require">*</span></label>
 												<input type="text" id="email" name="email"
-													class="form-control" value= "${email}" readonly> <span
+													class="form-control" value="${member.email}" readonly> <span
 													id="msg" style="display: block; padding: 5px 0;"></span>
 											</div>
 											<div class="form-group" style="width: 300px;">
@@ -68,21 +68,24 @@
 											<div class="form-group" style="width: 300px;">
 												<label for="firstname" for="name">이름 <span
 													class="require">*</span></label> <input type="text" id="name"
-													name="name" class="form-control" readonly>
+													name="name" class="form-control" readonly value="${member.name}">
 											</div>
 											<div class="form-group" style="width: 300px;">
-												<label for="country">성별 <span class="require">*</span></label>
-												<select class="form-control input-sm" name="sex" id="sex" >
-													<option>구분</option>
-													<option value="m">남자</option>
-													<option value="f">여자</option>
-
-												</select>
+												<label for="sex">성별 <span class="require">*</span></label>
+												 <c:choose>
+												     <c:when test="${member.sex eq 'f'}"><input type="text" class="form-control" value="여자" readonly/></c:when>	
+												 
+												  <c:otherwise>   											
+												    <input type="text" class="form-control" value="남자" readonly />												
+												  </c:otherwise>  										
+												   </c:choose>	 
+												
+											
 											</div>
 											<div class="form-group" style="width: 300px;">
 												<label for="phone">전화번호<span class="require">*</span></label>
 												<input type="text" id="phone" id="phone" name="phone"
-													class="form-control" placeholder="전화번호를 입력해주세요.">
+													class="form-control" placeholder="전화번호를 입력해주세요."value="${member.phone}">
 											</div>
 
 
@@ -105,29 +108,29 @@
 										<div class="form-group" style="display: flex;">
 											<input type="text" name="zipcode" class="form-control"
 												id="sample2_postcode" placeholder="우편번호"
-												style="text-align: center; width: 150px; margin: 0px 5px 0px 0;">
+												style="text-align: center; width: 150px; margin: 0px 5px 0px 0;" value="${member.zipcode}" readonly>
 											<input type="button" onclick="sample2_execDaumPostcode()"
 												value="우편번호 찾기" class="form-control" style="width: 300px;"><br>
 										</div>
 										<div class="form-group" >
 											<label for="address1">주소</label> <input type="text"
 												id="sample2_address" name="address" placeholder="전체 주소"
-												class="form-control" style="width:300px"><br>
+												class="form-control" style="width:300px" value="${member.address}" readonly><br>
 										</div>
 										<div class="form-group" style="display: flex;">
 
 											<input type="text" id="sample2_guAddr" name="gu"
 												placeholder="구" class="form-control"
-												style="width: 100px; text-align: center; margin: -20px 39px 0px 0;">
+												style="width: 100px; text-align: center; margin: -20px 39px 0px 0;" value="${member.gu}" readonly>
 
 
 											<input type="text" id="sample2_extraAddress" name="dong"
 												placeholder="동" class="form-control"
-												style="width: 100px; text-align: center; margin: -20px 39px 0px 0;">
+												style="width: 100px; text-align: center; margin: -20px 39px 0px 0;" value="${member.dong}" readonly>
 										</div>
 										<div class="form-group" style="width: 300px;">
 											<label for="address1">상세주소</label> <input type="text"
-												id="address1" name="o_addr" class="form-control">
+												id="address1" name="o_addr" class="form-control" value="${member.o_addr}">
 										</div>
 										<!--  <div class="form-group">
                         <label for="address2">Address 2</label>
@@ -158,7 +161,7 @@
 										<!--                       data-target="#shipping-address-content"  -->
 										<!--                       id="button-payment-address" -->
 										<!--                        onclick="go_save()">회원가입하기</button> -->
-										<button type="submit" class="btn btn-primary  pull-right">정보 수정</button>
+										<button id="studentinfoModify" name="studentinfoModify" class="btn btn-primary  pull-right">정보 수정</button>
 										<!-- <div class="checkbox pull-right">
 											<label> <input type="checkbox"> I have read
 												and agree to the <a title="Privacy Policy"
@@ -399,4 +402,14 @@
 
 	});
 </script>
+
+<script>
+    $(document).ready(function(){
+        $("#studentinfoModify").click(function(){
+            document.form1.action = "/join/studentinfoModify.do";
+            document.form1.submit();
+        });
+    });
+</script>
+
 <%@include file="../../footer.jsp"%>

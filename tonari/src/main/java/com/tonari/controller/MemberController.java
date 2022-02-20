@@ -36,13 +36,11 @@ public class MemberController {
 	 public String login(HttpServletRequest request, MemberVO member) {
 		
 		//0) DB검색
-		String nick = service.loginCheck(member);
+		String nick = service.loginCheck(member); // nick
+		
 		// 1이면 로그인 성공 , 0이면 실패	
-		log.info("=======================결과값 : " + nick);
 		if (nick != null) {
 			
-
-			log.info("=======================로그인~ " + nick);
 			//1) 세션 가져오기
 			HttpSession session = request.getSession();
 			
@@ -134,5 +132,19 @@ public class MemberController {
         log.info("확인 결과:" + result);
         return result;
         
+    }
+    
+    
+    
+    
+    
+    @PostMapping("/studentinfoModify.do")
+    public String studentinfoModify(HttpServletRequest request, MemberVO vo){
+    	log.info("============== VO : " + vo);
+    	service.studentinfoModify(vo);
+    	HttpSession session = request.getSession();
+    	session.setAttribute("nick", vo.getNick());
+    	
+        return "redirect:/mypage/studentinfo";
     }
 }

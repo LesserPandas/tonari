@@ -40,6 +40,10 @@
 	top:30%;
 }
 
+.product-item{
+	height: 450px;
+}
+
 /*teacher button*/
 .button {
 	border: none;
@@ -67,12 +71,17 @@
 }
 
 .likeButton {
+	border: none;
+	text-decoration: none;
+	font-size: 18px;
+	margin-left: 5px;
+	color: white;
 	background: #ccc;
 }
 
 .likeButton:hover,.likeButtonActive {
-	color: white;
-	background: #67bd3c;
+	color: #67bd3c;
+	background: #ccc;
 }
 
 .button:hover {

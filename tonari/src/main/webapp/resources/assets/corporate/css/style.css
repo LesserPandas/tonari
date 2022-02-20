@@ -1123,7 +1123,8 @@ steps block and steps block elements
 	font-weight: 600;
 }
 .ecommerce .title-wrapper h1 {
-	font-size: 65px;
+	font-size: 60px;
+	text-align: center;
 	padding: 0 9px 10px;
 	border-bottom: solid 1px rgba(255,255,255,0.6);
 	margin: 0 -9px 17px;

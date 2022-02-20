@@ -1,12 +1,11 @@
 package com.tonari.domain;
 
 import java.util.Date;
-
 import lombok.Data;
 
 @Data
 public class MemberVO {
-	
+
 	private int bno;
 	private String auth;
 	private String email;
@@ -22,5 +21,5 @@ public class MemberVO {
 	private String dong;
 	private Date join_date;
 	private Date recent_login_date;
-	
+
 }

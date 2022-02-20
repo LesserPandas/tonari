@@ -78,7 +78,8 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">관리자 글작성</h1>
 <div class="row">
-                        
+                          <form name="board" method="post" action="insert" onsubmit="return check()">
+                          <input type="hidden" name="member_bno" id="member_bno" value="1">
                             <div class="col-lg-9">
                                 <div class="p-5">
                                      <div class="text-center">
@@ -86,38 +87,31 @@
                                     </div>
                                 <div class="email-right-box">
                                     <div class="toolbar" role="toolbar">
-                                     
-                                        
-                                       
-                                       
                                     </div>
                                     <div class="compose-content mt-5">
-                                        <form action="#">
                                         	<div class="form-group">
-                                                <input type="text" class="form-control bg-transparent" placeholder=" 제목">
+                                                <input type="text" class="form-control bg-transparent" name="title" placeholder=" 제목">
                                             </div>
                                             <div class="form-group">
-                                                <input type="text" class="form-control bg-transparent" placeholder=" 작성자">
+                                                <input type="text" class="form-control bg-transparent"   placeholder="관리자" readonly>
                                             </div>
-                                            <select style="margin-bottom: 1%;">
-                                            		<option>공지사항</option>
-                                            		<option>홍보/이벤트</option>
+                                            <select name="category" style="margin-bottom: 1%;">
+                                            		<option value="1">공지사항</option>
+                                            		<option value="2">홍보/이벤트</option>
                                             </select>
                                             <div class="form-group" >
-                                                <textarea class="textarea_editor form-control bg-light" id="summernote" rows="15" placeholder="내용"  ></textarea>
+                                                <textarea class="textarea_editor form-control bg-light" id="summernote" rows="15" name="content" placeholder="내용"  ></textarea>
                                             </div>
-                                        </form>
-                                        
-                                      
                                     </div>
                                     <div class="text-left m-t-15" style="margin-left: 32%; ">
-                                        <button class="btn btn-primary m-b-30 m-t-15 f-s-14 p-l-20 p-r-20 m-r-10" type="button"></i> 글쓰기</button>
-                                        <button class="btn btn-dark m-b-30 m-t-15 f-s-14 p-l-20 p-r-20" type="button"><i class="ti-close m-r-5 f-s-12"></i> Discard</button>
+                                        <button type="submit" class="btn btn-primary m-b-30 m-t-15 f-s-14 p-l-20 p-r-20 m-r-10"> 글쓰기</button>
+                                        <button class="btn btn-dark m-b-30 m-t-15 f-s-14 p-l-20 p-r-20" type="button" onclick="history.back();"><i class="ti-close m-r-5 f-s-12"></i>취소</button>
                                     </div>
                                 </div>
                                                               
                                     </div>
                                 </div>
+                                </form>
                             </div>
                 </div>
       

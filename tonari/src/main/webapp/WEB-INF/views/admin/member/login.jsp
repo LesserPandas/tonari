@@ -40,20 +40,21 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">관리자 로그인</h1>
                                     </div>
-                                    <form class="user">
+                                  <form name="memberauth" method="post" action="login.do" onsubmit="return check()">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
+                                            <input type="text" name="email" class="form-control form-control-user"
+                                                 
                                                 placeholder="Enter login adminID...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
+                                            <input type="password" name="passwd" class="form-control form-control-user"
                                                 id="exampleInputPassword" placeholder="Password">
                                         </div>
                                         
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            Login
-                                        </a>
+                                         <div class="text-left m-t-15" style="margin-left: 32%; ">
+                                        <button type="submit" class="btn btn-primary m-b-30 m-t-15 f-s-14 p-l-20 p-r-20 m-r-10"> 로그인</button>
+                                        <button class="btn btn-primary m-b-30 m-t-15 f-s-14 p-l-20 p-r-20 m-r-10" type="button" onclick="history.back();"><i class="ti-close m-r-5 f-s-12"></i>취소</button>
+                                    </div>
                                         <hr>
                                       
                                     </form>

@@ -108,8 +108,11 @@
 													<td>${TeacherPermissionList.category_name}</td>
 													<td><a onClick="return confirm('승인하시겠습니까?')"
 														href="permission.do?bno=${TeacherPermissionList.bno}"
-														class="btn btn-primary btn-sm">승인</a></td>
-													<!--  	<td><a href="permission.do?bno=${lectorpermitlist.bno}" class="btn btn-danger btn-sm">승인</a></td>  -->
+														class="btn btn-primary btn-sm">승인</a>
+														<a onClick="return confirm('취소하시겠어요?')"
+													href="deleteteacherlist.do?bno=${TeacherPermissionList.bno}"
+													class="btn btn-danger btn-sm">취소</a>
+													</td>							
 												</tr>
 											</c:forEach>
 

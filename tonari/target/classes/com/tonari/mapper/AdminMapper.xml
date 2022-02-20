@@ -18,6 +18,10 @@
 		delete member where bno = #{bno}
 	</delete>
 	
+	<delete id="deleteteacherlist" >
+		delete teacher where bno = #{bno}
+	</delete>
+	
 	<delete id="boarddelete" >
 		delete board where bno = #{bno}
 	</delete>
@@ -35,9 +39,10 @@
 
 
 <update id="permission">
-	
-		UPDATE teacher SET permission='y' WHERE bno= #{bno}
+	UPDATE teacher SET permission='y' WHERE bno= #{bno}
 </update>
+
+
   
   
   

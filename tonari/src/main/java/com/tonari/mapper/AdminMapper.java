@@ -18,6 +18,8 @@ public interface AdminMapper {
 	
 	public int delete(MemberAuthVO MemberAuth);
 	
+	public int deleteteacherlist(int bno);
+	
 	public int boarddelete(BoardlistVO Boardlist);
 	
 	public void updateboard(BoardlistVO boardlist);
@@ -27,6 +29,7 @@ public interface AdminMapper {
 	public List<TeacherPermissionListVO> TeacherPermissionList();  
 	
 	public int permission(int bno);
+	
 	
 	public List<TeacherListVO> selectteacherlist();
 	

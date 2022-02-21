@@ -125,9 +125,15 @@ public class MemberController {
     //닉네임 체크
     @PostMapping("/nickCheck")
     @ResponseBody
-    public String nickCheck(@RequestParam("nick") String nick){
+    public String nickCheck(HttpServletRequest request, @RequestParam("nick") String nick){
         log.info("userIdCheck 진입");
         log.info("전달받은 id:"+ nick);
+        HttpSession session = request.getSession();
+        String nowNick = (String)session.getAttribute("nick");
+        if(nowNick.equals(nick)) {
+        	return"2";
+        }
+        
         String result = "" + service.nickCheck(nick);
         log.info("확인 결과:" + result);
         return result;

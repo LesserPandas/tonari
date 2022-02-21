@@ -56,7 +56,8 @@
 											<div class="form-group" style="width: 300px;">
 												<label for="password">Password <span class="require">*</span></label>
 												<input type="password" id="passwd" name="passwd"
-													class="form-control" value="${passwd}">
+													class="form-control" value="${member.passwd}">
+													
 											</div>
 											<div class="form-group" style="width: 300px;">
 												<label for="password">Password check <span
@@ -384,13 +385,13 @@
 						if ($("#nick").val() != "") {
 							alert("사용 가능한  닉네임 입니다");
 						}
-					} else {
+					} else if (cnt == 1) {
 						if ($("#nick").val() != "") {
 							alert("사용 불가능한 닉네임 입니다");
 							$("#nick").val("");
 							$("#nick").focus();
 						}
-					}
+					} 
 				},
 				error : function() {
 					alert("통신에러");
@@ -406,6 +407,7 @@
 <script>
     $(document).ready(function(){
         $("#studentinfoModify").click(function(){
+        	alert("수정완료 하였습니다.");
             document.form1.action = "/join/studentinfoModify.do";
             document.form1.submit();
         });

@@ -11,4 +11,8 @@ public interface MemberService {
 	public String nickCheck(String nick);
 	
 	public String loginCheck(MemberVO member);
+
+	public MemberVO selectMember(String nick);
+
+	public void studentinfoModify(MemberVO vo);
 }

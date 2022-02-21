@@ -102,7 +102,7 @@
 													name="title" placeholder=" Subject">
 											</div>
 											<div class="form-group">
-												<textarea class="textarea_editor form-control bg-light"
+												<textarea class="textarea_editor form-control bg-light" id="summernote"
 													rows="15" name="content" placeholder="Enter text ..."></textarea>
 											</div>
 
@@ -110,8 +110,8 @@
 
 										</div>
 										<div class="text-left m-t-15" style="margin-left: 32%;">
-											<button type="submit">전송</button>
-											<button
+											<button type="submit" class="btn btn-primary btn-icon-split" onClick="return confirm('승인하시겠습니까?')" >전송</button>
+											<button onclick="history.back();"
 												class="btn btn-dark m-b-30 m-t-15 f-s-14 p-l-20 p-r-20"
 												type="button">
 												<i class="ti-close m-r-5 f-s-12"></i> Discard
@@ -147,7 +147,36 @@
 	<!-- End of Main Content -->
 
 
+       <script>
+	//summernote
+	$(document)
+			.ready(
+					function() {
+						$('#summernote')
+								.summernote(
+										{
+											height : 300,
+											fontNames : [ '맑은고딕', 'Arial',
+													'Arial Black',
+													'Comic Sans MS',
+													'Courier New', ],
+											fontNamesIgnoreCheck : [ '맑은고딕' ],
+											focus : true,
 
+											callbacks : {
+												onImageUpload : function(files,
+														editor, welEditable) {
+													for (var i = files.length - 1; i >= 0; i--) {
+														sendFile(files[i], this);
+													}
+												}
+											}
+
+										})
+					});
+           
+           </script>
+        
 	
 	<!-- End of Content Wrapper -->
 

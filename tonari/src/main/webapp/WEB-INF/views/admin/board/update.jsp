@@ -110,7 +110,7 @@
 										</div>
 									</div>
 									<div class="text-left m-t-15" style="margin-left: 32%;">
-										<button type="submit" class="btn btn-danger btn-sm">수정&nbsp;&nbsp;</button>
+										<button type="submit" class="btn btn-danger btn-sm" onClick="return confirm('수정하시겠어요?')">수정&nbsp;&nbsp;</button>
 										<a href="board" class="btn btn-danger btn-sm">취소</a>
 									</div>
 								</div>

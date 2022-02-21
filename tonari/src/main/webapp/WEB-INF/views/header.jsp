@@ -111,6 +111,7 @@
 						<c:when test="${not empty nick}">
 						<!-- 닉네임 -->
 						<li>${nick}님</li>
+						<li>${email }</li>
 						<!-- 홈으로 -->
 						<li><a href="/">HOME</a></li>
 						<!-- 마이페이지 -->

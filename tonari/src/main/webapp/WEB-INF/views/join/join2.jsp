@@ -45,10 +45,11 @@
 										<h3>계정 정보</h3>
 											<div class="form-group" style="width: 300px;">
 												<label for="nick">닉네임</label> <input type="text" id="nick"
-													name="nick" class="form-control">
+													name="nick" class="form-control" placeholder="영어, 숫자, 특수문자로 작성하세요!">
 											</div>
 											<div class="form-group" style="width: 300px;">
 												<label for="email">E-Mail <span class="require">*</span></label>
+												<label>가입하신 이메일 주소로  공지가 안내되오니 반드시 수신가능한 이메일 계정으로 가입바랍니다.</label>
 												<input type="text" id="email" name="email"
 													class="form-control" placeholder="이메일 입력"> <span
 													id="msg" style="display: block; padding: 5px 0;"></span>

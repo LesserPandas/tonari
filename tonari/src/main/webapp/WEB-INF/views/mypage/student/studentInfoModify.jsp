@@ -338,78 +338,55 @@
 		}
 	}
 
-	$(function() {
+	
 
-		$("#email").blur(function() {
-			$.ajax({
-				type : 'post',
-				url : "/join/emailCheck.do",
-				data : {
-					email : $("#email").val()
-				},
-				dataType : 'text',
-				success : function(cnt) {
-					console.log(cnt);
-					if (cnt == 0) {
-						if ($("#email").val() != "") {
-							alert("사용 가능한 이메일 입니다");
-						}
-					} else {
-						if ($("#email").val() != "") {
-							alert("사용 불가능한 이메일 입니다");
-							$("#email").val("");
-							$("#email").focus();
-						}
-					}
-				},
-				error : function() {
-					alert("통신에러");
-				}
-			})
-		})
+	      //닉네임
 
-		//닉네임
+	      $("#nick").blur(function() {
+	         $.ajax({
+	            type : 'post',
+	            url : "/join/nickCheck2.do",
+	            data : {
+	               nick : $("#nick").val()
+	            },
+	            dataType : 'text',
+	            success : function(cnt) {
+	               console.log(cnt);
+	               if (cnt == 0) {
+	                  if ($("#nick").val() != "") {
+	                     alert("사용 가능한  닉네임 입니다");
+	                  }
+	               } else if (cnt == 1) {
+	                  if ($("#nick").val() != "") {
+	                     alert("사용 불가능한 닉네임 입니다");
+	                     $("#nick").val("");
+	                     $("#nick").focus();
+	                  }
+	               } else {
+	                  
+	               }
+	            },
+	            error : function() {
+	               alert("통신에러");
+	            }
+	         })
+	      })
 
-		$("#nick").blur(function() {
-			$.ajax({
-				type : 'post',
-				url : "/join/nickCheck.do",
-				data : {
-					nick : $("#nick").val()
-				},
-				dataType : 'text',
-				success : function(cnt) {
-					console.log(cnt);
-					if (cnt == 0) {
-						if ($("#nick").val() != "") {
-							alert("사용 가능한  닉네임 입니다");
-						}
-					} else {
-						if ($("#nick").val() != "") {
-							alert("사용 불가능한 닉네임 입니다");
-							$("#nick").val("");
-							$("#nick").focus();
-						}
-					}
-				},
-				error : function() {
-					alert("통신에러");
-				}
-			})
-		})
+	      //
 
-		//
+	   });
+	</script>
 
-	});
-</script>
+	<script>
+	    $(document).ready(function(){
+	        $("#studentinfoModify").click(function(){
+	           alert("수정완료 하였습니다.");
+	            document.form1.action = "/join/studentinfoModify.do";
+	            document.form1.submit();
+	        });
+	    });
+	</script>
 
-<script>
-    $(document).ready(function(){
-        $("#studentinfoModify").click(function(){
-            document.form1.action = "/join/studentinfoModify.do";
-            document.form1.submit();
-        });
-    });
-</script>
+
 
 <%@include file="../../footer.jsp"%>

@@ -163,4 +163,59 @@ public class MypageController {
 		return "/mypage/student/teacherList";
 	}
 
+	
+	//이미지 저장
+	//imageupload
+		@PostMapping(value = "/ImageFile", produces = "application/json; charset=utf8")
+		@ResponseBody
+		public String ImageFile(@RequestParam("file") MultipartFile file) {
+			
+			 JsonObject jsonObject = new JsonObject();
+		       
+		       String uploadFolder="c:\\upload";
+		       log.info("file name : "+file.getOriginalFilename());
+		       
+		       String uploadFileName = file.getOriginalFilename();
+		       //IE
+		       uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("//")+1);
+		       log.info("only file name : "+uploadFileName);
+		       
+		       UUID uuid = UUID.randomUUID();
+		       
+		       uploadFileName = uuid.toString()+"_"+uploadFileName;
+		       
+		       File uploadPath = new File(uploadFolder, getFolder());
+		       
+		       if(uploadPath.exists() == false) {
+		          uploadPath.mkdirs();
+		       }
+		       File savefile = new File(uploadPath,uploadFileName);
+		       String saveUrl = uploadFileName.toString();
+		       log.info(saveUrl);
+		       
+		       try {
+		          file.transferTo(savefile);
+		          uploadFileName = (savefile.toString().substring(10));
+		          jsonObject.addProperty("url", "/upload/"+uploadFileName);
+		          jsonObject.addProperty("responseCode", "success");
+		          log.info(uploadFileName);
+
+		       }catch(Exception e) {
+		          e.printStackTrace();
+		          jsonObject.addProperty("responseCode", "error");
+		       }
+		       
+		       String upload = jsonObject.toString();
+		       log.info(upload);
+		       return upload;
+
+		}
+		
+		private String getFolder() {
+		      SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		      Date date = new Date();
+		      String str = sdf.format(date);
+		      
+		      return str.replace("-", File.separator); //분리가 된다
+		   }
 }

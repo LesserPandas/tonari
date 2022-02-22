@@ -168,10 +168,7 @@
 	</div>
 	<!-- END fast view of a product -->
 
-<!-- 내가 추가한 것 -->
-<script src="/resources/custom/js/my.js"></script>
-<script src="/resources/custom/js/member.js"></script>
-<!-- 내가 추가한 것 -->
+
 	<!-- Load javascripts at bottom, this will reduce page load time -->
 	
 	<script src="/resources/assets/plugins/jquery.min.js" type="text/javascript"></script>
@@ -198,10 +195,17 @@
 		type="text/javascript"></script>
 	<!-- Quantity -->
 	
-	<!-- 내가 추가 한 것. -->
-		<script src="/resources/custom/js/summernote.min.js"></script>
-	<!-- 내가 추가 한 것. -->
-	
+
+		
+
+
+<!-- 내가 추가 한 것.(섬머노트) -->
+<script src="/resources/custom/js/summernote/summernote-lite.js"></script>
+<script src="/resources/custom/js/my.js"></script>
+<script src="/resources/custom/js/member.js"></script>
+<script src="/resources/custom/js/summernotecustom.js"></script>
+
+<!-- 내가 추가 한 것. -->
 
 	<script src="/resources/assets/corporate/scripts/layout.js" type="text/javascript"></script>
 	<script src="/resources/assets/pages/scripts/bs-carousel.js"

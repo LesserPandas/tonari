@@ -69,7 +69,7 @@
 
 <!-- 내가 추가-->
 <link rel="stylesheet" href="/resources/assets/pages/css/index.css">
-<link rel="stylesheet" href="/resources/custom/css/summernote.min.css">
+<link rel="stylesheet" href="/resources/custom/css/summernote/summernote-lite.css">
 <link rel="stylesheet" href="/resources/custom/css/imagecheck.css">
 <script src="/resources/assets/jquery-3.6.0.min.js"></script>
 

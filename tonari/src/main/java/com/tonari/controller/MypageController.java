@@ -1,13 +1,23 @@
 package com.tonari.controller;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.UUID;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.google.gson.JsonObject;
 import com.tonari.domain.MemberVO;
 import com.tonari.service.MemberService;
 
@@ -42,6 +52,10 @@ public class MypageController {
 	public String sub() {
 		return "/mypage/teacher/subscription";
 	}
+	@GetMapping("/subResult")
+	public String subResult() {
+		return "/mypage/teacher/subResult";
+	}
 
 	@GetMapping("/studentinfo")
 	public String studentinfo(HttpServletRequest request, Model model) throws Exception {
@@ -58,5 +72,70 @@ public class MypageController {
 	public String steacherLike() {
 		return "/mypage/student/teacherlike";
 	}
+	
+	@GetMapping("/studentList")
+	public String studentList() {
+		return "/mypage/teacher/studentList";
+	}
+	
+	@GetMapping("/teacherList")
+	public String teacherList() {
+		return "/mypage/student/teacherList";
+	}
 
+	
+	//이미지 저장
+	//imageupload
+		@PostMapping(value = "/ImageFile", produces = "application/json; charset=utf8")
+		@ResponseBody
+		public String ImageFile(@RequestParam("file") MultipartFile file) {
+			
+			 JsonObject jsonObject = new JsonObject();
+		       
+		       String uploadFolder="c:\\upload";
+		       log.info("file name : "+file.getOriginalFilename());
+		       
+		       String uploadFileName = file.getOriginalFilename();
+		       //IE
+		       uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("//")+1);
+		       log.info("only file name : "+uploadFileName);
+		       
+		       UUID uuid = UUID.randomUUID();
+		       
+		       uploadFileName = uuid.toString()+"_"+uploadFileName;
+		       
+		       File uploadPath = new File(uploadFolder, getFolder());
+		       
+		       if(uploadPath.exists() == false) {
+		          uploadPath.mkdirs();
+		       }
+		       File savefile = new File(uploadPath,uploadFileName);
+		       String saveUrl = uploadFileName.toString();
+		       log.info(saveUrl);
+		       
+		       try {
+		          file.transferTo(savefile);
+		          uploadFileName = (savefile.toString().substring(10));
+		          jsonObject.addProperty("url", "/upload/"+uploadFileName);
+		          jsonObject.addProperty("responseCode", "success");
+		          log.info(uploadFileName);
+
+		       }catch(Exception e) {
+		          e.printStackTrace();
+		          jsonObject.addProperty("responseCode", "error");
+		       }
+		       
+		       String upload = jsonObject.toString();
+		       log.info(upload);
+		       return upload;
+
+		}
+		
+		private String getFolder() {
+		      SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		      Date date = new Date();
+		      String str = sdf.format(date);
+		      
+		      return str.replace("-", File.separator); //분리가 된다
+		   }
 }

@@ -74,7 +74,7 @@
 											<div class="form-group" style="width: 300px;">
 												<label for="country">성별 <span class="require">*</span></label>
 												<select class="form-control input-sm" name="sex" id="sex">
-													<option>구분</option>
+													
 													<option value="m">남자</option>
 													<option value="f">여자</option>
 
@@ -105,25 +105,25 @@
 										</div>
 										<div class="form-group" style="display: flex;">
 											<input type="text" name="zipcode" class="form-control"
-												id="sample2_postcode" placeholder="우편번호"
+												id="sample2_postcode" placeholder="우편번호" readonly
 												style="text-align: center; width: 150px; margin: 0px 5px 0px 0;">
 											<input type="button" onclick="sample2_execDaumPostcode()"
 												value="우편번호 찾기" class="form-control" style="width: 300px;"><br>
 										</div>
 										<div class="form-group" >
 											<label for="address1">주소</label> <input type="text"
-												id="sample2_address" name="address" placeholder="전체 주소"
+												id="sample2_address" name="address" placeholder="전체 주소" readonly
 												class="form-control" style="width:300px"><br>
 										</div>
 										<div class="form-group" style="display: flex;">
 
-											<input type="text" id="sample2_guAddr" name="gu"
+											<input type="text" id="sample2_guAddr" name="gu" readonly
 												placeholder="구" class="form-control"
 												style="width: 100px; text-align: center; margin: -20px 39px 0px 0;">
 
 
 											<input type="text" id="sample2_extraAddress" name="dong"
-												placeholder="동" class="form-control"
+												placeholder="동" class="form-control" readonly
 												style="width: 100px; text-align: center; margin: -20px 39px 0px 0;">
 										</div>
 										<div class="form-group" style="width: 300px;">

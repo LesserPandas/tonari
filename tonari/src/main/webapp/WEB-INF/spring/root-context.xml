@@ -13,7 +13,7 @@
 		<property name="driverClassName"
 			value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
 		<property name="jdbcUrl"
-			value="jdbc:log4jdbc:oracle:thin:@localhost:1521:xe"></property>
+			value="jdbc:log4jdbc:oracle:thin:@10.211.55.3:1521:xe"></property>
 		<property name="username" value="tonari"></property>
 		<property name="password" value="1234"></property>
 	</bean>

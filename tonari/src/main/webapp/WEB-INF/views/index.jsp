@@ -12,7 +12,6 @@
 
 
 <body>
-
 	<div class="title-wrapper simple-linear ">
 		<!-- 메인 배너 이미지 -->
 		<div class="container">
@@ -60,7 +59,7 @@
 								placeholder="입력" style="width: 435px; display: inline-block">
 							<span class="input-group-btn">
 								<button class="btn btn-primary btn-green ht-45" type="button"
-									style="width: 100px">검색</button>
+									style="width: 100px" onclick="">검색</button>
 							</span>
 						</div>
 
@@ -351,7 +350,7 @@
 		<div class="row">
 			<div class="col-md-12 search-mg-0 bg-success">
 				<div
-					style="padding: 10px; width: 50%; padding: 30px; background: #fff; float: left"">
+					style="padding: 10px; width: 50%; padding: 30px; background: #fff; float: left">
 					<h2>공지사항</h2>
 					<table class="table">
 						<thead>

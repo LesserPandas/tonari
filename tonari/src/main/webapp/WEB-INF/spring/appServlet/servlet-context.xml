@@ -30,5 +30,6 @@
 	
 	<context:component-scan base-package="com.tonari.controller" />	
 	<context:component-scan base-package="com.tonari.exception" />
+	<context:component-scan base-package="com.tonari.config" />
 	
 </beans:beans>

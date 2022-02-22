@@ -4,6 +4,11 @@
 <html>
 <head>
 <link rel="stylesheet" href="/resources/custom/css/chat.css">
+
+
+<script src="/resources/custom/js/chat.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 </head>
 <body>
 
@@ -155,11 +160,11 @@
 					</div>
 					<div class="panel-footer">
 						<div class="input-group">
-							<input id="btn-input" type="text"
+							<input id="myMessage" type="text"
 								class="form-control input-sm chat_input"
 								placeholder="Write your message here..." /> <span
 								class="input-group-btn">
-								<button class="btn btn-primary btn-sm" id="btn-chat">Send</button>
+								<button class="btn btn-primary btn-sm" id="btn-chat" onclick="message_send()">Send</button>
 							</span>
 						</div>
 					</div>
@@ -176,6 +181,52 @@
 	</div>
 </body>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+	var sock = null;
+	var stompClient = null;
+	connect();
+});
 
-<script src="/resources/custom/js/chat.js"></script>
+function connect(){
+	sock = new SockJS("/ws");
+	/* sock = new SockJS("http://127.0.0.1:15672/ws"); */
+	stompClient = Stomp.over(sock);
+	var header = {userId : "testId"};
+
+	// 1. 구독할 채널 // 2. 채널에서 메세지 받을 때 처리할 로직
+	stompClient.connect(header, function(frame){
+		console.log("연결 성공 : " + frame);
+		stompClient.subscribe("/topic/a", function(response){
+			console.log(response);
+			console.log("받은 메세지입니다. " + JSON.parse(response.body.message));
+		});
+	});
+	
+/* 	stompClient.connect('rabbit', '1234', function(){
+		console.log("success!!");
+	}, function(){
+		console.log("error!!");
+	}, '/'); */
+};
+
+function message_send() {
+	console.log('sending...');
+	var myMessage = document.getElementById('myMessage');
+	var chat = {
+	    roomId: 1, 
+	    userId: "user01", 
+	    message: myMessage, 
+	    date: new Date()
+	};
+	// /app을 쓰면 서버 컨트롤러에 매핑
+	// /topic을 쓰면 메세지 브로커로 매핑
+	// 첫번째 인자는 보낼 주소
+	// 두번째 인자는 서버로 보낼 때 추가하고 싶은 stomp 헤더
+	// 세번째 인자는 서버로 보낼 때 추가하고 싶은 stomp 바디 (JSON.stringify({}))
+	stompClient.send("/app/message", {}, JSON.stringify(chat));
+};
+	
+</script>
+
 </html>

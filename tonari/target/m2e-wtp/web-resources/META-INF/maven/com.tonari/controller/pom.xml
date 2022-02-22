@@ -14,8 +14,15 @@
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
-	<dependencies>
 
+	<repositories>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+	
+	<dependencies>
 
 		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
@@ -36,7 +43,7 @@
 			<version>1.5.6</version>
 		</dependency>
 
-		
+
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -116,6 +123,24 @@
 		<!-- Servlet -->
 		<!-- <dependency> <groupId>javax.servlet</groupId> <artifactId>servlet-api</artifactId> 
 			<version>2.5</version> <scope>provided</scope> </dependency> -->
+
+		<!-- 결제관리 한준희 암튼 문제 있을 시 초밥 먹음 -->
+
+
+
+
+
+		<!-- 결제관리 한준희 암튼 문제 있을 시 초밥 먹음 -->
+
+
+
+
+
+
+
+
+
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -297,30 +322,35 @@
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka -->
-<dependency>
-    <groupId>org.apache.kafka</groupId>
-    <artifactId>kafka_2.13</artifactId>
-    <version>3.1.0</version>
-</dependency>
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka_2.13</artifactId>
+			<version>3.1.0</version>
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.springframework.kafka/spring-kafka -->
-<dependency>
-    <groupId>org.springframework.kafka</groupId>
-    <artifactId>spring-kafka</artifactId>
-    <version>2.8.2</version>
-</dependency>
+		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka</artifactId>
+			<version>2.8.2</version>
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
-<dependency>
-    <groupId>com.google.guava</groupId>
-    <artifactId>guava</artifactId>
-    <version>31.0.1-jre</version>
-</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>31.0.1-jre</version>
+		</dependency>
 
-		
+		<!-- 새우초밥 -->
+		<!-- https://mvnrepository.com/artifact/com.github.iamport/iamport-rest-client-java -->
+		<dependency>
+			<groupId>com.github.iamport</groupId>
+			<artifactId>iamport-rest-client-java</artifactId>
+			<version>0.2.0</version>
+		</dependency>
 
-
-
+		<!-- 새우초밥 -->
 
 
 

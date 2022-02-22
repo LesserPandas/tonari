@@ -119,6 +119,15 @@ public class MypageController {
 		return "/mypage/teacher/teacherModify";
 	}
 
+	@GetMapping("/subscription")
+	public String sub() {
+		return "/mypage/teacher/subscription";
+	}
+	@GetMapping("/subResult")
+	public String subResult() {
+		return "/mypage/teacher/subResult";
+	}
+
 	@GetMapping("/studentinfo")
 	public String studentinfo(HttpServletRequest request, Model model) throws Exception {
 		HttpSession session = request.getSession();
@@ -136,8 +145,14 @@ public class MypageController {
 		return "/mypage/student/teacherlike";
 	}
 	
-	@GetMapping("/subscription")
-	public String sub() {
-		return "/mypage/teacher/subscription";
+	@GetMapping("/studentList")
+	public String studentList() {
+		return "/mypage/teacher/studentList";
 	}
+	
+	public String teacherList() {
+	@GetMapping("/teacherList")
+		return "/mypage/student/teacherList";
+	}
+
 }

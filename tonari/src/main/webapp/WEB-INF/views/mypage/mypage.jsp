@@ -12,7 +12,7 @@
         <!-- BEGIN SIDEBAR & CONTENT -->
         <div class="row margin-bottom-40">
           <!-- BEGIN SIDEBAR -->
-         <%@ include file ="../side.jsp" %>
+         <%@ include file ="mypagesidebar.jsp" %>
           <!-- END SIDEBAR -->
 
           <!-- BEGIN CONTENT -->

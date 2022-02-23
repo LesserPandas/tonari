@@ -10,5 +10,5 @@ public interface MemberService {
 
 	public String nickCheck(String nick);
 	
-	public String loginCheck(MemberVO member);
+	public MemberVO loginCheck(MemberVO member);
 }

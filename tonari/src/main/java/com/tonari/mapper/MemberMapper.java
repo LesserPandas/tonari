@@ -13,7 +13,7 @@ public interface MemberMapper {
 	public void insert(MemberVO member);
 	
 	// DB검색	
-	public String login(MemberVO member);
+	public MemberVO login(MemberVO member);
 	
 	// 회원관리 DB검색
 }

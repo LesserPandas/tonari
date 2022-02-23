@@ -36,7 +36,9 @@ public class MemberController {
 	 public String login(HttpServletRequest request, MemberVO member) {
 		
 		//0) DB검색
-		String nick = service.loginCheck(member);
+		MemberVO mvo = service.loginCheck(member);
+		String nick = mvo.getNick();
+		int bno = mvo.getBno();
 		// 1이면 로그인 성공 , 0이면 실패	
 		log.info("=======================결과값 : " + nick);
 		if (nick != null) {
@@ -58,6 +60,7 @@ public class MemberController {
 			 */        
 			//4) 회원정보 설정
 			session.setAttribute("nick", nick);
+			session.setAttribute("bno", bno);
 			/* session.setAttribute(AUTH, member.getAuth()); */
 			/* session.setAttribute(AUTH_NAME, authName); */
 		} else {  

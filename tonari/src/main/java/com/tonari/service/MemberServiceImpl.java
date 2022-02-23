@@ -29,7 +29,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public String loginCheck(MemberVO member){
+	public MemberVO loginCheck(MemberVO member){
 		return mapper.login(member);
 	}
 

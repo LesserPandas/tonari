@@ -7,8 +7,10 @@
 
 
 <script src="/resources/custom/js/chat.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 </head>
 <body>
 
@@ -164,7 +166,8 @@
 								class="form-control input-sm chat_input"
 								placeholder="Write your message here..." /> <span
 								class="input-group-btn">
-								<button class="btn btn-primary btn-sm" id="btn-chat" onclick="message_send()">Send</button>
+								<button class="btn btn-primary btn-sm" id="btn-chat"
+									onclick="message_send()">Send</button>
 							</span>
 						</div>
 					</div>

@@ -29,6 +29,7 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
 				/WEB-INF/spring/appServlet/servlet-context.xml
+				/WEB-INF/spring/rabbitmq-context.xml
 			</param-value>
 		</init-param>
 		<init-param>

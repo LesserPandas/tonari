@@ -81,12 +81,12 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">게시판관리</h1>
+					<h1 class="h3 mb-2 text-gray-800">掲示板管理</h1>
 
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3">
-							<h6 class="m-0 font-weight-bold text-primary">게시판목록</h6>
+							<h6 class="m-0 font-weight-bold text-primary">掲示板リスト</h6>
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
@@ -94,32 +94,21 @@
 									cellspacing="0">
 									<thead>
 										<tr>
-											<th>번호</th>
-											<th>구분</th>
-											<th>제목</th>
-											<th>작성자</th>
-											<th>작성날짜</th>
-											<th>조회수</th>
-											<th>관리</th>
+											<th>番号</th>
+											<th>区分</th>
+											<th>タイトル</th>
+											<th>作成者</th>
+											<th>作成日</th>
+											<th>ビュー</th>
+											<th>管理</th>
 										</tr>
 									</thead>
-									<tfoot>
-										<tr>
-											<th>번호</th>
-											<th>구분</th>
-											<th>제목</th>
-											<th>작성자</th>
-											<th>작성날짜</th>
-											<th>조회수</th>
-											<th>관리</th>
-										</tr>
-									</tfoot>
 									<tbody>
 										<c:forEach items="${boardlist}" var="boardlist">
 											<tr>
 												<td>${boardlist.bno}</td>
 											<c:if test="${boardlist.category==1}" >												
-												<td>공지사항</td>
+												<td>お知らせ</td>
 											</c:if>
 											<c:if test="${boardlist.category==2}" >												
 												<td>홍보/이벤트</td>
@@ -130,11 +119,11 @@
 												<td>${boardlist.viewcount}</td>
 												<td>
 											  	<a href="updateboard.do?bno=${boardlist.bno}"
-													class="btn btn-danger btn-sm">수정</a>	
+													class="btn btn-danger btn-sm">修正</a>	
 													<a
-													onClick="return confirm('삭제하시겠어요?')"
+													onClick="return confirm('削除しますか？')"
 													href="boarddelete.do?bno=${boardlist.bno}"
-													class="btn btn-danger btn-sm">삭제</a>
+													class="btn btn-danger btn-sm">削除</a>
 												</td>
 											</tr>
 										</c:forEach>
@@ -142,7 +131,7 @@
 								</table>
 								<a href="write" class="btn btn-primary btn-icon-split"
 									style="float: right; margin-right: 20%;"> <span
-									class="text" style="padding: 2%;" >글쓰기</span>
+									class="text" style="padding: 2%;" >書く</span>
 								</a>
 							</div>
 						</div>

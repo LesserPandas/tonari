@@ -16,6 +16,9 @@ public interface AdminService {
 	//멤버리스트
 	
 	public List<MemberAuthVO> selectmemberlist();
+	//회원상세페이지
+	public MemberAuthVO memberview(String name);
+	
 	
 	public List<TeacherListVO> selectteacherlist();
 

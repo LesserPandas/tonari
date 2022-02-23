@@ -16,6 +16,8 @@ public interface AdminMapper {
 
 	public List<MemberAuthVO> selectmemberlist();
 	
+	public void memberview(MemberAuthVO MemberAuth);
+	
 	public int delete(MemberAuthVO MemberAuth);
 	
 	public int deleteteacherlist(int bno);
@@ -42,6 +44,8 @@ public interface AdminMapper {
 	public MemberAuthVO login(MemberAuthVO MemberAuth);
 
 	public List<MailVO> selectMail();
+
+	public MemberAuthVO memberview(String name);
 	
 	
 	

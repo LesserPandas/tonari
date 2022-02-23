@@ -65,6 +65,16 @@ public class AdminController {
 
 		return "admin/member/memberlist";
 	}
+	//회원 상세정보
+	@RequestMapping("/memberview")
+	public String memberview(@RequestParam("name") String name,Model model) {
+		MemberAuthVO memberview = service.memberview(name);
+		model.addAttribute("memberview", memberview);
+
+		return "admin/member/memberview";
+		
+		
+	}
 
 	@GetMapping("/teachersales")
 	public String teachersales() {

@@ -38,7 +38,7 @@
                             <div class="col-lg-9">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">관리자 로그인</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">管理者ログイン</h1>
                                     </div>
                                   <form name="memberauth" method="post" action="login.do" onsubmit="return check()">
                                         <div class="form-group">
@@ -52,8 +52,8 @@
                                         </div>
                                         
                                          <div class="text-left m-t-15" style="margin-left: 32%; ">
-                                        <button type="submit" class="btn btn-primary m-b-30 m-t-15 f-s-14 p-l-20 p-r-20 m-r-10"> 로그인</button>
-                                        <button class="btn btn-primary m-b-30 m-t-15 f-s-14 p-l-20 p-r-20 m-r-10" type="button" onclick="history.back();"><i class="ti-close m-r-5 f-s-12"></i>취소</button>
+                                        <button type="submit" class="btn btn-primary m-b-30 m-t-15 f-s-14 p-l-20 p-r-20 m-r-10">ログイン</button>
+                                        <button class="btn btn-primary m-b-30 m-t-15 f-s-14 p-l-20 p-r-20 m-r-10" type="button" onclick="history.back();"><i class="ti-close m-r-5 f-s-12"></i>キャンセル</button>
                                     </div>
                                         <hr>
                                       

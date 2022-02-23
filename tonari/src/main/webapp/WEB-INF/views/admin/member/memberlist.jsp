@@ -87,36 +87,37 @@
 
 						<div class="card shadow mb-4">
 							<div class="card-header py-3">
-								<h6 class="m-0 font-weight-bold text-primary">강사구독승인</h6>
+								<h6 class="m-0 font-weight-bold text-primary">先生購読承認</h6>
 							</div>
 							<div class="card-body">
 								<div class="table-responsive">
 									<table class="table table-bordered">
 										<thead>
 											<tr>
-												<th>번호</th>
-												<th>이름</th>
-												<th>가입날짜</th>
-												<th>구분</th>
-												<th>구독승인</th>
+												<th>番号</th>
+												<th>名前</th>
+												<th>登録日</th>
+												<th>区分</th>
+												<th>購読承認</th>
 											</tr>
 										</thead>
 										<tbody>
 
-											<c:forEach items="${list}"
-												var="TeacherPermissionList">
+											<c:forEach items="${list}" var="TeacherPermissionList">
 												<tr>
 													<td>${TeacherPermissionList.bno}</td>
-													<td>${TeacherPermissionList.name}</td>
+													<td style="cursor: pointer ; "
+													onClick=" location.href='memberview?name=${TeacherPermissionList.name}' "
+													onMouseOver=" window.status = 'http://ihouse.so.vc' "
+													onMouseOut=" window.status = '' "   >${TeacherPermissionList.name}</td>
 													<td>${TeacherPermissionList.join_date}</td>
 													<td>${TeacherPermissionList.category_name}</td>
-													<td><a onClick="return confirm('승인하시겠습니까?')"
+													<td><a onClick="return confirm('承認しますか？')"
 														href="permission.do?bno=${TeacherPermissionList.bno}"
-														class="btn btn-primary btn-sm">승인</a>
-														<a onClick="return confirm('취소하시겠어요?')"
-													href="deleteteacherlist1.do?bno=${TeacherPermissionList.bno}"
-													class="btn btn-danger btn-sm">취소</a>	
-													</td>
+														class="btn btn-primary btn-sm">承認</a> <a
+														onClick="return confirm('キャンセルしますか？(キャンセルすると払い戻しできます。)')"
+														href="deleteteacherlist1.do?bno=${TeacherPermissionList.bno}"
+														class="btn btn-danger btn-sm">キャンセル</a></td>
 												</tr>
 											</c:forEach>
 
@@ -132,13 +133,13 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">회원관리</h1>
+					<h1 class="h3 mb-2 text-gray-800">会員管理</h1>
 
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
 
 						<div class="card-header py-3">
-							<h6 class="m-0 font-weight-bold text-primary">회원목록</h6>
+							<h6 class="m-0 font-weight-bold text-primary">会員リスト</h6>
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
@@ -146,30 +147,33 @@
 									cellspacing="0">
 									<thead>
 										<tr>
-											<th>회원번호</th>
-											<th>권한</th>
-											<th>이름</th>
-											<th>메일</th>
-											<th>가입날짜</th>
-											<th>회원삭제</th>
+											<th>会員番号</th>
+											<th>権限</th>
+											<th>名前</th>
+											<th>メール</th>
+											<th>登録日</th>
+											<th>会員削除</th>
 										</tr>
 									</thead>
 									<tbody>
 										<c:forEach items="${memberlist}" var="memberlist">
 											<tr>
 												<td>${memberlist.bno}</td>
-											<c:if test="${memberlist.auth eq'ROLE_ADMIN'}">	
-												<td>관리자</td>
-											</c:if>
-											<c:if test="${memberlist.auth eq'ROLE_MEMBER'}">	
-												<td>일반회원</td>
-											</c:if>		
-												<td>${memberlist.name}</td>
+												<c:if test="${memberlist.auth eq'admin'}">
+													<td>管理者</td>
+												</c:if>
+												<c:if test="${memberlist.auth eq'student'}">
+													<td>一般会員</td>
+												</c:if>
+												<td style="cursor: pointer ; "
+													onClick=" location.href='memberview?name=${memberlist.name}' "
+													onMouseOver=" window.status = 'http://ihouse.so.vc' "
+													onMouseOut=" window.status = '' "   >${memberlist.name}</td>
 												<td>${memberlist.email}</td>
 												<td>${memberlist.join_date}</td>
-												<td><a onClick="return confirm('삭제하시겠어요?')"
+												<td><a onClick="return confirm('削除しますか？')"
 													href="delete.do?bno=${memberlist.bno}"
-													class="btn btn-danger btn-sm">삭제</a></td>
+													class="btn btn-danger btn-sm">削除</a></td>
 											</tr>
 										</c:forEach>
 

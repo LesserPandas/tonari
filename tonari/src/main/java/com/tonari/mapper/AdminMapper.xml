@@ -6,20 +6,20 @@
 	<!-- 회원목록 -->
 	<select id="selectmemberlist"
 		resultType="com.tonari.domain.MemberAuthVO">
-	select m.bno, m.email, m.passwd, m.nick,m.name,m.sex,m.zipcode,m.address,
-		m.o_addr,m.gu,m.dong,m.phone,m.join_date,m.recent_login_date, a.auth
-		from member m LEFT OUTER JOIN auth a on m.bno = a.member_bno
-        order by bno
+	select * from member_auth_view order by bno
 	</select>
 
-
+	<select id="memberview"
+		resultType="com.tonari.domain.MemberAuthVO">
+	select * from member_auth_view where name= #{name}
+	</select>
 
 <delete id="delete" >
 		delete member where bno = #{bno}
 	</delete>
 	
 	<delete id="deleteteacherlist" >
-		delete teacher where bno = #{bno}
+		delete teacher where member_bno = #{member_bno}
 	</delete>
 	
 	<delete id="boarddelete" >
@@ -39,7 +39,7 @@
 
 
 <update id="permission">
-	UPDATE teacher SET permission='y' WHERE bno= #{bno}
+	UPDATE teacher SET permission='y' WHERE member_bno= #{bno}
 </update>
 
 
@@ -81,10 +81,7 @@
 	
 	
 	<select id="login" resultType="com.tonari.domain.MemberAuthVO">
-		select m.email, m.passwd, a.auth 
-		  from member m, auth a
-		 where email = #{email}
-		   and passwd = #{passwd}   
+		select * from member where email = #{email} and passwd = #{passwd}   
 	</select>
 	
 	<select id="selectMail" resultType="com.tonari.domain.MailVO">

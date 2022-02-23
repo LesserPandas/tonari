@@ -34,24 +34,23 @@ window.onload = function(){
 			document.getElementById('select_month').options[index] = new Option(m, m); 
 			index++; 
 		} lastday(); 
-		
-		
-	function lastday(){ //년과 월에 따라 마지막 일 구하기
-		var Year=document.getElementById('select_year').value; 
-		var Month=document.getElementById('select_month').value; 
-		var day=new Date(new Date(Year,Month,1)-86400000).getDate(); 
-		/* = new Date(new Date(Year,Month,0)).getDate(); */ 
-		var dayindex_len=document.getElementById('select_day').length; 
-		if(day>dayindex_len){ 
-			for(var i=(dayindex_len+1); i<=day; i++){ 
-				document.getElementById('select_day').options[i-1] = new Option(i, i); 
-			} 
-		} else if(day<dayindex_len){ 
-			for(var i=dayindex_len; i>=day; i--){ 
-				document.getElementById('select_day').options[i]=null; 
-			} 
+}
+
+function lastday(){ //년과 월에 따라 마지막 일 구하기
+	var Year=document.getElementById('select_year').value; 
+	var Month=document.getElementById('select_month').value; 
+	var day=new Date(new Date(Year,Month,1)-86400000).getDate(); 
+	/* = new Date(new Date(Year,Month,0)).getDate(); */ 
+	var dayindex_len=document.getElementById('select_day').length; 
+	if(day>dayindex_len){ 
+		for(var i=(dayindex_len+1); i<=day; i++){ 
+			document.getElementById('select_day').options[i-1] = new Option(i, i); 
 		} 
-	}
+	} else if(day<dayindex_len){ 
+		for(var i=dayindex_len; i>=day; i--){ 
+			document.getElementById('select_day').options[i]=null; 
+		} 
+	} 
 }
 
 function chkjoin() {
@@ -62,8 +61,6 @@ function chkjoin() {
 	var uploadFile = document.getElementById("uploadFile").value;
 	if(!date()) {
 		return false;
-	}else {
-		$("#dodate").val(date());
 	}
 	if(title=="") {
 		alert("제목을 입력해주세요");
@@ -88,21 +85,20 @@ function chkjoin() {
 }
 
 function date() {
-	var list = document.getElementsByName("date");
-	var dodate = "";
-	for(var i=0;i<list.length;i++) {
-		if(list[i].checked) {
-			dodate += "1";
-		}else {
-			dodate += "0";
-		}
-	}
-	if(dodate=="0000000") {
-		alert("가능한 날짜를 선택해주세요");
+	var dodate=0;
+	var chkList = document.querySelectorAll("input[name=date]:checked");
+	chkList.forEach(function(ch) {
+		dodate += parseInt(ch.value);
+	});
+	
+	if(dodate == 0) {
+		alert("요일을 선택해주세요");
 		return false;
 	}else {
-		return dodate;
+		$("#dodate").val(dodate);
+		return true;
 	}
+	
 }
 
 function age(select_year) {

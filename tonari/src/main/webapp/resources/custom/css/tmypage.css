@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+.teacherdate {
+	width: 100%;
+}
+
+input[name=date]+label {
+	padding: 0;
+	float: left;
+}
+
+input[name=date] {
+	width: 15px;
+	height: 15px;
+}
+
+.teacherdate th, .teacherdate td {
+	font-size: 18px;
+	text-align: center;
+}
+
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button
+	{
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+.howmuch{
+	text-align: right;
+}
+
+.japanesemoney{
+	color: #67bd3c;
+	font-size: 20px;
+	padding: 0;
+}

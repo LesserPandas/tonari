@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../../header.jsp"%>
-<link href="/resources/custom/css/mypage.css" rel="stylesheet">
+<link href="/resources/custom/css/tmypage.css" rel="stylesheet">
 
 <div class="main">
 	<div class="container">
@@ -13,7 +13,7 @@
 		<!-- BEGIN SIDEBAR & CONTENT -->
 		<div class="row margin-bottom-40">
 			<!-- BEGIN SIDEBAR -->
-			<%@ include file="../../side.jsp"%>
+			<%@ include file="../mypagesidebar.jsp"%>
 			<!-- END SIDEBAR -->
 			<!-- BEGIN CONTENT -->
 			<div class="col-md-9 col-sm-7">
@@ -93,30 +93,30 @@
 										<tr class="">
 											<td>
 												<label for="sun"></label>
-												<input type="checkbox" name="date" id="sun">
+												<input type="checkbox" name="date" id="sun" value="64">
 											</td>
 											<td>
-											<input type="checkbox" name="date" id="mon">
+											<input type="checkbox" name="date" id="mon" value="32">
 												<label for="mon"></label>
 											</td>
 											<td>
-												<input type="checkbox" name="date" id="tue">
+												<input type="checkbox" name="date" id="tue" value="16">
 												<label for="tue"></label>
 											</td>
 											<td>
-												<input type="checkbox" name="date" id="wed">
+												<input type="checkbox" name="date" id="wed" value="8">
 												<label for="wed"></label>
 											</td>
 											<td>
-												<input type="checkbox" name="date" id="thu">
+												<input type="checkbox" name="date" id="thu" value="4">
 												<label for="thu"></label>
 											</td>
 											<td>
-												<input type="checkbox" name="date" id="fri">
+												<input type="checkbox" name="date" id="fri" value="2">
 												<label for="fri"></label>
 											</td>
 											<td>
-												<input type="checkbox" name="date" id="sat">
+												<input type="checkbox" name="date" id="sat" value="1">
 												<label for="sat"></label>
 											</td>
 										</tr>
@@ -124,6 +124,11 @@
 								</div>
 								<div class="description">
 									<div class="form-group">
+										<div style="display:flex">
+											<input type="number" name="howmuch" id="howmuch" 
+											class="form-control howmuch" placeholder="하루 당 원하는 가격 입력">
+											<span class="col-md-2 japanesemoney">円</span>
+										</div>
 										<label for="name">프로필 사진 선택<span class="require">*</span></label>
 										<input style="display: block;" type="file" id="uploadFile" name="uploadFile">
 									</div>

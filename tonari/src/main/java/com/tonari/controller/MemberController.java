@@ -34,7 +34,7 @@ public class MemberController {
 //	private PasswordEncoder pwencoder;
 
 	@PostMapping("/login")
-	 public String login(HttpServletRequest request, MemberVO mvo) {
+	 public String login(HttpServletRequest request, MemberVO member) {
 		
 		//0) DB검색
 		MemberVO mvo = service.loginCheck(member);

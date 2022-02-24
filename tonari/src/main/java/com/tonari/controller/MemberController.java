@@ -36,8 +36,8 @@ public class MemberController {
 	 public String login(HttpServletRequest request, MemberVO member) {
 		
 		//0) DB검색
-		String nick = service.loginCheck(member); // nick
-		
+		MemberVO mvo = service.loginCheck(member);
+
 		// 1이면 로그인 성공 , 0이면 실패	
 		if (nick != null) {
 			
@@ -55,7 +55,7 @@ public class MemberController {
 			 * session.setMaxInactiveInterval(1800); // 1800 = 60s*30 (30분)
 			 */        
 			//4) 회원정보 설정
-			session.setAttribute("nick", nick);
+			session.setAttribute("nowUser", mvo);
 			/* session.setAttribute(AUTH, member.getAuth()); */
 			/* session.setAttribute(AUTH_NAME, authName); */
 		} else {  
@@ -121,13 +121,30 @@ public class MemberController {
       //내가 추가함
 
 }
-    
-    //닉네임 체크
+    //닉네임 체크(회원가입)
     @PostMapping("/nickCheck")
     @ResponseBody
     public String nickCheck(@RequestParam("nick") String nick){
         log.info("userIdCheck 진입");
         log.info("전달받은 id:"+ nick);
+        String result = "" + service.nickCheck(nick);
+        log.info("확인 결과:" + result);
+        return result;
+        
+    }
+    
+    //닉네임 체크(개인정보 수정)
+    @PostMapping("/nickCheck2")
+    @ResponseBody
+    public String nickCheck(HttpServletRequest request, @RequestParam("nick") String nick){
+        log.info("userIdCheck 진입");
+        log.info("전달받은 id:"+ nick);
+        HttpSession session = request.getSession();
+        String nowNick = (String)session.getAttribute("nick");
+        if(nowNick.equals(nick)) {
+        	return"2";
+        }
+        
         String result = "" + service.nickCheck(nick);
         log.info("확인 결과:" + result);
         return result;

@@ -15,6 +15,7 @@ public interface BoardMapper {
 
 	public List<CategoryVO> sidelist(); //사이드 바 메뉴
 	public List<BoardSearch_viewVO> OrderbyList(Criteria cri);
+	public String addr_search(String nick);
 	public Addr_searchVO shortarea(String area);//거리 순 나열
 	public Teacherinfo_viewVO teacherinfo(int bno);
 	public List<Review_viewVO> review(int bno);
@@ -22,9 +23,14 @@ public interface BoardMapper {
 	public String getnickname(int bno);
 	public void addlike(LikeMarkVO like);
 	public void removelike(LikeMarkVO like);
-	public List<LikeMarkVO> chkLike(int i);
+	public List<LikeMarkVO> chklike(LikeMarkVO lvo);
 	public LikeMarkVO chkLikeone(LikeMarkVO lvo);
 	
+	
 	public int total(Criteria cri);//전체 게시물 조회
+	
+	
+	
+	
 	
 }

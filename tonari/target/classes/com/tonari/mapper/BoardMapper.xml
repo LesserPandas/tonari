@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.tonari.mapper.BoardMapper">
-
-	<select id="shortarea"
-		resultType="com.tonari.domain.Addr_searchVO">
+	<select id ="addr_search" resultType ="String">
+		select gu from board_search_view where nick = #{nick}
+	</select>
+	<select id="shortarea" resultType="com.tonari.domain.Addr_searchVO">
 		select * from addr_search where rank1= #{keyword}
 	</select>
 	<sql id="searchall">
@@ -163,10 +164,7 @@
 			</otherwise>
 		</choose>
 	</select>
-	<select id="chkLike" resultType="com.tonari.domain.LikeMarkVO"
-		parameterType="com.tonari.domain.LikeMarkVO">
-		select * from likemark where member_bno = #{member_bno}
-	</select>
+
 	<insert id="addlike"
 		parameterType="com.tonari.domain.LikeMarkVO">
 		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
@@ -183,7 +181,10 @@
 	</select>
 	<delete id="removelike"
 		parameterType="com.tonari.domain.LikeMarkVO">
-		delete from likemark where member_bno=#{member_bno} and
-		board_bno = ${board_bno}
+		delete from likemark where member_bno=#{member_bno} 
+		and board_bno = ${board_bno}
 	</delete>
+	<select id ="chklike" resultType="com.tonari.domain.LikeMarkVO" parameterType="com.tonari.domain.LikeMarkVO">
+		select member_bno,board_bno from likemark where member_bno = #{member_bno}
+	</select>
 </mapper>

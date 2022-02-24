@@ -8,7 +8,7 @@
 	<div class="container">
 		<ul class="breadcrumb">
 			<li><a href="index.html">Home</a></li>
-			<li class="active">선생님 찾기</li>
+			<li class="active">先生サーチ</li>
 		</ul>
 		<!-- BEGIN SIDEBAR & CONTENT -->
 
@@ -33,13 +33,13 @@
 					<div class="row">
 						<div class="col-md-6">
 							<h1>
-								<em>개꿀 선생님</em>을 찾아보자!
+								<em>先生を</em>探してみよう！
 							</h1>
 						</div>
 						<div class="col-md-6">
 							<form action="search" method="get">
 								<div class="input-group">
-									<input type="text" placeholder="개꿀 선생님을 검색해보자"
+									<input type="text" placeholder="先生を探してみよう！"
 										class="form-control" name="keyword" id="keyword"> <span
 										class="input-group-btn">
 										<button class="btn btn-primary" type="submit">Search</button>
@@ -56,17 +56,16 @@
 					</div>
 					<div class="col-md-10 col-sm-10">
 						<div class="pull-right">
-							<label class="control-label">정렬</label> <select id="orderby"
+							<label class="control-label">順番</label> <select id="orderby"
 								class="form-control input-sm"
 								onchange="if(this.value) location.href=(this.value);">
 								<option
-									value="/board/search?type=orderby&&keyword=teacher&&snum=0" selected>신규</option>
-								<c:if test="${not empty nick }">
-									<option value="/board/search?type=area&&snum=2&&keyword=${nick }">가까운
-										지역</option>
-								</c:if>
+									value="/board/search?type=orderby&&keyword=teacher&&snum=0" selected>新規</option>
 								<option
-									value="/board/search?type=orderby&&keyword=score&&snum=1">별점</option>
+									value="/board/search?type=orderby&&keyword=score&&snum=1">点数</option>
+								<c:if test="${not empty nowUser }">
+									<option value="/board/search?type=area&&keyword=${nowUser.nick }&&snum=2">近い先生</option>
+								</c:if>
 							</select>
 						</div>
 					</div>
@@ -77,19 +76,18 @@
 
 					<!-- list.board_bno > list.teacher_bno -->
 					<c:if test="${empty list}">
-						해당 검색의 강사가 없음
+						検索できた先生がいません
 					</c:if>
 					<c:forEach items="${list}" var="list">
 						<div class="col-md-4 col-sm-6 col-xs-12">
-							<div class="product-item">
+							<div class="product-item" style="display: flex; flex-direction: column;">
 								<div style="text-align: right;">
-									<span>별점 :&nbsp;${list.score}</span>
+									<span>点数 :&nbsp;${list.score}</span>
 								</div>
-								<div class="pi-img-wrapper">
-									<img src="/resources/assets/pages/img/products/model1.jpg"
-										class="img-responsive" alt="">
+								<div class="pi-img-wrapper" style="overflow: hidden">
+									<img src="${list.image }" class="img-responsive" alt="">
 									<div>
-										<a href="info?board_bno=${list.bno }"
+										<a href="info?teacher_bno=${list.teacher_bno }"
 											class=" btn-default fancybox-button"
 											style="border: none; text-align: center; padding: 0; margin: 0;">
 											<span>"<br>${list.coment }<br>"
@@ -97,17 +95,19 @@
 										</a>
 									</div>
 								</div>
-								<div class="teacherInfo">
-									<div style="display: inline">${list.category_name}</div>
-									<div class="pull-right">${list.gu}구&nbsp;${list.dong}동</div>
-								</div>
-								<div class="teacherInfo">
-									<h3 style="display: inline">
-										<a href="info?board_bno=${list.bno }" style="font-weight: bold; font-size: 18px;">${list.title }</a>
-									</h3>
-									<button class="pull-right squareButton likeButton "
-										id="board_${list.bno}" onclick="like(${list.bno},3)">♥
-									</button>
+								<div style="margin-top: auto">
+									<div class="teacherInfo">
+										<div style="display: inline">${list.category_name}</div>
+										<div class="pull-right">${list.gu}&nbsp;${list.dong}</div>
+									</div>
+									<div class="teacherInfo">
+										<h3 style="display: inline">
+											<a href="info?teacher_bno=${list.teacher_bno }" style="font-weight: bold; font-size: 18px;">${list.title }</a>
+										</h3>
+										<button class="pull-right squareButton likeButton "
+											id="teacher_${list.teacher_bno}" onclick="like(${list.teacher_bno},${nowUser.bno })">♥
+										</button>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -176,18 +176,16 @@
 <script> //likebutton
 
 $(document).ready(function(){
-	var member_bno = 23;
+	var member_bno = "${nowUser.bno}";
 	$.ajax({
 		type:"post",
 		url:"/board/chklike",
 		dataType: "json",
 		data:{"member_bno":member_bno},
 		success:function(data){
-				console.log(data);
 				for(var i=0; i<data.length;i++){
-					$("#board_"+data[i].board_bno).addClass("likeButtonActive");
+					$("#teacher_"+data[i].teacher_bno).addClass("likeButtonActive");
 				}
-				
 		},error:function(request,status,error){
 			alert("request error :"+reauest+" status error :"+status+" error:"+error);
 			

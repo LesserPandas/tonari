@@ -6,8 +6,8 @@
 <div class="main">
 	<div class="container">
 		<ul class="breadcrumb">
-			<li><a href="index.html">Home</a></li>
-			<li><a href="">마이페이지</a></li>
+			<li><a href="/">Home</a></li>
+			<li><a href="/mypage">마이페이지</a></li>
 			<li class="active">선생님 등록</li>
 		</ul>
 		<!-- BEGIN SIDEBAR & CONTENT -->
@@ -16,6 +16,7 @@
 			<%@ include file="../mypagesidebar.jsp"%>
 			<!-- END SIDEBAR -->
 			<!-- BEGIN CONTENT -->
+				<form class="" name="form1" method="post" >
 			<div class="col-md-9 col-sm-7">
 				<div class="product-page">
 					<div class="row">
@@ -27,7 +28,6 @@
 						</div>
 						<form name="teacherinfo" action="/mypage/teacherJoin" 
 							method="post" enctype="multipart/form-data" onsubmit = "return chkjoin()">
-						<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"> 
 						<input type="hidden" name="dodate" id="dodate">
 						<input type="hidden" name="member_bno" value="${info.bno }">
 						<input type="hidden" name="age" id="age">
@@ -35,8 +35,8 @@
 								<input class="form-control" type="text" id="title" name="title" placeholder="소개 타이틀">
 								<div class="price-availability-block clearfix">
 									<div class="price">
-										<strong>${nick }</strong>
-										<input type="hidden" name="nick" value="${nick }">
+										<strong>${nowUser.nick }</strong>
+										<input type="hidden" name="nick" value="${nowUser.nick }">
 									</div>
 								</div>
 								<div class="description">
@@ -154,6 +154,7 @@
 					</div>
 				</div>
 			</div>
+			</form>
 		</div>
 		<!-- END CONTENT -->
 	</div>

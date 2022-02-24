@@ -2,6 +2,7 @@ package com.tonari.service;
 
 import com.tonari.domain.MemberVO;
 
+
 public interface MemberService {
 
 	public int emailCheck(String email); 

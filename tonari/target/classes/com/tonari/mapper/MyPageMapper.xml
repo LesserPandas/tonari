@@ -13,8 +13,8 @@
 		values
 		(#{bno},#{member_bno},#{content},#{image},#{category},#{coment},#{dodate},#{age},#{title})
 	</insert>
-	<select id = "getTeacherVO" resultType="com.tonari.domain.TeacherVO">
-		select * from TEACHER_INFO_VIEW where teacher_bno = #{bno}
+	<select id = "getTeacherVO" resultType="com.tonari.domain.Teacherinfo_viewVO">
+		select * from TEACHER_INFO_VIEW where member_bno = #{bno}
 	</select>
 	
 </mapper>

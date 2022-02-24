@@ -8,9 +8,11 @@ public interface MemberMapper {
 	
 	//닉네임
 	public String nickCheck(String nick);
-	//
 	
+	//회원가입 등록(memberController에서 사용)
 	public void insert(MemberVO member);
+	
+	
 	
 	// DB검색	
 	public MemberVO login(MemberVO member);

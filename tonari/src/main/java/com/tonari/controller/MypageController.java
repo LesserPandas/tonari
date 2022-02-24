@@ -20,10 +20,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.JsonObject;
 import com.tonari.domain.MemberAuthVO;
 import com.tonari.domain.MemberVO;
+import com.tonari.domain.PayListVO;
 import com.tonari.domain.ReviewVO;
 import com.tonari.domain.TeacherVO;
 import com.tonari.domain.Teacherinfo_viewVO;
@@ -35,6 +37,7 @@ import lombok.extern.log4j.Log4j;
 
 import com.tonari.domain.MemberVO;
 import com.tonari.service.MemberService;
+import com.tonari.service.MypageService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -45,11 +48,9 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class MypageController {
 
-	@Setter
-	private MypageService service;
-	
-	
-	//teacher 
+	private MemberService service;
+	private MypageService pservice;
+
 	@GetMapping("/teacherJoin")
 	public String tjoin(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -119,7 +120,16 @@ public class MypageController {
 		return "/mypage/teacher/teacherModify";
 	}
 
-	@GetMapping("/studentinfo")
+	@GetMapping("/subscription")
+	public String sub() {
+		return "/mypage/teacher/subscription";
+	}
+	@GetMapping("/subResult")
+	public String subResult() {
+		return "/mypage/teacher/subResult";
+	}
+	//기본개인정보 수정
+	@GetMapping("/studentinfo") 
 	public String studentinfo(HttpServletRequest request, Model model) throws Exception {
 		HttpSession session = request.getSession();
 		String nick = (String) session.getAttribute("nick");
@@ -130,14 +140,20 @@ public class MypageController {
 
 		return "/mypage/student/studentInfoModify";
 	}
-
+	
 	@GetMapping("/like")
 	public String steacherLike() {
 		return "/mypage/student/teacherlike";
 	}
 	
-	@GetMapping("/subscription")
-	public String sub() {
-		return "/mypage/teacher/subscription";
+	@GetMapping("/studentList")
+	public String studentList() {
+		return "/mypage/teacher/studentList";
 	}
+	
+	public String teacherList() {
+	@GetMapping("/teacherList")
+		return "/mypage/student/teacherList";
+	}
+
 }

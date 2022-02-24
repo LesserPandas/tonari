@@ -75,6 +75,12 @@
 <script src="/resources/assets/plugins/jquery.min.js" type="text/javascript"></script>
 <!-- 내가 추가-->
 
+<!-- 한준희 결제 스크립트 -->
+ <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<!-- 아래 제이쿼리는 1.0이상이면 원하는 버전을 사용하셔도 무방합니다. -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>		
+<!-- 한준희 결제 스크립트 -->
+
 <!-- Theme styles END -->
 </head>
 <!-- Head END -->
@@ -102,15 +108,15 @@
 				<div class="col-md-6 col-sm-6 additional-nav">
 					<ul class="list-unstyled list-inline pull-right">
 						<c:choose>
-						<c:when test="${empty nick}">
+						<c:when test="${empty nowUser}">
 						<li><a href="/">HOME</a></li>
 						<li><a href="/login">로그인</a></li>
 						<li><a href="/join">회원가입</a></li>
 						</c:when>
 						
-						<c:when test="${not empty nick}">
+						<c:when test="${not empty nowUser}">
 						<!-- 닉네임 -->
-						<li>${nick}님</li>
+						<li>${nowUser.nick}님</li>
 						
 						<!-- 홈으로 -->
 						<li><a href="/">HOME</a></li>
@@ -317,4 +323,5 @@
 		</div>
 	</div>
 	<!-- Header END -->
+
 </body>

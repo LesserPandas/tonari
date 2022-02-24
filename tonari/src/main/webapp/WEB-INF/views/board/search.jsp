@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
-<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" href="/resources/custom/css/board.css">
 
 <div class="main">
@@ -18,11 +18,10 @@
 				<div class="sidebar-filter margin-bottom-25">
 					<ul class="list-group margin-bottom-25 sidebar-menu">
 						<c:forEach items="${sidelist }" var="sidelist">
-							<li class="list-group-item clearfix">
-								<a href="/board/search?type=category&&keyword=${sidelist.category_bno}"> 
+							<li class="list-group-item clearfix"><a
+								href="/board/search?type=category&&keyword=${sidelist.category_bno}">
 									<i class="fa fa-angle-right"></i>${sidelist.category_name }
-								</a>
-							</li>
+							</a></li>
 						</c:forEach>
 					</ul>
 				</div>
@@ -40,8 +39,9 @@
 						<div class="col-md-6">
 							<form action="search" method="get">
 								<div class="input-group">
-									<input type="text" placeholder="개꿀 선생님을 검색해보자" class="form-control" name="keyword" id="keyword"> 
-									<span class="input-group-btn">
+									<input type="text" placeholder="개꿀 선생님을 검색해보자"
+										class="form-control" name="keyword" id="keyword"> <span
+										class="input-group-btn">
 										<button class="btn btn-primary" type="submit">Search</button>
 									</span>
 								</div>
@@ -51,37 +51,22 @@
 				</div>
 				<div class="row list-view-sorting clearfix">
 					<div class="col-md-2 col-sm-2 list-view">
-						<a href="javascript:;"><i class="fa fa-th-large"></i></a> 
-						<a href="javascript:;"><i class="fa fa-th-list"></i></a>
+						<a href="javascript:;"><i class="fa fa-th-large"></i></a> <a
+							href="javascript:;"><i class="fa fa-th-list"></i></a>
 					</div>
 					<div class="col-md-10 col-sm-10">
 						<div class="pull-right">
-							<label class="control-label">정렬</label>
-							<!-- <select class="form-control input-sm" name="orderby" id="orderby" onchange="orderby()">
-								<option value="teacher" selected="selected">신규</option>
-								<option value="a">가까운 지역</option>
-								<option value="score">별점</option>
-							 
-							 ajax 나중에 해볼것
-							 -->
-							 <select class="form-control input-sm" onchange="if(this.value) location.href=(this.value);">
-								<c:choose>
-									<c:when test="${orderby=='teacher'}">
-										<option value="/board/search?type=orderby&&keyword=teacher" selected="selected">신규</option>
-										<option value="/board/search?type=area&&keyword=a">가까운 지역</option>
-										<option value="/board/search?type=orderby&&keyword=score">별점</option>
-									</c:when>
-									<c:when test="${orderby=='score' }">
-										<option value="/board/search?type=orderby&&keyword=teacher">신규</option>
-										<option value="/board/search?type=area&&keyword=a">가까운 지역</option>
-										<option value="/board/search?type=orderby&&keyword=score" selected="selected">별점</option>
-									</c:when>
-									<c:otherwise>
-										<option value="/board/search?type=orderby&&keyword=teacher">신규</option>
-										<option value="/board/search?type=area&&keyword=a" selected="selected">가까운 지역</option>
-										<option value="/board/search?type=orderby&&keyword=score">별점</option>
-									</c:otherwise>
-								</c:choose> 
+							<label class="control-label">정렬</label> <select id="orderby"
+								class="form-control input-sm"
+								onchange="if(this.value) location.href=(this.value);">
+								<option
+									value="/board/search?type=orderby&&keyword=teacher&&snum=0" selected>신규</option>
+								<c:if test="${not empty nick }">
+									<option value="/board/search?type=area&&snum=2&&keyword=${nick }">가까운
+										지역</option>
+								</c:if>
+								<option
+									value="/board/search?type=orderby&&keyword=score&&snum=1">별점</option>
 							</select>
 						</div>
 					</div>
@@ -89,6 +74,8 @@
 				<!-- BEGIN PRODUCT LIST -->
 				<div class="row product-list">
 					<!-- PRODUCT ITEM START -->
+
+					<!-- list.board_bno > list.teacher_bno -->
 					<c:if test="${empty list}">
 						해당 검색의 강사가 없음
 					</c:if>
@@ -102,31 +89,25 @@
 									<img src="/resources/assets/pages/img/products/model1.jpg"
 										class="img-responsive" alt="">
 									<div>
-										<a href="#" class=" btn-default fancybox-button" 
-										style="border: none; text-align: center; padding: 0; margin: 0;">
-											<!-- "<br>내용<br>" -->
+										<a href="info?board_bno=${list.bno }"
+											class=" btn-default fancybox-button"
+											style="border: none; text-align: center; padding: 0; margin: 0;">
+											<span>"<br>${list.coment }<br>"
+										</span>
 										</a>
 									</div>
 								</div>
 								<div class="teacherInfo">
-									<div style="display: inline"> ${list.category_name}</div>
+									<div style="display: inline">${list.category_name}</div>
 									<div class="pull-right">${list.gu}구&nbsp;${list.dong}동</div>
 								</div>
 								<div class="teacherInfo">
 									<h3 style="display: inline">
 										<a href="info?board_bno=${list.bno }" style="font-weight: bold; font-size: 18px;">${list.title }</a>
 									</h3>
-									<button class="pull-right squareButton likeButton " 
+									<button class="pull-right squareButton likeButton "
 										id="board_${list.bno}" onclick="like(${list.bno},3)">♥
 									</button>
-									<c:forEach items = "${like }" var="like">
-									<c:if test="${like.board_bno == list.bno}">
-											<script>
-												$("#board_"+${list.bno}).addClass("likeButtonActive")
-											</script>
-										</c:if>
-									</c:forEach>
-									
 								</div>
 							</div>
 						</div>
@@ -141,9 +122,10 @@
 							<c:if test="${pageMaker.prev }">
 								<li><a href="${pageMaker.startPage-1 }">&laquo;</a></li>
 							</c:if>
-							<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage }">
-								<li>
-									<a href="search?pageNum=${num }&&type=${type}&&keyword=${keyword}">${num }</a>
+							<c:forEach var="num" begin="${pageMaker.startPage}"
+								end="${pageMaker.endPage }">
+								<li><a
+									href="search?pageNum=${num }&&type=${type}&&keyword=${keyword}">${num }</a>
 								</li>
 							</c:forEach>
 							<c:if test="${pageMaker.next }">
@@ -159,5 +141,60 @@
 		<!-- END SIDEBAR & CONTENT -->
 	</div>
 </div>
+
+
+<script> //selected						
+	function Request(){
+	    var requestParam ="";
+		 
+		//getParameter 펑션
+		this.getParameter = function(param){
+	        //현재 주소를 decoding
+	        var url = unescape(location.href); 
+	        //파라미터만 자르고, 다시 &그분자를 잘라서 배열에 넣는다. 
+	        var paramArr = (url.substring(url.indexOf("?")+1,url.length)).split("&"); 
+	        
+	        for(var i = 0 ; i < paramArr.length ; i++){
+	           var temp = paramArr[i].split("="); //파라미터 변수명을 담음
+	        
+	           if(temp[0].toUpperCase() == param.toUpperCase()){
+	             // 변수명과 일치할 경우 데이터 삽입
+	             requestParam = paramArr[i].split("=")[1]; 
+	             break;
+	           }
+	        }
+	        return requestParam;
+	    }
+	}
+
+	// Request 객체 생성
+	var request = new Request();
+	// test 라는 파라메터 값을 얻기
+	var option = request.getParameter("snum");
+	$("#orderby option:eq("+option+")").prop("selected",true);
+</script>
+<script> //likebutton
+
+$(document).ready(function(){
+	var member_bno = 23;
+	$.ajax({
+		type:"post",
+		url:"/board/chklike",
+		dataType: "json",
+		data:{"member_bno":member_bno},
+		success:function(data){
+				console.log(data);
+				for(var i=0; i<data.length;i++){
+					$("#board_"+data[i].board_bno).addClass("likeButtonActive");
+				}
+				
+		},error:function(request,status,error){
+			alert("request error :"+reauest+" status error :"+status+" error:"+error);
+			
+		}
+	})
+})
+
+</script>
 <script src="/resources/custom/js/board.js" type="text/javascript"></script>
 <%@ include file="../footer.jsp"%>

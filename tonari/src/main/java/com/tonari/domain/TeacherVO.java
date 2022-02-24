@@ -12,4 +12,7 @@ public class TeacherVO {
 	private String image;
 	private int category;
 	private String permission;
+	private String dodate;
+	private String coment;
+	private String title;
 }

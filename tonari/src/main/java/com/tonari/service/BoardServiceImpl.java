@@ -1,9 +1,7 @@
 package com.tonari.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,7 +41,8 @@ public class BoardServiceImpl implements BoardService {
 			list = mapper.OrderbyList(cri);
 			break;
 		case "area" :
-			Addr_searchVO avo = mapper.shortarea(cri.getKeyword());
+			String gu = mapper.addr_search(cri.getKeyword());
+			Addr_searchVO avo = mapper.shortarea(gu);
 			cri.setRank1(avo.getRank1());
 			cri.setRank2(avo.getRank2());
 			cri.setRank3(avo.getRank3());
@@ -104,15 +103,6 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-//	public Map<String, Object> chkLike(LikeMarkVO lvo) {
-	public List<LikeMarkVO> chkLike(int i){
-		List<LikeMarkVO> like = mapper.chkLike(i);
-//		Map<String, Object> list = new HashMap<String,Object>();
-//		list.put("like", list);
-		return like;
-	}
-	
-	@Override
 	public LikeMarkVO chkLikeone(LikeMarkVO lvo) {
 		return mapper.chkLikeone(lvo);
 	}
@@ -122,7 +112,11 @@ public class BoardServiceImpl implements BoardService {
 		return mapper.total(cri);
 	}
 	
-	
+	@Override
+	public List<LikeMarkVO> chklike(LikeMarkVO lvo) {
+		log.info("자료 확인: "+lvo.getMember_bno());
+		return mapper.chklike(lvo);
+	}
 }
 
 

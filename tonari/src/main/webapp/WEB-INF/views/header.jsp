@@ -282,8 +282,7 @@
 											<li><a href="/login">로그인</a></li>
 											<li><a href="/join">회원가입</a></li>
 											<li><a href="/mypage/teacherJoin">강사등록</a></li>
-											<li><a href="/mypage/teacherInfo">강사정보</a></li>
-											<li><a href="/mypage/teacherModify">강사정보수정</a></li>
+											<li><a href="/mypage/teacherUpdate">강사정보수정</a></li>
 											<li><a href="/mypage/subscription">구독하기</a></li>
 											<li><a href="/mypage/subResult">구독결과</a></li>
 											<li><a href="/mypage/studentInfoModify">일반회원 정보 수정</a></li>

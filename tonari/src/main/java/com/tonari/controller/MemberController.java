@@ -39,7 +39,7 @@ public class MemberController {
 		MemberVO mvo = service.loginCheck(member);
 
 		// 1이면 로그인 성공 , 0이면 실패	
-		if (nick != null) {
+		if (mvo != null) {
 			
 			//1) 세션 가져오기
 			HttpSession session = request.getSession();

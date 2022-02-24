@@ -40,9 +40,6 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 // 컨트롤러엔 무조건 @AllArgsConstructor 쓰기
-@Log4j
-@Controller
-@AllArgsConstructor
 @RequestMapping("/mypage/*")
 @AllArgsConstructor
 @Log4j
@@ -127,19 +124,15 @@ public class MypageController {
 		return "/mypage/teacher/teacherModify";
 	}
 
-	@GetMapping("/subscription")
-	public String sub() {
-		return "/mypage/teacher/subscription";
-	}
-
 	@GetMapping("/studentinfo")
 	public String studentinfo(HttpServletRequest request, Model model) throws Exception {
 		HttpSession session = request.getSession();
 		String nick = (String) session.getAttribute("nick");
 		log.info("nick : " + nick);
-		MemberVO member = service.selectMember(nick);
-		log.info("member Data : " + member);
-		model.addAttribute("member", member);
+		log.info("주석제거 주석제거 주석제거 주석제거 주석제거 주석제거 주석제거 주석제거 주석제거 주석제거 주석제거 주석제거 주석제거 주석제거 주석제거 주석제거 주석제거 ");
+//		MemberVO member = service.selectMember(nick);
+//		log.info("member Data : " + member);
+//		model.addAttribute("member", member);
 
 		return "/mypage/student/studentInfoModify";
 	}

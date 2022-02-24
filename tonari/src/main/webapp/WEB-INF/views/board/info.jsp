@@ -72,12 +72,12 @@ pageEncoding="UTF-8"%>
 								<c:choose>
 									<c:when test="${like.teacher_bno==teacher.teacher_bno }">
 										<button class="pull-right squareButton likeButton likeButtonActive" 
-											id="teacher_${teacher.teacher_bno}" onclick="like(${teacher.teacher_bno},${bno })">♥
+											id="teacher_${teacher.teacher_bno}" onclick="like(${teacher.teacher_bno},${nowUser.bno })">♥
 										</button>
 									</c:when>
 									<c:otherwise>
 										<button class="pull-right squareButton likeButton " 
-											id="teacher_${teacher.teacher_bno}" onclick="like(${teacher.teacher_bno},${bno })">♥
+											id="teacher_${teacher.teacher_bno}" onclick="like(${teacher.teacher_bno},${nowUser.bno })">♥
 										</button>
 									</c:otherwise>
 								</c:choose>
@@ -88,7 +88,7 @@ pageEncoding="UTF-8"%>
 							<ul class="nav nav-tabs" id="myTab">
 								<li class="active"><a href="#TeacherInfo" data-toggle="tab">先生のPR</a></li>
 								<li><a href="#Reviews" data-toggle="tab">レビュー</a></li>
-								<c:if test="${not empty nick }">
+								<c:if test="${not empty nowUser }">
 									<li><a href="#ReviewWrite" data-toggle="tab">レビューを残す</a></li>
 								</c:if>
 							</ul>
@@ -122,8 +122,8 @@ pageEncoding="UTF-8"%>
 									<form class="reviews-form" action="/board/writeReview" method="post" onsubmit="return writeReview()">
 										<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 										<input type="hidden" name="teacher_bno" value="${teacher.teacher_bno }">
-										<input type="hidden" name="member_bno" value="${bno }">
-										<input type="hidden" name="nick" value="${nick }">
+										<input type="hidden" name="member_bno" value="${nowUser.bno }">
+										<input type="hidden" name="nowUser.nick" value="${nowUser.nick }">
 										
 										<h2>レビューを残す</h2>
 										<div name="myform" id="myform">

@@ -63,8 +63,8 @@
 									value="/board/search?type=orderby&&keyword=teacher&&snum=0" selected>新規</option>
 								<option
 									value="/board/search?type=orderby&&keyword=score&&snum=1">点数</option>
-								<c:if test="${not empty nick }">
-									<option value="/board/search?type=area&&keyword=${nick }&&snum=2">近い先生</option>
+								<c:if test="${not empty nowUser }">
+									<option value="/board/search?type=area&&keyword=${nowUser.nick }&&snum=2">近い先生</option>
 								</c:if>
 							</select>
 						</div>
@@ -105,7 +105,7 @@
 											<a href="info?teacher_bno=${list.teacher_bno }" style="font-weight: bold; font-size: 18px;">${list.title }</a>
 										</h3>
 										<button class="pull-right squareButton likeButton "
-											id="teacher_${list.teacher_bno}" onclick="like(${list.teacher_bno},${bno })">♥
+											id="teacher_${list.teacher_bno}" onclick="like(${list.teacher_bno},${nowUser.bno })">♥
 										</button>
 									</div>
 								</div>
@@ -176,7 +176,7 @@
 <script> //likebutton
 
 $(document).ready(function(){
-	var member_bno = "${bno}";
+	var member_bno = "${nowUser.bno}";
 	$.ajax({
 		type:"post",
 		url:"/board/chklike",

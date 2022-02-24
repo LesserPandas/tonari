@@ -69,10 +69,10 @@
 
 <!-- 내가 추가-->
 <link rel="stylesheet" href="/resources/assets/pages/css/index.css">
-<link rel="stylesheet" href="/resources/custom/css/summernote.min.css">
+<link rel="stylesheet" href="/resources/custom/css/summernote/summernote-lite.css">
 <link rel="stylesheet" href="/resources/custom/css/imagecheck.css">
 <script src="/resources/assets/jquery-3.6.0.min.js"></script>
-
+<script src="/resources/assets/plugins/jquery.min.js" type="text/javascript"></script>
 <!-- 내가 추가-->
 
 <!-- Theme styles END -->
@@ -212,7 +212,7 @@
 										<div class="col-md-3 header-navigation-col">
 											<h4>마이페이지</h4>
 											<ul>
-												<li><a href="shop-product-list.html">개인정보 수정</a></li>
+												<li><a href="mypage/studentInfoModify">개인정보 수정</a></li>
 												<li><a href="shop-product-list.html">결제 내역/관리</a></li>
 												<li><a href="shop-product-list.html">즐겨찾기한 강사</a></li>
 												<li><a href="shop-product-list.html">내 학생 보기 (강사)</a></li>

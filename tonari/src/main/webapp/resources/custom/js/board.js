@@ -36,10 +36,8 @@ function orderby() {
 		url:"/board/search",
 		data:{orderby},
 		success:function(data){
-			console.log("success");
 		},
 		error:function(data){
-			console.log("fail");
 		},
 	})
 }
@@ -79,35 +77,35 @@ function checkscore(score) {
 		alert("점수를 선택해주세요");
 		return false;
 	}
-	return true;x
+	return true;
 }
 
-function like(board_bno,member_bno) {
-	var like = $("#board_"+board_bno);
+function like(teacher_bno,member_bno) {
+	var like = $("#teacher_"+teacher_bno);
 	var chklike = like.hasClass("likeButtonActive");
 	if(chklike) {
-		removelike(board_bno,member_bno);
+		removelike(teacher_bno,member_bno);
 		like.removeClass("likeButtonActive");
 	}else {
-		addlike(board_bno,member_bno);
+		addlike(teacher_bno,member_bno);
 		like.addClass("likeButtonActive");
 	}
 }
 
-function addlike(board_bno,member_bno) {
+function addlike(teacher_bno,member_bno) {
 	$.ajax({
 		type:"post",
 		url:"/board/addlike",
-		data:{board_bno: board_bno,member_bno:member_bno}
+		data:{teacher_bno: teacher_bno,member_bno:member_bno},
+		error:function(request,status,error){
+			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error); }
 	})
 }
 
-function removelike(board_bno,member_bno) {
+function removelike(teacher_bno,member_bno) {
 	$.ajax({
 		type:"post",
 		url:"/board/removelike",
-		data:{board_bno: board_bno,member_bno:member_bno}
+		data:{teacher_bno: teacher_bno,member_bno:member_bno}
 	})
 }
-
-

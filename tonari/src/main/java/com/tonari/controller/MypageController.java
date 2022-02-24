@@ -68,8 +68,28 @@ public class MypageController {
 	
 	@PostMapping(value="/teacherJoin", produces="application/json; charset=utf8")
 	public String teacherjoin (@RequestParam("uploadFile") MultipartFile upimage,TeacherVO tvo) {
+		tvo.setImage(UploadImageFile(upimage));
+		service.teacherjoin(tvo);
+		return "redirect: /";
+	}
+	
+	//imageupload
+	@PostMapping(value = "/ImageFile", produces = "application/json; charset=utf8")
+	@ResponseBody
+	public String ImageFile(@RequestParam("file") MultipartFile file) {
+		JsonObject jsonObject = new JsonObject();
+		String url = UploadImageFile(file);
+		jsonObject.addProperty("url", url);
+		String upload = jsonObject.toString();
+		log.info(upload);
+		return upload;
+	}
+	
+	public String UploadImageFile(MultipartFile file) {
+		String url = "";
 		String uploadFolder = "c://upload";
-		String uploadFileName = upimage.getOriginalFilename();
+		String uploadFileName = file.getOriginalFilename();
+		//IE
 		uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("//")+1);
 		UUID uuid = UUID.randomUUID();
 		uploadFileName = uuid.toString()+"_"+uploadFileName;
@@ -79,18 +99,14 @@ public class MypageController {
 		}
 		File savefile = new File(uploadPath, uploadFileName);
 		try {
-			upimage.transferTo(savefile);
+			file.transferTo(savefile);
 			uploadFileName = (savefile.toString().substring(10));
-			tvo.setImage("/upload/"+uploadFileName);
-			log.info(tvo.getImage());
+			url = "/upload/"+uploadFileName;
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		service.teacherjoin(tvo);
-		return "redirect: /";
+		return url;
 	}
-	
-	
 	
 	private String getFolder() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -99,46 +115,6 @@ public class MypageController {
 		return str.replace("-", File.separator); //분리가 된다
 	 }
 	
-	//imageupload (summernote)
-	@PostMapping(value = "/ImageFile", produces = "application/json; charset=utf8")
-	@ResponseBody
-	public String ImageFile(@RequestParam("file") MultipartFile file) {
-		JsonObject jsonObject = new JsonObject();
-		String uploadFolder="c:\\upload";
-		log.info("file name : "+file.getOriginalFilename());
-	 
-		String uploadFileName = file.getOriginalFilename();
-		//IE
-		uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("//")+1);
-		log.info("only file name : "+uploadFileName);
-		 
-		UUID uuid = UUID.randomUUID();
-		 
-		uploadFileName = uuid.toString()+"_"+uploadFileName;
-		 
-		File uploadPath = new File(uploadFolder, getFolder());
-	 
-		if(uploadPath.exists() == false) {
-			uploadPath.mkdirs();
-		}
-		File savefile = new File(uploadPath,uploadFileName);
-		String saveUrl = uploadFileName.toString();
-		log.info(saveUrl);
-		 
-		try {
-			file.transferTo(savefile);
-			uploadFileName = (savefile.toString().substring(10));
-			jsonObject.addProperty("url", "/upload/"+uploadFileName);
-			jsonObject.addProperty("responseCode", "success");
-			log.info(uploadFileName);
-		}catch(Exception e) {
-			e.printStackTrace();
-			jsonObject.addProperty("responseCode", "error");
-		}
-		String upload = jsonObject.toString();
-		log.info(upload);
-		return upload;
-	}
 
 	@GetMapping("/teacherInfo")
 	public String tinfo() {
@@ -146,7 +122,8 @@ public class MypageController {
 	}
 
 	@GetMapping("/teacherModify")
-	public String tModify() {
+	public String tModify(Model model , @RequestParam("bno")int bno) {
+		model.addAttribute("tvo" , service.getTeacherVO(bno));
 		return "/mypage/teacher/teacherModify";
 	}
 
@@ -171,6 +148,9 @@ public class MypageController {
 	public String steacherLike() {
 		return "/mypage/student/teacherlike";
 	}
-
-
+	
+	@GetMapping("/subscription")
+	public String sub() {
+		return "/mypage/teacher/subscription";
+	}
 }

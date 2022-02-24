@@ -2,24 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.tonari.mapper.BoardMapper">
 	<select id ="addr_search" resultType ="String">
-		select gu from board_search_view where nick = #{nick}
+		select dong from teacher_search_view where nick = #{nick}
 	</select>
 	<select id="shortarea" resultType="com.tonari.domain.Addr_searchVO">
 		select * from addr_search where rank1= #{keyword}
 	</select>
 	<sql id="searchall">
-		(select * from board_search_view where bno like '%' ||
+		(select * from teacher_search_view where teacher_bno like '%' ||
 		#{keyword}||'%')
-		union (select * from board_search_view where title
+		union (select * from teacher_search_view where title
 		like '%' || #{keyword}||'%')
-		union (select * from board_search_view
+		union (select * from teacher_search_view
 		where gu like '%' || #{keyword}||'%')
 		union (select * from
-		board_search_view where dong like '%' || #{keyword}||'%')
+		teacher_search_view where dong like '%' || #{keyword}||'%')
 		union (select
-		* from board_search_view where category_name like '%' ||
+		* from teacher_search_view where category_name like '%' ||
 		#{keyword}||'%')
-		union (select * from board_search_view where coment
+		union (select * from teacher_search_view where coment
 		like '%' || #{keyword}||'%')
 	</sql>
 
@@ -32,11 +32,11 @@
 	<!-- 선생님 정보 -->
 	<select id="teacherinfo"
 		resultType="com.tonari.domain.Teacherinfo_viewVO">
-		select * from board_info_view where bno = #{bno}
+		select * from teacher_info_view where teacher_bno = #{teacher_bno}
 	</select>
 	<select id="review" resultType="com.tonari.domain.Review_viewVO">
 		select * from review_view where
-		teacher_bno = #{bno}
+		teacher_bno = #{teacher_bno}
 	</select>
 
 	<insert id="writeReview"
@@ -45,8 +45,8 @@
 			select review_seq.nextval from dual
 		</selectKey>
 		insert into review
-		(bno,member_bno,teacher_bno,content,score,scorestar,nick) values
-		(#{bno},#{member_bno},#{teacher_bno},#{content},#{score},#{scorestar},#{nick})
+		(bno,member_bno,teacher_bno,content,score,nick) values
+		(#{bno},#{member_bno},#{teacher_bno},#{content},#{score},#{nick})
 	</insert>
 
 	<select id="getnickname" resultType="String" parameterType="int">
@@ -67,7 +67,7 @@
 		select count(*) from
 		<choose>
 			<when test="type == 'category'.toString()">
-				(select * from board_search_view where category_name = #{keyword})
+				(select * from teacher_search_view where category_name = #{keyword})
 			</when>
 			<when test="type == 'all'.toString()">
 				(select * from (
@@ -75,26 +75,26 @@
 				))
 			</when>
 			<otherwise>
-				board_search_view
+				teacher_search_view
 			</otherwise>
 		</choose>
-		where bno > 0
+		where teacher_bno > 0
 	</select>
 
 	<select id="OrderbyList"
-		resultType="com.tonari.domain.BoardSearch_viewVO"
+		resultType="com.tonari.domain.TeacherSearch_viewVO"
 		parameterType="com.tonari.util.Criteria">
 		<choose>
 			<when test="type == 'orderby'.toString()">
 				select
 				rn ,
-				BNO,MEMBER_BNO,TEACHER_BNO,TITLE,GU,DONG,IMAGE,CATEGORY_BNO,CATEGORY_NAME,SCORE,COMENT
+				teacher_bno,member_bno,title,gu,dong,image,category_bno,category_name,score,coment
 				from
 				(select
 				rownum rn ,
-				BNO,MEMBER_BNO,TEACHER_BNO,TITLE,GU,DONG,IMAGE,CATEGORY_BNO,CATEGORY_NAME,SCORE,COMENT
+				teacher_bno,member_bno,title,gu,dong,image,category_bno,category_name,score,coment
 				from
-				(select * from board_search_view order by
+				(select * from teacher_search_view order by
 				<choose>
 					<when test="keyword == 'score'.toString()">
 						score desc nulls last
@@ -113,13 +113,13 @@
 			<when test="type == 'area'.toString()">
 				select
 				rn ,
-				BNO,MEMBER_BNO,TEACHER_BNO,TITLE,GU,DONG,IMAGE,CATEGORY_BNO,CATEGORY_NAME,SCORE,COMENT
+				teacher_bno,member_bno,title,gu,dong,image,category_bno,category_name,score,coment
 				from
 				(select
 				rownum rn ,
-				BNO,MEMBER_BNO,TEACHER_BNO,TITLE,GU,DONG,IMAGE,CATEGORY_BNO,CATEGORY_NAME,SCORE,COMENT
+				teacher_bno,member_bno,title,gu,dong,image,category_bno,category_name,score,coment
 				from
-				(select * from board_search_view order by
+				(select * from teacher_search_view order by
 				(case when dong = #{rank1} then 1 when dong = #{rank2} then 2 when dong =
 				#{rank3} then 3 else 4 end)
 				)
@@ -132,12 +132,12 @@
 			<when test="type == 'category'.toString()">
 				<![CDATA[
 				select 
-					rn , BNO,MEMBER_BNO,TEACHER_BNO,TITLE,GU,DONG,IMAGE,CATEGORY_BNO,CATEGORY_NAME,SCORE,COMENT 
+					rn , teacher_bno,member_bno,title,gu,dong,image,category_bno,category_name,score,coment 
 				from
 					(select 
-						rownum rn , BNO,MEMBER_BNO,TEACHER_BNO,TITLE,GU,DONG,IMAGE,CATEGORY_BNO,CATEGORY_NAME,SCORE,COMENT
+						rownum rn , teacher_bno,member_bno,title,gu,dong,image,category_bno,category_name,score,coment
 					from
-						(select * from board_search_view where category_bno = #{keyword})
+						(select * from teacher_search_view where category_bno = #{keyword})
 					where rownum <= #{pageNum} * #{amount}
 					)
 				where rn>(#{pageNum}-1) * #{amount}
@@ -147,11 +147,11 @@
 
 				select
 				rn ,
-				BNO,MEMBER_BNO,TEACHER_BNO,TITLE,GU,DONG,IMAGE,CATEGORY_BNO,CATEGORY_NAME,SCORE,COMENT
+				teacher_bno,member_bno,title,gu,dong,image,category_bno,category_name,score,coment
 				from
 				(select
 				rownum rn ,
-				BNO,MEMBER_BNO,TEACHER_BNO,TITLE,GU,DONG,IMAGE,CATEGORY_BNO,CATEGORY_NAME,SCORE,COMENT
+				teacher_bno,member_bno,title,gu,dong,image,category_bno,category_name,score,coment
 				from
 				(
 				<include refid="searchall" />
@@ -170,21 +170,21 @@
 		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
 			select likemark_seq.nextval from dual
 		</selectKey>
-		insert into likemark (bno,member_bno,board_bno) values
-		(#{bno},#{member_bno},#{board_bno})
+		insert into likemark (bno,member_bno,teacher_bno) values
+		(#{bno},#{member_bno},#{teacher_bno})
 	</insert>
 	<select id="chkLikeone"
 		resultType="com.tonari.domain.LikeMarkVO"
 		parameterType="com.tonari.domain.LikeMarkVO">
 		select * from likemark where member_bno=#{member_bno}
-		and board_bno = #{board_bno}
+		and teacher_bno = #{teacher_bno}
 	</select>
 	<delete id="removelike"
 		parameterType="com.tonari.domain.LikeMarkVO">
 		delete from likemark where member_bno=#{member_bno} 
-		and board_bno = ${board_bno}
+		and teacher_bno = ${teacher_bno}
 	</delete>
 	<select id ="chklike" resultType="com.tonari.domain.LikeMarkVO" parameterType="com.tonari.domain.LikeMarkVO">
-		select member_bno,board_bno from likemark where member_bno = #{member_bno}
+		select member_bno,teacher_bno from likemark where member_bno = #{member_bno}
 	</select>
 </mapper>

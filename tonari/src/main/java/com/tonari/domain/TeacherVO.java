@@ -15,4 +15,5 @@ public class TeacherVO {
 	private String dodate;
 	private String coment;
 	private String title;
+	private int howmuch;
 }

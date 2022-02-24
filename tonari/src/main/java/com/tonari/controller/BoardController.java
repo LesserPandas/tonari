@@ -39,32 +39,33 @@ public class BoardController {
 		model.addAttribute("pageMaker",new PageVO(cri, total));
 		model.addAttribute("orderby", cri.getKeyword());
 		model.addAttribute("type",cri.getType());
-		//model.addAttribute("like", service.chkLike(3));//3 > 로그인 한 멤버 번호 받아야함
 	}
 	
 	@GetMapping("/info")
 	public void info(Model model, LikeMarkVO lvo) {
-		int bno = lvo.getBoard_bno();
+		int bno = lvo.getTeacher_bno();
 		lvo.setMember_bno(3);
 		model.addAttribute("sidelist", service.sidelist());
 		model.addAttribute("teacher", service.teacherinfo(bno));
 		model.addAttribute("review" , service.review(bno));
 		model.addAttribute("board_bno", bno);
-		model.addAttribute("like", service.chkLikeone(lvo));//3 > 로그인 한 멤버 번호 받아야함
+		model.addAttribute("like", service.chkLikeone(lvo));
 	}
 	
 	@PostMapping("/writeReview")
 	public String writeReview(ReviewVO rvo,Model model, @RequestParam("teacher_bno") int bno) {
 		service.writeReview(rvo);
-		return "redirect:/board/info?board_bno="+bno;
+		return "redirect:/board/info?teacher_bno="+bno;
 	}
 	
 	@PostMapping("/board/addlike")
+	@ResponseBody
 	public void addlike(LikeMarkVO like) {
 		service.addlike(like);
 	}
 	
 	@PostMapping("/board/removelike")
+	@ResponseBody
 	public void removelike(LikeMarkVO like) {
 		service.removelike(like);
 	}
@@ -72,7 +73,6 @@ public class BoardController {
 	@PostMapping("/board/chklike")
 	@ResponseBody
 	public List<LikeMarkVO> chklike(LikeMarkVO lvo){
-		
 		return service.chklike(lvo);
 	}
 }

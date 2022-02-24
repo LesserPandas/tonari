@@ -2,7 +2,7 @@ package com.tonari.service;
 
 import java.util.List;
 
-import com.tonari.domain.BoardSearch_viewVO;
+import com.tonari.domain.TeacherSearch_viewVO;
 import com.tonari.domain.CategoryVO;
 import com.tonari.domain.LikeMarkVO;
 import com.tonari.domain.ReviewVO;
@@ -12,7 +12,7 @@ import com.tonari.util.Criteria;
 
 public interface BoardService {
 	public List<CategoryVO> sidelist();//사이드메뉴
-	public List<BoardSearch_viewVO> OrderbyList(Criteria cri); //정렬방법
+	public List<TeacherSearch_viewVO> OrderbyList(Criteria cri); //정렬방법
 	public Teacherinfo_viewVO teacherinfo(int bno); // 강사 info
 	public List<Review_viewVO> review(int bno); // 리뷰 전체 읽어오기
 	public void writeReview(ReviewVO rvo); // 리뷰 쓰기

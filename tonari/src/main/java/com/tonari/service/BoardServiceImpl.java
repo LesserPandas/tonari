@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tonari.domain.Addr_searchVO;
-import com.tonari.domain.BoardSearch_viewVO;
+import com.tonari.domain.TeacherSearch_viewVO;
 import com.tonari.domain.CategoryVO;
 import com.tonari.domain.LikeMarkVO;
 import com.tonari.domain.ReviewVO;
@@ -34,8 +34,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public List<BoardSearch_viewVO> OrderbyList(Criteria cri) {
-		List<BoardSearch_viewVO> list = new ArrayList<BoardSearch_viewVO>();
+	public List<TeacherSearch_viewVO> OrderbyList(Criteria cri) {
+		List<TeacherSearch_viewVO> list = new ArrayList<TeacherSearch_viewVO>();
 		switch(cri.getType()) {
 		case "orderby" :
 			list = mapper.OrderbyList(cri);
@@ -60,7 +60,9 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public Teacherinfo_viewVO teacherinfo(int bno) {
-		return mapper.teacherinfo(bno);
+		Teacherinfo_viewVO tvo = mapper.teacherinfo(bno);
+		tvo.setDate(dodate(tvo));
+		return tvo;
 	}
 	
 	@Override
@@ -71,24 +73,8 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public void writeReview(ReviewVO rvo) {
-		StringBuilder sb = new StringBuilder();
-		int score = rvo.getScore();
-		String stars = "";
-		sb.append(stars);
-		for(int i=0; i<score;i++) sb.append("★");
-		for(int i=0; i<5-score;i++) sb.append("☆");
-		stars = sb.toString();
-		rvo.setScorestar(stars);
-		rvo.setNick(mapper.getnickname(rvo.getMember_bno()));
-		String nick = rvo.getNick();
-		System.out.println(nick);
-		String firstname= nick.substring(0, 1);
-		nick=nick.substring(1);
-		sb.setLength(0);
-		sb.append(firstname);
-		for(int i=0; i<nick.length();i++) sb.append("*");
-		String nickname = sb.toString();
-		rvo.setNick(nickname);
+		String nick=mapper.getnickname(rvo.getMember_bno());
+		rvo.setNick(nickname(nick));
 		mapper.writeReview(rvo);
 	}
 	
@@ -114,18 +100,35 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public List<LikeMarkVO> chklike(LikeMarkVO lvo) {
-		log.info("자료 확인: "+lvo.getMember_bno());
 		return mapper.chklike(lvo);
 	}
+	
+	public String dodate(Teacherinfo_viewVO tvo) {
+		int date = tvo.getDodate();
+		String[] week = new String[] {"日","月","火","水","木","金","土"};
+		StringBuilder sb = new StringBuilder();
+		String day = "";
+		sb.append(day);
+		String dodate = String.format("%07d", Integer.parseInt(Integer.toBinaryString(date & 127)));
+		for(int i=0; i<7;i++) {
+			if(dodate.charAt(i)=='1') {
+				sb.append(week[i]+"、");
+			}
+		}
+		sb.deleteCharAt(sb.lastIndexOf("、"));
+		day = sb.toString();
+		return day;
+	}
+	
+	public String nickname(String nick) {
+		StringBuilder sb = new StringBuilder();
+		System.out.println(nick);
+		String firstname= nick.substring(0, 1);
+		nick=nick.substring(1);
+		sb.setLength(0);
+		sb.append(firstname);
+		for(int i=0; i<nick.length();i++) sb.append("*");
+		String nickname = sb.toString();
+		return nickname;
+	}
 }
-
-
-
-
-
-
-
-
-
-
-

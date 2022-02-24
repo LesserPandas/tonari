@@ -7,6 +7,6 @@ public interface MypageService {
 
 	public MemberAuthVO tjoinpage(String nick);
 	public void teacherjoin(TeacherVO tvo);
-	
+	public TeacherVO getTeacherVO(int bno);
 
 }

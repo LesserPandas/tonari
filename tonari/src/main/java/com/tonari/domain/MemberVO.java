@@ -21,8 +21,5 @@ public class MemberVO {
 	private String dong;
 	private Date join_date;
 	private Date recent_login_date;
-	public int memberIdPwSearch(String id, String pw) {
-		// TODO Auto-generated method stub
-		return 0;
-	} 
+
 }

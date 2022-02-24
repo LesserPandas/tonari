@@ -34,6 +34,11 @@ public class AdminServiceImpl implements AdminService {
 
 		return mapper.delete(MemberAuth) == 1;
 	}
+	@Override
+	public boolean deleteteacherlist(int bno) {
+		// TODO Auto-generated method stub
+		return mapper.deleteteacherlist(bno) == 1;
+	}
 
 	@Override
 	public boolean boarddelete(BoardlistVO Boardlist) {
@@ -52,6 +57,7 @@ public class AdminServiceImpl implements AdminService {
 		// TODO Auto-generated method stub
 		return mapper.permission(bno);
 	}
+	
 
 	@Override
 	public List<TeacherListVO> selectteacherlist() {

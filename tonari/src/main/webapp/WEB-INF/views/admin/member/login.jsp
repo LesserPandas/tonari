@@ -51,7 +51,10 @@
                                                 id="exampleInputPassword" placeholder="Password">
                                         </div>
                                         
-                                         <input type="submit" class="btn btn-default"  value="로그인"/>
+                                         <div class="text-left m-t-15" style="margin-left: 32%; ">
+                                        <button type="submit" class="btn btn-primary m-b-30 m-t-15 f-s-14 p-l-20 p-r-20 m-r-10"> 로그인</button>
+                                        <button class="btn btn-primary m-b-30 m-t-15 f-s-14 p-l-20 p-r-20 m-r-10" type="button" onclick="history.back();"><i class="ti-close m-r-5 f-s-12"></i>취소</button>
+                                    </div>
                                         <hr>
                                       
                                     </form>

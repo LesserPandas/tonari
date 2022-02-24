@@ -33,4 +33,16 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.login(member);
 	}
 
+	@Override
+	public MemberVO selectMember(String nick) {
+		MemberVO member = mapper.selectMember(nick);
+		System.out.println(member);
+		return member;
+	}
+	
+	 @Override
+	    public void studentinfoModify(MemberVO vo) {
+	        mapper.studentinfoModify(vo);
+	 
+	    }
 }

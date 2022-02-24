@@ -14,6 +14,14 @@ public interface MemberMapper {
 	
 	// DB검색	
 	public MemberVO login(MemberVO member);
-	
+
+	public MemberVO selectMember(String nick);
+
+	public void studentinfoModify(MemberVO vo);
 	// 회원관리 DB검색
+	
+	
+	
+	
+
 }

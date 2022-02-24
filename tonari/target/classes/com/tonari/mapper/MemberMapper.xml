@@ -28,20 +28,24 @@
 <!-- 로그인 -->
 
  <!-- 개인정보 수정 -->
-  <select id="studentinfoModify" resultType="String">
-    select nick from member
-    where email = #{email} and passwd = #{passwd} and 
-    nick = ${nick} and
-    name= ${name} and 
-    zipcode = ${zipcode} and
-    address = ${address} and
-    o_addr = ${o_addr} and
-    gu = ${gu} and
-    dong = ${dong} and
-    phone = ${phone} 
-    
-    
+  <select id="selectMember" resultType="com.tonari.domain.MemberVO">
+  select * from member where nick = #{nick}
   </select>
- <!-- 개인정보 수정 -->
+  
+  	
+	
+<update id="studentinfoModify" parameterType="com.tonari.domain.MemberVO">
+	update member set 
+	nick = #{nick},
+	
+	phone = #{phone},
+	address = #{address},
+	zipcode = #{zipcode},
+	gu = #{gu},
+	dong = #{dong},
+	o_addr = #{o_addr}
+	where email = #{email} 
+</update>
+  
   
 </mapper>

@@ -111,10 +111,11 @@
 						<c:when test="${not empty nick}">
 						<!-- 닉네임 -->
 						<li>${nick}님</li>
+						
 						<!-- 홈으로 -->
 						<li><a href="/">HOME</a></li>
 						<!-- 마이페이지 -->
-						<li><a href="mypage.do">마이페이지</a></li>
+						<li><a href="/mypage">마이페이지</a></li>
 						<!-- 로그아웃 -->
 						<li><a href="/join/logout">로그아웃</a></li>
 						</c:when>

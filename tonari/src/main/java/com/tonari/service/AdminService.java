@@ -22,6 +22,8 @@ public interface AdminService {
 	//회원삭제
 	public boolean delete(MemberAuthVO MemberAuth);
 	
+	public boolean deleteteacherlist(int bno);
+	
 	//게시글삭제
 	public boolean boarddelete(BoardlistVO Boardlist);
 	
@@ -39,6 +41,7 @@ public interface AdminService {
 	
 	//회원목록강사구독승인	
 	public int permission(int bno);
+
 	
 	//게시판 목록
 	public List<BoardlistVO> selectboardlist();

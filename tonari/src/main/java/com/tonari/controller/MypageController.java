@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,8 +20,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonObject;
 import com.tonari.domain.MemberAuthVO;
 import com.tonari.domain.MemberVO;
@@ -40,6 +44,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 // 컨트롤러엔 무조건 @AllArgsConstructor 쓰기
+@Controller
 @RequestMapping("/mypage/*")
 @AllArgsConstructor
 @Log4j
@@ -51,12 +56,14 @@ public class MypageController {
 	
 	//teacher 
 	@GetMapping("/teacherJoin")
-	public String tjoin(Model model, HttpServletRequest request) {
+	public String tjoin(Model model,HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		if(session.getAttribute("nowUser")==null) {
+		MemberVO mvo = (MemberVO)session.getAttribute("nowUser");
+		System.out.println(mvo);
+		if(mvo==null) {
 			return "/join/login";
 		}else {
-			String nick = (String)session.getAttribute("nick");
+			String nick = mvo.getNick();
 			MemberAuthVO mavo = service.tjoinpage(nick);
 			model.addAttribute("info",mavo);
 			return "/mypage/teacher/teacherJoin";
@@ -112,22 +119,38 @@ public class MypageController {
 		return str.replace("-", File.separator); //분리가 된다
 	 }
 	
-	@GetMapping("/teacherModify")
-	public String tModify(Model model , @RequestParam("bno")int bno) {
-		model.addAttribute("tvo" , service.getTeacherVO(bno));
-//		model.addAttribute("datelist" , service.getdate(bno));
-		return "/mypage/teacher/teacherModify";
+	@GetMapping("/teacherUpdate")
+	public String tModify(Model model , HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		MemberVO mvo = (MemberVO)session.getAttribute("nowUser");
+		if(mvo == null) {
+			return "redirect: /mypage/teacherJoin";
+		}
+		int bno = mvo.getBno();
+		Teacherinfo_viewVO tvo = service.getTeacherVO(bno);
+		model.addAttribute("tvo" , tvo);
+		int dodate = tvo.getDodate();
+		List<Integer> list = service.getdate(dodate);
+		String jsonText = new String();
+		try {
+			ObjectMapper objectmapper = new ObjectMapper();
+			jsonText = objectmapper.writeValueAsString(list);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		model.addAttribute( "json", jsonText );
+		return "/mypage/teacher/teacherUpdate";
 	}
 
 	@GetMapping("/studentinfo")
 	public String studentinfo(HttpServletRequest request, Model model) throws Exception {
 		HttpSession session = request.getSession();
-		String nick = (String) session.getAttribute("nick");
+		MemberVO mvo = (MemberVO)session.getAttribute("nowUser");
+		String nick = mvo.getNick();
 		log.info("nick : " + nick);
-		MemberVO member = service.selectMember(nick);
-		log.info("member Data : " + member);
-		model.addAttribute("member", member);
-
+//		MemberVO member = service.selectMember(nick);
+//		log.info("member Data : " + member);
+//		model.addAttribute("member", member);
 		return "/mypage/student/studentInfoModify";
 	}
 

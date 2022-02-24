@@ -9,8 +9,8 @@
 	<div class="container">
 
 		<ul class="breadcrumb">
-			<li><a href="index.html">Home</a></li>
-			<li><a href="">마이페이지</a></li>
+			<li><a href="/">Home</a></li>
+			<li><a href="/mypage">마이페이지</a></li>
 			<li class="active">선생님 등록</li>
 		</ul>
 		<!-- BEGIN SIDEBAR & CONTENT -->
@@ -21,6 +21,7 @@
 			<!-- END SIDEBAR -->
 
 			<!-- BEGIN CONTENT -->
+				<form class="" name="form1" method="post" >
 			<div class="col-md-9 col-sm-7">
 				<div class="product-page">
 					<div class="row">
@@ -37,6 +38,7 @@
 							<h1>선생님 정보 입력</h1>
 							<div class="price-availability-block clearfix">
 								<div class="price">
+								
 									<strong>닉네임 </strong><strong>&nbsp;이름</strong>
 								</div>
 							</div>
@@ -127,23 +129,24 @@
 							<div id="myTabContent" class="tab-content">
 
 								<!-- BEGIN FORM-->
-								<form action="#" class="reviews-form" role="form">
+								
 									<div class="formgroup">
 										<label for="review">자기소개글 작성<span class="require">*</span></label>
 
-										<textarea name="content" id="summernote" class="summernote"></textarea>
+										<textarea id="summernote" class="summernote"></textarea>
 									</div>
 
 									<div class="padding-top-20">
 										<button type="submit" class="btn btn-primary">저장</button>
 									</div>
-								</form>
+								
 								<!-- END FORM-->
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			</form>
 		</div>
 		<!-- END CONTENT -->
 	</div>

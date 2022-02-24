@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tonari.domain.MemberVO;
+import com.tonari.domain.PayListVO;
 import com.tonari.service.MemberService;
 
 import lombok.AllArgsConstructor;
@@ -33,13 +34,13 @@ public class MemberController {
 //	private PasswordEncoder pwencoder;
 
 	@PostMapping("/login")
-	 public String login(HttpServletRequest request, MemberVO member) {
+	 public String login(HttpServletRequest request, MemberVO mvo) {
 		
 		//0) DB검색
-		String nick = service.loginCheck(member); // nick
+		MemberVO member = service.loginCheck(mvo); // nick
 		
 		// 1이면 로그인 성공 , 0이면 실패	
-		if (nick != null) {
+		if (member != null) {
 			
 			//1) 세션 가져오기
 			HttpSession session = request.getSession();
@@ -55,7 +56,7 @@ public class MemberController {
 			 * session.setMaxInactiveInterval(1800); // 1800 = 60s*30 (30분)
 			 */        
 			//4) 회원정보 설정
-			session.setAttribute("nick", nick);
+			session.setAttribute("nowUser", member);
 			/* session.setAttribute(AUTH, member.getAuth()); */
 			/* session.setAttribute(AUTH_NAME, authName); */
 		} else {  
@@ -103,6 +104,7 @@ public class MemberController {
 	
 	  }
 	//내가 추가함
+
 
 
     // 아이디 체크
@@ -164,4 +166,7 @@ public class MemberController {
     	
         return "redirect:/mypage/studentinfo";
     }
+    
+
+    
 }

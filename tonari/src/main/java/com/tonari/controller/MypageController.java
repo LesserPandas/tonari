@@ -16,10 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.JsonObject;
 import com.tonari.domain.MemberVO;
+import com.tonari.domain.PayListVO;
 import com.tonari.service.MemberService;
+import com.tonari.service.MypageService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -32,6 +35,7 @@ import lombok.extern.log4j.Log4j;
 public class MypageController {
 
 	private MemberService service;
+	private MypageService pservice;
 
 	@GetMapping("/teacherJoin")
 	public String tjoin() {
@@ -56,8 +60,8 @@ public class MypageController {
 	public String subResult() {
 		return "/mypage/teacher/subResult";
 	}
-
-	@GetMapping("/studentinfo")
+	//기본개인정보 수정
+	@GetMapping("/studentinfo") 
 	public String studentinfo(HttpServletRequest request, Model model) throws Exception {
 		HttpSession session = request.getSession();
 		String nick = (String) session.getAttribute("nick");
@@ -67,7 +71,7 @@ public class MypageController {
 		model.addAttribute("member", member);
 		return "/mypage/student/studentInfoModify";
 	}
-
+	
 	@GetMapping("/like")
 	public String steacherLike() {
 		return "/mypage/student/teacherlike";
@@ -138,4 +142,16 @@ public class MypageController {
 		      
 		      return str.replace("-", File.separator); //분리가 된다
 		   }
+		
+		//구독 기간(월) 저장
+		 @GetMapping("/payMonthJoin") 
+		  public String payInsert(PayListVO pay) {
+			 
+			pay.setPay_check("N");
+			log.info("페이 정보 : "+ pay);
+			pservice.payInfo(pay);
+		  
+			return "redirect:/mypage/teacherJoin";
+		
+		  }
 }

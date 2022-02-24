@@ -35,8 +35,8 @@
 								<input class="form-control" type="text" id="title" name="title" placeholder="소개 타이틀">
 								<div class="price-availability-block clearfix">
 									<div class="price">
-										<strong>${nick }</strong>
-										<input type="hidden" name="nick" value="${nick }">
+										<strong>${nowUser.nick }</strong>
+										<input type="hidden" name="nick" value="${nowUser.nick }">
 									</div>
 								</div>
 								<div class="description">

@@ -19,7 +19,7 @@ inputImage.addEventListener("change", e => {
     readImage(e.target)
 })
 
-window.onload = function(){
+$(function(){
 	$("#title").focus();
 	var start_year="1920";// 시작할 년도 
 	var today = new Date(); 
@@ -34,7 +34,7 @@ window.onload = function(){
 			document.getElementById('select_month').options[index] = new Option(m, m); 
 			index++; 
 		} lastday(); 
-}
+})
 
 function lastday(){ //년과 월에 따라 마지막 일 구하기
 	var Year=document.getElementById('select_year').value; 

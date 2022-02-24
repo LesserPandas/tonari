@@ -31,8 +31,6 @@ public class MypageServiceImpl implements MypageService {
 	@Override
 	public TeacherVO getTeacherVO(int bno) {
 		TeacherVO tvo = mapper.getTeacherVO(bno);
-		
 		return tvo;
 	}
-
 }

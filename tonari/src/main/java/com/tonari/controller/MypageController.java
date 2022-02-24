@@ -53,7 +53,7 @@ public class MypageController {
 	@GetMapping("/teacherJoin")
 	public String tjoin(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		if(session.getAttribute("nick")==null) {
+		if(session.getAttribute("nowUser")==null) {
 			return "/join/login";
 		}else {
 			String nick = (String)session.getAttribute("nick");
@@ -112,15 +112,10 @@ public class MypageController {
 		return str.replace("-", File.separator); //분리가 된다
 	 }
 	
-
-	@GetMapping("/teacherInfo")
-	public String tinfo() {
-		return "/mypage/teacher/teacherInfo";
-	}
-
 	@GetMapping("/teacherModify")
 	public String tModify(Model model , @RequestParam("bno")int bno) {
 		model.addAttribute("tvo" , service.getTeacherVO(bno));
+//		model.addAttribute("datelist" , service.getdate(bno));
 		return "/mypage/teacher/teacherModify";
 	}
 
@@ -129,10 +124,9 @@ public class MypageController {
 		HttpSession session = request.getSession();
 		String nick = (String) session.getAttribute("nick");
 		log.info("nick : " + nick);
-		log.info("주석제거 주석제거 주석제거 주석제거 주석제거 주석제거 주석제거 주석제거 주석제거 주석제거 주석제거 주석제거 주석제거 주석제거 주석제거 주석제거 주석제거 ");
-//		MemberVO member = service.selectMember(nick);
-//		log.info("member Data : " + member);
-//		model.addAttribute("member", member);
+		MemberVO member = service.selectMember(nick);
+		log.info("member Data : " + member);
+		model.addAttribute("member", member);
 
 		return "/mypage/student/studentInfoModify";
 	}

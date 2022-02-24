@@ -1,5 +1,6 @@
 package com.tonari.service;
 
+import com.tonari.domain.PayListVO;
 import org.springframework.stereotype.Service;
 
 import com.tonari.domain.MemberAuthVO;
@@ -17,6 +18,12 @@ public class MypageServiceImpl implements MypageService {
 	
 	@Setter
 	private MyPageMapper mapper;
+
+	@Override
+	public void payInfo(PayListVO pay) {
+		mapper.payInsert(pay);
+		
+	}
 
 	@Override
 	public MemberAuthVO tjoinpage(String nick) {

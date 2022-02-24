@@ -24,8 +24,8 @@
                 <li><a href="/mypage/studentinfo">개인정보 수정</a></li>
                 <li><a href="/mypage/like">좋아요 한 선생님 보기</a></li>
                 <li><a href="/mypage/teacherList">나의 선생님 보기(결제된 사람만)</a></li>
-                <li><a href="/mypage/teacherJoin">선생님으로 등록</a></li>
-                <li><a href="/mypage/subscription">(선생님으로 등록 이후 확인 시 바로 연결)구독하는 화면</a></li>
+                <!-- <li><a href="/mypage/teacherJoin">선생님으로 등록</a></li> -->
+                <li><a href="/mypage/subscription">선생님으로 등록</a></li>
               </ul>
               <hr>
 

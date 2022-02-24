@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tonari.domain.MemberVO;
+import com.tonari.domain.PayListVO;
 import com.tonari.service.MemberService;
 
 import lombok.AllArgsConstructor;
@@ -33,7 +34,7 @@ public class MemberController {
 //	private PasswordEncoder pwencoder;
 
 	@PostMapping("/login")
-	 public String login(HttpServletRequest request, MemberVO member) {
+	 public String login(HttpServletRequest request, MemberVO mvo) {
 		
 		//0) DB검색
 		MemberVO mvo = service.loginCheck(member);
@@ -105,6 +106,7 @@ public class MemberController {
 	//내가 추가함
 
 
+
     // 아이디 체크
     @PostMapping("/emailCheck")
     @ResponseBody
@@ -164,4 +166,7 @@ public class MemberController {
     	
         return "redirect:/mypage/studentinfo";
     }
+    
+
+    
 }

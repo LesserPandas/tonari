@@ -8,6 +8,8 @@ import com.tonari.domain.MemberAuthVO;
 import com.tonari.domain.TeacherVO;
 import com.tonari.domain.Teacherinfo_viewVO;
 
+import com.tonari.domain.PayListVO;
+
 public interface MypageService {
 
 	public void payInfo(PayListVO pay);
@@ -18,4 +20,7 @@ public interface MypageService {
 	public Teacherinfo_viewVO getTeacherVO(int bno);
 	public List<Integer> getdate(int date);
 
+	public void payInfo(PayListVO pay);
+
+	
 }

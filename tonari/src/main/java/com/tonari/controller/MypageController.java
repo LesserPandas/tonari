@@ -17,11 +17,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonObject;
 import com.tonari.domain.MemberAuthVO;
 import com.tonari.domain.MemberVO;
+import com.tonari.domain.PayListVO;
 import com.tonari.domain.TeacherVO;
 import com.tonari.domain.Teacherinfo_viewVO;
 import com.tonari.service.MemberService;
@@ -218,4 +220,16 @@ public class MypageController {
 		      
 		      return str.replace("-", File.separator); //분리가 된다
 		   }
+		
+		//구독 기간(월) 저장
+		 @GetMapping("/payMonthJoin") 
+		  public String payInsert(PayListVO pay) {
+			 
+			pay.setPay_check("N");
+			log.info("페이 정보 : "+ pay);
+			pservice.payInfo(pay);
+		  
+			return "redirect:/mypage/teacherJoin";
+		
+		  }
 }

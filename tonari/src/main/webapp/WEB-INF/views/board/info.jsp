@@ -7,7 +7,7 @@ pageEncoding="UTF-8"%>
 <div class="main">
 	<div class="container">
 		<ul class="breadcrumb">
-			<li><a href="index.html">Home</a></li>
+			<li><a href="/">Home</a></li>
 			<li>
 				<a href="/board/search?orderby=teacher">先生サーチ</a>
 				<a href="/board/category?category=${teacher.category_bno}">${teacher.category_name }</a>

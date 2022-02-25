@@ -29,7 +29,7 @@
 
  <!-- 개인정보 수정 -->
   <select id="selectMember" resultType="com.tonari.domain.MemberVO">
-  select * from member where nick = #{nick} and bno =#{bno}
+  select * from member where nick = #{nick}
   </select>
   
   	

@@ -45,8 +45,8 @@
 			select review_seq.nextval from dual
 		</selectKey>
 		insert into review
-		(bno,member_bno,teacher_bno,content,score,nick) values
-		(#{bno},#{member_bno},#{teacher_bno},#{content},#{score},#{nick})
+		(bno,member_bno,teacher_bno,content,score) values
+		(#{bno},#{member_bno},#{teacher_bno},#{content},#{score})
 	</insert>
 
 	<select id="getnickname" resultType="String" parameterType="int">

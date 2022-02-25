@@ -44,17 +44,17 @@
                   <tr>
                   	<td ><input type="checkbox" style="zoom:2"></td>
                     <td class="goods-page-image ">
-                      <a href="javascript:;"><img src="assets/pages/img/products/model2.jpg" alt="Berry Lace Dress"></a>
+                      <a href="javascript:;"><img src="${teacher.image }" alt="Berry Lace Dress"></a>
                     </td>
                     <td class="goods-page-description">
                        <p><strong></strong></p>
-                      <h3><a href="javascript:;">닉네임</a></h3> 
-                      <p><strong>이름</strong> 선생님의 한마디</p>
-                      <em><a href="javascript:;">선생님 이력</a></em>
+                      <h3><a href="javascript:;">${teacher.nick }</a></h3> 
+                      <p><strong>${teacher.name }</strong> ${teacher.coment }</p>
+                      <em><a href="/board/info?board_bno=4">선생님 이력</a></em>
                      
                     </td>
                     <td class="goods-page-ref-no">
-                      javc2133
+                      ${teacher.category_name }
                     </td>
                     <td class="goods-page-quantity">
                       

@@ -8,7 +8,12 @@ import com.tonari.domain.Teacherinfo_viewVO;
 public interface MyPageMapper {
 	
 	public MemberAuthVO tjoinpage(String nick);
+
 	public void teacherjoin(TeacherVO tvo);
+
 	public Teacherinfo_viewVO getTeacherVO(int bno);
+
+	public void teacherUpdate(int teacher_bno);
+
 	public void payInsert(PayListVO pay);
 }

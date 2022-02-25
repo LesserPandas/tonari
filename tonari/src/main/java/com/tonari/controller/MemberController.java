@@ -34,13 +34,13 @@ public class MemberController {
 //	private PasswordEncoder pwencoder;
 
 	@PostMapping("/login")
-	 public String login(HttpServletRequest request, MemberVO member) {
+	 public String login(HttpServletRequest request, MemberVO mvo) {
 		
 		//0) DB검색
-		MemberVO mvo = service.loginCheck(member);
-
+		MemberVO member = service.loginCheck(mvo); // nick
+		
 		// 1이면 로그인 성공 , 0이면 실패	
-		if (mvo != null) {
+		if (member != null) {
 			
 			//1) 세션 가져오기
 			HttpSession session = request.getSession();
@@ -56,7 +56,7 @@ public class MemberController {
 			 * session.setMaxInactiveInterval(1800); // 1800 = 60s*30 (30분)
 			 */        
 			//4) 회원정보 설정
-			session.setAttribute("nowUser", mvo);
+			session.setAttribute("nowUser", member);
 			/* session.setAttribute(AUTH, member.getAuth()); */
 			/* session.setAttribute(AUTH_NAME, authName); */
 		} else {  
@@ -142,7 +142,7 @@ public class MemberController {
         log.info("userIdCheck 진입");
         log.info("전달받은 id:"+ nick);
         HttpSession session = request.getSession();
-        String nowNick = (String)session.getAttribute("nick");
+        String nowNick = ((MemberVO)session.getAttribute("nowUser")).getNick();
         if(nowNick.equals(nick)) {
         	return"2";
         }
@@ -162,7 +162,9 @@ public class MemberController {
     	log.info("============== VO : " + vo);
     	service.studentinfoModify(vo);
     	HttpSession session = request.getSession();
-    	session.setAttribute("nick", vo.getNick());
+    	MemberVO member = (MemberVO) session.getAttribute("nowUser");
+    	member.setNick(vo.getNick());
+    	session.setAttribute("nowUser", member);
     	
         return "redirect:/mypage/studentinfo";
     }

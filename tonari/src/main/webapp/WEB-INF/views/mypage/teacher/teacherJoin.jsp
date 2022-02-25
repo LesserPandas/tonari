@@ -16,7 +16,6 @@
 			<%@ include file="../mypagesidebar.jsp"%>
 			<!-- END SIDEBAR -->
 			<!-- BEGIN CONTENT -->
-				<form class="" name="form1" method="post" >
 			<div class="col-md-9 col-sm-7">
 				<div class="product-page">
 					<div class="row">
@@ -125,7 +124,7 @@
 								<div class="description">
 									<div class="form-group">
 										<div style="display:flex">
-											<input type="number" name="howmuch" id="howmuch" 
+											<input type="number" name="tmoney" id="howmuch" 
 											class="form-control howmuch" placeholder="하루 당 원하는 가격 입력">
 											<span class="col-md-2 japanesemoney">円</span>
 										</div>
@@ -154,7 +153,7 @@
 					</div>
 				</div>
 			</div>
-			</form>
+			
 		</div>
 		<!-- END CONTENT -->
 	</div>

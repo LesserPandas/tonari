@@ -35,8 +35,7 @@
 		select * from teacher_info_view where teacher_bno = #{teacher_bno}
 	</select>
 	<select id="review" resultType="com.tonari.domain.Review_viewVO">
-		select * from review_view where
-		teacher_bno = #{teacher_bno}
+		select * from review_view where teacher_bno = #{teacher_bno}
 	</select>
 
 	<insert id="writeReview"
@@ -88,11 +87,11 @@
 			<when test="type == 'orderby'.toString()">
 				select
 				rn ,
-				teacher_bno,member_bno,title,gu,dong,image,category_bno,category_name,score,coment
+				teacher_bno,member_bno,title,gu,dong,image,category_bno,category_name,score,coment,nick
 				from
 				(select
 				rownum rn ,
-				teacher_bno,member_bno,title,gu,dong,image,category_bno,category_name,score,coment
+				teacher_bno,member_bno,title,gu,dong,image,category_bno,category_name,score,coment,nick
 				from
 				(select * from teacher_search_view order by
 				<choose>
@@ -113,11 +112,11 @@
 			<when test="type == 'area'.toString()">
 				select
 				rn ,
-				teacher_bno,member_bno,title,gu,dong,image,category_bno,category_name,score,coment
+				teacher_bno,member_bno,title,gu,dong,image,category_bno,category_name,score,coment,nick
 				from
 				(select
 				rownum rn ,
-				teacher_bno,member_bno,title,gu,dong,image,category_bno,category_name,score,coment
+				teacher_bno,member_bno,title,gu,dong,image,category_bno,category_name,score,coment,nick
 				from
 				(select * from teacher_search_view order by
 				(case when dong = #{rank1} then 1 when dong = #{rank2} then 2 when dong =
@@ -132,10 +131,10 @@
 			<when test="type == 'category'.toString()">
 				<![CDATA[
 				select 
-					rn , teacher_bno,member_bno,title,gu,dong,image,category_bno,category_name,score,coment 
+					rn , teacher_bno,member_bno,title,gu,dong,image,category_bno,category_name,score,coment,nick
 				from
 					(select 
-						rownum rn , teacher_bno,member_bno,title,gu,dong,image,category_bno,category_name,score,coment
+						rownum rn , teacher_bno,member_bno,title,gu,dong,image,category_bno,category_name,score,coment,nick
 					from
 						(select * from teacher_search_view where category_bno = #{keyword})
 					where rownum <= #{pageNum} * #{amount}
@@ -147,11 +146,11 @@
 
 				select
 				rn ,
-				teacher_bno,member_bno,title,gu,dong,image,category_bno,category_name,score,coment
+				teacher_bno,member_bno,title,gu,dong,image,category_bno,category_name,score,coment,nick
 				from
 				(select
 				rownum rn ,
-				teacher_bno,member_bno,title,gu,dong,image,category_bno,category_name,score,coment
+				teacher_bno,member_bno,title,gu,dong,image,category_bno,category_name,score,coment,nick
 				from
 				(
 				<include refid="searchall" />

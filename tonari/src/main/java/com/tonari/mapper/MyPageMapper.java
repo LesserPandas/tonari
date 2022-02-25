@@ -12,7 +12,7 @@ public interface MyPageMapper {
 
 	public Teacherinfo_viewVO getTeacherVO(int bno);
 
-	public void teacherUpdate(int teacher_bno);
+	public void teacherUpdate(TeacherVO tvo);
 
 	public void payInsert(PayListVO pay);
 }

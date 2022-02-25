@@ -101,12 +101,15 @@
 										<div class="pull-right">${list.gu}&nbsp;${list.dong}</div>
 									</div>
 									<div class="teacherInfo">
-										<h3 style="display: inline">
+										<c:if test="${not empty nowUser }">
+											<button class="pull-right squareButton likeButton "
+												id="teacher_${list.teacher_bno}" onclick="like(${list.teacher_bno},${nowUser.bno })">♥
+											</button>
+										</c:if>
+										<h3 style="overflow:hidden;  text-overflow:ellipsis; white-space:nowrap; padding: 0;">
 											<a href="info?teacher_bno=${list.teacher_bno }" style="font-weight: bold; font-size: 18px;">${list.title }</a>
 										</h3>
-										<button class="pull-right squareButton likeButton "
-											id="teacher_${list.teacher_bno}" onclick="like(${list.teacher_bno},${nowUser.bno })">♥
-										</button>
+										<p>${list.nick }</p>
 									</div>
 								</div>
 							</div>
@@ -176,21 +179,20 @@
 <script> //likebutton
 
 $(document).ready(function(){
-	var member_bno = "${nowUser.bno}";
-	$.ajax({
-		type:"post",
-		url:"/board/chklike",
-		dataType: "json",
-		data:{"member_bno":member_bno},
-		success:function(data){
-				for(var i=0; i<data.length;i++){
-					$("#teacher_"+data[i].teacher_bno).addClass("likeButtonActive");
-				}
-		},error:function(request,status,error){
-			alert("request error :"+reauest+" status error :"+status+" error:"+error);
-			
-		}
-	})
+	var member_bno = ${nowUser.bno};
+	if(member_bno != null){
+		$.ajax({
+			type:"post",
+			url:"/board/chklike",
+			dataType: "json",
+			data:{"member_bno":member_bno},
+			success:function(data){
+					for(var i=0; i<data.length;i++){
+						$("#teacher_"+data[i].teacher_bno).addClass("likeButtonActive");
+					}
+			}
+		})
+	}
 })
 
 </script>

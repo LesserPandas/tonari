@@ -26,5 +26,13 @@
 		(#{bno},#{member_bno},#{submonth},#{pay_check})
 	</insert>
 	
-	
+	<update id="teacherUpdate" parameterType="com.tonari.domain.TeacherVO">
+		update teacher set 
+		content = #{content},category = #{category},coment = #{coment},dodate = #{dodate},
+		age = #{age},title = #{title},tmoney = #{tmoney}
+		<if test="image==null">
+			,image = #{image}
+		</if>
+		where bno = #{bno}
+	</update>
 </mapper>

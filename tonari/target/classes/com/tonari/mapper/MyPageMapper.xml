@@ -16,9 +16,6 @@
 	<select id = "getTeacherVO" resultType="com.tonari.domain.Teacherinfo_viewVO">
 		select * from TEACHER_INFO_VIEW where member_bno = #{bno}
 	</select>
-	<update id="">
-		update 
-	</update>
 	
 	<insert id = "payInsert" parameterType="com.tonari.domain.PayListVO">
 		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
@@ -29,5 +26,13 @@
 		(#{bno},#{member_bno},#{submonth},#{pay_check})
 	</insert>
 	
-	
+	<update id="teacherUpdate" parameterType="com.tonari.domain.TeacherVO">
+		update teacher set 
+		content = #{content},category = #{category},coment = #{coment},dodate = #{dodate},
+		age = #{age},title = #{title},tmoney = #{tmoney}
+		<if test="image==null">
+			,image = #{image}
+		</if>
+		where bno = #{bno}
+	</update>
 </mapper>

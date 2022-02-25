@@ -157,4 +157,9 @@ public class BoardServiceImpl implements BoardService {
 		star = sb.toString();
 		return star;
 	}
+	
+	@Override
+	public List<TeacherSearch_viewVO> mainsearch(Criteria cri) {
+		return mapper.mainsearch(cri);
+	}
 }

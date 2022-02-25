@@ -19,6 +19,9 @@ public class Criteria {
 	private String rank2;
 	private String rank3;
 	
+	private int category_bno;
+	private String dong;
+	
 	public Criteria() {
 		this(1,9);
 	}

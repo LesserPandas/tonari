@@ -20,6 +20,7 @@ import com.tonari.domain.LikeMarkVO;
 import com.tonari.domain.MemberVO;
 import com.tonari.domain.PageVO;
 import com.tonari.domain.ReviewVO;
+import com.tonari.domain.TeacherSearch_viewVO;
 import com.tonari.service.BoardService;
 import com.tonari.util.Criteria;
 
@@ -84,5 +85,15 @@ public class BoardController {
 	@ResponseBody
 	public List<LikeMarkVO> chklike(LikeMarkVO lvo){
 		return service.chklike(lvo);
+	}
+	
+	@GetMapping("/mainsearch")
+	public void mainsearch(Model model, Criteria cri) {
+		model.addAttribute("sidelist", service.sidelist());
+		List<TeacherSearch_viewVO> list = service.mainsearch(cri);
+		log.info("listlistlistlistlist"+list);
+		model.addAttribute("list", list);
+		int total = service.total(cri);
+		model.addAttribute("pageMaker",new PageVO(cri, total));
 	}
 }

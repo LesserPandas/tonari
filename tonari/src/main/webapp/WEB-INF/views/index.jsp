@@ -1,18 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
-
-
-<!DOCTYPE html>
-<html>
-<head>
 <link href="/resources/custom/css/main.css" rel="stylesheet">
-
 </head>
-
-
 <body>
-
 	<div class="title-wrapper simple-linear ">
 		<!-- 메인 배너 이미지 -->
 		<div class="container">
@@ -25,56 +16,50 @@
 
 			<div class="search-box col-md-12"
 				style="padding-left: 80px; margin: 80px 0 0">
-				<form id="" method="post" action="">
+				<form id="search" method="get" action="board/mainsearch">
 					<div class="col-md-3">
 						<div class="input-group">
 							<span class="input-group-addon btn-green">과목</span> <select
-								class="form-control border-radius option-select ht-45" id="sel1">
-								<option>전체선택</option>
-								<option>일본어</option>
-								<option>Java</option>
-								<option>Python</option>
-								<option>Javascript</option>
-								<option>Spring</option>
-								<option>HTML5+CSS3</option>
-								<option>Database</option>
+								class="form-control border-radius option-select ht-45" id="sel1"
+								name="category_bno">
+								<option value="">전체선택</option>
+								<option value="1">일본어</option>
+								<option value="2">Java</option>
+								<option value="3">Python</option>
+								<option value="4">Javascript</option>
+								<option value="5">Spring</option>
+								<option value="6">HTML5+CSS3</option>
+								<option value="7">Database</option>
 							</select>
 						</div>
 					</div>
 					<div class="col-md-2">
 						<div class="input-group">
 							<span class="input-group-addon btn-green">지역</span> <select
-								class="form-control border-radius option-select ht-45" id="sel1">
-								<option>전체선택</option>
-								<option>용두동</option>
-								<option>선화동</option>
-								<option>갈마동</option>
-								<option>은행동</option>
+								class="form-control border-radius option-select ht-45" id="sel1"
+								name="dong">
+								<option value="">전체선택</option>
+								<option value="용두동">용두동</option>
+								<option value="선화동">선화동</option>
+								<option value="갈마동">갈마동</option>
+								<option value="은행동">은행동</option>
 							</select>
 						</div>
 					</div>
 					<div class="col-md-5 search-mg-15">
 						<div class="input-group">
 							<!-- <span class="input-group-addon btn-green">검색어</span> -->
-							<input type="text" class="form-control ht-45" name=""
+							<input type="text" class="form-control ht-45" name="keyword"
 								placeholder="입력" style="width: 435px; display: inline-block">
 							<span class="input-group-btn">
-								<button class="btn btn-primary btn-green ht-45" type="button"
+								<button class="btn btn-primary btn-green ht-45" type="submit"
 									style="width: 100px">검색</button>
 							</span>
 						</div>
-
 					</div>
-
-
-
 				</form>
 			</div>
-
 		</div>
-
-
-
 	</div>
 
 	<nav class="navbar navbar-inverse nav-category ht-100">
@@ -287,7 +272,7 @@
 		</div>
 	</div>
 
-	<section id="carousel" style="margin-bottom:80px;">
+	<section id="carousel" style="margin-bottom: 80px;">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">

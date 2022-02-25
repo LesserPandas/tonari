@@ -10,23 +10,23 @@
 	<sql id="searchall">
 		(select * from teacher_search_view where teacher_bno like '%' ||
 		#{keyword}||'%')
-		union (select * from teacher_search_view where title
-		like '%' || #{keyword}||'%')
-		union (select * from teacher_search_view
-		where gu like '%' || #{keyword}||'%')
-		union (select * from
-		teacher_search_view where dong like '%' || #{keyword}||'%')
-		union (select
-		* from teacher_search_view where category_name like '%' ||
-		#{keyword}||'%')
-		union (select * from teacher_search_view where coment
-		like '%' || #{keyword}||'%')
+		union 
+		(select * from teacher_search_view where title like '%' || #{keyword}||'%')
+		union 
+		(select * from teacher_search_view where gu like '%' || #{keyword}||'%')
+		union 
+		(select * from teacher_search_view where dong like '%' || #{keyword}||'%')
+		union 
+		(select * from teacher_search_view where category_name like '%' || #{keyword}||'%')
+		union 
+		(select * from teacher_search_view where coment like '%' || #{keyword}||'%')
+		union
+		(select * from teacher_search_view where nick like '%' || #{keyword}||'%')
 	</sql>
 
 	<!-- 사이드 메뉴바 -->
 	<select id="sidelist" resultType="com.tonari.domain.CategoryVO">
-		select * from category order by
-		category_bno
+		select * from category order by category_bno
 	</select>
 	<!-- 사이드 메뉴바 -->
 	<!-- 선생님 정보 -->
@@ -185,5 +185,31 @@
 	</delete>
 	<select id ="chklike" resultType="com.tonari.domain.LikeMarkVO" parameterType="com.tonari.domain.LikeMarkVO">
 		select member_bno,teacher_bno from likemark where member_bno = #{member_bno}
+	</select>
+	<select id="mainsearch" resultType="com.tonari.domain.TeacherSearch_viewVO" parameterType="com.tonari.util.Criteria">
+		select rn,teacher_bno,member_bno,title,gu,dong,image,category_bno,category_name,score,coment,nick
+		from(
+		    select rownum rn,teacher_bno,member_bno,title,gu,dong,image,category_bno,category_name,score,coment,nick
+		    from(
+		        select * 
+		        from(
+		            <include refid="searchall" />
+		        )
+		        <choose>
+					<when test="category_bno != null and dong != null">
+						 where category_bno=#{category_bno} and dong = #{dong}
+					</when>
+					<when test="category_bno == null and dong != null">
+						 where dong = #{dong}
+					</when>
+					<when test="category_bno != null and dong == null">
+						 where category=#{category_bno}
+					</when>
+				</choose>
+				
+		   <![CDATA[
+				)where rownum <= #{pageNum} * #{amount}
+			)where rn>(#{pageNum}-1) * #{amount}
+			]]>
 	</select>
 </mapper>

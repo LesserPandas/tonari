@@ -142,7 +142,7 @@ public class MemberController {
         log.info("userIdCheck 진입");
         log.info("전달받은 id:"+ nick);
         HttpSession session = request.getSession();
-        String nowNick = (String)session.getAttribute("nick");
+        String nowNick = ((MemberVO)session.getAttribute("nowUser")).getNick();
         if(nowNick.equals(nick)) {
         	return"2";
         }
@@ -162,7 +162,9 @@ public class MemberController {
     	log.info("============== VO : " + vo);
     	service.studentinfoModify(vo);
     	HttpSession session = request.getSession();
-    	session.setAttribute("nick", vo.getNick());
+    	MemberVO member = (MemberVO) session.getAttribute("nowUser");
+    	member.setNick(vo.getNick());
+    	session.setAttribute("nowUser", member);
     	
         return "redirect:/mypage/studentinfo";
     }

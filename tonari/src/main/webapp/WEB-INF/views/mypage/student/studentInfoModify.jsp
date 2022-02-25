@@ -345,7 +345,7 @@
 	      $("#nick").blur(function() {
 	         $.ajax({
 	            type : 'post',
-	            url : "/join/nickCheck2.do",
+	            url : "/join/nickCheck2",
 	            data : {
 	               nick : $("#nick").val()
 	            },
@@ -362,8 +362,6 @@
 	                     $("#nick").val("");
 	                     $("#nick").focus();
 	                  }
-	               } else {
-	                  
 	               }
 	            },
 	            error : function() {
@@ -374,7 +372,7 @@
 
 	      //
 
-	   });
+	   
 	</script>
 
 	<script>

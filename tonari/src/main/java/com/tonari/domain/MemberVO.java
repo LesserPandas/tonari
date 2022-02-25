@@ -7,7 +7,7 @@ import lombok.Data;
 public class MemberVO {
 
 	private int bno;
-	private String auth;
+	private int auth;
 	private String email;
 	private String passwd;
 	private String nick;
@@ -21,5 +21,5 @@ public class MemberVO {
 	private String dong;
 	private Date join_date;
 	private Date recent_login_date;
-
+	
 }

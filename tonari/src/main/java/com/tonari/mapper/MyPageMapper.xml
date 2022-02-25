@@ -9,12 +9,22 @@
 		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
 			select teacher_seq.nextval from dual
 		</selectKey>
-		insert into teacher(bno,member_bno,content,image,category,coment,dodate,age,title)
+		insert into teacher(bno,member_bno,content,image,category,coment,dodate,age,title,tmoney)
 		values
-		(#{bno},#{member_bno},#{content},#{image},#{category},#{coment},#{dodate},#{age},#{title})
+		(#{bno},#{member_bno},#{content},#{image},#{category},#{coment},#{dodate},#{age},#{title}, #{tmoney})
 	</insert>
 	<select id = "getTeacherVO" resultType="com.tonari.domain.Teacherinfo_viewVO">
 		select * from TEACHER_INFO_VIEW where member_bno = #{bno}
 	</select>
+	
+	<insert id = "payInsert" parameterType="com.tonari.domain.PayListVO">
+		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
+			select paylist_seq.nextval from dual
+		</selectKey>
+		insert into paylist(bno,member_bno,submonth, pay_check)
+		values
+		(#{bno},#{member_bno},#{submonth},#{pay_check})
+	</insert>
+	
 	
 </mapper>

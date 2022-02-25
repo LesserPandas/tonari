@@ -15,5 +15,5 @@ public class TeacherVO {
 	private int dodate;
 	private String coment;
 	private String title;
-	private int howmuch;
+	private int tmoney;
 }

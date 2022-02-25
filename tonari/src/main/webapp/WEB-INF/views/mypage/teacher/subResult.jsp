@@ -7,7 +7,7 @@
         <div class="row margin-bottom-40">
           <!-- BEGIN CONTENT -->
           <div class="col-md-12 col-sm-12">
-            <h1>구독 내역</h1>
+            <h1>나의 구독 내역</h1>
             <div class="goods-page">
               <div class="goods-data clearfix">
                 <div class="table-wrapper-responsive">
@@ -16,9 +16,9 @@
                     <th class="goods-page-image">사진</th>
                     <th class="goods-page-description">설명</th>
                     <th class="goods-page-ref-no">종목</th>
-                    <th class="goods-page-quantity">기간?</th>
-                    <th class="goods-page-price">가격</th>
-                    <th class="goods-page-total" colspan="2">총가격</th>
+                    <th class="goods-page-quantity">구독시작한 날짜</th>
+                    <th class="goods-page-price">구독 기간</th>
+                    <th class="goods-page-total" colspan="2">결제 가격</th>
                   </tr>
                   <tr>
                     <td class="goods-page-image">
@@ -33,10 +33,10 @@
                       javc2133
                     </td>
                     <td class="goods-page-quantity">
-                      <strong>21.07.21<span>~</span>21.08.21</strong>
+                      <strong>21.07.21</strong>
                     </td>
                     <td class="goods-page-price">
-                      <strong>1818<span>円</span></strong>
+                      <strong>12<span>개월</span></strong>
                     </td>
                     <td class="goods-page-total">
                       <strong>1818<span>円</span></strong>

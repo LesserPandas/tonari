@@ -22,6 +22,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonObject;
 import com.tonari.domain.MemberAuthVO;
 import com.tonari.domain.MemberVO;
+import com.tonari.domain.PayListVO;
 import com.tonari.domain.TeacherVO;
 import com.tonari.domain.Teacherinfo_viewVO;
 import com.tonari.service.MemberService;
@@ -41,28 +42,28 @@ public class MypageController {
 	private MypageService pservice;
 
 	@GetMapping("/teacherJoin")
-	public String tjoin(Model model,HttpServletRequest request) {
+	public String tjoin(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		MemberVO mvo = (MemberVO)session.getAttribute("nowUser");
+		MemberVO mvo = (MemberVO) session.getAttribute("nowUser");
 		System.out.println(mvo);
-		if(mvo==null) {
+		if (mvo == null) {
 			return "/join/login";
-		}else {
+		} else {
 			String nick = mvo.getNick();
 			MemberAuthVO mavo = pservice.tjoinpage(nick);
-			model.addAttribute("info",mavo);
+			model.addAttribute("info", mavo);
 			return "/mypage/teacher/teacherJoin";
 		}
 	}
-	
-	@PostMapping(value="/teacherJoin", produces="application/json; charset=utf8")
-	public String teacherjoin (@RequestParam("uploadFile") MultipartFile upimage,TeacherVO tvo) {
+
+	@PostMapping(value = "/teacherJoin", produces = "application/json; charset=utf8")
+	public String teacherjoin(@RequestParam("uploadFile") MultipartFile upimage, TeacherVO tvo) {
 		tvo.setImage(UploadImageFile(upimage));
 		pservice.teacherjoin(tvo);
 		return "redirect: /";
 	}
-	
-	//imageupload
+
+	// imageupload
 	@PostMapping(value = "/ImageFile", produces = "application/json; charset=utf8")
 	@ResponseBody
 	public String ImageFile(@RequestParam("file") MultipartFile file) {
@@ -73,57 +74,57 @@ public class MypageController {
 		log.info(upload);
 		return upload;
 	}
-	
+
 	public String UploadImageFile(MultipartFile file) {
 		String url = "";
 		String uploadFolder = "c://upload";
 		String uploadFileName = file.getOriginalFilename();
-		//IE
-		uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("//")+1);
+		// IE
+		uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("//") + 1);
 		UUID uuid = UUID.randomUUID();
-		uploadFileName = uuid.toString()+"_"+uploadFileName;
+		uploadFileName = uuid.toString() + "_" + uploadFileName;
 		File uploadPath = new File(uploadFolder, getFolder());
-		if(uploadPath.exists()==false) {
+		if (uploadPath.exists() == false) {
 			uploadPath.mkdirs();
 		}
 		File savefile = new File(uploadPath, uploadFileName);
 		try {
 			file.transferTo(savefile);
 			uploadFileName = (savefile.toString().substring(10));
-			url = "/upload/"+uploadFileName;
-		}catch(Exception e) {
+			url = "/upload/" + uploadFileName;
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return url;
 	}
-	
+
 	private String getFolder() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		String str = sdf.format(date);
-		return str.replace("-", File.separator); //분리가 된다
-	 }
-	
+		return str.replace("-", File.separator); // 분리가 된다
+	}
+
 	@GetMapping("/teacherUpdate")
-	public String tModify(Model model , HttpServletRequest request) {
+	public String tModify(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		MemberVO mvo = (MemberVO)session.getAttribute("nowUser");
-		if(mvo == null) {
+		MemberVO mvo = (MemberVO) session.getAttribute("nowUser");
+		if (mvo == null) {
 			return "redirect: /mypage/teacherJoin";
 		}
 		int bno = mvo.getBno();
 		Teacherinfo_viewVO tvo = pservice.getTeacherVO(bno);
-		model.addAttribute("tvo" , tvo);
+		model.addAttribute("tvo", tvo);
 		int dodate = tvo.getDodate();
 		List<Integer> list = pservice.getdate(dodate);
 		String jsonText = new String();
 		try {
 			ObjectMapper objectmapper = new ObjectMapper();
 			jsonText = objectmapper.writeValueAsString(list);
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		model.addAttribute( "json", jsonText );
+		model.addAttribute("json", jsonText);
 		return "/mypage/teacher/teacherUpdate";
 	}
 
@@ -131,36 +132,49 @@ public class MypageController {
 	public String sub() {
 		return "/mypage/teacher/subscription";
 	}
+
 	@GetMapping("/subResult")
 	public String subResult() {
 		return "/mypage/teacher/subResult";
 	}
-	//기본개인정보 수정
-	@GetMapping("/studentinfo") 
+
+	// 기본개인정보 수정
+	@GetMapping("/studentinfo")
 	public String studentinfo(HttpServletRequest request, Model model) throws Exception {
 		HttpSession session = request.getSession();
-		MemberVO mvo = (MemberVO)session.getAttribute("nowUser");
+		MemberVO mvo = (MemberVO) session.getAttribute("nowUser");
 		String nick = mvo.getNick();
 		log.info("nick : " + nick);
-//		MemberVO member = service.selectMember(nick);
-//		log.info("member Data : " + member);
-//		model.addAttribute("member", member);
+		MemberVO member = service.selectMember(nick);
+		log.info("member Data : " + member);
+		model.addAttribute("member", member);
 		return "/mypage/student/studentInfoModify";
 	}
-	
+
 	@GetMapping("/like")
 	public String steacherLike() {
 		return "/mypage/student/teacherlike";
 	}
-	
+
 	@GetMapping("/studentList")
 	public String studentList() {
 		return "/mypage/teacher/studentList";
 	}
-	
+
 	@GetMapping("/teacherList")
 	public String teacherList() {
 		return "/mypage/student/teacherList";
 	}
 
+	// 구독 기간(월) 저장
+	@GetMapping("/payMonthJoin")
+	public String payInsert(PayListVO pay) {
+
+		pay.setPay_check("N");
+		log.info("페이 정보 : " + pay);
+		pservice.payInfo(pay);
+
+		return "redirect:/mypage/teacherJoin";
+
+	}
 }

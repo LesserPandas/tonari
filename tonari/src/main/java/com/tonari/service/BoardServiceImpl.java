@@ -160,6 +160,8 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public List<TeacherSearch_viewVO> mainsearch(Criteria cri) {
+		log.info("아아아아아아아아아아아"+cri.getCategory_bno());
+		log.info(cri.getDong());
 		return mapper.mainsearch(cri);
 	}
 }

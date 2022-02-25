@@ -196,13 +196,13 @@
 		            <include refid="searchall" />
 		        )
 		        <choose>
-					<when test="category_bno != null and dong != null">
+					<when test="category_bno != null and dong != ''">
 						 where category_bno=#{category_bno} and dong = #{dong}
 					</when>
-					<when test="category_bno == null and dong != null">
+					<when test="category_bno == null and dong != ''">
 						 where dong = #{dong}
 					</when>
-					<when test="category_bno != null and dong == null">
+					<when test="category_bno != null and dong == ''">
 						 where category=#{category_bno}
 					</when>
 				</choose>

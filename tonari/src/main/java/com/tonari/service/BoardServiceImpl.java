@@ -7,20 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tonari.domain.Addr_searchVO;
-import com.tonari.domain.TeacherSearch_viewVO;
 import com.tonari.domain.CategoryVO;
 import com.tonari.domain.LikeMarkVO;
 import com.tonari.domain.ReviewVO;
 import com.tonari.domain.Review_viewVO;
+import com.tonari.domain.TeacherSearch_viewVO;
 import com.tonari.domain.Teacherinfo_viewVO;
 import com.tonari.mapper.BoardMapper;
 import com.tonari.util.Criteria;
 
 import lombok.AllArgsConstructor;
 import lombok.Setter;
-import lombok.extern.log4j.Log4j;
 
-@Log4j
 @Service
 @AllArgsConstructor
 public class BoardServiceImpl implements BoardService {

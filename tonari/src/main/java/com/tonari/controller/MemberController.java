@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tonari.domain.MemberVO;
-import com.tonari.domain.PayListVO;
 import com.tonari.service.MemberService;
 
 import lombok.AllArgsConstructor;

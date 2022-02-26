@@ -2,8 +2,6 @@ package com.tonari.mapper;
 
 import java.util.List;
 
-import org.springframework.mail.javamail.MimeMessagePreparator;
-
 import com.tonari.domain.BoardVO;
 import com.tonari.domain.BoardlistVO;
 import com.tonari.domain.MailVO;

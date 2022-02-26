@@ -20,11 +20,9 @@ import com.tonari.service.BoardService;
 import com.tonari.util.Criteria;
 
 import lombok.Setter;
-import lombok.extern.log4j.Log4j;
 
 @Controller
 @RequestMapping("/board/*")
-@Log4j
 public class BoardController {
 	
 	@Setter(onMethod_ = @Autowired)

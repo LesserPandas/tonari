@@ -8,8 +8,12 @@
 		http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit.xsd">
 
 	<rabbit:connection-factory
-		id="rabbitConnectionFactory" host="127.0.0.1" port="5672"
-		username="rabbit" password="1234" virtual-host="/"/>
+		id="rabbitConnectionFactory" 
+		host="${rabbitmq.host}" 
+		port="${rabbitmq.port}"
+		username="${rabbitmq.username}" 
+		password="${rabbitmq.password}" 
+		virtual-host="${rabbitmq.virtual-host}"/>
 
 	<rabbit:admin connection-factory="rabbitConnectionFactory" />
 
@@ -67,11 +71,13 @@
 
 	<!-- 메시지 리스너 설정 -->
 	<rabbit:listener-container
-		connection-factory="rabbitConnectionFactory">
-		<!-- advice-chain="retryInterceptor" -->
+		connection-factory="rabbitConnectionFactory"
+		advice-chain="retryInterceptor">
 		<!-- message-converter="amqpMessageConverter" -->
 		<!-- 큐 myQueue 메시지는 bean id consumer의 method listen가 처리한다 -->
-		<rabbit:listener queues="myQueue" ref="ChatService" />
+		<rabbit:listener queues="myQueue" ref="ChatService" method="onMessage"/>
 	</rabbit:listener-container>
+	
+	<bean id="ChatService" class="com.tonari.service.ChatServiceImpl" />
 
 </beans>

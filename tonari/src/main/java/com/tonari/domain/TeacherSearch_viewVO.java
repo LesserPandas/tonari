@@ -14,4 +14,5 @@ public class TeacherSearch_viewVO {
 	private String category_name;
 	private float score;
 	private String coment;
+	private String nick;
 }

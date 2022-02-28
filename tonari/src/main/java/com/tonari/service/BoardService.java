@@ -23,9 +23,7 @@ public interface BoardService {
 	
 	public int total(Criteria cri);//전체 게시물 조회
 	
-	
-	
-	
+	public List<TeacherSearch_viewVO> mainsearch(Criteria cri);
 }
 
 

@@ -55,4 +55,9 @@ public class MypageServiceImpl implements MypageService {
 		}
 		return result;
 	}
+	
+	@Override
+	public void teacherUpdate(TeacherVO tvo) {
+		mapper.teacherUpdate(tvo);
+	}
 }

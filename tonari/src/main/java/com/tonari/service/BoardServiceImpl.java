@@ -68,6 +68,19 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<Review_viewVO> review(int bno) {
 		List<Review_viewVO> list = mapper.review(bno);
+		for(int i =0; i<list.size();i++) {
+			Review_viewVO rvo = new Review_viewVO();
+			String nick = list.get(i).getNick();
+			int star = list.get(i).getScore();
+			rvo.setStar(star(star));
+			rvo.setNick(nickname(nick));
+			rvo.setContent(list.get(i).getContent());
+			rvo.setMember_bno(list.get(i).getMember_bno());
+			rvo.setScore(list.get(i).getScore());
+			rvo.setTeacher_bno(list.get(i).getTeacher_bno());
+			rvo.setReview_bno(list.get(i).getReview_bno());
+			list.set(i,rvo);
+		}
 		return list; 
 	}
 	
@@ -122,7 +135,6 @@ public class BoardServiceImpl implements BoardService {
 	
 	public String nickname(String nick) {
 		StringBuilder sb = new StringBuilder();
-		System.out.println(nick);
 		String firstname= nick.substring(0, 1);
 		nick=nick.substring(1);
 		sb.setLength(0);
@@ -130,5 +142,26 @@ public class BoardServiceImpl implements BoardService {
 		for(int i=0; i<nick.length();i++) sb.append("*");
 		String nickname = sb.toString();
 		return nickname;
+	}
+	
+	public String star(int stars) {
+		String star = "";
+		StringBuilder sb = new StringBuilder();
+		sb.append(star);
+		for(int i = 0; i<stars;i++) {
+			sb.append("<img src = '/resources/custom/images/starTeacher.png'style='width: 17px; height: 17px;'>");
+		}
+		for(int i=0;i<5-stars;i++) {
+			sb.append("<img src = '/resources/custom/images/blackstarTeacher.png'style='width: 17px; height: 17px;'>");
+		}
+		star = sb.toString();
+		return star;
+	}
+	
+	@Override
+	public List<TeacherSearch_viewVO> mainsearch(Criteria cri) {
+		log.info("아아아아아아아아아아아"+cri.getCategory_bno());
+		log.info(cri.getDong());
+		return mapper.mainsearch(cri);
 	}
 }

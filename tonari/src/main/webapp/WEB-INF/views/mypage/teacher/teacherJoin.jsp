@@ -128,7 +128,7 @@
 											class="form-control howmuch" placeholder="하루 당 원하는 가격 입력">
 											<span class="col-md-2 japanesemoney">円</span>
 										</div>
-										<label for="name">프로필 사진 선택<span class="require">*</span></label>
+										<label for="uploadFile">프로필 사진 선택<span class="require">*</span></label>
 										<input style="display: block;" type="file" id="uploadFile" name="uploadFile">
 									</div>
 								</div>
@@ -141,7 +141,7 @@
 								<div id="myTabContent" class="tab-content">
 									<div class="formgroup">
 										<label for="review">자기소개글 작성<span class="require">*</span></label>
-										<textarea name="content" id="summernote" class="summernote"></textarea>
+										<textarea name="content" id="content" class="summernote"></textarea>
 									</div>
 
 									<div class="padding-top-20">
@@ -164,4 +164,13 @@
 </div>
 
 <script src="/resources/custom/js/tmypage.js" type="text/javascript"></script>
+<script>
+function image(){
+	var uploadFile = document.getElementById("uploadFile").value;
+	if(uploadFile == null){
+		alert("사진을 등록해주세요");
+		return false;
+	}
+}
+</script>
 <%@ include file="../../footer.jsp"%>

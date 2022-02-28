@@ -67,20 +67,26 @@ pageEncoding="UTF-8"%>
 								<span style="font-size:16px;">出来る曜日:</span>
 								<strong style="font-size:18px;">${teacher.date }</strong>
 							</div>
+							<div>
+								<span style="font-size:16px;">講義料（1日）:</span>
+								<strong style="font-size:18px;color:#67bd3c;">${teacher.tmoney }円</strong>
+							</div>
 							<div class="pull-right">
 								<button class="button largeButton">1:1 チャット</button>
-								<c:choose>
-									<c:when test="${like.teacher_bno==teacher.teacher_bno }">
-										<button class="pull-right squareButton likeButton likeButtonActive" 
-											id="teacher_${teacher.teacher_bno}" onclick="like(${teacher.teacher_bno},${nowUser.bno })">♥
-										</button>
-									</c:when>
-									<c:otherwise>
-										<button class="pull-right squareButton likeButton " 
-											id="teacher_${teacher.teacher_bno}" onclick="like(${teacher.teacher_bno},${nowUser.bno })">♥
-										</button>
-									</c:otherwise>
-								</c:choose>
+								<c:if test="${not empty nowUser }">
+									<c:choose>
+										<c:when test="${like.teacher_bno==teacher.teacher_bno }">
+											<button class="pull-right squareButton likeButton likeButtonActive" 
+												id="teacher_${teacher.teacher_bno}" onclick="like(${teacher.teacher_bno},${nowUser.bno })">♥
+											</button>
+										</c:when>
+										<c:otherwise>
+											<button class="pull-right squareButton likeButton " 
+												id="teacher_${teacher.teacher_bno}" onclick="like(${teacher.teacher_bno},${nowUser.bno })">♥
+											</button>
+										</c:otherwise>
+									</c:choose>
+								</c:if>
 							</div>
 							
 						</div>
@@ -102,8 +108,7 @@ pageEncoding="UTF-8"%>
 											<div class="review-item-submitted">
 												<strong style="display: inline">${review.nick }</strong>
 												<span class="pull-right" style="display:inline;" id="${review.nick}">
-													<img src = "/resources/custom/images/starTeacher.png" 
-													style="width: 17px; height: 17px;">
+													${review.star }
 												</span> 
 												<div class="rateit" data-rateit-value="5"
 													data-rateit-ispreset="true" data-rateit-readonly="true"></div>
@@ -172,11 +177,5 @@ pageEncoding="UTF-8"%>
 	<!-- END SIDEBAR & CONTENT -->
 	</div>
 </div>
-<script>
-$(document).ready(function(){
-	var stars = "${review}";
-	console.log(stars[0].score);
-})
-</script>
 <script src="/resources/custom/js/board.js" type="text/javascript"></script>
 <%@ include file ="../footer.jsp" %>

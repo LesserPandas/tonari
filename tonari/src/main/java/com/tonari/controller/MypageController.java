@@ -45,7 +45,6 @@ public class MypageController {
 	public String tjoin(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		MemberVO mvo = (MemberVO) session.getAttribute("nowUser");
-		System.out.println(mvo);
 		if (mvo == null) {
 			return "/join/login";
 		} else {
@@ -176,5 +175,16 @@ public class MypageController {
 
 		return "redirect:/mypage/teacherJoin";
 
+	}
+	
+	@PostMapping(value = "/teacherUpdate", produces = "application/json; charset=utf8")
+	public String teacherUpdate(TeacherVO tvo, @RequestParam("uploadFile") MultipartFile upimage) {
+		String image = UploadImageFile(upimage);
+		if(image != null) {
+			tvo.setImage(image);
+		}
+		int bno = tvo.getBno();
+		pservice.teacherUpdate(tvo);
+		return "redirect: /board/info?teacher_bno="+bno;
 	}
 }

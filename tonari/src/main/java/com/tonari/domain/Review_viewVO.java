@@ -10,4 +10,6 @@ public class Review_viewVO {
 	private String content;
 	private int score;
 	private String nick;
+	
+	private String star;
 }

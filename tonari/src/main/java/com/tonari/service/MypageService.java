@@ -21,5 +21,7 @@ public interface MypageService {
 	public List<Integer> getdate(int date);
 
 	public void payInfo(PayListVO pay);
+	
+	public void teacherUpdate(TeacherVO tvo);
 
 }

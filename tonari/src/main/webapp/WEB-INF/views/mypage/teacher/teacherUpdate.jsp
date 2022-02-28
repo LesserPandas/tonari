@@ -25,10 +25,10 @@
 									id="preview-image" src="${tvo.image }">
 							</div>
 						</div>
-						<form name="teacherinfo" action="/mypage/teacherJoin" 
+						<form name="teacherinfo" action="/mypage/teacherUpdate" 
 							method="post" enctype="multipart/form-data" onsubmit = "return chkjoin()"> 
 						<input type="hidden" name="dodate" id="dodate">
-						<input type="hidden" name="member_bno" value="${tvo.member_bno }">
+						<input type="hidden" name="bno" value="${tvo.teacher_bno }">
 						<input type="hidden" name="age" id="age">
 							<div class="col-md-6 col-sm-6">
 								<input class="form-control" type="text" id="title" name="title" 
@@ -125,8 +125,8 @@
 								<div class="description">
 									<div class="form-group">
 										<div style="display:flex">
-											<input type="number" name="howmuch" id="howmuch" 
-											class="form-control howmuch"
+											<input type="number" name="tmoney" id="howmuch" 
+											class="form-control howmuch" value="${tvo.tmoney }"
 											placeholder="하루 당 원하는 가격 입력">
 											<span class="col-md-2 japanesemoney">円</span>
 										</div>
@@ -141,8 +141,8 @@
 								</ul>
 								<div id="myTabContent" class="tab-content">
 									<div class="formgroup">
-										<label for="review">자기소개글 작성<span class="require">*</span></label>
-										<textarea name="content" id="contnet" class="summernote"></textarea>
+										<label for="content">자기소개글 작성<span class="require">*</span></label>
+										<textarea name="content" id="content" class="summernote"></textarea>
 									</div>
 
 									<div class="padding-top-20">
@@ -165,30 +165,19 @@
 
 <script src="/resources/custom/js/tmypage.js" type="text/javascript"></script>
 <script>
-
-$(function(){
-	var dodate = ${json};
-	var day = $("input[name=date]");
-	for (var i=0; i<dodate.length;i++){
-		for (var j=0; j<day.length;j++){
-			if(dodate[i]==day[j].value){
-				day[j].checked=true;
-			}
-		}
-	}
-})
 $(function(){
 	var age ="${tvo.age}";
 	var today = new Date(); 
 	var today_year= today.getFullYear();
 	var year = today_year-age;
 	$("#select_year").val(year);
-	var howmuch = "${tvo.howmuch}";
+	var howmuch = "${tvo.tmoney}";
 	$("#howmuch").val(howmuch);
+	doday();
 })
 $(function(){
-	$("#contnet").val('${tvo.content}');
-		$('#contnet').summernote({
+	$("#content").val('${tvo.content}');
+	$('#content').summernote({
 		height: 300,
 		fontNames : [ '맑은고딕', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', ],
 		fontNamesIgnoreCheck : [ '맑은고딕' ],
@@ -202,6 +191,19 @@ $(function(){
 		}
 	});
 })
-
+</script>
+<script>
+function image(){}
+function doday(){
+	var dodate = ${json}
+	var day = document.getElementsByName("date");
+	for(var i=0;i<dodate.length;i++){
+		for (var j=0;j<day.length;j++){
+			if(dodate[i]== day[j].value){
+				day[j].checked = true;
+			}
+		}
+	}
+}
 </script>
 <%@ include file="../../footer.jsp"%>

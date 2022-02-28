@@ -15,7 +15,7 @@
 			<i class="fa fa-angle-right"></i><a href="teacherlist.jsp">나의 선생님 보기(결제된 사람만)</a>
 		</li>
 		<li class="list-group-item clearfix">
-			<i class="fa fa-angle-right"></i><a href="teacherJoin.jsp">선생님으로 등록</a>
+			<i class="fa fa-angle-right"></i><a href="/mypage/teacherJoin">선생님으로 등록</a>
 		</li>
 		<li class="list-group-item clearfix">
 			<i class="fa fa-angle-right"></i><a href="subscription.jsp">(선생님으로 등록 이후 확인 시 바로 연결)구독하는 화면</a>

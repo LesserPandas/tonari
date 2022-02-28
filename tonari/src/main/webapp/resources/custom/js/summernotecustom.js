@@ -1,5 +1,5 @@
 $(function(){
-		$('#summernote').summernote({
+		$('#content').summernote({
 		height: 300,
 		fontNames : [ '맑은고딕', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', ],
 		fontNamesIgnoreCheck : [ '맑은고딕' ],

@@ -7,9 +7,9 @@ import com.tonari.domain.CategoryVO;
 import com.tonari.domain.LikeMarkVO;
 import com.tonari.domain.ReviewVO;
 import com.tonari.domain.Review_viewVO;
+import com.tonari.domain.TeacherSearch_viewVO;
 import com.tonari.domain.Teacherinfo_viewVO;
 import com.tonari.util.Criteria;
-import com.tonari.domain.TeacherSearch_viewVO;
 
 public interface BoardMapper {
 

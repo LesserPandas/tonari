@@ -22,7 +22,7 @@ public class ChatServiceImpl implements ChatService {
 	@Override
 	public void send(@Payload String message) throws IOException {
         log.info("send message = " + message);
-		rabbitTemplate.convertAndSend("/topic/foo.bar", message);
+		rabbitTemplate.convertAndSend("myExchange", "foo.room.1", message);
 	}
 
 	@Override

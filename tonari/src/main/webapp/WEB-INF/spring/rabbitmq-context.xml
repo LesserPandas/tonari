@@ -72,8 +72,8 @@
 	<!-- 메시지 리스너 설정 -->
 	<rabbit:listener-container
 		connection-factory="rabbitConnectionFactory"
-		advice-chain="retryInterceptor">
-		<!-- message-converter="amqpMessageConverter" -->
+		advice-chain="retryInterceptor"
+		message-converter="amqpMessageConverter">
 		<!-- 큐 myQueue 메시지는 bean id consumer의 method listen가 처리한다 -->
 		<rabbit:listener queues="myQueue" ref="ChatService" method="onMessage"/>
 	</rabbit:listener-container>

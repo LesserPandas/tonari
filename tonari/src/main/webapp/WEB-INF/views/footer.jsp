@@ -48,8 +48,7 @@
 				<div class="col-md-3 col-sm-6 pre-footer-col">
 					<h2>Our Contacts</h2>
 					<address class="margin-bottom-20">
-						대전광역시 중구 계룡로 825 (용두동, 희영빌딩)
-						<br> Email: <a
+						대전광역시 중구 계룡로 825 (용두동, 희영빌딩) <br> Email: <a
 							href="mailto:less3rpanda@gmail.com">less3rpanda@gmail.com</a><br>
 						Phone: <a href="skype:metronic"> 042-242-4412</a>
 					</address>
@@ -105,17 +104,15 @@
 					<div class="product-main-image">
 
 						<img src="/resources/assets/pages/img/products/model7.jpg"
-          alt="Cool green dress with red bell" class="img-responsive">
+							alt="Cool green dress with red bell" class="img-responsive">
 					</div>
 					<div class="product-other-images">
 						<a href="javascript:;" class="active"><img
-
-							alt="Berry Lace Dress" src="/resources/assets/pages/img/products/model3.jpg"></a>
-
-						<a href="javascript:;"><img alt="Berry Lace Dress"
+							alt="Berry Lace Dress"
+							src="/resources/assets/pages/img/products/model3.jpg"></a> <a
+							href="javascript:;"><img alt="Berry Lace Dress"
 							src="/resources/assets/pages/img/products/model4.jpg"></a> <a
 							href="javascript:;"><img alt="Berry Lace Dress"
-
 							src="/resources/assets/pages/img/products/model5.jpg"></a>
 					</div>
 				</div>
@@ -167,63 +164,64 @@
 		</div>
 	</div>
 	<!-- END fast view of a product -->
-<!-- Load javascripts at bottom, this will reduce page load time -->
-<script src="/resources/assets/plugins/jquery-migrate.min.js"
-	type="text/javascript"></script>
-<script src="/resources/assets/plugins/bootstrap/js/bootstrap.min.js"
-	type="text/javascript"></script>
+	<!-- Load javascripts at bottom, this will reduce page load time -->
+	<script src="/resources/assets/plugins/jquery-migrate.min.js"
+		type="text/javascript"></script>
+	<script src="/resources/assets/plugins/bootstrap/js/bootstrap.min.js"
+		type="text/javascript"></script>
 
 
-<script
-	src="/resources/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"
-	type="text/javascript"></script>
-<!-- END CORE PLUGINS -->
+	<script
+		src="/resources/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"
+		type="text/javascript"></script>
+	<!-- END CORE PLUGINS -->
 
-<!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
-<script
-	src="/resources/assets/plugins/fancybox/source/jquery.fancybox.pack.js"
-	type="text/javascript"></script>
-<!-- pop up -->
-<script src="/resources/assets/plugins/owl.carousel/owl.carousel.min.js"
-	type="text/javascript"></script>
-<!-- slider for products -->
-<script src='/resources/assets/plugins/zoom/jquery.zoom.min.js'
-	type="text/javascript"></script>
-<!-- product zoom -->
-<script
-	src="/resources/assets/plugins/bootstrap-touchspin/bootstrap.touchspin.js"
-	type="text/javascript"></script>
-<!-- Quantity -->
+	<!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
+	<script
+		src="/resources/assets/plugins/fancybox/source/jquery.fancybox.pack.js"
+		type="text/javascript"></script>
+	<!-- pop up -->
+	<script
+		src="/resources/assets/plugins/owl.carousel/owl.carousel.min.js"
+		type="text/javascript"></script>
+	<!-- slider for products -->
+	<script src='/resources/assets/plugins/zoom/jquery.zoom.min.js'
+		type="text/javascript"></script>
+	<!-- product zoom -->
+	<script
+		src="/resources/assets/plugins/bootstrap-touchspin/bootstrap.touchspin.js"
+		type="text/javascript"></script>
+	<!-- Quantity -->
 
-<!-- 내가 추가 한 것. -->
-<script src="/resources/custom/js/summernote/summernote-lite.js"></script>
-<script src="/resources/custom/js/my.js"></script>
-<script src="/resources/custom/js/member.js"></script>
-<script src="/resources/custom/js/summernotecustom.js"></script>
+	<!-- 내가 추가 한 것. -->
+	<script src="/resources/custom/js/summernote/summernote-lite.js"></script>
+	<script src="/resources/custom/js/my.js"></script>
+	<script src="/resources/custom/js/member.js"></script>
+	<script src="/resources/custom/js/summernotecustom.js"></script>
 
-<!-- 내가 추가 한 것. -->
+	<!-- 내가 추가 한 것. -->
 
 
-<script src="/resources/assets/corporate/scripts/layout.js"
-	type="text/javascript"></script>
-<script src="/resources/assets/pages/scripts/bs-carousel.js"
-	type="text/javascript"></script>
-<script type="text/javascript">
-	jQuery(document).ready(function() {
-		Layout.init();
-		Layout.initOWL();
-		Layout.initImageZoom();
-		Layout.initTouchspin();
+	<script src="/resources/assets/corporate/scripts/layout.js"
+		type="text/javascript"></script>
+	<script src="/resources/assets/pages/scripts/bs-carousel.js"
+		type="text/javascript"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function() {
+			Layout.init();
+			Layout.initOWL();
+			Layout.initImageZoom();
+			Layout.initTouchspin();
+			Layout.initFixHeaderWithPreHeader();
+			Layout.initNavScrolling();
+		});
+	</script>
 
-		Layout.initFixHeaderWithPreHeader();
-		Layout.initNavScrolling();
-	});
-</script>
-
-<!-- END PAGE LEVEL JAVASCRIPTS -->
+	<!-- END PAGE LEVEL JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
 </html>
 
-
-<%@ include file="chat/chat.jsp" %>
+<%@ include file="chat/chat.jsp"%>
+<!-- <c:if test="${not empty nowUser}"> -->
+<!-- </c:if> -->

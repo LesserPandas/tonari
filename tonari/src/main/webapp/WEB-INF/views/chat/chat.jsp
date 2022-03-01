@@ -185,41 +185,81 @@
 </body>
 
 <script>
+
+
+var bno = 1;
+
 document.addEventListener("DOMContentLoaded", () => {
 	var sock = null;
 	var stompClient = null;
+	
+/* 	var session = null;
+	var session = "${nowUser}";
+	if(session == null | session == "") {
+		console.log("로그인이 필요합니다.");
+	} else {
+		connect();
+	} */
 	connect();
 });
 
 function connect(){
 	sock = new SockJS("/ws");
-	/* sock = new SockJS("http://127.0.0.1:15672/ws"); */
 	stompClient = Stomp.over(sock);
-	var header = {userId : "testId"};
-
-	// 1. 구독할 채널 // 2. 채널에서 메세지 받을 때 처리할 로직
-	stompClient.connect(header, function(frame){
-		console.log("연결 성공 : " + frame);
-		stompClient.subscribe("/topic/a", function(response){
-			console.log(response);
-			console.log("받은 메세지입니다. " + JSON.parse(response.body.message));
-		});
-	});
 	
-/* 	stompClient.connect('rabbit', '1234', function(){
-		console.log("success!!");
-	}, function(){
-		console.log("error!!");
-	}, '/'); */
+    function onError(e) {
+        console.log("STOMP ERROR", e);
+    }
+
+    function onDebug(m) {
+        console.log("STOMP DEBUG", m);
+    }
+
+    stompClient.debug = onDebug;
+	
+	stompClient.connect('rabbit', '1234', function (frame) {
+
+        console.log('STOMP Connected');
+        
+        var bno = 1;
+        /* subscribe 설정에 따라 rabbit의 Exchange, Queue가 상당히 많이 바뀜 */
+        stompClient.subscribe('/queue/chat.queue.2', function (text) {
+
+            const payload = JSON.parse(text.body);
+            console.log("payload : " + payload)
+			console.log("payload Content : " + payload.content)
+            /* let className = payload.nickname == nickname? 'mine' : 'yours';
+
+            const html = `<div class="${className}">
+                            <div class="nickname">${payload.nickname}</div>
+                            <div class="message">${payload.message}</div>
+                        </div>`
+
+            chats.insertAdjacentHTML('beforeend', html); */
+            
+            //밑의 인자는 Queue 생성 시 주는 옵션
+            //auto-delete : Consumer가 없으면 스스로 삭제되는 Queue
+            //durable : 서버와 연결이 끊겨도 메세지를 저장하고 있음
+            //exclusive : 동일한 이름의 Queue 생길 수 있음
+        },{'auto-delete':false, 'durable':true, 'exclusive':false});
+
+        //입장 메세지 전송
+        stompClient.send('/pub/chat.enter', {}, JSON.stringify({
+            room: bno,
+            content: "",
+            date: new Date()
+        }));
+
+    }, onError, '/');
 };
 
 function message_send() {
 	console.log('sending...');
-	var myMessage = document.getElementById('myMessage');
+	var bno = 1;
+	var myMessage = document.getElementById('myMessage').value;;
 	var chat = {
-	    roomId: 1, 
-	    userId: "user01", 
-	    message: myMessage, 
+	    room: bno,
+	    content: myMessage, 
 	    date: new Date()
 	};
 	// /app을 쓰면 서버 컨트롤러에 매핑
@@ -227,7 +267,7 @@ function message_send() {
 	// 첫번째 인자는 보낼 주소
 	// 두번째 인자는 서버로 보낼 때 추가하고 싶은 stomp 헤더
 	// 세번째 인자는 서버로 보낼 때 추가하고 싶은 stomp 바디 (JSON.stringify({}))
-	stompClient.send("/app/message", {}, JSON.stringify(chat));
+	stompClient.send('/pub/send.message', {}, JSON.stringify(chat));
 };
 	
 </script>

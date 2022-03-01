@@ -1,11 +1,14 @@
 package com.tonari.service;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import com.rabbitmq.client.Channel;
 import com.tonari.config.ChatConstants;
+import com.tonari.domain.JoinRoomVO;
+import com.tonari.mapper.ChatMapper;
 
 import lombok.AllArgsConstructor;
 
@@ -14,6 +17,8 @@ import lombok.AllArgsConstructor;
 public class ChatServiceImpl implements ChatService {
 
 	private Channel ch;
+	
+	private ChatMapper mapper;
 
 	@Override
 	public void setQueue(int bno) {
@@ -36,5 +41,19 @@ public class ChatServiceImpl implements ChatService {
 			}
 		}
 	}
+	
+	@Override
+	public void joinRoom(int sender, int receiver) {
+		mapper.createRoom();
+		int room = mapper.newRoom();
+		mapper.joinRoom(sender, room);
+		mapper.joinRoom(receiver, room);
+	}
+	
+	@Override
+	public List<JoinRoomVO> joinRoomList(int loginUser) {
+		return mapper.joinRoomList(loginUser);
+	}
+
 
 }

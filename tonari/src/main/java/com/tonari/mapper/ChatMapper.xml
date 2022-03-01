@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.tonari.mapper.ChatMapper">
+
+	<insert id="createRoom">
+		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
+			select room_seq.nextval from dual
+		</selectKey>
+		insert into room (bno) values (#{bno)
+	</insert>
+
+	<select id="newRoom">
+		select bno from room order by bno desc limit 1
+	</select>
+
+	<insert id="joinRoom">
+		insert into joinroom (member_bno, room_bno) values
+		(#{member_bno}, #{room_bno})
+	</insert>
+
+	<select id="joinRoomList"
+		resultType="com.tonari.domain.JoinRoomVO">
+		select j.bno, j.member_bno, j.room_bno, m.nick from joinroom j, member m where m.bno = j.member_bno and member_bno != #{member_bno}
+		AND room_bno in (SELECT ROOM_BNO FROM joinroom WHERE MEMBER_BNO =
+		#{member_bno})
+	</select>
+
+</mapper>

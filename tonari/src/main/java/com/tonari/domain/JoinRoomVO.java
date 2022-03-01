@@ -3,8 +3,9 @@ package com.tonari.domain;
 import lombok.Data;
 
 @Data
-public class MyChatListVO {
+public class JoinRoomVO {
 	private int bno;
 	private int member_bno;
-	private String chatlist;
+	private int room_bno;
+	private String nick;
 }

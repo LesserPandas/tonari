@@ -27,48 +27,10 @@
 						</div>
 
 					</div>
-					<div class="panel-body msg_container_base">
+					<div id="chat_list" class="panel-body msg_container_base">
 
-						<div class="row msg_container chat-now">
-							<div class="col-md-12 col-xs-12">
-								<div class="" onclick="chatContentPopup()">
-									<span class="chat-profile col-md-1"></span>
-									<p class="chat-sender">김찬호</p>
-									<p class="chat-content">채팅창목록도 새로 추가했습니다.</p>
-									<p class="chat-timeline">52분 전</p>
-								</div>
-							</div>
-						</div>
-						<div class="row msg_container chat-now">
-							<div class="col-md-12 col-xs-12">
-								<div class="" onclick="chatContentPopup()">
-									<span class="chat-profile col-md-1"></span>
-									<p class="chat-sender">김두홍</p>
-									<p class="chat-content">관리자페이지는 별도 템플릿을 사용했습니다.</p>
-									<p class="chat-timeline">1시간 전</p>
-								</div>
-							</div>
-						</div>
-						<div class="row msg_container chat-now">
-							<div class="col-md-12 col-xs-12">
-								<div class="" onclick="chatContentPopup()">
-									<span class="chat-profile col-md-1"></span>
-									<p class="chat-sender">김남현</p>
-									<p class="chat-content">강사 찾기/ 정보 페이지 업데이트했습니다.</p>
-									<p class="chat-timeline">하루 전</p>
-								</div>
-							</div>
-						</div>
-						<div class="row msg_container chat-now">
-							<div class="col-md-12 col-xs-12">
-								<div class="" onclick="chatContentPopup()">
-									<span class="chat-profile col-md-1"></span>
-									<p class="chat-sender">한준희</p>
-									<p class="chat-content">마이페이지에서 개인정보를 확인해주세요.</p>
-									<p class="chat-timeline">1분 전</p>
-								</div>
-							</div>
-						</div>
+						여기에목록 출력
+
 					</div>
 					<div class="panel-footer">
 						<div class="input-group">
@@ -128,31 +90,112 @@
 				</div>
 			</div>
 		</div>
+		<c:if test="${not empty nowUser }">
+			<div class="btn-group dropup">
+				<button type="button" class="btn-chat wh-50" onclick="chatPopup()">
+					<img class="btn-chat-img" src="/resources/custom/images/chat.png">
+				</button>
 
-		<div class="btn-group dropup">
-			<button type="button" class="btn-chat wh-50" onclick="chatPopup()">
-				<img class="btn-chat-img" src="/resources/custom/images/chat.png">
-			</button>
-
-		</div>
+			</div>
+		</c:if>
 	</div>
 </body>
 
 <script>
 
+var member_bno = 0;
+var room_bno = 0;
+var nick = "";
 
-var bno = 1;
-
-document.addEventListener("DOMContentLoaded", () => {
-	var sock = null;
-	var stompClient = null;
-	var session = "${nowUser}";
-	if (session == "") {
-		console.log("로그인이 필요합니다.");
+$(document).on('click', '.panel-heading span.icon_minim', function(e) {
+	var $this = $(this);
+	if (!$this.hasClass('panel-collapsed')) {
+		$this.parents('.panel').find('.panel-body').slideUp();
+		$this.addClass('panel-collapsed');
+		$this.removeClass('glyphicon-minus').addClass('glyphicon-plus');
 	} else {
-		connect();
-	} 
+		$this.parents('.panel').find('.panel-body').slideDown();
+		$this.removeClass('panel-collapsed');
+		$this.removeClass('glyphicon-plus').addClass('glyphicon-minus');
+	}
 });
+$(document).on('focus', '.panel-footer input.chat_input', function(e) {
+	var $this = $(this);
+	if ($('#minim_chat_window').hasClass('panel-collapsed')) {
+		$this.parents('.panel').find('.panel-body').slideDown();
+		$('#minim_chat_window').removeClass('panel-collapsed');
+		$('#minim_chat_window').removeClass('glyphicon-plus').addClass('glyphicon-minus');
+	}
+});
+
+
+function chatPopup() {
+	var stat = document.getElementById("chat_window").style.display;
+	if (stat == "block") { document.getElementById("chat_window").style.display = "none"; 
+	document.getElementById("panel-chat").style.display = "none";
+	}
+	else { document.getElementById("chat_window").style.display = "block"; 
+	document.getElementById("panel-list").style.display = "block";}
+	var bno = ${nowUser.bno};
+	$.ajax({
+		type : 'get',
+		url : "/myChatList",
+		data : {
+			bno: bno
+		},
+		dataType : 'json',
+		success : function(data) {
+			let str = JSON.stringify(data); // <> parse()
+			$.each(data, function(index, item) { // 데이터 =item
+				//alert("bno : " + item.bno + ", memberBno : " + item.member_bno + ", roomBno : " + item.room_bno); // index가 끝날때까지 
+				
+				
+				const html = '<div class="row msg_container chat-now">'
+							+'<div class="col-md-12 col-xs-12">'
+							+	'<div class="" onclick="chatContentPopup('+ item.member_bno + ',' + item.room_bno + ',\'' + item.nick + '\')">'
+							+		'<span class="chat-profile col-md-1"></span>'
+							+	'	<p class="chat-sender">' + item.nick + '</p>'
+							+	'	<p class="chat-content">채팅창목록도 새로 추가했습니다.</p>'
+							+	'	<p class="chat-timeline">52분 전</p>'
+							+	'</div></div></div>';
+			
+			const below = document.getElementById("chat_list");
+			below.insertAdjacentHTML('beforeend', html); // 맨 아래 채팅 추가
+				
+				
+
+			connect();	
+			});
+		},
+		error : function() {
+			alert("통신에러");
+		}
+	})
+	
+}
+
+
+function chatContentPopup(memberBno, roomBno, nickname) {
+	
+	member_bno = memberBno;
+	room_bno = roomBno;
+	nick = nickname;
+	
+	console.log(member_bno + room_bno + nick);
+	var list = document.getElementById("panel-list").style.display;
+	var content = document.getElementById("panel-chat").style.display;
+	if (content == "block") { document.getElementById("panel-chat").style.display = "none";
+	document.getElementById("panel-list").style.display = "block";
+	disconnect();
+	}
+	else { document.getElementById("panel-chat").style.display = "block"; 
+	document.getElementById("panel-list").style.display = "none";
+	}
+}
+
+
+var sock = null;
+var stompClient = null;
 
 function connect(){
 	sock = new SockJS("/ws");
@@ -166,7 +209,7 @@ function connect(){
         console.log("STOMP DEBUG", m);
     }
 
-    stompClient.debug = onDebug;
+    //stompClient.debug = onDebug;
 	
 	stompClient.connect('rabbit', '1234', function (frame) {
 
@@ -177,11 +220,10 @@ function connect(){
 
             const payload = JSON.parse(text.body);
 			console.log("payload Content : " + payload.content);
-			console.log("현재 유저번호 : " + ${nowUser.bno} + ', 닉네임 : ${nowUser.nick}');
 			var message = payload.content;
 			
-            var className1 = payload.bno == ${nowUser.bno} ? 'base_sent' : 'base_receive';
-            var className2 = payload.bno == ${nowUser.bno} ? 'msg_sent' : 'msg_receive';
+            var className1 = payload.sender == ${nowUser.bno} ? 'base_sent' : 'base_receive';
+            var className2 = payload.sender == ${nowUser.bno} ? 'msg_sent' : 'msg_receive';
             
             const html = '<div class="row msg_container '+ className1+'">'
 						+ '<div class="col-md-10 col-xs-10 ">'
@@ -205,15 +247,18 @@ function connect(){
 };
 
 function message_send() {
+	var receiver = member_bno;
+	var sender = ${nowUser.bno};
+	console.log("receiver : " + receiver);
 	console.log('sending...');
-	var bno = ${nowUser.bno};
 	var myMessage = document.getElementById('myMessage').value;
 	var chat = {
-	    bno: bno,
+		room_bno: room_bno,
+	    sender: sender,
 	    content: myMessage, 
-	    date: new Date()
+	    write_date: new Date()
 	};
-	stompClient.send('/pub/send.message.'+${nowUser.bno}, {}, JSON.stringify(chat));
+	stompClient.send('/pub/send.message.'+receiver+'.'+sender, {}, JSON.stringify(chat));
 	document.getElementById('myMessage').value = "";
 };
 
@@ -224,6 +269,12 @@ document.getElementById('myMessage').addEventListener('keydown',function(event){
         document.getElementById('btn-chat').click();
     }
 });
+
+function disconnect(){
+	 if (stompClient !== null) {
+	        stompClient.disconnect();
+	    }
+}
 
 </script>
 

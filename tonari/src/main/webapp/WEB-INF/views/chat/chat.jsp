@@ -76,13 +76,11 @@
 								class="form-control input-sm chat_input"
 								placeholder="Write your message here..." /> <span
 								class="input-group-btn">
-								<button class="btn btn-primary btn-sm" id="btn-chat">Send</button>
+								<button class="btn btn-primary btn-sm" id="">Send</button>
 							</span>
 						</div>
 					</div>
 				</div>
-
-
 
 				<!-- Chat -->
 				<div class="panel panel-chat" id="panel-chat">
@@ -99,32 +97,11 @@
 						</div>
 
 					</div>
-					<div class="panel-body msg_container_base">
-						<div class="row msg_container base_sent">
-							<div class="col-md-10 col-xs-10">
-								<div class="messages msg_sent">
-									<p>that mongodb thing looks good, huh? tiny master db, and
-										huge document store</p>
-									<time datetime="2009-11-13T20:00">Timothy • 51 min</time>
-								</div>
-							</div>
-						</div>
+					<div id="panel-body" class="panel-body msg_container_base">
 						<div class="row msg_container base_receive">
-
-							<div class="col-md-10 col-xs-10">
-								<div class="messages msg_receive">
-									<p>that mongodb thing looks good, huh? tiny master db, and
-										huge document store</p>
-									<time datetime="2009-11-13T20:00">Timothy • 51 min</time>
-								</div>
-							</div>
-						</div>
-						<div class="row msg_container base_receive">
-
 							<div class="col-xs-10 col-md-10">
 								<div class="messages msg_receive">
-									<p>that mongodb thing looks good, huh? tiny master db, and
-										huge document store</p>
+									<p>tiny master db, and huge document store</p>
 									<time datetime="2009-11-13T20:00">Timothy • 51 min</time>
 								</div>
 							</div>
@@ -132,40 +109,17 @@
 						<div class="row msg_container base_sent">
 							<div class="col-xs-10 col-md-10">
 								<div class="messages msg_sent">
-									<p>that mongodb thing looks good, huh? tiny master db, and
-										huge document store</p>
+									<p>that mongodb thing looks good.</p>
 									<time datetime="2009-11-13T20:00">Timothy • 51 min</time>
 								</div>
 							</div>
-
-						</div>
-						<div class="row msg_container base_receive">
-
-							<div class="col-xs-10 col-md-10">
-								<div class="messages msg_receive">
-									<p>that mongodb thing looks good, huh? tiny master db, and
-										huge document store</p>
-									<time datetime="2009-11-13T20:00">Timothy • 51 min</time>
-								</div>
-							</div>
-						</div>
-						<div class="row msg_container base_sent">
-							<div class="col-md-10 col-xs-10 ">
-								<div class="messages msg_sent">
-									<p>that mongodb thing looks good, huh? tiny master db, and
-										huge document store</p>
-									<time datetime="2009-11-13T20:00">Timothy • 51 min</time>
-								</div>
-							</div>
-
 						</div>
 					</div>
 					<div class="panel-footer">
 						<div class="input-group">
 							<input id="myMessage" type="text"
-								class="form-control input-sm chat_input"
-								placeholder="Write your message here..." /> <span
-								class="input-group-btn">
+								class="form-control input-sm chat_input" placeholder="메시지 작성" />
+							<span class="input-group-btn">
 								<button class="btn btn-primary btn-sm" id="btn-chat"
 									onclick="message_send()">Send</button>
 							</span>
@@ -192,15 +146,12 @@ var bno = 1;
 document.addEventListener("DOMContentLoaded", () => {
 	var sock = null;
 	var stompClient = null;
-	
-/* 	var session = null;
 	var session = "${nowUser}";
-	if(session == null | session == "") {
+	if (session == "") {
 		console.log("로그인이 필요합니다.");
 	} else {
 		connect();
-	} */
-	connect();
+	} 
 });
 
 function connect(){
@@ -221,55 +172,59 @@ function connect(){
 
         console.log('STOMP Connected');
         
-        var bno = 1;
         /* subscribe 설정에 따라 rabbit의 Exchange, Queue가 상당히 많이 바뀜 */
-        stompClient.subscribe('/queue/chat.queue.2', function (text) {
+        stompClient.subscribe('/queue/chat.user.'+${nowUser.bno}, function (text) {
 
             const payload = JSON.parse(text.body);
-            console.log("payload : " + payload)
-			console.log("payload Content : " + payload.content)
-            /* let className = payload.nickname == nickname? 'mine' : 'yours';
-
-            const html = `<div class="${className}">
-                            <div class="nickname">${payload.nickname}</div>
-                            <div class="message">${payload.message}</div>
-                        </div>`
-
-            chats.insertAdjacentHTML('beforeend', html); */
+			console.log("payload Content : " + payload.content);
+			console.log("현재 유저번호 : " + ${nowUser.bno} + ', 닉네임 : ${nowUser.nick}');
+			var message = payload.content;
+			
+            var className1 = payload.bno == ${nowUser.bno} ? 'base_sent' : 'base_receive';
+            var className2 = payload.bno == ${nowUser.bno} ? 'msg_sent' : 'msg_receive';
             
+            const html = '<div class="row msg_container '+ className1+'">'
+						+ '<div class="col-md-10 col-xs-10 ">'
+						+ '<div class="messages '+className2+'">'
+						+ '<p>'+message+'</p>'
+						+ '<time datetime="">Timothy • 51 min</time>'
+						+ '</div></div></div>';
+			console.log(html);
+			
+			const below = document.getElementById("panel-body");
+			below.insertAdjacentHTML('beforeend', html); // 맨 아래 채팅 추가
+			below.scrollTop = below.scrollHeight; // 자동 하단 스크롤
+ 
             //밑의 인자는 Queue 생성 시 주는 옵션
             //auto-delete : Consumer가 없으면 스스로 삭제되는 Queue
             //durable : 서버와 연결이 끊겨도 메세지를 저장하고 있음
             //exclusive : 동일한 이름의 Queue 생길 수 있음
         },{'auto-delete':false, 'durable':true, 'exclusive':false});
 
-        //입장 메세지 전송
-        stompClient.send('/pub/chat.enter', {}, JSON.stringify({
-            room: bno,
-            content: "",
-            date: new Date()
-        }));
-
     }, onError, '/');
 };
 
 function message_send() {
 	console.log('sending...');
-	var bno = 1;
-	var myMessage = document.getElementById('myMessage').value;;
+	var bno = ${nowUser.bno};
+	var myMessage = document.getElementById('myMessage').value;
 	var chat = {
-	    room: bno,
+	    bno: bno,
 	    content: myMessage, 
 	    date: new Date()
 	};
-	// /app을 쓰면 서버 컨트롤러에 매핑
-	// /topic을 쓰면 메세지 브로커로 매핑
-	// 첫번째 인자는 보낼 주소
-	// 두번째 인자는 서버로 보낼 때 추가하고 싶은 stomp 헤더
-	// 세번째 인자는 서버로 보낼 때 추가하고 싶은 stomp 바디 (JSON.stringify({}))
-	stompClient.send('/pub/send.message', {}, JSON.stringify(chat));
+	stompClient.send('/pub/send.message.'+${nowUser.bno}, {}, JSON.stringify(chat));
+	document.getElementById('myMessage').value = "";
 };
-	
+
+// 엔터키액션
+document.getElementById('myMessage').addEventListener('keydown',function(event){
+    if(event.keyCode == 13){
+   		event.preventDefault();
+        document.getElementById('btn-chat').click();
+    }
+});
+
 </script>
 
 </html>

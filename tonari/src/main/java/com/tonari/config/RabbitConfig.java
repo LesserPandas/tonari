@@ -30,9 +30,9 @@ public class RabbitConfig {
 	final int MULTIPLIER = 2;
 	final int MAX_INTERVAL = 10000;
 
-	private static final String CHAT_QUEUE_NAME = "chat.queue.1";
+	private static final String CHAT_QUEUE_NAME = "chat.user.all";
 	private static final String CHAT_EXCHANGE_NAME = "chat.exchange";
-	private static final String ROUTING_KEY = "room.1";
+	private static final String ROUTING_KEY = "user.all";
 
 	// Queue 등록
 	@Bean
@@ -69,6 +69,13 @@ public class RabbitConfig {
 	@Bean
 	public RabbitAdmin admin() {
 		return new RabbitAdmin(connectionFactory());
+	}
+	
+	@Bean
+	public Channel channel() {
+		Connection connect = connectionFactory().createConnection();
+		Channel ch = connect.createChannel(false);
+		return ch;
 	}
 
 	@Bean

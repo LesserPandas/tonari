@@ -9,12 +9,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.tonari.domain.MemberVO;
 import com.tonari.service.BoardService;
+import com.tonari.service.HomeService;
 import com.tonari.util.Criteria;
 
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+
 @Controller
+@AllArgsConstructor
+@Log4j
 public class HomeController {
 	
 	private BoardService bservice;
+	private HomeService hservice;
 	
 	
 	@GetMapping("/")
@@ -32,6 +39,9 @@ public class HomeController {
 			cri.setKeyword(mvo.getNick());
 			model.addAttribute("locationlist",bservice.OrderbyList(cri));
 		}
+		model.addAttribute("review",hservice.review());
+		model.addAttribute("notice",hservice.board(1));
+		model.addAttribute("event",hservice.board(2));
 		return "index";
 	}
 	

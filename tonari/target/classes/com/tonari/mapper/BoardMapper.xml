@@ -212,4 +212,7 @@
 			)where rn>(#{pageNum}-1) * #{amount}
 			]]>
 	</select>
+	<select id="viewboard" resultType="com.tonari.domain.BoardVO">
+		select * from board where bno = #{bno}
+	</select>
 </mapper>

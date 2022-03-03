@@ -77,9 +77,9 @@
 
 <script>
 
-var member_bno = 0;
-var room_bno = 0;
-var nick = "";
+window.member_bno = 0;
+window.room_bno = 0;
+window.nick = "";
 
 $(document).on('click', '.panel-heading span.icon_minim', function(e) {
 	var $this = $(this);
@@ -195,36 +195,33 @@ function connect(){
 			stompClient.subscribe('/queue/chat.user.'+${nowUser.bno}, function (text) {
 
 			const payload = JSON.parse(text.body);
-			var message = payload.content;
-			
-			var className1 = payload.sender == ${nowUser.bno} ? 'base_sent' : 'base_receive';
-			var className2 = payload.sender == ${nowUser.bno} ? 'msg_sent' : 'msg_receive';
-			
-			const html = '<div class="row msg_container '+ className1+'">'
-			+ '<div class="col-md-10 col-xs-10 ">'
-			+ '<div class="messages '+className2+'">'
-			+ '<p>'+message+'</p>'
-			+ '<time datetime="">Timothy • 51 min</time>'
-			+ '</div></div></div>';
-			
-/* 			var contentSelector = '\'#room.'+ payload.room_bno + '.chat-content\'';
-			var timeSelector = '\'#room.'+ payload.room_bno + '.chat-timeline\'';
-			
-			document.querySelector('${contentSelector}').innerText = payload.content;
-			document.querySelector(timeSelector).innerText = payload.write_date; */
-			/* alert(payload.room_bno); */
-			var roomNum = 'room-'+payload.room_bno;
-			
-			if($('#'+roomNum).children('.chat-content').text() == ""){
+			var content = payload.content;
+
+			if(payload.room_bno == window.room_bno){
+
+				var className1 = payload.sender == ${nowUser.bno} ? 'base_sent' : 'base_receive';
+				var className2 = payload.sender == ${nowUser.bno} ? 'msg_sent' : 'msg_receive';
 				
+				const html = '<div class="row msg_container '+ className1+'">'
+				+ '<div class="col-md-10 col-xs-10 ">'
+				+ '<div class="messages '+className2+'">'
+				+ '<p>'+content+'</p>'
+				+ '<time datetime="">Timothy • 51 min</time>'
+				+ '</div></div></div>';
+				
+				const below = document.getElementById("panel-body");
+				below.insertAdjacentHTML('beforeend', html); // 맨 아래 채팅 추가
+				below.scrollTop = below.scrollHeight; // 자동 하단 스크롤
+			}
+			
+			var roomNum = 'room-'+payload.room_bno;
+			if($('#'+roomNum).children('.chat-content').text() == ""){
 				newRoom(payload);
-	
+				$('#'+roomNum).children('.chat-content').text(payload.content);
 			}
 			$('#'+roomNum).children('.chat-content').text(payload.content);
 			
-			const below = document.getElementById("panel-body");
-			below.insertAdjacentHTML('beforeend', html); // 맨 아래 채팅 추가
-			below.scrollTop = below.scrollHeight; // 자동 하단 스크롤
+			
  
             //밑의 인자는 Queue 생성 시 주는 옵션
             //auto-delete : Consumer가 없으면 스스로 삭제되는 Queue
@@ -238,8 +235,7 @@ function connect(){
 function message_send() {
 	var receiver = member_bno;
 	var sender = ${nowUser.bno};
-	console.log("receiver : " + receiver);
-	console.log('sending...');
+
 	var myMessage = document.getElementById('myMessage').value;
 	var chat = {
 			room_bno: room_bno,

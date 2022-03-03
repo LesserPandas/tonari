@@ -10,13 +10,19 @@ public interface ChatService {
 	
 	public void setQueue(int bno) throws IOException;
 
-	public MyJoinRoomListVO joinRoom(int sender, int receiver);
+	public int joinRoom(int sender, int receiver);
 	
 	public List<MyJoinRoomListVO> myJoinRoomList(int loginUser);
 
 	public boolean storeMessage(MessageVO message);
 
 	public List<MessageVO> getMessageList(int room);
+
+	public MyJoinRoomListVO getRoom(int me, int room);
+
+	public boolean checkRoom(int me, int you);
+
+	public void deleteRoom(int me, int room);
 
 	
 }

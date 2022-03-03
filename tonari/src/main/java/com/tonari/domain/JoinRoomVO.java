@@ -8,4 +8,5 @@ public class JoinRoomVO {
 	private int member_bno;
 	private int room_bno;
 	private String nick;
+	private int use_check;
 }

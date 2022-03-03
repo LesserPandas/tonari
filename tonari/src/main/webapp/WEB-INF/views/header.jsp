@@ -294,9 +294,9 @@
 											<li><a href="/mypage/studentInfoModify">일반회원 정보 수정</a></li>
 											<li><a href="/mypage/like">선생님 찜한 목록</a></li>
 											<li><h4 style="padding: 10px 10px 0">찬호</h4></li>
-											<li><a href="javascript:newRoom(2)">판다와 챗하기</a></li>
-											<li><a href="javascript:newRoom(3)">래서와 챗하기</a></li>
-											<li><a href="javascript:newRoom(4)">김과 챗하기</a></li>
+											<li><a href="javascript:joinRoom(2)">판다와 챗하기</a></li>
+											<li><a href="javascript:joinRoom(3)">래서와 챗하기</a></li>
+											<li><a href="javascript:joinRoom(4)">김과 챗하기</a></li>
 										</ul>
 									</div>
 

@@ -214,6 +214,12 @@ function connect(){
 			document.querySelector(timeSelector).innerText = payload.write_date; */
 			/* alert(payload.room_bno); */
 			var roomNum = 'room-'+payload.room_bno;
+			
+			if($('#'+roomNum).children('.chat-content').text() == ""){
+				
+				newRoom(payload);
+	
+			}
 			$('#'+roomNum).children('.chat-content').text(payload.content);
 			
 			const below = document.getElementById("panel-body");
@@ -302,7 +308,7 @@ function getMessageList(room, nick){
 }
 
 
-function newRoom(bno){
+function joinRoom(bno){
 	$.ajax({
 		type : 'get',
 		url : "/chat/joinroom",
@@ -311,19 +317,43 @@ function newRoom(bno){
 		},
 		dataType : 'json',
 		success : function(data) {
-			var item = JSON.stringify(data);
-				const html = '<div class="row msg_container chat-now">'
-							+	'<div class="row" onclick="chatContentPopup('+ item.member_bno + ',' + item.room_bno + ',\'' + item.nick + '\')">'
-							+		'<div class="col-md-3 col-xs-3" style="margin-left:2.5%"><span class="chat-profile" ></span></div>'
-							+	'	<div class="col-md-8 col-xs-8" style="padding-left:0; padding-right:20px " id="room-'+ item.room_bno + '">'
-							+ '	<p class="chat-sender">' + item.nick + '</p>'
-							+	'	<p class="chat-content">'+ item.content +'</p>'
-							+	'	<p class="chat-timeline">'+ item.write_date +'</p>'
-							+	'</div></div></div>';
-			
-			const list = document.getElementById("chat_list");
-			list.insertAdjacentHTML('afterbegin', html); // 맨 아래 채팅 추가
+			var room = JSON.stringify(data);
+			stompClient.send('/chat/enter.message.'+room+'.'+bno +'.'+ ${nowUser.bno}, {}, JSON.stringify({content:'temp'}));
 		},
+		error : function() {
+			alert("통신에러");
+		}
+	})
+}
+
+function newRoom(payload){
+	var data = payload;
+	var room = payload.room_bno;
+	var content = payload.content;
+	$.ajax({
+		type : 'get',
+		url : "/chat/getroom",
+		data : {
+			room: room
+		},
+		dataType : 'json',
+		success : function(data) {
+
+			var payload = JSON.stringify(data);
+			var item = JSON.parse(payload);
+			
+			const html = '<div class="row msg_container chat-now">'
+					+	'<div class="row" onclick="chatContentPopup('+ item.member_bno + ',' + item.room_bno + ',\'' + item.nick + '\')">'
+					+		'<div class="col-md-3 col-xs-3" style="margin-left:2.5%"><span class="chat-profile" ></span></div>'
+					+	'	<div class="col-md-8 col-xs-8" style="padding-left:0; padding-right:20px " id="room-'+ item.room_bno + '">'
+					+ '	<p class="chat-sender">' + item.nick + '</p>'
+					+	'	<p class="chat-content">'+ item.content +'</p>'
+					+	'	<p class="chat-timeline">'+ item.write_date +'</p>'
+					+	'</div></div></div>';
+	
+				const list = document.getElementById("chat_list");
+				list.insertAdjacentHTML('afterbegin', html); // 맨 위 채팅 추가		
+				},
 		error : function() {
 			alert("통신에러");
 		}

@@ -44,6 +44,11 @@ public class ChatServiceImpl implements ChatService {
 	}
 	
 	@Override
+	public boolean checkRoom(int me, int you) {
+		return mapper.checkRoom(me, you) > 0;
+	}
+	
+	@Override
 	public boolean storeMessage(MessageVO message) {
 		int result = 0;
 		result = mapper.insertMessage(message);
@@ -53,12 +58,12 @@ public class ChatServiceImpl implements ChatService {
 	
 	
 	@Override
-	public MyJoinRoomListVO joinRoom(int sender, int receiver) {
+	public int joinRoom(int sender, int receiver) {
 		mapper.createRoom();
 		int room = mapper.newRoom();
 		mapper.joinRoom(sender, room);
 		mapper.joinRoom(receiver, room);
-		return mapper.getRoom(sender, room);
+		return room;
 	}
 	
 	@Override
@@ -71,4 +76,14 @@ public class ChatServiceImpl implements ChatService {
 		return mapper.selectMessageList(room);
 	}
 
+	@Override
+	public MyJoinRoomListVO getRoom(int sender, int room) {
+		return mapper.getRoom(sender, room);
+	}
+	
+	@Override
+	public void deleteRoom(int me, int room) {
+		mapper.deleteRoom(me, room);
+		
+	}
 }

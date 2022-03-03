@@ -22,7 +22,7 @@
 
 	<!-- 채팅방 참가 -->
 	<insert id="joinRoom">
-			INSERT INTO joinroom (bno, member_bno, room_bno) VALUES (joinroom_seq.nextval, 2, 1)
+			INSERT INTO joinroom (bno, member_bno, room_bno) VALUES (joinroom_seq.nextval, #{member_bno}, #{room_bno})
 	</insert>
 	
 	<!-- 내 채팅방 리스트 가져오기 -->
@@ -72,5 +72,15 @@
 		ORDER BY rownum desc
 		]]>
 	</select>
+	
+	<select id="checkRoom" resultType="int">
+			SELECT nvl(max(a.ROOM_BNO), 0)  FROM JOINROOM a 
+			INNER JOIN joinroom b 
+			ON a.ROOM_BNO = b.ROOM_BNO AND a.MEMBER_BNO = #{sender} AND b.MEMBER_BNO = #{receiver}
+	</select>
+	
+	<update id="deleteRoom">
+			update joinroom set use_check = 0 where member_bno = #{sender} and room_bno = #{room}
+	</update>
 	
 </mapper>

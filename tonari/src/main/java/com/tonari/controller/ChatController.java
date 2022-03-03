@@ -1,9 +1,9 @@
 package com.tonari.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
@@ -34,56 +34,92 @@ public class ChatController {
 
 	// 메시지 처리
 	@MessageMapping("send.message.{you}.{me}")
-	public void send(MessageVO message, 
-			@DestinationVariable("you") String you,
-			@DestinationVariable("me") String me) throws Exception {
+	public void send(MessageVO message, @DestinationVariable("you") String you, @DestinationVariable("me") String me)
+			throws Exception {
 
-		log.info("\n************* Receiver : " + you);
-		log.info("\n************* Message : " + message.getContent());
-		log.info("\n************* Sender : " + me);
 		template.convertAndSend(ChatConstants.CHAT_EXCHANGE_NAME, ChatConstants.ROUTING_KEY + me, message);
 		template.convertAndSend(ChatConstants.CHAT_EXCHANGE_NAME, ChatConstants.ROUTING_KEY + you, message);
-		
+
 		boolean result = service.storeMessage(message);
 		log.info("\n************* 메시지 처리 결과 : " + result);
 	}
-	
+
+	// 채팅방 생성 후 메시지
+	@MessageMapping("enter.message.{room}.{you}.{me}")
+	public void enter(@DestinationVariable("you") int you, @DestinationVariable("me") int me,
+			@DestinationVariable("room") int room, MessageVO message) throws Exception {
+
+		message.setContent("채팅방이 생성되었습니다.");
+		message.setRoom_bno(room);
+		message.setSender(me);
+		message.setWrite_date(new Date());
+
+		log.info(message);
+		template.convertAndSend(ChatConstants.CHAT_EXCHANGE_NAME, ChatConstants.ROUTING_KEY + me, message);
+		template.convertAndSend(ChatConstants.CHAT_EXCHANGE_NAME, ChatConstants.ROUTING_KEY + you, message);
+
+		boolean result = service.storeMessage(message);
+		log.info("\n************* 메시지 처리 결과 : " + result);
+	}
+
 	// 방 참가하기
 	@GetMapping(value = "joinroom", produces = "application/text; charset=utf8")
 	public String joinroom(HttpServletRequest request, @RequestParam("bno") int you) {
-		int me = ((MemberVO)request.getSession().getAttribute("nowUser")).getBno();
-		
-		log.info("나 : " + me + ", 너 : " + you);
-		MyJoinRoomListVO newRoom = service.joinRoom(me, you);
-				
+		int me = ((MemberVO) request.getSession().getAttribute("nowUser")).getBno();
+
+		if (service.checkRoom(me, you) || me == you) {
+			return null;
+		} else {
+			int num = service.joinRoom(me, you);
+
+			Gson gson = new Gson();
+			String result = gson.toJson(num);
+
+			return result;
+		}
+
+	}
+
+	@GetMapping(value = "getroom", produces = "application/text; charset=utf8")
+	public String getRoom(HttpServletRequest request, @RequestParam("room") int room) {
+
+		int me = ((MemberVO) request.getSession().getAttribute("nowUser")).getBno();
+		MyJoinRoomListVO newRoom = service.getRoom(me, room);
+
+		log.info("가져온 채팅방 정보 : " + newRoom);
+
 		Gson gson = new Gson();
 		String result = gson.toJson(newRoom);
-		
 		return result;
 	}
-	
+
 	// 내 채팅방 리스트 가져오기
 	@GetMapping(value = "myChatList", produces = "application/text; charset=utf8")
 	public String myChatList(@RequestParam("bno") int bno) {
-		
+
 		List<MyJoinRoomListVO> myJoinRoomList = service.myJoinRoomList(bno);
-		
+
 		Gson gson = new Gson();
 		String result = gson.toJson(myJoinRoomList);
 		log.info("<Result>\n" + result);
-		
+
+		return result;
+	}
+
+	@GetMapping(value = "messageList", produces = "application/text; charset=utf8")
+	public String messageList(@RequestParam("room") int room) {
+
+		List<MessageVO> messageList = service.getMessageList(room);
+
+		Gson gson = new Gson();
+		String result = gson.toJson(messageList);
+
 		return result;
 	}
 	
-	
-	@GetMapping(value = "messageList", produces = "application/text; charset=utf8")
-	public String messageList(@RequestParam("room") int room) {
-		
-		List<MessageVO> messageList = service.getMessageList(room);
-		
-		Gson gson = new Gson();
-		String result = gson.toJson(messageList);
-		
-		return result;
+	@GetMapping(value = "deleteRoom", produces = "application/text; charset-utf8")
+	public void deleteRoom(HttpServletRequest request, @RequestParam("room") int room) {
+		int me = ((MemberVO) request.getSession().getAttribute("nowUser")).getBno();
+		service.deleteRoom(me, room);
 	}
 }

@@ -11,10 +11,7 @@
 		)where rn <5
 		]]>
 	</select>
-	<select id="notice" resultType="com.tonari.domain.BoardlistVO">
-		select*from board
-	</select>
-	<select id="event" resultType="com.tonari.domain.BoardlistVO">
+	<select id="board" resultType="com.tonari.domain.BoardlistVO" parameterType="com.tonari.domain.BoardlistVO">
 		select * from
 			(select rownum rn,BNO,MEMBER_BNO,CATEGORY,TITLE,CONTENT,VIEWCOUNT,WRITE_DATE,UPDATE_DATE
 			from (select * from board where category = 

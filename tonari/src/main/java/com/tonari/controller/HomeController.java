@@ -40,8 +40,8 @@ public class HomeController {
 			model.addAttribute("locationlist",bservice.OrderbyList(cri));
 		}
 		model.addAttribute("review",hservice.review());
-		model.addAttribute("notice",hservice.notice());
-		model.addAttribute("event",hservice.event());
+		model.addAttribute("notice",hservice.board(1));
+		model.addAttribute("event",hservice.board(2));
 		return "index";
 	}
 	

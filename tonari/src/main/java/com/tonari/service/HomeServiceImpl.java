@@ -37,12 +37,9 @@ public class HomeServiceImpl implements HomeService {
 	}
 	
 	@Override
-	public List<BoardlistVO> notice() {
-		return mapper.notice();
-	}
-
-	@Override
-	public List<BoardlistVO> event() {
-		return mapper.event();
+	public List<BoardlistVO> board(int category) {
+		BoardlistVO bvo = new BoardlistVO();
+		bvo.setCategory(category);
+		return mapper.board(bvo);
 	}
 }

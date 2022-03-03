@@ -96,4 +96,9 @@ public class BoardController {
 		int total = service.total(cri);
 		model.addAttribute("pageMaker",new PageVO(cri, total));
 	}
+	
+	@GetMapping("/viewboard")
+	public void viewboard(Model model, @RequestParam("board_bno")int bno) {
+		model.addAttribute("bvo",service.viewboard(bno));
+	}
 }

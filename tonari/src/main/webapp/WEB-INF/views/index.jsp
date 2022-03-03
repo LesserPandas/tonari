@@ -255,46 +255,17 @@
 						<!-- Carousel items -->
 						<div class="carousel-inner">
 							<div class="active item">
+								<c:forEach var="review" items="${review }">
 								<div class="col-md-3 border">
 									<blockquote>
 										<div>
-											<h4 class="review-title">너무 좋아요!</h4>
-											<span class="starpoint">⭐⭐⭐⭐⭐</span>
+											<h4 class="review-title">${review.nick }</h4>
+											<span class="starpoint">${review.star }</span>
 										</div>
 									</blockquote>
-									<div>박***</div>
-									<div>에베베베베베베베베베베베베베베베베베...</div>
+									<div>${review.content }</div>
 								</div>
-								<div class="col-md-3 border">
-									<blockquote>
-										<div>
-											<h4 class="review-title">너무 좋아요!</h4>
-											<span class="starpoint">⭐⭐⭐⭐⭐</span>
-										</div>
-									</blockquote>
-									<div>박***</div>
-									<div>에베베베베베베베베베베베베베베베베베...</div>
-								</div>
-								<div class="col-md-3 border">
-									<blockquote>
-										<div>
-											<h4 class="review-title">너무 좋아요!</h4>
-											<span class="starpoint">⭐⭐⭐⭐⭐</span>
-										</div>
-									</blockquote>
-									<div>박***</div>
-									<div>에베베베베베베베베베베베베베베베베베...</div>
-								</div>
-								<div class="col-md-3 border">
-									<blockquote>
-										<div>
-											<h4 class="review-title">너무 좋아요!</h4>
-											<span class="starpoint">⭐⭐⭐⭐⭐</span>
-										</div>
-									</blockquote>
-									<div>박***</div>
-									<div>에베베베베베베베베베베베베베베베베베...</div>
-								</div>
+								</c:forEach>
 							</div>
 						</div>
 					</div>
@@ -310,48 +281,46 @@
 					style="padding: 10px; width: 50%; padding: 30px; background: #fff; float: left"">
 					<h2>공지사항</h2>
 					<table class="table">
+						<colgroup>
+							<col style="width:15%;">
+							<col style="width:65%;">
+							<col style="width:20%;">
+						</colgroup>
 						<thead>
 						</thead>
 						<tbody>
-							<tr>
-								<td>1</td>
-								<td>공지사항 예시1</td>
-								<td>2022/02/13</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>공지사항 예시2</td>
-								<td>2022/02/13</td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td>공지사항 예시3</td>
-								<td>2022/02/13</td>
-							</tr>
+							<c:forEach var="notice" items="${notice }">
+								<tr>
+									<td>${notice.bno }</td>
+									<td>
+										<a href="board/viewboard?board_bno=${notice.bno }">${notice.title }</a>
+									</td>
+									<td>${notice.write_date }</td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>
 				<div style="padding: 10px; width: 50%; float: left; padding: 30px">
 					<h2>이벤트</h2>
 					<table class="table">
+						<colgroup>
+							<col style="width:15%;">
+							<col style="width:65%;">
+							<col style="width:20%;">
+						</colgroup>
 						<thead>
 						</thead>
 						<tbody>
-							<tr>
-								<td>1</td>
-								<td>이벤트 예시1</td>
-								<td>2022/02/13</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>이벤트 예시2</td>
-								<td>2022/02/13</td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td>이벤트 예시3</td>
-								<td>2022/02/13</td>
-							</tr>
+							<c:forEach var="event" items="${event }">
+								<tr>
+									<td>${event.bno }</td>
+									<td>
+										<a href="board/viewboard?board_bno=${event.bno }">${event.title }</a>
+									</td>
+									<td>${event.write_date }</td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>

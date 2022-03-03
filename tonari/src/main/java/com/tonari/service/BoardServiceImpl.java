@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tonari.domain.Addr_searchVO;
+import com.tonari.domain.BoardVO;
 import com.tonari.domain.TeacherSearch_viewVO;
 import com.tonari.domain.CategoryVO;
 import com.tonari.domain.LikeMarkVO;
@@ -163,5 +164,10 @@ public class BoardServiceImpl implements BoardService {
 		log.info("아아아아아아아아아아아"+cri.getCategory_bno());
 		log.info(cri.getDong());
 		return mapper.mainsearch(cri);
+	}
+	
+	@Override
+	public BoardVO viewboard(int bno) {
+		return mapper.viewboard(bno);
 	}
 }

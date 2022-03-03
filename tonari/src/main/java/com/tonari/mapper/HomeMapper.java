@@ -7,6 +7,5 @@ import com.tonari.domain.Review_viewVO;
 
 public interface HomeMapper {
 	public List<Review_viewVO> review();
-	public List<BoardlistVO> notice();
-	public List<BoardlistVO> event();
+	public List<BoardlistVO> board(BoardlistVO bvo);
 }

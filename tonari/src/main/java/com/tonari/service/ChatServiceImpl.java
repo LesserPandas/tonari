@@ -7,7 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.rabbitmq.client.Channel;
 import com.tonari.config.ChatConstants;
-import com.tonari.domain.JoinRoomVO;
+import com.tonari.domain.MessageVO;
+import com.tonari.domain.MyJoinRoomListVO;
 import com.tonari.mapper.ChatMapper;
 
 import lombok.AllArgsConstructor;
@@ -43,17 +44,31 @@ public class ChatServiceImpl implements ChatService {
 	}
 	
 	@Override
-	public void joinRoom(int sender, int receiver) {
+	public boolean storeMessage(MessageVO message) {
+		int result = 0;
+		result = mapper.insertMessage(message);
+		result = mapper.updateMessageInRoom(message);
+		return result == 1;
+	}
+	
+	
+	@Override
+	public MyJoinRoomListVO joinRoom(int sender, int receiver) {
 		mapper.createRoom();
 		int room = mapper.newRoom();
 		mapper.joinRoom(sender, room);
 		mapper.joinRoom(receiver, room);
+		return mapper.getRoom(sender, room);
 	}
 	
 	@Override
-	public List<JoinRoomVO> joinRoomList(int loginUser) {
-		return mapper.joinRoomList(loginUser);
+	public List<MyJoinRoomListVO> myJoinRoomList(int loginUser) {
+		return mapper.myJoinRoomList(loginUser);
 	}
 
+	@Override
+	public List<MessageVO> getMessageList(int room) {
+		return mapper.selectMessageList(room);
+	}
 
 }

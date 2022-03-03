@@ -2,28 +2,75 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="com.tonari.mapper.ChatMapper">
-
+	
+	<!-- 채팅방 생성 -->
 	<insert id="createRoom">
-		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
-			select room_seq.nextval from dual
-		</selectKey>
-		insert into room (bno) values (#{bno)
+			INSERT INTO room (bno) VALUES (room_seq.nextval)
 	</insert>
-
-	<select id="newRoom">
-		select bno from room order by bno desc limit 1
+		<select id="newRoom" resultType="int">
+			SELECT bno FROM (SELECT bno FROM room ORDER BY bno DESC) WHERE rownum = 1
+	</select>
+		<select id="getRoom" resultType="com.tonari.domain.MyJoinRoomListVO">
+			SELECT j.member_bno, j.room_bno, m.nick, 
+			   r.content, r.write_date, r.noreadcount 
+			FROM joinroom j, member m, room r  
+			WHERE m.bno = j.member_bno 
+				AND j.member_bno != #{member_bno} 
+				AND j.ROOM_BNO = r.bno 
+				AND j.room_bno = #{room_bno}
 	</select>
 
+	<!-- 채팅방 참가 -->
 	<insert id="joinRoom">
-		insert into joinroom (member_bno, room_bno) values
-		(#{member_bno}, #{room_bno})
+			INSERT INTO joinroom (bno, member_bno, room_bno) VALUES (joinroom_seq.nextval, 2, 1)
 	</insert>
-
-	<select id="joinRoomList"
-		resultType="com.tonari.domain.JoinRoomVO">
-		select j.bno, j.member_bno, j.room_bno, m.nick from joinroom j, member m where m.bno = j.member_bno and member_bno != #{member_bno}
-		AND room_bno in (SELECT ROOM_BNO FROM joinroom WHERE MEMBER_BNO =
-		#{member_bno})
+	
+	<!-- 내 채팅방 리스트 가져오기 -->
+	<select id="myJoinRoomList"
+		resultType="com.tonari.domain.MyJoinRoomListVO">
+		SELECT j.member_bno, j.room_bno, m.nick, 
+			   r.content, r.write_date, r.noreadcount 
+		FROM joinroom j, member m, room r  
+		WHERE m.bno = j.member_bno 
+			AND j.member_bno != #{member_bno} 
+			AND j.ROOM_BNO = r.bno 
+			AND j.room_bno IN 
+			(
+				SELECT room_bno 
+				FROM joinroom 
+				WHERE member_bno = #{member_bno}
+			)
+		ORDER BY r.write_date DESC
 	</select>
-
+	
+	<!-- 메시지 저장 -->
+	<insert id="insertMessage">
+		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
+			SELECT message_seq.nextval FROM dual
+		</selectKey>
+		INSERT INTO message (bno, sender, content, write_date, room_bno) 
+		VALUES (#{bno}, #{sender}, #{content}, #{write_date}, #{room_bno})
+	</insert>
+	
+	<!-- 방 최근 메시지 업데이트 -->
+	<update id="updateMessageInRoom">
+		UPDATE room SET content = #{content}, write_date = #{write_date}
+		WHERE bno = #{room_bno}
+	</update>
+	
+	<!-- 메시지 리스트 5개 가져오기 -->
+	<select id="selectMessageList" resultType="com.tonari.domain.MessageVO">
+		<![CDATA[
+		SELECT *
+		FROM (
+			SELECT * 
+			FROM message
+			WHERE room_bno = #{room_bno}
+			ORDER BY write_date desc
+		)
+		WHERE rownum <= 10
+		ORDER BY rownum desc
+		]]>
+	</select>
+	
 </mapper>

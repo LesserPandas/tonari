@@ -28,4 +28,13 @@
 		where rn <4
 		]]>
 	</select>
+	<select id="likelist" resultType="com.tonari.domain.TeacherSearch_viewVO">
+		select * from (
+			select rownum rn,teacher_bno,title,gu,dong,image,category_name,score,coment,nick,likes from(
+				select * from teacher_search_view order by likes desc
+			)
+		<![CDATA[
+		)where rn <9
+		]]>
+	</select>
 </mapper>

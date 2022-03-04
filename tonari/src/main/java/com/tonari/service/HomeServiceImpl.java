@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.tonari.domain.BoardlistVO;
 import com.tonari.domain.Review_viewVO;
+import com.tonari.domain.TeacherSearch_viewVO;
 import com.tonari.mapper.HomeMapper;
 
 import lombok.AllArgsConstructor;
@@ -40,5 +41,10 @@ public class HomeServiceImpl implements HomeService {
 		BoardlistVO bvo = new BoardlistVO();
 		bvo.setCategory(category);
 		return mapper.board(bvo);
+	}
+	
+	@Override
+	public List<TeacherSearch_viewVO> likelist() {
+		return mapper.likelist();
 	}
 }

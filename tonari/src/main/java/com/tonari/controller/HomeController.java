@@ -39,6 +39,7 @@ public class HomeController {
 			cri.setKeyword(mvo.getNick());
 			model.addAttribute("locationlist",bservice.OrderbyList(cri));
 		}
+		model.addAttribute("likelist",hservice.likelist());
 		model.addAttribute("review",hservice.review());
 		model.addAttribute("notice",hservice.board(1));
 		model.addAttribute("event",hservice.board(2));

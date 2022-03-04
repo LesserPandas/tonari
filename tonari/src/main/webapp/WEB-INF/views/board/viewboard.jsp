@@ -54,7 +54,7 @@
 						</tr>
 						<tr>
 							<td colspan="2" style="border-top: 1px solid #ccc;">
-								<div style="min-height: 300px; text-align: left;">${bvo.content }</div>
+								<div style="min-height: 300px; text-align: left; padding-top: 15px;">${bvo.content }</div>
 							</td>
 						</tr>
 					</table>

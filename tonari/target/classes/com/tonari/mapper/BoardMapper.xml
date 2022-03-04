@@ -203,7 +203,7 @@
 						 where dong = #{dong}
 					</when>
 					<when test="category_bno != null and dong == ''">
-						 where category=#{category_bno}
+						 where category_bno=#{category_bno}
 					</when>
 				</choose>
 				

@@ -262,7 +262,7 @@
 							<c:choose>
 								<c:when test="${empty locationlist }">
 									<div class="col-md-12 text-center pt-5" style="height: 100px; padding-top: 50px">
-										<h1>정보가 없어요!</h1>
+										<h1>지역 설정을 안하셨거나 로그인을 안하셨습니다</h1>
 									</div>
 								</c:when>
 								<c:otherwise>
@@ -381,21 +381,20 @@
 						<thead>
 						</thead>
 						<tbody>
-							<tr>
-								<td>1</td>
-								<td>공지사항 예시1</td>
-								<td>2022/02/13</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>공지사항 예시2</td>
-								<td>2022/02/13</td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td>공지사항 예시3</td>
-								<td>2022/02/13</td>
-							</tr>
+							<c:forEach var="notice" items="${notice}">
+								<tr>
+									<td>${notice.bno }</td>
+									<td><a href="board/viewboard?board_bno=${notice.bno }">${notice.title }</a></td>
+									<c:choose>
+										<c:when test="${notice.upDate_date==null }">
+											<td>${notice.write_date }</td>
+										</c:when>
+										<c:otherwise>
+											<td>${notice.upDate_date }</td>
+										</c:otherwise>
+									</c:choose>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>
@@ -405,21 +404,20 @@
 						<thead>
 						</thead>
 						<tbody>
-							<tr>
-								<td>1</td>
-								<td>이벤트 예시1</td>
-								<td>2022/02/13</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>이벤트 예시2</td>
-								<td>2022/02/13</td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td>이벤트 예시3</td>
-								<td>2022/02/13</td>
-							</tr>
+							<c:forEach var="event" items="${event}">
+								<tr>
+									<td>${event.bno }</td>
+									<td><a href="board/viewboard?board_bno=${event.bno }">${event.title }</a></td>
+									<c:choose>
+										<c:when test="${event.upDate_date==null }">
+											<td>${event.write_date }</td>
+										</c:when>
+										<c:otherwise>
+											<td>${event.upDate_date }</td>
+										</c:otherwise>
+									</c:choose>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>

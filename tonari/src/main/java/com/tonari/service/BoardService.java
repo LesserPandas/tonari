@@ -26,6 +26,7 @@ public interface BoardService {
 	
 	public List<TeacherSearch_viewVO> mainsearch(Criteria cri);
 	public BoardVO viewboard(int bno);
+	public List<BoardVO> listboard(int category);
 }
 
 

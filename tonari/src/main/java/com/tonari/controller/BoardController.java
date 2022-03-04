@@ -101,4 +101,10 @@ public class BoardController {
 	public void viewboard(Model model, @RequestParam("board_bno")int bno) {
 		model.addAttribute("bvo",service.viewboard(bno));
 	}
+	
+	@GetMapping("/listboard")
+	public void listboard(Model model, @RequestParam("category") int category) {
+		model.addAttribute("list",service.listboard(category));
+		model.addAttribute("category",category);
+	}
 }

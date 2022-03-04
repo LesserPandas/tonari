@@ -215,4 +215,7 @@
 	<select id="viewboard" resultType="com.tonari.domain.BoardVO">
 		select * from board where bno = #{bno}
 	</select>
+	<select id="listboard" resultType="com.tonari.domain.BoardVO">
+		select * from board where category = #{category}
+	</select>
 </mapper>

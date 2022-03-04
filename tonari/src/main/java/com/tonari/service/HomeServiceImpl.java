@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import com.tonari.domain.BoardlistVO;
 import com.tonari.domain.Review_viewVO;
-import com.tonari.domain.TeacherSearch_viewVO;
 import com.tonari.mapper.HomeMapper;
 
 import lombok.AllArgsConstructor;

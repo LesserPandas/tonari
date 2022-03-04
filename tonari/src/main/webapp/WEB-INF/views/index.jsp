@@ -81,148 +81,118 @@
 			<!-- BEGIN SALE PRODUCT & NEW ARRIVALS -->
 			<div class="row margin-bottom-40">
 				<div role="tabpanel">
-					<!-- Nav tabs -->
 					<ul class="nav nav-tabs" role="tablist">
-						<li role="presentation" class="bg-white active"><a
-							href="#recommend" aria-controls="recommend" role="tab"
-							data-toggle="tab">추천</a></li>
-						<li role="presentation" class="bg-white "><a href="#hot"
-							aria-controls="hot" role="tab" data-toggle="tab">인기</a></li>
-						<li role="presentation"><a href="#new" aria-controls="new"
-							role="tab" data-toggle="tab">신규</a></li>
-						<li role="presentation"><a href="#location"
-							aria-controls="location" role="tab" data-toggle="tab">내주변</a></li>
+						<li role="presentation" class="bg-white active">
+							<a href="#recommend" aria-controls="recommend" role="tab" data-toggle="tab" id="recommendtab">추천</a>
+						</li>
+						<li role="presentation" class="bg-white ">
+							<a href="#hot" aria-controls="hot" role="tab" data-toggle="tab" id="hottab">인기</a>
+						</li>
+						<li role="presentation">
+							<a href="#new" aria-controls="new" role="tab" data-toggle="tab" id="newtab">신규</a>
+						</li>
+						<li role="presentation">
+							<a href="#location" aria-controls="location" role="tab" data-toggle="tab" id="locationtab">내주변</a>
+						</li>
 					</ul>
 					<!-- Tab panes -->
 					<div class="tab-content">
 						<!-- 추천 상세내용 -->
 						<div role="tabpanel" class="tab-pane active" id="recommend">
-							<div class="col-md-12 sale-product">
-								<div class="owl-carousel owl-carousel5">
-									<div class="product-item">
-										<div style="text-align: right;">
-											<span>별점</span>4.1
-										</div>
-										<div class="pi-img-wrapper">
-											<img src="/resources/assets/pages/img/products/model1.jpg"
-												class="img-responsive" alt="">
-											<div>
-												<a href="#" class="btn btn-default fancybox-button">찜하기</a>
-											</div>
-										</div>
-										<h3>
-											<a href="shop-item.html">강사명</a>
-										</h3>
-										<div class="pi-price">
-											과목명<br>지역
-										</div>
-										<a href="info" class="btn btn-default add2cart">프로필보기</a>
+							<c:choose>
+								<c:when test="${empty bestlist }">
+									<div class="col-md-12 text-center pt-5" style="height: 100px; padding-top: 50px">
+										<h1>정보가 없어요!</h1>
 									</div>
-									<div class="product-item">
-										<div style="text-align: right;">
-											<span>별점</span>4.1
+								</c:when>
+								<c:otherwise>
+									<div class="col-md-12 sale-product">
+										<div class="owl-carousel owl-carousel5">
+											<c:forEach var="bestlist" items="${bestlist }">
+												<div class="product-item" style="display: flex; flex-direction: column; height: 380px">
+													<div style="text-align: right;">
+														<span>点数 :&nbsp;${bestlist.score}</span>
+													</div>
+													<div class="pi-img-wrapper" style="overflow: hidden">
+														<img src="${bestlist.image }" class="img-responsive" alt="">
+														<div>
+															<a href="board/info?teacher_bno=${bestlist.teacher_bno }"
+																class=" btn-default fancybox-button"
+																style="border: none; text-align: center; padding: 0; margin: 0;">
+																<span>"<br>${bestlist.coment }<br>"
+															</span>
+															</a>
+														</div>
+													</div>
+													<div style="margin-top: auto">
+														<div class="teacherInfo">
+															<div style="display: inline">${bestlist.category_name}</div>
+															<div class="pull-right">${bestlist.gu}&nbsp;${bestlist.dong}</div>
+														</div>
+														<div class="teacherInfo">
+															<h3 style="overflow:hidden;  text-overflow:ellipsis; white-space:nowrap; padding: 0;">
+																<a href="board/info?teacher_bno=${bestlist.teacher_bno }" style="font-weight: bold; font-size: 18px;">${bestlist.title }</a>
+															</h3>
+															<p>${bestlist.nick }</p>
+														</div>
+													</div>
+												</div>
+											</c:forEach>
 										</div>
-										<div class="pi-img-wrapper">
-											<img src="/resources/assets/pages/img/products/model1.jpg"
-												class="img-responsive" alt="">
-											<div>
-												<a href="#" class="btn btn-default fancybox-button">찜하기</a>
-											</div>
-										</div>
-										<h3>
-											<a href="shop-item.html">강사명</a>
-										</h3>
-										<div class="pi-price">
-											과목명<br>지역
-										</div>
-										<a href="info" class="btn btn-default add2cart">프로필보기</a>
 									</div>
-									<div class="product-item">
-										<div style="text-align: right;">
-											<span>별점</span>4.1
-										</div>
-										<div class="pi-img-wrapper">
-											<img src="/resources/assets/pages/img/products/model1.jpg"
-												class="img-responsive" alt="">
-											<div>
-												<a href="#" class="btn btn-default fancybox-button">찜하기</a>
-											</div>
-										</div>
-										<h3>
-											<a href="shop-item.html">강사명</a>
-										</h3>
-										<div class="pi-price">
-											과목명<br>지역
-										</div>
-										<a href="info" class="btn btn-default add2cart">프로필보기</a>
-									</div>
-									<div class="product-item">
-										<div style="text-align: right;">
-											<span>별점</span>4.1
-										</div>
-										<div class="pi-img-wrapper">
-											<img src="/resources/assets/pages/img/products/model1.jpg"
-												class="img-responsive" alt="">
-											<div>
-												<a href="#" class="btn btn-default fancybox-button">찜하기</a>
-											</div>
-										</div>
-										<h3>
-											<a href="shop-item.html">강사명</a>
-										</h3>
-										<div class="pi-price">
-											과목명<br>지역
-										</div>
-										<a href="info" class="btn btn-default add2cart">프로필보기</a>
-									</div>
-									<div class="product-item">
-										<div style="text-align: right;">
-											<span>별점</span>4.1
-										</div>
-										<div class="pi-img-wrapper">
-											<img src="/resources/assets/pages/img/products/model1.jpg"
-												class="img-responsive" alt="">
-											<div>
-												<a href="#" class="btn btn-default fancybox-button">찜하기</a>
-											</div>
-										</div>
-										<h3>
-											<a href="shop-item.html">강사명</a>
-										</h3>
-										<div class="pi-price">
-											과목명<br>지역
-										</div>
-										<a href="info" class="btn btn-default add2cart">프로필보기</a>
-									</div>
-									<div class="product-item">
-										<div style="text-align: right;">
-											<span>별점</span>4.1
-										</div>
-										<div class="pi-img-wrapper">
-											<img src="/resources/assets/pages/img/products/model1.jpg"
-												class="img-responsive" alt="">
-											<div>
-												<a href="#" class="btn btn-default fancybox-button">찜하기</a>
-											</div>
-										</div>
-										<h3>
-											<a href="shop-item.html">강사명</a>
-										</h3>
-										<div class="pi-price">
-											과목명<br>지역
-										</div>
-										<a href="info" class="btn btn-default add2cart">프로필보기</a>
-									</div>
-								</div>
-							</div>
-							<!-- END SALE PRODUCT -->
+								</c:otherwise>
+							</c:choose>
 						</div>
 						<!-- 인기 상세내용 -->
-						<div role="tabpanel" class="tab-pane" id="hot">
-							<div class="col-md-12 text-center pt-5"
-								style="height: 100px; padding-top: 50px">
-								<h1>정보가 없어요!</h1>
-							</div>
+						<div role="tabpanel" class="tab-pane active" id="hot">
+							<c:choose>
+								<c:when test="${empty bestlist }">
+									<div class="col-md-12 text-center pt-5" style="height: 100px; padding-top: 50px">
+										<h1>정보가 없어요!</h1>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div class="col-md-12 sale-product">
+										<div class="owl-carousel owl-carousel5">
+											<c:forEach var="bestlist" items="${bestlist }">
+												<div class="product-item" style="display: flex; flex-direction: column; height: 380px">
+													<div style="text-align: right;">
+														<span>点数 :&nbsp;${bestlist.score}</span>
+													</div>
+													<div class="pi-img-wrapper" style="overflow: hidden">
+														<img src="${bestlist.image }" class="img-responsive" alt="">
+														<div>
+															<a href="board/info?teacher_bno=${bestlist.teacher_bno }"
+																class=" btn-default fancybox-button"
+																style="border: none; text-align: center; padding: 0; margin: 0;">
+																<span>"<br>${bestlist.coment }<br>"
+															</span>
+															</a>
+														</div>
+													</div>
+													<div style="margin-top: auto">
+														<div class="teacherInfo">
+															<div style="display: inline">${bestlist.category_name}</div>
+															<div class="pull-right">${bestlist.gu}&nbsp;${bestlist.dong}</div>
+														</div>
+														<div class="teacherInfo">
+															<c:if test="${not empty nowUser }">
+																<button class="pull-right squareButton likeButton "
+																	id="teacher_${bestlist.teacher_bno}" onclick="like(${bestlist.teacher_bno},${nowUser.bno })">♥
+																</button>
+															</c:if>
+															<h3 style="overflow:hidden;  text-overflow:ellipsis; white-space:nowrap; padding: 0;">
+																<a href="board/info?teacher_bno=${bestlist.teacher_bno }" style="font-weight: bold; font-size: 18px;">${bestlist.title }</a>
+															</h3>
+															<p>${bestlist.nick }</p>
+														</div>
+													</div>
+												</div>
+											</c:forEach>
+										</div>
+									</div>
+								</c:otherwise>
+							</c:choose>
 						</div>
 						<!-- 신규 상세내용 -->
 						<div role="tabpanel" class="tab-pane" id="new">
@@ -352,4 +322,5 @@
 					</div> -->
 		</div>
 	</div>
+
 <%@ include file="footer.jsp"%>

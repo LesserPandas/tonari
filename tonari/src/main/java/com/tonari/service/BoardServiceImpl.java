@@ -170,4 +170,11 @@ public class BoardServiceImpl implements BoardService {
 	public BoardVO viewboard(int bno) {
 		return mapper.viewboard(bno);
 	}
+	
+	@Override
+	public List<BoardVO> listboard(int category) {
+		BoardVO bvo = new BoardVO();
+		bvo.setCategory(category);
+		return mapper.listboard(bvo);
+	}
 }

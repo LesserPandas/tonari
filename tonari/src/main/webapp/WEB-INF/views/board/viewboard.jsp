@@ -10,23 +10,24 @@
 			<li><a href="/">Home</a></li>
 			<c:choose>
 				<c:when test="${bvo.category==1 }">
-					<li class="active">お知らせ</li>
+					<li><a href="listboard?category=1">お知らせ</a></li>
 				</c:when>
 				<c:otherwise>
-					<li class="active">イベント</li>
+					<li><a href="listboard?category=2">イベント</a></li>
 				</c:otherwise>
 			</c:choose>
+			<li class="active">${bvo.title }
 		</ul>
 		<!-- BEGIN SIDEBAR & CONTENT -->
 
 		<div class="row margin-bottom-40">
 			<!-- BEGIN SIDEBAR -->
 			<div class="sidebar col-md-3 col-sm-5">
-				<div class="sidebar-filter margin-bottom-25">
-					<ul class="list-group margin-bottom-25 sidebar-menu">
-						<li>side menu bar</li>
-					</ul>
-				</div>
+				<ul class="list-group margin-bottom-25 sidebar-menu">
+					<li class="list-group-item clearfix"><a href="listboard?category=1"><i class="fa fa-angle-right"></i> お知らせ</a></li>
+					<li class="list-group-item clearfix"><a href="listboard?category=2"><i class="fa fa-angle-right"></i> イベント</a></li>
+					<li class="list-group-item clearfix"><a href="javascript:;"><i class="fa fa-angle-right"></i> QnA</a></li>
+				</ul>
 			</div>
 			<!-- END SIDEBAR -->
 			<!-- BEGIN CONTENT -->

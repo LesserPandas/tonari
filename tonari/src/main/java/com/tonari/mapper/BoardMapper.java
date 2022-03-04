@@ -32,4 +32,5 @@ public interface BoardMapper {
 	
 	public List<TeacherSearch_viewVO> mainsearch(Criteria cri);
 	public BoardVO viewboard(int bno);
+	public List<BoardVO> listboard(BoardVO bvo);
 }

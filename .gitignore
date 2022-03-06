@@ -126,4 +126,10 @@ Temporary Items
 # End of https://www.toptal.com/developers/gitignore/api/java,macos,eclipse
 tonari/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
 
-tonari/target/m2e-wtp/web-resources/META-INF/maven/com.hanulso/controller/pom.properties
+tonari/target/m2e-wtp/web-resources/META-INF/maven/com.tonari/controller/pom.properties
+
+tonari/src/main/webapp/WEB-INF/spring/config/jdbc.properties
+
+tonari/src/main/webapp/WEB-INF/spring/config/mail.properties
+
+tonari/src/main/webapp/WEB-INF/spring/config/rabbitmq.properties

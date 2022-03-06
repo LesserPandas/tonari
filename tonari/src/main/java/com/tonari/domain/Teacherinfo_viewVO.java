@@ -18,5 +18,9 @@ public class Teacherinfo_viewVO {
 	private String content;
 	private String coment;
 	private int dodate;
-	private int bno;
+	private int age;
+	private int tmoney;
+	private int auth;
+	
+	private String date;
 }

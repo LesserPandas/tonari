@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.tonari.mapper.HomeMapper">  
+
+	<select id="review" resultType="com.tonari.domain.Review_viewVO">
+		select * from
+			(select rownum rn,review_bno,member_bno,teacher_bno,content,score,nick 
+		    from (select * from review_view order by review_bno desc)
+		<![CDATA[
+		)where rn <5
+		]]>
+	</select>
+	<select id="board" resultType="com.tonari.domain.BoardlistVO" parameterType="com.tonari.domain.BoardlistVO">
+		select * from
+			(select rownum rn,BNO,MEMBER_BNO,CATEGORY,TITLE,CONTENT,VIEWCOUNT,WRITE_DATE,UPDATE_DATE
+			from (select * from board where category = 
+			<choose>
+				<when test="category==1">
+					1
+				</when>
+				<otherwise>
+					2
+				</otherwise>
+			</choose>
+			order by bno desc))
+		<![CDATA[
+		where rn <4
+		]]>
+	</select>
+	<select id="likelist" resultType="com.tonari.domain.TeacherSearch_viewVO">
+		select * from (
+			select rownum rn,teacher_bno,title,gu,dong,image,category_name,score,coment,nick,likes from(
+				select * from teacher_search_view order by likes desc
+			)
+		<![CDATA[
+		)where rn <9
+		]]>
+	</select>
+</mapper>

@@ -21,8 +21,8 @@
   
   
 <!-- 로그인 -->
-  <select id="login" resultType="String">
-    select nick from member
+  <select id="login" resultType="com.tonari.domain.MemberVO">
+    select nick, bno from member
     where email = #{email} and passwd = #{passwd}
   </select>
 <!-- 로그인 -->
@@ -37,7 +37,6 @@
 <update id="studentinfoModify" parameterType="com.tonari.domain.MemberVO">
 	update member set 
 	nick = #{nick},
-	
 	phone = #{phone},
 	address = #{address},
 	zipcode = #{zipcode},

@@ -1,24 +1,3 @@
-//function boardCheck() {
-// if(document.frm.name.value.length == 0){
-// alert("작성자를 입력하세요.");
-// return false;
-//}
-//if(document.frm.pass.value.length == 0){
-// alert("비밀번호를 입력하세요.");
-// return false;
-//}
-//if(document.frm.title.value.length == 0){
-// alert("제목을 입력하세요.");
-// return false;
-//}
-//return true;
-//}
-//
-//function open_win(url, name){
-//window.open(url, name, "width=500, height=230");
-//
-//}
-
 function like(){
 	var like = document.getElementById("like").classList.contains("likeButtonActive");
 	if(like == false){
@@ -36,10 +15,8 @@ function orderby() {
 		url:"/board/search",
 		data:{orderby},
 		success:function(data){
-			console.log("success");
 		},
 		error:function(data){
-			console.log("fail");
 		},
 	})
 }
@@ -79,51 +56,35 @@ function checkscore(score) {
 		alert("점수를 선택해주세요");
 		return false;
 	}
-	return true;x
+	return true;
 }
 
-function like(board_bno,member_bno) {
-	var like = $("#board_"+board_bno);
+function like(teacher_bno,member_bno) {
+	var like = $("#teacher_"+teacher_bno);
 	var chklike = like.hasClass("likeButtonActive");
 	if(chklike) {
-		removelike(board_bno,member_bno);
+		removelike(teacher_bno,member_bno);
 		like.removeClass("likeButtonActive");
 	}else {
-		addlike(board_bno,member_bno);
+		addlike(teacher_bno,member_bno);
 		like.addClass("likeButtonActive");
 	}
 }
 
-function addlike(board_bno,member_bno) {
+function addlike(teacher_bno,member_bno) {
 	$.ajax({
 		type:"post",
 		url:"/board/addlike",
-		data:{board_bno: board_bno,member_bno:member_bno}
+		data:{teacher_bno: teacher_bno,member_bno:member_bno},
+		error:function(request,status,error){
+			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error); }
 	})
 }
 
-function removelike(board_bno,member_bno) {
+function removelike(teacher_bno,member_bno) {
 	$.ajax({
 		type:"post",
 		url:"/board/removelike",
-		data:{board_bno: board_bno,member_bno:member_bno}
+		data:{teacher_bno: teacher_bno,member_bno:member_bno}
 	})
 }
-
-//$(document).ready(function(){
-//	var member_bno = 3;
-//	$.ajax({
-//		type:"post",
-//		url:"/board/chklike",
-//		data:{"member_bno":member_bno},
-//		success:function(data)
-//			{alert("success");
-//			var list = data.list;
-//			for(var i=0; i<list.length;i++){
-//				console.log(list[i].board_bno);
-//			}
-//		},error:function(request,status,error){
-//			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-//		}
-//	})
-//})

@@ -1,16 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ include file ="../header.jsp" %>
-<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="/resources/custom/css/board.css">
 
 
 <div class="main">
 	<div class="container">
 		<ul class="breadcrumb">
-			<li><a href="index.html">Home</a></li>
+			<li><a href="/">Home</a></li>
 			<li>
-				<a href="/board/search?orderby=teacher">선생님 찾기/</a>
+				<a href="/board/search?orderby=teacher">先生サーチ</a>
 				<a href="/board/category?category=${teacher.category_bno}">${teacher.category_name }</a>
 			</li>
 			<li class="active">${teacher.nick }</li>
@@ -22,11 +21,10 @@ pageEncoding="UTF-8"%>
 				<div class="sidebar-filter margin-bottom-25">
 					<ul class="list-group margin-bottom-25 sidebar-menu">
 						<c:forEach items="${sidelist }" var="sidelist">
-							<li class="list-group-item clearfix">
-								<a href="/board/category?category=${sidelist.category_bno }"> 
+							<li class="list-group-item clearfix"><a
+								href="/board/search?type=category&&keyword=${sidelist.category_bno}">
 									<i class="fa fa-angle-right"></i>${sidelist.category_name }
-								</a>
-							</li>
+							</a></li>
 						</c:forEach>
 					</ul>
 				</div>
@@ -39,12 +37,7 @@ pageEncoding="UTF-8"%>
 					<div class="row">
 						<div class="col-md-6 col-sm-6">
 							<div class="product-main-image product-main-image-overflow">
-								<img src="/resources/assets/pages/img/products/model1.jpg" alt="Cool green dress with red bell" class="img-responsive">
-							</div>
-							<div class="product-other-images">
-								<a href="/resources/assets/pages/img/products/model2.jpg" class="fancybox-button" rel="photos-lib"><img alt="Berry Lace Dress" src="/resources/assets/pages/img/products/model2.jpg"></a>
-								<a href="/resources/assets/pages/img/products/model3.jpg" class="fancybox-button" rel="photos-lib"><img alt="Berry Lace Dress" src="/resources/assets/pages/img/products/model3.jpg"></a>
-								<a href="/resources/assets/pages/img/products/model5.jpg" class="fancybox-button" rel="photos-lib"><img alt="Berry Lace Dress" src="/resources/assets/pages/img/products/model5.jpg"></a>
+								<img src="${teacher.image }" alt="Cool green dress with red bell" class="img-responsive">
 							</div>
 						</div>
 						<div class="col-md-6 col-sm-6">
@@ -62,40 +55,48 @@ pageEncoding="UTF-8"%>
 							</div>
 							<div class="product-page-options">
 								<div class="pull-left">
-									<label class="control-label">과목 :</label>
+									<label class="control-label">科目 :</label>
 									<strong>${teacher.category_name }</strong>
 								</div>
 								<div class="pull-right">
-									<label class="control-label">지역:</label>
-									<strong>${teacher.gu }구&nbsp;${teacher.dong }동</strong>
+									<label class="control-label">地域:</label>
+									<strong>${teacher.gu }&nbsp;${teacher.dong }</strong>
 								</div>
 							</div>
 							<div style="margin-bottom: 30px;">
-								<span style="font-size:16px;">가능 한 날짜:</span>
-								<strong style="font-size:18px;">월,수</strong>
+								<span style="font-size:16px;">出来る曜日:</span>
+								<strong style="font-size:18px;">${teacher.date }</strong>
+							</div>
+							<div>
+								<span style="font-size:16px;">講義料（1日）:</span>
+								<strong style="font-size:18px;color:#67bd3c;">${teacher.tmoney }円</strong>
 							</div>
 							<div class="pull-right">
-								<button class="button largeButton">1:1 채팅</button>
-								<c:choose>
-									<c:when test="${like.board_bno==board_bno }">
-										<button class="pull-right squareButton likeButton likeButtonActive" 
-											id="board_${board_bno}" onclick="like(${board_bno},3)">♥
-										</button>
-									</c:when>
-									<c:otherwise>
-										<button class="pull-right squareButton likeButton " 
-											id="board_${board_bno}" onclick="like(${board_bno},3)">♥
-										</button>
-									</c:otherwise>
-								</c:choose>
+								<button class="button largeButton">1:1 チャット</button>
+								<c:if test="${not empty nowUser }">
+									<c:choose>
+										<c:when test="${like.teacher_bno==teacher.teacher_bno }">
+											<button class="pull-right squareButton likeButton likeButtonActive" 
+												id="teacher_${teacher.teacher_bno}" onclick="like(${teacher.teacher_bno},${nowUser.bno })">♥
+											</button>
+										</c:when>
+										<c:otherwise>
+											<button class="pull-right squareButton likeButton " 
+												id="teacher_${teacher.teacher_bno}" onclick="like(${teacher.teacher_bno},${nowUser.bno })">♥
+											</button>
+										</c:otherwise>
+									</c:choose>
+								</c:if>
 							</div>
 							
 						</div>
 						<div class="product-page-content ">
 							<ul class="nav nav-tabs" id="myTab">
-								<li class="active"><a href="#TeacherInfo" data-toggle="tab">강사 자기 소개</a></li>
-								<li><a href="#Reviews" data-toggle="tab">강사 리뷰 보기</a></li>
-								<li><a href="#ReviewWrite" data-toggle="tab">리뷰 쓰기</a></li>
+								<li class="active"><a href="#TeacherInfo" data-toggle="tab">先生のPR</a></li>
+								<li><a href="#Reviews" data-toggle="tab">レビュー</a></li>
+								<c:if test="${not empty nowUser }">
+									<li><a href="#ReviewWrite" data-toggle="tab">レビューを残す</a></li>
+								</c:if>
 							</ul>
 							<div id="myTabContent" class="tab-content">
 								<div class="tab-pane fade in active" id="TeacherInfo">
@@ -106,8 +107,8 @@ pageEncoding="UTF-8"%>
 										<div class="review-item clearfix">
 											<div class="review-item-submitted">
 												<strong style="display: inline">${review.nick }</strong>
-												<span class="pull-right" style="display:inline;">
-													${review.scorestar }
+												<span class="pull-right" style="display:inline;" id="${review.nick}">
+													${review.star }
 												</span> 
 												<div class="rateit" data-rateit-value="5"
 													data-rateit-ispreset="true" data-rateit-readonly="true"></div>
@@ -126,13 +127,13 @@ pageEncoding="UTF-8"%>
 									<form class="reviews-form" action="/board/writeReview" method="post" onsubmit="return writeReview()">
 										<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 										<input type="hidden" name="teacher_bno" value="${teacher.teacher_bno }">
-										<input type="hidden" name="member_bno" value="5">
-										<input type="hidden" name="nick" value="임시연습용">
+										<input type="hidden" name="member_bno" value="${nowUser.bno }">
+										<input type="hidden" name="nowUser.nick" value="${nowUser.nick }">
 										
-										<h2>Write a review</h2>
+										<h2>レビューを残す</h2>
 										<div name="myform" id="myform">
 											<fieldset>
-												<legend> 별점</legend>
+												<legend> 点数</legend>
 												<input type="radio" name="score" value="5" id="rate1">
 												<label for="rate1">⭐</label> 
 												<input type="radio" name="score" value="4" id="rate2">
@@ -146,22 +147,22 @@ pageEncoding="UTF-8"%>
 											</fieldset>
 										</div>
 										<div class="form-group" style="width: 300px;">
-											<label for="country">빠른 댓글 <span class="require">*</span></label>
+											<label for="country">簡単コメント <span class="require">*</span></label>
 											<select class="form-control input-sm" id="nocoment" name="nocoment">
-												<option value="">선택</option>
-												<option value="훌륭해요">훌륭해요</option>
-												<option value="최고예요">최고에요</option>
-												<option value="좋아요">좋아요</option>
-												<option value="보통이예요">보통이에요</option>
+												<option value="">選択</option>
+												<option value="うまく教えて下さいます">うまく教えて下さいます</option>
+												<option value="親切にしてもらいました">親切にしてもらいました</option>
+												<option value="最高です">最高です</option>
+												<option value="普通です">普通です</option>
 
 											</select>
 										</div>
 										<div class="form-group">
-											<label for="review">댓글 <span class="require"></span></label>
+											<label for="review">コメント <span class="require"></span></label>
 											<textarea class="form-control" rows="8" id="content" name="content"></textarea>
 										</div>
 										<div class="padding-top-20 pull-right">
-											<button type="submit" class="btn btn-primary">리뷰쓰기</button>
+											<button type="submit" class="btn btn-primary">レビュー</button>
 										</div>
 									</form>
 									<!-- END FORM-->

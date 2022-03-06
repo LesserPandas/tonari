@@ -1,41 +1,130 @@
 package com.tonari.controller;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.JsonObject;
+import com.tonari.domain.MemberAuthVO;
 import com.tonari.domain.MemberVO;
+import com.tonari.domain.PayListVO;
+import com.tonari.domain.TeacherVO;
+import com.tonari.domain.Teacherinfo_viewVO;
 import com.tonari.service.MemberService;
+import com.tonari.service.MypageService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 // 컨트롤러엔 무조건 @AllArgsConstructor 쓰기
-@Log4j
 @Controller
-@AllArgsConstructor
 @RequestMapping("/mypage/*")
+@AllArgsConstructor
+@Log4j
 public class MypageController {
 
 	private MemberService service;
+	private MypageService pservice;
 
 	@GetMapping("/teacherJoin")
-	public String tjoin() {
-		return "/mypage/teacher/teacherJoin";
+	public String tjoin(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		MemberVO mvo = (MemberVO) session.getAttribute("nowUser");
+		if (mvo == null) {
+			return "/join/login";
+		} else {
+			String nick = mvo.getNick();
+			MemberAuthVO mavo = pservice.tjoinpage(nick);
+			model.addAttribute("info", mavo);
+			return "/mypage/teacher/teacherJoin";
+		}
 	}
 
-	@GetMapping("/teacherInfo")
-	public String tinfo() {
-		return "/mypage/teacher/teacherInfo";
+	@PostMapping(value = "/teacherJoin", produces = "application/json; charset=utf8")
+	public String teacherjoin(@RequestParam("uploadFile") MultipartFile upimage, TeacherVO tvo) {
+		tvo.setImage(UploadImageFile(upimage));
+		pservice.teacherjoin(tvo);
+		return "redirect: /";
 	}
 
-	@GetMapping("/teacherModify")
-	public String tModify() {
-		return "/mypage/teacher/teacherModify";
+	// imageupload
+	@PostMapping(value = "/ImageFile", produces = "application/json; charset=utf8")
+	@ResponseBody
+	public String ImageFile(@RequestParam("file") MultipartFile file) {
+		JsonObject jsonObject = new JsonObject();
+		String url = UploadImageFile(file);
+		jsonObject.addProperty("url", url);
+		String upload = jsonObject.toString();
+		log.info(upload);
+		return upload;
+	}
+
+	public String UploadImageFile(MultipartFile file) {
+		String url = "";
+		String uploadFolder = "c://upload";
+		String uploadFileName = file.getOriginalFilename();
+		// IE
+		uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("//") + 1);
+		UUID uuid = UUID.randomUUID();
+		uploadFileName = uuid.toString() + "_" + uploadFileName;
+		File uploadPath = new File(uploadFolder, getFolder());
+		if (uploadPath.exists() == false) {
+			uploadPath.mkdirs();
+		}
+		File savefile = new File(uploadPath, uploadFileName);
+		try {
+			file.transferTo(savefile);
+			uploadFileName = (savefile.toString().substring(10));
+			url = "/upload/" + uploadFileName;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return url;
+	}
+
+	private String getFolder() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date();
+		String str = sdf.format(date);
+		return str.replace("-", File.separator); // 분리가 된다
+	}
+
+	@GetMapping("/teacherUpdate")
+	public String tModify(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		MemberVO mvo = (MemberVO) session.getAttribute("nowUser");
+		if (mvo == null) {
+			return "redirect: /mypage/teacherJoin";
+		}
+		int bno = mvo.getBno();
+		Teacherinfo_viewVO tvo = pservice.getTeacherVO(bno);
+		model.addAttribute("tvo", tvo);
+		int dodate = tvo.getDodate();
+		List<Integer> list = pservice.getdate(dodate);
+		String jsonText = new String();
+		try {
+			ObjectMapper objectmapper = new ObjectMapper();
+			jsonText = objectmapper.writeValueAsString(list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("json", jsonText);
+		return "/mypage/teacher/teacherUpdate";
 	}
 
 	@GetMapping("/subscription")
@@ -43,10 +132,17 @@ public class MypageController {
 		return "/mypage/teacher/subscription";
 	}
 
+	@GetMapping("/subResult")
+	public String subResult() {
+		return "/mypage/teacher/subResult";
+	}
+
+	// 기본개인정보 수정
 	@GetMapping("/studentinfo")
 	public String studentinfo(HttpServletRequest request, Model model) throws Exception {
 		HttpSession session = request.getSession();
-		String nick = (String) session.getAttribute("nick");
+		MemberVO mvo = (MemberVO) session.getAttribute("nowUser");
+		String nick = mvo.getNick();
 		log.info("nick : " + nick);
 		MemberVO member = service.selectMember(nick);
 		log.info("member Data : " + member);
@@ -59,4 +155,36 @@ public class MypageController {
 		return "/mypage/student/teacherlike";
 	}
 
+	@GetMapping("/studentList")
+	public String studentList() {
+		return "/mypage/teacher/studentList";
+	}
+
+	@GetMapping("/teacherList")
+	public String teacherList() {
+		return "/mypage/student/teacherList";
+	}
+
+	// 구독 기간(월) 저장
+	@GetMapping("/payMonthJoin")
+	public String payInsert(PayListVO pay) {
+
+		pay.setPay_check("N");
+		log.info("페이 정보 : " + pay);
+		pservice.payInfo(pay);
+
+		return "redirect:/mypage/teacherJoin";
+
+	}
+	
+	@PostMapping(value = "/teacherUpdate", produces = "application/json; charset=utf8")
+	public String teacherUpdate(TeacherVO tvo, @RequestParam("uploadFile") MultipartFile upimage) {
+		String image = UploadImageFile(upimage);
+		if(image != null) {
+			tvo.setImage(image);
+		}
+		int bno = tvo.getBno();
+		pservice.teacherUpdate(tvo);
+		return "redirect: /board/info?teacher_bno="+bno;
+	}
 }

@@ -69,11 +69,17 @@
 
 <!-- 내가 추가-->
 <link rel="stylesheet" href="/resources/assets/pages/css/index.css">
-<link rel="stylesheet" href="/resources/custom/css/summernote.min.css">
+<link rel="stylesheet" href="/resources/custom/css/summernote/summernote-lite.css">
 <link rel="stylesheet" href="/resources/custom/css/imagecheck.css">
 <script src="/resources/assets/jquery-3.6.0.min.js"></script>
-
+<script src="/resources/assets/plugins/jquery.min.js" type="text/javascript"></script>
 <!-- 내가 추가-->
+
+<!-- 한준희 결제 스크립트 -->
+ <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<!-- 아래 제이쿼리는 1.0이상이면 원하는 버전을 사용하셔도 무방합니다. -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>		
+<!-- 한준희 결제 스크립트 -->
 
 <!-- Theme styles END -->
 </head>
@@ -102,20 +108,20 @@
 				<div class="col-md-6 col-sm-6 additional-nav">
 					<ul class="list-unstyled list-inline pull-right">
 						<c:choose>
-						<c:when test="${empty nick}">
+						<c:when test="${empty nowUser}">
 						<li><a href="/">HOME</a></li>
 						<li><a href="/login">로그인</a></li>
 						<li><a href="/join">회원가입</a></li>
 						</c:when>
 						
-						<c:when test="${not empty nick}">
+						<c:when test="${not empty nowUser}">
 						<!-- 닉네임 -->
-						<li>${nick}님</li>
-						<li>${email }</li>
+						<li>${nowUser.nick}님</li>
+						
 						<!-- 홈으로 -->
 						<li><a href="/">HOME</a></li>
 						<!-- 마이페이지 -->
-						<li><a href="mypage.do">마이페이지</a></li>
+						<li><a href="/mypage">마이페이지</a></li>
 						<!-- 로그아웃 -->
 						<li><a href="/join/logout">로그아웃</a></li>
 						</c:when>
@@ -181,22 +187,24 @@
 										<div class="col-md-3 header-navigation-col">
 											<h4>카테고리</h4>
 											<ul>
-												<li><a href="shop-product-list.html">일본어</a></li>
-												<li><a href="shop-product-list.html">JAVA</a></li>
-												<li><a href="shop-product-list.html">Python</a></li>
-												<li><a href="shop-product-list.html">Javascript</a></li>
-												<li><a href="shop-product-list.html">Spring</a></li>
-												<li><a href="shop-product-list.html">HTML5+CSS3</a></li>
-												<li><a href="shop-product-list.html">Database</a></li>
+												<li><a href="/board/search?type=category&&keyword=1">일본어</a></li>
+												<li><a href="/board/search?type=category&&keyword=2">JAVA</a></li>
+												<li><a href="/board/search?type=category&&keyword=3">Python</a></li>
+												<li><a href="/board/search?type=category&&keyword=4">Javascript</a></li>
+												<li><a href="/board/search?type=category&&keyword=5">Spring</a></li>
+												<li><a href="/board/search?type=category&&keyword=6">HTML5+CSS3</a></li>
+												<li><a href="/board/search?type=category&&keyword=7">Database</a></li>
 											</ul>
 										</div>
 										<div class="col-md-3 header-navigation-col">
 											<h4>강사찾기</h4>
 											<ul>
-												<li><a href="shop-product-list.html">인기 강사</a></li>
-												<li><a href="shop-product-list.html">신규 강사</a></li>
-												<li><a href="shop-product-list.html">내 주변 강사</a></li>
+												<li><a href="/board/search?type=orderby&&keyword=score&&snum=1">인기 강사</a></li>
+												<li><a href="/board/search?type=orderby&&keyword=teacher&&snum=0">신규 강사</a></li>
 												<li><a href="shop-product-list.html">시간이 맞는 강사</a></li>
+												<c:if test="${not empty nowUser }">
+													<li><a href="/board/search?type=area&&keyword=${nowUser.nick }&&snum=2">내 주변 강사</a></li>
+												</c:if>
 											</ul>
 										</div>
 										<div class="col-md-3 header-navigation-col">
@@ -212,11 +220,11 @@
 										<div class="col-md-3 header-navigation-col">
 											<h4>마이페이지</h4>
 											<ul>
-												<li><a href="shop-product-list.html">개인정보 수정</a></li>
+												<li><a href="mypage/studentInfoModify">개인정보 수정</a></li>
 												<li><a href="shop-product-list.html">결제 내역/관리</a></li>
 												<li><a href="shop-product-list.html">즐겨찾기한 강사</a></li>
 												<li><a href="shop-product-list.html">내 학생 보기 (강사)</a></li>
-												<li><a href="shop-product-list.html">강사 등록하기 (학생)</a></li>
+												<li><a href="/mypage/teacherJoin">강사 등록하기 (학생)</a></li>
 											</ul>
 										</div>
 									</div>
@@ -228,22 +236,24 @@
 						data-toggle="dropdown" data-target="#" href="javascript:;">
 							카테고리 </a> <!-- BEGIN DROPDOWN MENU -->
 						<ul class="dropdown-menu">
-							<li><a href="shop-product-list.html">일본어</a></li>
-							<li><a href="shop-product-list.html">JAVA</a></li>
-							<li><a href="shop-product-list.html">Python</a></li>
-							<li><a href="shop-product-list.html">Javascript</a></li>
-							<li><a href="shop-product-list.html">Spring</a></li>
-							<li><a href="shop-product-list.html">HTML5+CSS3</a></li>
-							<li><a href="shop-product-list.html">Database</a></li>
+							<li><a href="/board/search?type=category&&keyword=1">일본어</a></li>
+							<li><a href="/board/search?type=category&&keyword=2">JAVA</a></li>
+							<li><a href="/board/search?type=category&&keyword=3">Python</a></li>
+							<li><a href="/board/search?type=category&&keyword=4">Javascript</a></li>
+							<li><a href="/board/search?type=category&&keyword=5">Spring</a></li>
+							<li><a href="/board/search?type=category&&keyword=6">HTML5+CSS3</a></li>
+							<li><a href="/board/search?type=category&&keyword=7">Database</a></li>
 						</ul> <!-- END DROPDOWN MENU --></li>
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" data-target="#" href="javascript:;">
 							강사찾기 </a> <!-- BEGIN DROPDOWN MENU -->
 						<ul class="dropdown-menu">
-							<li><a href="shop-product-list.html">인기 강사</a></li>
-							<li><a href="shop-product-list.html">신규 강사</a></li>
-							<li><a href="shop-product-list.html">내 주변 강사</a></li>
+							<li><a href="/board/search?type=orderby&&keyword=score&&snum=1">인기 강사</a></li>
+							<li><a href="/board/search?type=orderby&&keyword=teacher&&snum=0">신규 강사</a></li>
 							<li><a href="shop-product-list.html">시간이 맞는 강사</a></li>
+							<c:if test="${not empty nowUser }">
+								<li><a href="/board/search?type=area&&keyword=${nowUser.nick }&&snum=2">내 주변 강사</a></li>
+							</c:if>
 						</ul> <!-- END DROPDOWN MENU --></li>
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" data-target="#" href="javascript:;">
@@ -263,7 +273,7 @@
 							<li><a href="shop-product-list.html">결제 내역/관리</a></li>
 							<li><a href="shop-product-list.html">즐겨찾기한 강사</a></li>
 							<li><a href="shop-product-list.html">내 학생 보기 (강사)</a></li>
-							<li><a href="shop-product-list.html">강사 등록하기 (학생)</a></li>
+							<li><a href="/mypage/teacherJoin">강사 등록하기 (학생)</a></li>
 						</ul> <!-- END DROPDOWN MENU --></li>
 
 
@@ -282,8 +292,7 @@
 											<li><a href="/login">로그인</a></li>
 											<li><a href="/join">회원가입</a></li>
 											<li><a href="/mypage/teacherJoin">강사등록</a></li>
-											<li><a href="/mypage/teacherInfo">강사정보</a></li>
-											<li><a href="/mypage/teacherModify">강사정보수정</a></li>
+											<li><a href="/mypage/teacherUpdate">강사정보수정</a></li>
 											<li><a href="/mypage/subscription">구독하기</a></li>
 											<li><a href="/mypage/subResult">구독결과</a></li>
 											<li><a href="/mypage/studentInfoModify">일반회원 정보 수정</a></li>
@@ -295,7 +304,7 @@
 										<ul>
 											<li><h4 style="padding: 10px 10px 0">남현</h4></li>
 											<li><a href="/board/search?type=orderby&&keyword=teacher">강사 찾기</a></li>
-											<li><a href="/board/info?board_bno=4">강사 정보</a></li>
+											<li><a href="/board/info?teacher_bno=1">강사 정보</a></li>
 
 											<li><h4 style="padding: 10px 10px 0">두홍</h4></li>
 						                    <li><a href="/admin">Admin-로그인</a></li>
@@ -317,4 +326,5 @@
 		</div>
 	</div>
 	<!-- Header END -->
+
 </body>

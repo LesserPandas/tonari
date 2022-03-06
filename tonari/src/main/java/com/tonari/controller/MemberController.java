@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tonari.domain.MemberVO;
+import com.tonari.domain.PayListVO;
 import com.tonari.service.MemberService;
 
 import lombok.AllArgsConstructor;
@@ -33,13 +34,13 @@ public class MemberController {
 //	private PasswordEncoder pwencoder;
 
 	@PostMapping("/login")
-	 public String login(HttpServletRequest request, MemberVO member) {
+	 public String login(HttpServletRequest request, MemberVO mvo) {
 		
 		//0) DB검색
-		String nick = service.loginCheck(member); // nick
+		MemberVO member = service.loginCheck(mvo); // nick
 		
 		// 1이면 로그인 성공 , 0이면 실패	
-		if (nick != null) {
+		if (member != null) {
 			
 			//1) 세션 가져오기
 			HttpSession session = request.getSession();
@@ -55,7 +56,7 @@ public class MemberController {
 			 * session.setMaxInactiveInterval(1800); // 1800 = 60s*30 (30분)
 			 */        
 			//4) 회원정보 설정
-			session.setAttribute("nick", nick);
+			session.setAttribute("nowUser", member);
 			/* session.setAttribute(AUTH, member.getAuth()); */
 			/* session.setAttribute(AUTH_NAME, authName); */
 		} else {  
@@ -105,6 +106,7 @@ public class MemberController {
 	//내가 추가함
 
 
+
     // 아이디 체크
     @PostMapping("/emailCheck")
     @ResponseBody
@@ -121,13 +123,30 @@ public class MemberController {
       //내가 추가함
 
 }
-    
-    //닉네임 체크
+    //닉네임 체크(회원가입)
     @PostMapping("/nickCheck")
     @ResponseBody
     public String nickCheck(@RequestParam("nick") String nick){
         log.info("userIdCheck 진입");
         log.info("전달받은 id:"+ nick);
+        String result = "" + service.nickCheck(nick);
+        log.info("확인 결과:" + result);
+        return result;
+        
+    }
+    
+    //닉네임 체크(개인정보 수정)
+    @PostMapping("/nickCheck2")
+    @ResponseBody
+    public String nickCheck(HttpServletRequest request, @RequestParam("nick") String nick){
+        log.info("userIdCheck 진입");
+        log.info("전달받은 id:"+ nick);
+        HttpSession session = request.getSession();
+        String nowNick = ((MemberVO)session.getAttribute("nowUser")).getNick();
+        if(nowNick.equals(nick)) {
+        	return"2";
+        }
+        
         String result = "" + service.nickCheck(nick);
         log.info("확인 결과:" + result);
         return result;
@@ -143,8 +162,13 @@ public class MemberController {
     	log.info("============== VO : " + vo);
     	service.studentinfoModify(vo);
     	HttpSession session = request.getSession();
-    	session.setAttribute("nick", vo.getNick());
+    	MemberVO member = (MemberVO) session.getAttribute("nowUser");
+    	member.setNick(vo.getNick());
+    	session.setAttribute("nowUser", member);
     	
         return "redirect:/mypage/studentinfo";
     }
+    
+
+    
 }

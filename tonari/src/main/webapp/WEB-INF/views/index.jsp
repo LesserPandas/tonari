@@ -104,7 +104,7 @@
 								<div class="owl-carousel owl-carousel5">
 									<c:forEach items="${bestlist}" var="bestlist">
 										<div class="product-item" style="height:350px;">
-											<div style="height: 100%; width: 100%;">
+											<div style="height: 100%; width: 100%;display: flex; flex-direction: column; justify-content: space-between;display: flex; flex-direction: column; justify-content: space-between;">
 												<div>
 													<div style="text-align: right;">
 														<span>点数 :&nbsp;${bestlist.score}</span>
@@ -146,7 +146,7 @@
 								<div class="owl-carousel owl-carousel5">
 									<c:forEach items="${likelist}" var="likelist">
 										<div class="product-item" style="height:350px;">
-											<div style="height: 100%; width: 100%;">
+											<div style="height: 100%; width: 100%;display: flex; flex-direction: column; justify-content: space-between;display: flex; flex-direction: column; justify-content: space-between;">
 												<div>
 													<div style="text-align: right;">
 														<span>点数 :&nbsp;${likelist.score}</span>
@@ -164,7 +164,7 @@
 													</div>
 												</div>
 												<div>
-													<div class="teacherInfo" style="">
+													<div class="teacherInfo" style="display:flex; width:100%; justify-content: space-between;">
 														<div style="display:inline;">${likelist.category_name}</div>
 														<div>${likelist.gu}&nbsp;${likelist.dong}</div>
 													</div>
@@ -225,10 +225,13 @@
 						<!-- 내주변 상세내용 -->
 						<div role="tabpanel" class="tab-pane active" id="location">
 							<div class="col-md-12 sale-product">
+								<c:if test="${empty locationlist}">
+									<h2 style="text-align: center;">로그인을 안했거나 주소지 설정을 안했어요!</h2>
+								</c:if>
 								<div class="owl-carousel owl-carousel5">
 									<c:forEach items="${locationlist}" var="locationlist">
 										<div class="product-item" style="height:350px;">
-											<div style="height: 100%; width: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+											<div style="height: 100%; width: 100%;display: flex; flex-direction: column; justify-content: space-between;display: flex; flex-direction: column; justify-content: space-between;">
 												<div>
 													<div style="text-align: right;">
 														<span>点数 :&nbsp;${locationlist.score}</span>
@@ -275,21 +278,20 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<div class="carousel slide" id="fade-quote-carousel"
-						data-ride="carousel">
+					<div class="carousel slide" id="fade-quote-carousel" data-ride="carousel">
 						<!-- Carousel items -->
 						<div class="carousel-inner">
 							<div class="active item">
 								<c:forEach var="review" items="${review }">
-								<div class="col-md-3 border">
-									<blockquote>
-										<div>
-											<h4 class="review-title">${review.nick }</h4>
-											<span class="starpoint">${review.star }</span>
-										</div>
-									</blockquote>
-									<div>${review.content }</div>
-								</div>
+									<div class="col-md-3 border">
+										<blockquote>
+											<div>
+												<h4 class="review-title">${review.nick }</h4>
+												<span class="starpoint">${review.star }</span>
+											</div>
+										</blockquote>
+										<div>${review.content }</div>
+									</div>
 								</c:forEach>
 							</div>
 						</div>
@@ -302,8 +304,7 @@
 	<div class="container" style="margin-bottom: 60px">
 		<div class="row">
 			<div class="col-md-12 search-mg-0 bg-success">
-				<div
-					style="padding: 10px; width: 50%; padding: 30px; background: #fff; float: left"">
+				<div style="padding: 10px; width: 50%; float: left; padding: 30px">
 					<h2>공지사항</h2>
 					<table class="table">
 						<colgroup>

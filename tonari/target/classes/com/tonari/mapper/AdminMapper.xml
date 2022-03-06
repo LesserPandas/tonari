@@ -6,7 +6,6 @@
 	<!-- 회원목록 -->
 	<select id="selectmemberlist"
 		resultType="com.tonari.domain.MemberAuthVO">
-
 	select * from member_auth_view order by bno
 	</select>
 
@@ -14,7 +13,6 @@
 		resultType="com.tonari.domain.MemberAuthVO">
 	select * from member_auth_view where name= #{name}
 	</select>
-
 
 <delete id="delete" >
 		delete member where bno = #{bno}
@@ -83,7 +81,7 @@
 	
 	
 	<select id="login" resultType="com.tonari.domain.MemberAuthVO">
-		select * from member where email = #{email} and passwd = #{passwd}   
+		select * from member_auth_view where email = #{email} and passwd = #{passwd}
 	</select>
 	
 	<select id="selectMail" resultType="com.tonari.domain.MailVO">

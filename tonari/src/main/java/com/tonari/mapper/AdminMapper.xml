@@ -81,7 +81,7 @@
 	
 	
 	<select id="login" resultType="com.tonari.domain.MemberAuthVO">
-		select * from member where email = #{email} and passwd = #{passwd}   
+		select * from member_auth_view where email = #{email} and passwd = #{passwd}
 	</select>
 	
 	<select id="selectMail" resultType="com.tonari.domain.MailVO">

@@ -45,13 +45,20 @@ public class AdminController {
 	public String main() {
 		return "admin/member/login";
 	}
-	//로그인기능
+
+	// 로그인기능
 	@PostMapping("/login.do")
-	public String login(MemberAuthVO MemberAuth, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
+	public String login(MemberAuthVO MemberAuth) throws Exception {
 
-		MemberAuth = service.login(MemberAuth);
+		MemberAuthVO memberAuth = service.login(MemberAuth);
 
-		return "redirect:/admin/memberlist";
+		if (memberAuth == null) {
+			return "redirect:/admin/login.do";
+		} else if (memberAuth.getAuth().equals("관리자")) {
+			return "redirect:/admin/memberlist";
+		} else {
+			return "redirect:/admin/login.do";
+		}
 	}
 
 	// 강사구독승인리스트 , 회원리스트
@@ -65,15 +72,15 @@ public class AdminController {
 
 		return "admin/member/memberlist";
 	}
-	//회원 상세정보
+
+	// 회원 상세정보
 	@RequestMapping("/memberview")
-	public String memberview(@RequestParam("name") String name,Model model) {
+	public String memberview(@RequestParam("name") String name, Model model) {
 		MemberAuthVO memberview = service.memberview(name);
 		model.addAttribute("memberview", memberview);
 
 		return "admin/member/memberview";
-		
-		
+
 	}
 
 	@GetMapping("/teachersales")
@@ -116,27 +123,30 @@ public class AdminController {
 
 		return "admin/member/teacherlist";
 	}
-	//강사승인삭제(강사삭제)--강사목록으로 리다이렉트
+
+	// 강사승인삭제(강사삭제)--강사목록으로 리다이렉트
 	@GetMapping("/deleteteacherlist.do")
 	public String deleteteacherlist(@RequestParam("bno") int bno, RedirectAttributes attr) {
 		service.deleteteacherlist(bno);
 
 		return "redirect:/admin/teacherlist";
 	}
-	//강사승인삭제(강사삭제)--회원목록으로 리다이렉트
+
+	// 강사승인삭제(강사삭제)--회원목록으로 리다이렉트
 	@GetMapping("/deleteteacherlist1.do")
 	public String deleteteacherlist1(@RequestParam("bno") int bno, RedirectAttributes attr) {
 		service.deleteteacherlist(bno);
 
 		return "redirect:/admin/memberlist";
 	}
-	
-	//글수정목록
+
+	// 글수정목록
 	@GetMapping("/update")
 	public String update(@RequestParam("bno") int bno, Model model) {
 		// model.addAttribute("boardlist", service.selectboardlist(bno));
 		return "admin/board/update";
 	}
+
 	// 글수정페이지
 	@GetMapping("/updateboard.do")
 	public String updateboard(@RequestParam("bno") int bno, Model model) {
@@ -147,7 +157,8 @@ public class AdminController {
 
 		return "admin/board/update";
 	}
-	//글수정기능
+
+	// 글수정기능
 	@PostMapping("/updateboardpro.do")
 	public String updateboardpro(BoardVO board) {
 		service.updateboardpro(board);
@@ -178,7 +189,8 @@ public class AdminController {
 
 		return "redirect:/admin/memberlist";
 	}
-	//게시글삭제
+
+	// 게시글삭제
 	@GetMapping("/boarddelete.do")
 	public String boarddelete(BoardlistVO Boardlist, RedirectAttributes attr) {
 		service.boarddelete(Boardlist);
@@ -198,26 +210,28 @@ public class AdminController {
 		return "redirect:" + reURI;
 
 	}
-	//	 메일전송페이지
+
+	// 메일전송페이지
 	@GetMapping("/mail")
 	public String mail() {
 		return "/admin/mail";
 	}
-	//단체메일
+
+	// 단체메일
 	@PostMapping("/sendMail")
 	public String sendMail(MailVO mail) {
-		
+
 		List<MailVO> mails = new ArrayList<>();
 		mails = service.selectMail();
-		
+
 		MimeMessagePreparator[] preparators = new MimeMessagePreparator[mails.size()];
 		int i = 0;
 		for (final MailVO vo : mails) {
-			
+
 			log.info("email : " + vo.getEmail());
-			
+
 			preparators[i++] = new MimeMessagePreparator() {
-				
+
 				@Override
 				public void prepare(MimeMessage mimeMessage) throws Exception {
 					final MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
@@ -229,7 +243,7 @@ public class AdminController {
 			};
 		}
 		mailSender.send(preparators);
-		
+
 		return "redirect:/admin/memberlist";
 	}
 }

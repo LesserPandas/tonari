@@ -111,10 +111,10 @@
 													<td>${TeacherPermissionList.category_name}</td>
 													<td><a onClick="return confirm('承認しますか？')"
 														href="permission.do?bno=${TeacherPermissionList.bno}"														
-														class="btn btn-primary btn-sm">승인</a>
+														class="btn btn-primary btn-sm">承認</a>
 														<a onClick="return confirm('キャンセルしますか？(キャンセルすると払い戻しできます。')"
 													href="deleteteacherlist.do?bno=${TeacherPermissionList.bno}"
-													 class="btn btn-danger btn-sm">취소</a>
+													 class="btn btn-danger btn-sm">取消し</a>
 													</td>							
 												</tr>
 											</c:forEach>

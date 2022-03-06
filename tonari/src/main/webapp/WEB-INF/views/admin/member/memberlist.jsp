@@ -117,7 +117,7 @@
 														class="btn btn-primary btn-sm">承認</a> <a
 														onClick="return confirm('キャンセルしますか？(キャンセルすると払い戻しできます。)')"
 														href="deleteteacherlist1.do?bno=${TeacherPermissionList.bno}"
-														class="btn btn-danger btn-sm">キャンセル</a></td>
+														class="btn btn-danger btn-sm">取消し</a></td>
 												</tr>
 											</c:forEach>
 

@@ -106,5 +106,10 @@ public class AdminServiceImpl implements AdminService {
 	public List<MailVO> selectMail() {
 		return mapper.selectMail();
 	}
+	@Override
+	public MemberAuthVO memberview(String name) {
+		// TODO Auto-generated method stub
+		return mapper.memberview(name);
+	}
 
 }

@@ -78,7 +78,7 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">관리자 메일</h1>
+					<h1 class="h3 mb-4 text-gray-800">管理者メール</h1>
 
 					<div class="row">
 						<div class="col-lg-9">
@@ -86,20 +86,17 @@
 								<div class="p-5">
 									<div class="text-center">
 										<h1 class="h4 text-gray-900 mb-4"
-											style="margin-left: 20%; font-size: 30px;">단체 메일 발송</h1>
+											style="margin-left: 20%; font-size: 30px;">全会員メール送信</h1>
 									</div>
 									<div class="email-right-box">
 										<div class="toolbar" role="toolbar"></div>
 										<div class="compose-content mt-5">
 
-									<!-- 		<div class="form-group">
-												<input type="text" class="form-control bg-transparent"
-													name="email" placeholder=" 받는사람">
-											</div> -->
+									
 
 											<div class="form-group">
 												<input type="text" class="form-control bg-transparent"
-													name="title" placeholder=" Subject">
+													name="title" placeholder=" タイトル ...">
 											</div>
 											<div class="form-group">
 												<textarea class="textarea_editor form-control bg-light" id="summernote"
@@ -110,11 +107,11 @@
 
 										</div>
 										<div class="text-left m-t-15" style="margin-left: 32%;">
-											<button type="submit" class="btn btn-primary btn-icon-split" onClick="return confirm('승인하시겠습니까?')" >전송</button>
+											<button type="submit" class="btn btn-primary btn-icon-split" onClick="return confirm('送信しますか？?')" >送信</button>
 											<button onclick="history.back();"
 												class="btn btn-dark m-b-30 m-t-15 f-s-14 p-l-20 p-r-20"
 												type="button">
-												<i class="ti-close m-r-5 f-s-12"></i> Discard
+												<i class="ti-close m-r-5 f-s-12"></i>キャンセル
 											</button>
 										</div>
 									</div>

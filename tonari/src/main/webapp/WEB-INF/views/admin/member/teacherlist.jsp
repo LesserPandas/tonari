@@ -83,18 +83,18 @@
 
 						<div class="card shadow mb-4">
 							<div class="card-header py-3">
-								<h6 class="m-0 font-weight-bold text-primary">강사구독승인</h6>
+								<h6 class="m-0 font-weight-bold text-primary">先生購読承認</h6>
 							</div>
 							<div class="card-body">
 								<div class="table-responsive">
 									<table class="table table-bordered">
 										<thead>
 											<tr>
-												<th>번호</th>
-												<th>이름</th>
-												<th>가입날짜</th>
-												<th>구분</th>
-												<th>구독승인</th>
+												<th>番号</th>
+												<th>名前</th>
+												<th>登録日</th>
+												<th>区分</th>
+												<th>購読承認</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -103,15 +103,18 @@
 												var="TeacherPermissionList">
 												<tr>
 													<td>${TeacherPermissionList.bno}</td>
-													<td>${TeacherPermissionList.name}</td>
+													<td style="cursor: pointer ; "
+													onClick=" location.href='memberview?name=${TeacherPermissionList.name}' "
+													onMouseOver=" window.status = 'http://ihouse.so.vc' "
+													onMouseOut=" window.status = '' "   >${TeacherPermissionList.name}</td>
 													<td>${TeacherPermissionList.join_date}</td>
 													<td>${TeacherPermissionList.category_name}</td>
-													<td><a onClick="return confirm('승인하시겠습니까?')"
-														href="permission.do?bno=${TeacherPermissionList.bno}"
-														class="btn btn-primary btn-sm">승인</a>
-														<a onClick="return confirm('취소하시겠어요?')"
+													<td><a onClick="return confirm('承認しますか？')"
+														href="permission.do?bno=${TeacherPermissionList.bno}"														
+														class="btn btn-primary btn-sm">承認</a>
+														<a onClick="return confirm('キャンセルしますか？(キャンセルすると払い戻しできます。')"
 													href="deleteteacherlist.do?bno=${TeacherPermissionList.bno}"
-													class="btn btn-danger btn-sm">취소</a>
+													 class="btn btn-danger btn-sm">取消し</a>
 													</td>							
 												</tr>
 											</c:forEach>
@@ -127,43 +130,35 @@
                    
                    
                         <div class="container-fluid">
-                       <h1 class="h3 mb-2 text-gray-800">회원관리</h1>
+                       <h1 class="h3 mb-2 text-gray-800">会員管理</h1>
                    
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">강사목록</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">先生リスト</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>회원번호</th>
-                                            <th>이름</th>
-                                            <th>나이</th>
-                                             <th>주소</th>
-                                            <th>가입날짜</th>                                            
-                                            <th>구분</th>
+                                            <th>会員番号</th>
+                                            <th>名前</th>
+                                            <th>年齢</th>
+                                             <th>住所</th>
+                                            <th>登録日</th>                                            
+                                            <th>区分</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>회원번호</th>
-                                            <th>이름</th>
-                                            <th>나이</th>
-                                             <th>주소</th>
-                                            <th>가입날짜</th>                                            
-                                            <th>구분</th>
-                                           
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
                									<c:forEach items="${teacherlist}"
 												var="Teacherlist">
 												<tr>
 													<td>${Teacherlist.member_bno}</td>
-													<td>${Teacherlist.name}</td>
+													<td style="cursor: pointer ; "
+													onClick=" location.href='memberview?name=${Teacherlist.name}' "
+													onMouseOver=" window.status = 'http://ihouse.so.vc' "
+													onMouseOut=" window.status = '' "   >${Teacherlist.name}</td>
 													<td>${Teacherlist.age}</td>
 													<td>${Teacherlist.address}</td>
 													<td>${Teacherlist.join_date}</td>

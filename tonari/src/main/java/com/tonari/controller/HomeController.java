@@ -1,7 +1,13 @@
 package com.tonari.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.tonari.domain.MemberVO;
 
 @Controller
 public class HomeController {
@@ -24,7 +30,12 @@ public class HomeController {
 	}
 	
 	@GetMapping("/mypage")
-	public String mypage() {
+	public String mypage(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		MemberVO mvo = (MemberVO) session.getAttribute("nowUser");
+		if (mvo == null) {
+			return "redirect: /login";
+		}
 		return "/mypage/mypage";
 	}
 	

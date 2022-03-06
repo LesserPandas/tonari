@@ -220,11 +220,10 @@
 										<div class="col-md-3 header-navigation-col">
 											<h4>마이페이지</h4>
 											<ul>
-												<li><a href="mypage/studentInfoModify">개인정보 수정</a></li>
-												<li><a href="shop-product-list.html">결제 내역/관리</a></li>
-												<li><a href="shop-product-list.html">즐겨찾기한 강사</a></li>
-												<li><a href="shop-product-list.html">내 학생 보기 (강사)</a></li>
-												<li><a href="/mypage/teacherJoin">강사 등록하기 (학생)</a></li>
+												<li><a href="/mypage/studentinfo">개인정보 수정</a></li>
+												<li><a href="/mypage/like">좋아요한 선생님</a></li>
+												<li><a href="/mypage/teacherList">나의 선생님</a></li>
+												<li><a href="/mypage/subscription"><strong>선생님으로 등록</strong></a></li>
 											</ul>
 										</div>
 									</div>
@@ -266,14 +265,13 @@
 							<li><a href="shop-product-list.html">학습 후기</a></li>
 						</ul> <!-- END DROPDOWN MENU --></li>
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" data-target="#" href="javascript:;">
+						data-toggle="dropdown" data-target="/mypage" href="/mypage">
 							마이페이지 </a> <!-- BEGIN DROPDOWN MENU -->
 						<ul class="dropdown-menu">
-							<li><a href="shop-product-list.html">개인정보 수정</a></li>
-							<li><a href="shop-product-list.html">결제 내역/관리</a></li>
-							<li><a href="shop-product-list.html">즐겨찾기한 강사</a></li>
-							<li><a href="shop-product-list.html">내 학생 보기 (강사)</a></li>
-							<li><a href="/mypage/teacherJoin">강사 등록하기 (학생)</a></li>
+							<li><a href="/join/studentinfologintest">개인정보 수정</a></li>
+							<li><a href="/mypage/like">좋아요한 선생님</a></li>
+							<li><a href="/mypage/teacherList">나의 선생님</a></li>
+							<li><a href="/mypage/subscription"><strong>선생님으로 등록</strong></a></li>
 						</ul> <!-- END DROPDOWN MENU --></li>
 
 

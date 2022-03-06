@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tonari.domain.MemberAuthVO;
+import com.tonari.domain.studentpaylistVO;
 import com.tonari.domain.PayListVO;
 import com.tonari.domain.TeacherVO;
 import com.tonari.domain.Teacherinfo_viewVO;
@@ -25,8 +26,8 @@ public class MypageServiceImpl implements MypageService {
 	public void payInfo(PayListVO pay) {
 		mapper.payInsert(pay);
 		
-	}
-
+	}	
+	
 	@Override
 	public MemberAuthVO tjoinpage(String nick) {
 		return mapper.tjoinpage(nick);
@@ -54,6 +55,32 @@ public class MypageServiceImpl implements MypageService {
 			}
 		}
 		return result;
+	}
+	
+	//구독결과
+	@Override
+	public PayListVO subResult(int bno) {
+		PayListVO subResult = mapper.subResult(bno);
+		return subResult;
+	}
+	
+	//좋아요 리스트
+	@Override
+	public List<Teacherinfo_viewVO> likeList(int teacher_bno) {
+		return mapper.likeList(teacher_bno);
+	}
+	
+	//좋아요 선생 결제 결과 저장
+	@Override
+	public void teacherlikePay(List<studentpaylistVO> mylist) {
+		for(studentpaylistVO list : mylist) {
+			mapper.teacherlikePay(list);
+		}
+	}	
+	
+	@Override
+	public List<Teacherinfo_viewVO> payTeacherList(int bno) {
+		return mapper.payTeacherList(bno);
 	}
 	
 	@Override

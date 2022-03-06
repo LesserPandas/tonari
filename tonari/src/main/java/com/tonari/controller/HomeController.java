@@ -58,7 +58,12 @@ public class HomeController {
 	}
 	
 	@GetMapping("/mypage")
-	public String mypage() {
+	public String mypage(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		MemberVO mvo = (MemberVO) session.getAttribute("nowUser");
+		if (mvo == null) {
+			return "redirect: /login";
+		}
 		return "/mypage/mypage";
 	}
 	

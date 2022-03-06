@@ -17,9 +17,9 @@
                    <!--  <th class="goods-page-image">사진</th> -->
                     <th class="goods-page-description">닉네임</th>
                     <!-- <th class="goods-page-ref-no">종목</th> -->
-                    <th class="goods-page-quantity">기간</th>
-                    <th class="goods-page-price">금액</th>
-                    <th class="goods-page-total" colspan="2">금액</th>
+                    <th class="goods-page-quantity">구독 기간(월)</th>
+                    <th class="goods-page-price">구독 금액</th>
+                    <th class="goods-page-total" colspan="2">총 금액</th>
                   </tr>
                   <tr>
                     <!-- <td class="goods-page-image">
@@ -86,6 +86,7 @@
       </div>
     </div>
 <script type="text/javascript">
+
 //내가 추가
 var amount = null;
 
@@ -108,7 +109,7 @@ $(document).ready(function() {
 		$(".total2").html(tot);
 		 $(".total3").html(tot + "円"); 
 		/* $(".total").html(tot + "("+amount+"일)"); */
-		$(".amount2").html(amount+ "(개월)");
+		$(".amount2").html(amount+ "개월");
 	}
 	total(0);
 	$(".plus1").on("click",function() {

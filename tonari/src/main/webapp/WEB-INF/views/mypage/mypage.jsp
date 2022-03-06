@@ -21,10 +21,9 @@
             <div class="content-page">
               <h3></h3>
               <ul>
-                <li><a href="/mypage/studentinfo">개인정보 수정</a></li>
+                <li ><a href="/mypage/studentinfo" >개인정보 수정</a></li>
                 <li><a href="/mypage/like">좋아요 한 선생님 보기</a></li>
-                <li><a href="/mypage/teacherList">나의 선생님 보기(결제된 사람만)</a></li>
-                <!-- <li><a href="/mypage/teacherJoin">선생님으로 등록</a></li> -->
+                <li><a href="/mypage/payteacherList">나의 선생님 보기(결제된 사람만)</a></li>
                 <li><a href="/mypage/subscription">선생님으로 등록</a></li>
               </ul>
               <hr>
@@ -32,7 +31,7 @@
               <h3>선생님 메뉴</h3>
               <ul>
               	
-              	<li><a href="/mypage/teacherModify">선생 정보 수정</a></li>
+              	<li><a href="/mypage/teacherUpdate">선생 정보 수정</a></li>
                 <li><a href="/mypage/studentList">나의 학생</a></li>
                 <li><a href="/mypage/subResult">구독결과 화면</a></li>
                 

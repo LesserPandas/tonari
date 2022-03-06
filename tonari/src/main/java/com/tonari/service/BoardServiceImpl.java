@@ -117,6 +117,7 @@ public class BoardServiceImpl implements BoardService {
 		return mapper.chklike(lvo);
 	}
 	
+	@Override
 	public String dodate(Teacherinfo_viewVO tvo) {
 		int date = tvo.getDodate();
 		String[] week = new String[] {"日","月","火","水","木","金","土"};

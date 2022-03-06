@@ -1,5 +1,7 @@
 package com.tonari.domain;
 
+import java.util.Date;
+
 import lombok.Data;
 
 @Data
@@ -23,4 +25,10 @@ public class Teacherinfo_viewVO {
 	private int auth;
 	
 	private String date;
+	private int tmoney;
+	
+	private Date write_date;
+	private String write_date2;
+	private int submonth;			
+	private int pay;
 }

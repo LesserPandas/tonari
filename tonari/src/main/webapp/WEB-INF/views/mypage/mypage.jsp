@@ -18,34 +18,33 @@
 			<!-- BEGIN CONTENT -->
 			<div  style="padding-top: 30px;">
 			<div class="col-md-6 col-sm-6">
-				<h1 style="padding-bottom: 20px;">학생 메뉴</h1>
+				<h1 style="padding-bottom: 20px;">学生メニュー</h1>
 				<div class="content-page" style="font-size: 20px;">
 					<h3 style="margin-bottom: 10px;"></h3>
 					<ul>
 						<li style="padding-bottom: 15px;"><a
-							href="/mypage/studentinfo">개인정보 수정</a></li>
-						<li style="padding-bottom: 15px;"><a href="/mypage/like">좋아요
-								한 선생님 보기</a></li>
+							href="/mypage/studentinfo">個人情報修正</a></li>
+						<li style="padding-bottom: 15px;"><a href="/mypage/like">お気に入りの先生閲覧</a></li>
 						<li style="padding-bottom: 15px;"><a
-							href="/mypage/payteacherList">나의 선생님 보기</a></li>
+							href="/mypage/payteacherList">自分の先生閲覧</a></li>
 						<li style="padding-bottom: 15px;"><a
-							href="/mypage/subscription">선생님으로 등록</a></li>
+							href="/mypage/subscription">先生に登録</a></li>
 					</ul>
 					<!-- <hr> -->
 				</div>
 			</div>
 			<div class="col-md-6 col-sm-6">
-			<h1 style="padding-bottom: 20px;">선생님 메뉴</h1>
+			<h1 style="padding-bottom: 20px;">先生メニュー</h1>
 				<div class="content-page" style="font-size: 20px;">
 					<h3 style="margin-bottom: 10px;"></h3>
 					<ul>
 
 						<li style="padding-bottom: 15px;"><a
-							href="/mypage/teacherUpdate">선생 정보 수정</a></li>
+							href="/mypage/teacherUpdate">先生情報修正</a></li>
 						<li style="padding-bottom: 15px;"><a
-							href="/mypage/studentList">나의 학생</a></li>
+							href="/mypage/studentList">私の学生</a></li>
 						<li style="padding-bottom: 15px;"><a
-							href="/mypage/subResult">구독결과 화면</a></li>
+							href="/mypage/subResult">購読結果画面</a></li>
 
 
 					</ul>

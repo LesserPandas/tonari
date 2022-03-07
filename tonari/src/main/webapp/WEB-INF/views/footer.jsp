@@ -29,7 +29,7 @@
 
 				<!-- BEGIN TWITTER BLOCK -->
 				<div class="col-md-3 col-sm-6 pre-footer-col">
-					<h2>이용안내</h2>
+					<h2>利用案内</h2>
 					<ul class="list-unstyled">
 						<li><i class="fa fa-angle-right"></i> <a href="contacts.html">個人情報の処理方針</a></li>
 						<li><i class="fa fa-angle-right"></i> <a href="contacts.html">決済/購読</a></li>

@@ -222,7 +222,7 @@
 											<ul>
 												<li><a href="/mypage/studentinfo">개인정보 수정</a></li>
 												<li><a href="/mypage/like">좋아요한 선생님</a></li>
-												<li><a href="/mypage/teacherList">나의 선생님</a></li>
+												<li><a href="/mypage/payteacherList">나의 선생님</a></li>
 												<li><a href="/mypage/subscription"><strong>선생님으로 등록</strong></a></li>
 											</ul>
 										</div>
@@ -270,7 +270,7 @@
 						<ul class="dropdown-menu">
 							<li><a href="/join/studentinfologintest">개인정보 수정</a></li>
 							<li><a href="/mypage/like">좋아요한 선생님</a></li>
-							<li><a href="/mypage/teacherList">나의 선생님</a></li>
+							<li><a href="/mypage/payteacherList">나의 선생님</a></li>
 							<li><a href="/mypage/subscription"><strong>선생님으로 등록</strong></a></li>
 						</ul> <!-- END DROPDOWN MENU --></li>
 

@@ -74,4 +74,12 @@
 		</if>
 		where bno = #{bno}
 	</update>
+	
+	<!-- 선생이 나의 학생 보기 -->
+	<select id="mystudentList" resultType="com.tonari.domain.StudentVO">
+	select v.bno, v.name, v.nick, l.write_date, l.submonth
+	from member v, studentpaylist l
+	where v.bno = l.member_bno and l.teacher_bno = #{bno}
+	</select>
+	
 </mapper>

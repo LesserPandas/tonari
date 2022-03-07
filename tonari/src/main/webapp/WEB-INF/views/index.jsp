@@ -4,7 +4,7 @@
 <link href="/resources/custom/css/main.css" rel="stylesheet">
 </head>
 <body>
-	<div class="title-wrapper simple-linear ">
+	<%-- <div class="title-wrapper simple-linear ">
 		<!-- 메인 배너 이미지 -->
 		<div class="container">
 			<div class="container-inner col-md-6 col-md-offset-3">
@@ -350,7 +350,7 @@
 						</tbody>
 					</table>
 				</div>
-			</div>
+			</div> --%>
 			<!-- <div style="width: 50%; float: left; padding: 30px">
 						<h2>FAQ</h2>
 						<div class="input-group col-md-11" style="margin:15px 0">

@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import com.tonari.domain.MemberAuthVO;
 import com.tonari.domain.MemberVO;
 import com.tonari.domain.PayListVO;
+import com.tonari.domain.StudentVO;
 import com.tonari.domain.TeacherVO;
 import com.tonari.domain.Teacherinfo_viewVO;
 import com.tonari.domain.studentpaylistVO;
@@ -155,19 +156,7 @@ public class MypageController {
 		return "/mypage/student/studentInfoModify";
 	}
 
-	@GetMapping("/studentList")
-	public String studentList(HttpServletRequest request, Model model) {
-		HttpSession session = request.getSession();
-		MemberVO mvo = (MemberVO) session.getAttribute("nowUser");
-		int bno = mvo.getBno();
-		PayListVO subResult = pservice.subResult(bno);
-		model.addAttribute("subResult", subResult);
-		Teacherinfo_viewVO tvo = pservice.getTeacherVO(bno);
-		if (tvo == null) {
-			return "redirect:/mypage/teacherError";
-		}
-		return "/mypage/teacher/studentList";
-	}
+	
 
 	//선생님등록 1 구독창 열기
 		@GetMapping("/subscription")
@@ -281,7 +270,34 @@ public class MypageController {
 		log.info(myTeacherList);
 		return "/mypage/student/teacherList";
 	}
+	
+	//선생이 나의 학생 보이기
+	@GetMapping("/studentList")
+	public String mystudentList(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		int bno = ((MemberVO) session.getAttribute("nowUser")).getBno();
+		Teacherinfo_viewVO tvo = pservice.getTeacherVO(bno);
+		if (tvo == null) {
+			return "redirect:/mypage/teacherError";
+		}
+		List<StudentVO> myTeacherList = pservice.mystudentList(tvo.getTeacher_bno());
 
+		model.addAttribute("last", myTeacherList);
+		log.info(myTeacherList);
+		return "/mypage/teacher/studentList";
+	}
+	
+	/*
+	 * @GetMapping("/studentList") public String studentList(HttpServletRequest
+	 * request, Model model) { HttpSession session = request.getSession(); MemberVO
+	 * mvo = (MemberVO) session.getAttribute("nowUser"); int bno = mvo.getBno();
+	 * PayListVO subResult = pservice.subResult(bno);
+	 * model.addAttribute("subResult", subResult); Teacherinfo_viewVO tvo =
+	 * pservice.getTeacherVO(bno);
+	 * 
+	 * return "/mypage/teacher/studentList"; }
+	 */
+	
 	
 	@PostMapping(value = "/teacherUpdate", produces = "application/json; charset=utf8")
 	public String teacherUpdate(TeacherVO tvo, @RequestParam("uploadFile") MultipartFile upimage) {

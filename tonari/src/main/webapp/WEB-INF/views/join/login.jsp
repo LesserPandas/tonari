@@ -32,21 +32,21 @@
                     
                     <div class="col-md-6 col-sm-6" style="left: 25%; ">
                     
-                      <h3 style="text-align: center; padding-top: 50px;  padding-bottom: 50px; font-size: 40px;">로그인 </h3>
+                      <h3 style="text-align: center; padding-top: 50px;  padding-bottom: 50px; font-size: 40px;">ログイン </h3>
                       <p></p>
                       
                         <div class="form-group" style="text-align: left;"> 
                          
-                          <input type="text" id="email" name="email" class="form-control" placeholder="이메일 입력">
+                          <input type="text" id="email" name="email" class="form-control" placeholder="メール入力">
                         </div>
                         <div class="form-group"style="text-align: left;">
                       
-                           <input type="password" class="form-control" id="passwd" name="passwd" placeholder="패스워드 입력">
+                           <input type="password" class="form-control" id="passwd" name="passwd" placeholder="パスワード入力">
                         </div>
                         <div class="form-group"style="text-align: left;">
                          <button class="btn btn-primary" type="submit" style="    width: 100%;    height: 40px;    font-size: 20px;">Login</button>
                          </div>
-                        <a href="/join" >회원이 아니신가요?</a>
+                        <a href="/join" >会員ではないでしょうか。?</a>
                         <div class="padding-top-20">                  
                          
                         </div>

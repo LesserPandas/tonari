@@ -8,7 +8,7 @@
 </head>
 <body>
 	<script>
-		alert("잘못된 회원정보입니다.");
+		alert("誤った会員情報です。");
 		location.href="/login";
 	
 	</script>

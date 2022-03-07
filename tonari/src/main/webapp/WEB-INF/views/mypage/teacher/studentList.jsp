@@ -27,24 +27,24 @@
 								<tr>
 									<th class="goods-page-image">이름</th>
 									<th class="goods-page-description">설명</th>
-									<th class="goods-page-stock">종목</th>
-									<th class="goods-page-price" colspan="2">기간</th>
+									<th class="goods-page-stock">수업시작일</th>
+									<th class="goods-page-price" colspan="2">수업기간(주)</th>
 								</tr>
+								<c:forEach items="${last}" var="last">
 								<tr>
-									<td class="goods-page-stock">닉네임</td>
+									<td class="goods-page-stock">${last.name}</td>
 									<td class="goods-page-description">
 										<h3>
-											<a href="javascript:;">닉네임</a>
+											<a href="javascript:;">${last.nick}</a>
 										</h3>
 
 									</td>
-									<td class="goods-page-stock">일본어</td>
-									<td class="goods-page-price"><strong><span></span>21.03.08
-											~ 21.07.30</strong></td>
+									<td class="goods-page-stock">${last.write_date}</td>
+									<td class="goods-page-price"><strong>${last.submonth}</strong></td>
 									<td class="del-goods-col"><a class="del-good"
 										href="javascript:;">&nbsp;</a></td>
 								</tr>
-
+								</c:forEach>
 							</table>
 						</div>
 					</div>

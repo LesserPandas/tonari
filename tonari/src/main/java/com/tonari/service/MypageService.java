@@ -3,10 +3,11 @@ package com.tonari.service;
 import java.util.List;
 
 import com.tonari.domain.MemberAuthVO;
-import com.tonari.domain.studentpaylistVO;
 import com.tonari.domain.PayListVO;
+import com.tonari.domain.StudentVO;
 import com.tonari.domain.TeacherVO;
 import com.tonari.domain.Teacherinfo_viewVO;
+import com.tonari.domain.studentpaylistVO;
 
 public interface MypageService {
 
@@ -33,5 +34,8 @@ public interface MypageService {
 	public void teacherlikePay(List<studentpaylistVO> mylist);
 
 	public List<Teacherinfo_viewVO> payTeacherList(int bno);
+
+	public List<StudentVO> mystudentList(int bno);
+
 	
 }

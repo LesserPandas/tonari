@@ -4,10 +4,11 @@ package com.tonari.mapper;
 import java.util.List;
 
 import com.tonari.domain.MemberAuthVO;
-import com.tonari.domain.studentpaylistVO;
 import com.tonari.domain.PayListVO;
+import com.tonari.domain.StudentVO;
 import com.tonari.domain.TeacherVO;
 import com.tonari.domain.Teacherinfo_viewVO;
+import com.tonari.domain.studentpaylistVO;
 
 public interface MyPageMapper {
 	public MemberAuthVO tjoinpage(String nick);
@@ -34,5 +35,6 @@ public interface MyPageMapper {
 
 	public List<Teacherinfo_viewVO> payTeacherList(int bno);
 	
-	
+	//나의 학생
+	public List<StudentVO> mystudentList(int bno);
 }

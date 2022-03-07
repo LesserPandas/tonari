@@ -47,6 +47,7 @@ public interface AdminMapper {
 
 	public MemberAuthVO memberview(String name);
 	
+	public int permission_auth(int bno);
 	
 	
 }

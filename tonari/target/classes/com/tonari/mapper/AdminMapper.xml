@@ -42,6 +42,9 @@
 	UPDATE teacher SET permission='y' WHERE member_bno= #{bno}
 </update>
 
+<update id="permission_auth">
+	UPDATE member SET auth='2' WHERE bno= #{bno}
+</update>
 
   
   

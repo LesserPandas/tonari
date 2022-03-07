@@ -54,8 +54,9 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public int permission(int bno) {
-		// TODO Auto-generated method stub
-		return mapper.permission(bno);
+		int result = mapper.permission(bno);
+		result = mapper.permission_auth(bno);
+		return result;
 	}
 	
 

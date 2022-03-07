@@ -17,19 +17,19 @@
 
 			<!-- BEGIN CONTENT -->
 			<div class="col-md-12 col-sm-12">
-				<h1>내 선생님 목록</h1>
+				<h1>自分のの先生リスト</h1>
 				<div class="goods-page">
 					<div class="goods-data clearfix">
 						<div class="table-wrapper-responsive">
 							<table summary="Shopping cart">
 								<tr>
-									<th class="goods-page-image">사진</th>
-									<th class="goods-page-description">설명</th>
-									<th class="goods-page-stock">과목</th>
-									<th class="goods-page-price">가격</th>
-									<th class="goods-page-yo">수업요일</th>
-									<th class="goods-page-ju">수업일수(주)</th>
-									<th class="goods-page-pay">결제일자</th>
+									<th class="goods-page-image">写真</th>
+									<th class="goods-page-description">説明</th>
+									<th class="goods-page-stock">科目</th>
+									<th class="goods-page-price">金額</th>
+									<th class="goods-page-yo">授業曜日</th>
+									<th class="goods-page-ju">授業日(週)</th>
+									<th class="goods-page-pay">支払い日にち</th>
 								</tr>
 								<c:forEach items="${last }" var="last">
 									<tr>
@@ -42,7 +42,7 @@
 											</h3>
 											<p>
 												${last.coment }
-											</p> <em><a href="/board/info?teacher_bno=${last.teacher_bno }">선생님 이력</a></em>
+											</p> <em><a href="/board/info?teacher_bno=${last.teacher_bno }">先生履歴</a></em>
 										</td>
 										<td class="goods-page-stock">${last.category_name }</td>
 										<td class="goods-page-price"><strong>${last.pay}円</strong></td>

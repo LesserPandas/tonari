@@ -42,8 +42,7 @@ public class BoardController {
 		model.addAttribute("list",service.OrderbyList(cri));
 		int total = service.total(cri);
 		model.addAttribute("pageMaker",new PageVO(cri, total));
-		model.addAttribute("orderby", cri.getKeyword());
-		model.addAttribute("type",cri.getType());
+		model.addAttribute("cri", cri);
 	}
 	
 	@GetMapping("/info")

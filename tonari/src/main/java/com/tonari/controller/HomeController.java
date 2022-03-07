@@ -20,14 +20,30 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class HomeController {
 	
-	/*
-	 * private BoardService bservice; private HomeService hservice;
-	 */
+	private BoardService bservice; 
+	private HomeService hservice;
 	
 	
 	@GetMapping("/")
-	 public String index() {
+	 public String index(Model model, HttpServletRequest request) {
 		
+		Criteria cri = new Criteria();
+		HttpSession session = request.getSession();
+		cri.setType("orderby");
+		cri.setKeyword("score");
+		model.addAttribute("bestlist",bservice.OrderbyList(cri));
+		cri.setKeyword("new");
+		model.addAttribute("newlist",bservice.OrderbyList(cri));
+		MemberVO mvo = (MemberVO)session.getAttribute("nowUser");
+		if(mvo != null) {
+			cri.setType("area");
+			cri.setKeyword(mvo.getNick());
+			model.addAttribute("locationlist",bservice.OrderbyList(cri));
+		}
+		model.addAttribute("likelist",hservice.likelist());
+		model.addAttribute("review",hservice.review());
+		model.addAttribute("notice",hservice.board(1));
+		model.addAttribute("event",hservice.board(2));
 		return "index";
 	}
 	

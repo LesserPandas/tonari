@@ -59,6 +59,12 @@
 		(#{bno},#{teacher_bno},#{member_bno},#{pay} ,#{submonth})
 	</insert>
 	
+	<select id="payTeacherList" resultType="com.tonari.domain.Teacherinfo_viewVO">
+	select v.teacher_bno, v.image, v.nick, v.coment, v.category_name, v.dodate, l.pay, l.write_date, l.submonth
+	from teacher_info_view v, studentpaylist l
+	where v.teacher_bno = l.teacher_bno and l.member_bno = #{bno}
+	</select>
+	
 	<update id="teacherUpdate" parameterType="com.tonari.domain.TeacherVO">
 		update teacher set 
 		content = #{content},category = #{category},coment = #{coment},dodate = #{dodate},
@@ -68,10 +74,12 @@
 		</if>
 		where bno = #{bno}
 	</update>
-	<select id="payTeacherList" resultType="com.tonari.domain.Teacherinfo_viewVO">
-	select v.teacher_bno, v.image, v.nick, v.coment, v.category_name, v.dodate, l.pay, l.write_date, l.submonth
-	from teacher_info_view v, studentpaylist l
-	where v.teacher_bno = l.teacher_bno and l.member_bno = #{bno}
+	
+	<!-- 선생이 나의 학생 보기 -->
+	<select id="mystudentList" resultType="com.tonari.domain.StudentVO">
+	select v.bno, v.name, v.nick, l.write_date, l.submonth
+	from member v, studentpaylist l
+	where v.bno = l.member_bno and l.teacher_bno = #{bno}
 	</select>
 	
 </mapper>

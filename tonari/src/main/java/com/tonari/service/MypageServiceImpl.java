@@ -7,10 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tonari.domain.MemberAuthVO;
-import com.tonari.domain.studentpaylistVO;
 import com.tonari.domain.PayListVO;
+import com.tonari.domain.StudentVO;
 import com.tonari.domain.TeacherVO;
 import com.tonari.domain.Teacherinfo_viewVO;
+import com.tonari.domain.studentpaylistVO;
 import com.tonari.mapper.MyPageMapper;
 
 import lombok.extern.log4j.Log4j;
@@ -86,5 +87,10 @@ public class MypageServiceImpl implements MypageService {
 	@Override
 	public void teacherUpdate(TeacherVO tvo) {
 		mapper.teacherUpdate(tvo);
+	}
+	
+	@Override
+	public List<StudentVO> mystudentList(int bno) {
+		return mapper.mystudentList(bno);
 	}
 }

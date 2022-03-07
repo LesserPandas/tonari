@@ -21,7 +21,7 @@
 			<url>https://jitpack.io</url>
 		</repository>
 	</repositories>
-	
+
 	<dependencies>
 
 		<dependency>
@@ -123,22 +123,6 @@
 		<!-- Servlet -->
 		<!-- <dependency> <groupId>javax.servlet</groupId> <artifactId>servlet-api</artifactId> 
 			<version>2.5</version> <scope>provided</scope> </dependency> -->
-
-		<!-- 결제관리 한준희 암튼 문제 있을 시 초밥 먹음 -->
-
-
-
-
-
-		<!-- 결제관리 한준희 암튼 문제 있을 시 초밥 먹음 -->
-
-
-
-
-
-
-
-
 
 
 		<dependency>
@@ -341,16 +325,6 @@
 			<artifactId>guava</artifactId>
 			<version>31.0.1-jre</version>
 		</dependency>
-
-		<!-- 새우초밥 -->
-		<!-- https://mvnrepository.com/artifact/com.github.iamport/iamport-rest-client-java -->
-		<dependency>
-			<groupId>com.github.iamport</groupId>
-			<artifactId>iamport-rest-client-java</artifactId>
-			<version>0.2.0</version>
-		</dependency>
-
-		<!-- 새우초밥 -->
 
 
 

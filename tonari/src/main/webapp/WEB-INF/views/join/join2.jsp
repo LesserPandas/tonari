@@ -32,7 +32,7 @@
 								<h2 class="panel-title">
 									<a data-toggle="collapse" data-parent="#checkout-page"
 										href="#payment-address-content" class="accordion-toggle">
-										회원 가입 </a>
+										会員登録 </a>
 								</h2>
 							</div>
 							<form class="" name="formm" method="post" action="/join/memberinsertpro.do" onSubmit="return go_save()">
@@ -44,46 +44,46 @@
 										
 										<h3>계정 정보</h3>
 											<div class="form-group" style="width: 300px;">
-												<label for="nick">닉네임</label> <input type="text" id="nick"
-													name="nick" class="form-control" placeholder="영어, 숫자, 특수문자로 작성하세요!">
+												<label for="nick">ニックネーム</label> <input type="text" id="nick"
+													name="nick" class="form-control" placeholder="英語、数字、特殊文字で作成してください。!">
 											</div>
 											<div class="form-group" style="width: 300px;">
-												<label for="email">E-Mail <span class="require">*</span></label>
-												<label>가입하신 이메일 주소로  공지가 안내되오니 반드시 수신가능한 이메일 계정으로 가입바랍니다.</label>
+												<label for="email">メール <span class="require">*</span></label>
+												<label>メールアドレスにお知らせが通知されますので、必ず受信可能なメールアドレスで登録してください。</label>
 												<input type="text" id="email" name="email"
-													class="form-control" placeholder="이메일 입력"> <span
+													class="form-control" placeholder="メール登録"> <span
 													id="msg" style="display: block; padding: 5px 0;"></span>
 											</div>
 											<div class="form-group" style="width: 300px;">
-												<label for="password">Password <span class="require">*</span></label>
+												<label for="password">パスワード <span class="require">*</span></label>
 												<input type="password" id="passwd" name="passwd"
 													class="form-control">
 											</div>
 											<div class="form-group" style="width: 300px;">
-												<label for="password">Password check <span
+												<label for="password">パスワードチェック<span
 													class="require">*</span></label> <input type="password"
 													id="pwdcheck" name="pwdcheck" class="form-control">
 											</div>
 										
 											<h3>개인 정보</h3>
 											<div class="form-group" style="width: 300px;">
-												<label for="firstname" for="name">이름 <span
+												<label for="firstname" for="name">名前<span
 													class="require">*</span></label> <input type="text" id="name"
 													name="name" class="form-control">
 											</div>
 											<div class="form-group" style="width: 300px;">
-												<label for="country">성별 <span class="require">*</span></label>
+												<label for="country">性別 <span class="require">*</span></label>
 												<select class="form-control input-sm" name="sex" id="sex">
 													
-													<option value="m">남자</option>
-													<option value="f">여자</option>
+													<option value="m">男</option>
+													<option value="f">女</option>
 
 												</select>
 											</div>
 											<div class="form-group" style="width: 300px;">
-												<label for="phone">전화번호<span class="require">*</span></label>
+												<label for="phone">電話番号<span class="require">*</span></label>
 												<input type="text" id="phone" id="phone" name="phone"
-													class="form-control" placeholder="전화번호를 입력해주세요.">
+													class="form-control" placeholder="電話番号を入力してください。">
 											</div>
 
 
@@ -93,7 +93,7 @@
 									
 
 									<div class="col-md-6 col-sm-6">
-										<h3>주소</h3>
+										<h3>住所</h3>
 
 										<div id="layer"
 											style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch; ">
@@ -101,33 +101,33 @@
 												src="//t1.daumcdn.net/postcode/resource/images/close.png"
 												id="btnCloseLayer"
 												style="cursor: pointer; position: absolute; right: -3px; top: -3px; z-index: 1"
-												onclick="closeDaumPostcode()" alt="닫기 버튼">
+												onclick="closeDaumPostcode()" alt="閉じる">
 										</div>
 										<div class="form-group" style="display: flex;">
 											<input type="text" name="zipcode" class="form-control"
-												id="sample2_postcode" placeholder="우편번호" readonly
+												id="sample2_postcode" placeholder="郵便番号" readonly
 												style="text-align: center; width: 150px; margin: 0px 5px 0px 0;">
 											<input type="button" onclick="sample2_execDaumPostcode()"
-												value="우편번호 찾기" class="form-control" style="width: 300px;"><br>
+												value="郵便番号を探す" class="form-control" style="width: 300px;"><br>
 										</div>
 										<div class="form-group" >
-											<label for="address1">주소</label> <input type="text"
-												id="sample2_address" name="address" placeholder="전체 주소" readonly
+											<label for="address1">住所</label> <input type="text"
+												id="sample2_address" name="address" placeholder="全体住所" readonly
 												class="form-control" style="width:300px"><br>
 										</div>
 										<div class="form-group" style="display: flex;">
 
 											<input type="text" id="sample2_guAddr" name="gu" readonly
-												placeholder="구" class="form-control"
+												placeholder="区" class="form-control"
 												style="width: 100px; text-align: center; margin: -20px 39px 0px 0;">
 
 
 											<input type="text" id="sample2_extraAddress" name="dong"
-												placeholder="동" class="form-control" readonly
+												placeholder="同" class="form-control" readonly
 												style="width: 100px; text-align: center; margin: -20px 39px 0px 0;">
 										</div>
 										<div class="form-group" style="width: 300px;">
-											<label for="address1">상세주소</label> <input type="text"
+											<label for="address1">詳細住所</label> <input type="text"
 												id="address1" name="o_addr" class="form-control">
 										</div>
 										<!--  <div class="form-group">
@@ -159,7 +159,7 @@
 										<!--                       data-target="#shipping-address-content"  -->
 										<!--                       id="button-payment-address" -->
 										<!--                        onclick="go_save()">회원가입하기</button> -->
-										<button type="submit" class="btn btn-primary  pull-right">회원가입</button>
+										<button type="submit" class="btn btn-primary  pull-right">会員登録</button>
 										<div class="checkbox pull-right">
 											<label> <input type="checkbox"> I have read
 												and agree to the <a title="Privacy Policy"
@@ -320,15 +320,15 @@
 	/* 내가 추가한 것 */
 	function go_save() {
 		if (document.formm.email.value == "") {
-			alert("이메일을 입력하세요.");
+			alert("メールアドレスを入力してください。");
 			document.formm.email.focus();
 			return false;
 		} else if (formm.passwd.value == "") {
-			alert("비밀번호를 입력하세요.");
+			alert("パスワードを入力してください。");
 			formm.passwd.foucs();
 			return false;
 		} else if (formm.passwd.value != formm.pwdcheck.value) {
-			alert("비밀번호가 일치 해야 합니다");
+			alert("パスワードが一致しません");
 			formm.passwd.focus();
 			return false;
 		} else {
@@ -350,18 +350,18 @@
 					console.log(cnt);
 					if (cnt == 0) {
 						if ($("#email").val() != "") {
-							alert("사용 가능한 이메일 입니다");
+							alert("使用可能なメールアドレスです。");
 						}
 					} else {
 						if ($("#email").val() != "") {
-							alert("사용 불가능한 이메일 입니다");
+							alert("使用不可能なメールアドレスです。");
 							$("#email").val("");
 							$("#email").focus();
 						}
 					}
 				},
 				error : function() {
-					alert("통신에러");
+					alert("通信エラー");
 				}
 			})
 		})
@@ -380,18 +380,18 @@
 					console.log(cnt);
 					if (cnt == 0) {
 						if ($("#nick").val() != "") {
-							alert("사용 가능한  닉네임 입니다");
+							alert("使用可能なニックネームです。");
 						}
 					} else {
 						if ($("#nick").val() != "") {
-							alert("사용 불가능한 닉네임 입니다");
+							alert("使用不可能なニックネームです。");
 							$("#nick").val("");
 							$("#nick").focus();
 						}
 					}
 				},
 				error : function() {
-					alert("통신에러");
+					alert("通信エラー");
 				}
 			})
 		})

@@ -47,7 +47,7 @@ pageEncoding="UTF-8"%>
 							<h1>${teacher.title }</h1>
 							<div class="price-availability-block clearfix">
 								<div class="price">
-									<strong>${teacher.nick }</strong>
+									<strong>${teacher.nick }</strong><span　>先生</span>
 								</div>
 							</div>
 							<div class="description">

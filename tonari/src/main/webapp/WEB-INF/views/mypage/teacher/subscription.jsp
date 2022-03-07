@@ -17,9 +17,11 @@
                    <!--  <th class="goods-page-image">사진</th> -->
                     <th class="goods-page-description">ニックネーム</th>
                     <!-- <th class="goods-page-ref-no">종목</th> -->
+
                     <th class="goods-page-quantity">期限</th>
                     <th class="goods-page-price">金額</th>
                     <th class="goods-page-total" colspan="2">金額</th>
+
                   </tr>
                   <tr>
                     <!-- <td class="goods-page-image">
@@ -86,6 +88,7 @@
       </div>
     </div>
 <script type="text/javascript">
+
 //내가 추가
 var amount = null;
 
@@ -108,7 +111,9 @@ $(document).ready(function() {
 		$(".total2").html(tot);
 		 $(".total3").html(tot + "円"); 
 		/* $(".total").html(tot + "("+amount+"일)"); */
+
 		$(".amount2").html(amount+ "(ヶ月)");
+
 	}
 	total(0);
 	$(".plus1").on("click",function() {

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" href="/resources/custom/css/board.css">
 
 <div class="main">
@@ -33,13 +32,13 @@
 					<div class="row">
 						<div class="col-md-6">
 							<h1>
-								<em>先生を</em>探してみよう！
+								<em>先生を</em>探してみよう
 							</h1>
 						</div>
 						<div class="col-md-6">
 							<form action="search" method="get">
 								<div class="input-group">
-									<input type="text" placeholder="先生を探してみよう！"
+									<input type="text" placeholder="先生を探してみよう"
 										class="form-control" name="keyword" id="keyword"> <span
 										class="input-group-btn">
 										<button class="btn btn-primary" type="submit">Search</button>
@@ -128,7 +127,7 @@
 							<c:forEach var="num" begin="${pageMaker.startPage}"
 								end="${pageMaker.endPage }">
 								<li><a
-									href="search?pageNum=${num }&&type=${type}&&keyword=${keyword}">${num }</a>
+									href="search?pageNum=${num }&&type=${cri.type}&&keyword=${cri.keyword}">${num }</a>
 								</li>
 							</c:forEach>
 							<c:if test="${pageMaker.next }">

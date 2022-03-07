@@ -2,22 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="com.tonari.mapper.MyPageMapper">
-	<select id ="tjoinpage" resultType="com.tonari.domain.MemberAuthVO">
+	<select id="tjoinpage"
+		resultType="com.tonari.domain.MemberAuthVO">
 		select * from member_auth_view where nick = #{nick}
 	</select>
-	<insert id = "teacherjoin" parameterType="com.tonari.domain.TeacherVO">
+	<insert id="teacherjoin"
+		parameterType="com.tonari.domain.TeacherVO">
 		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
 			select teacher_seq.nextval from dual
 		</selectKey>
-		insert into teacher(bno,member_bno,content,image,category,coment,dodate,age,title,tmoney)
+		insert into
+		teacher(bno,member_bno,content,image,category,coment,dodate,age,title,tmoney)
 		values
-		(#{bno},#{member_bno},#{content},#{image},#{category},#{coment},#{dodate},#{age},#{title}, #{tmoney})
+		(#{bno},#{member_bno},#{content},#{image},#{category},#{coment},#{dodate},#{age},#{title},
+		#{tmoney})
 	</insert>
-	<select id = "getTeacherVO" resultType="com.tonari.domain.Teacherinfo_viewVO">
+	<select id="getTeacherVO"
+		resultType="com.tonari.domain.Teacherinfo_viewVO">
 		select * from TEACHER_INFO_VIEW where member_bno = #{bno}
 	</select>
-	
-	<insert id = "payInsert" parameterType="com.tonari.domain.PayListVO">
+
+	<insert id="payInsert"
+		parameterType="com.tonari.domain.PayListVO">
 		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
 			select paylist_seq.nextval from dual
 		</selectKey>
@@ -25,6 +31,39 @@
 		values
 		(#{bno},#{member_bno},#{submonth},#{pay_check})
 	</insert>
+
+
+
+
+	<!-- 구독 결과 조회 -->
+	<select id="subResult" resultType="com.tonari.domain.PayListVO">
+		select * from paylist where
+		member_bno = #{bno}
+	</select>
+
+	<!-- 좋아요 리스트 -->
+	<select id="likeList" resultType="com.tonari.domain.Teacherinfo_viewVO">
+		SELECT nick, image, coment,	tmoney, category_name, content, dodate, teacher_bno
+		FROM teacher_info_view
+		WHERE teacher_bno 
+		in (select teacher_bno from likemark where member_bno = #{member_bno})
+	</select>
+
+	<!-- 학생이 좋아요한 선생님 결제 정보 저장 -->
+	<insert id="teacherlikePay">
+		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
+			select studentpaylist_seq.nextval from dual
+		</selectKey>
+		insert into studentpaylist(bno,teacher_bno,member_bno, pay, submonth)
+		values
+		(#{bno},#{teacher_bno},#{member_bno},#{pay} ,#{submonth})
+	</insert>
+	
+	<select id="payTeacherList" resultType="com.tonari.domain.Teacherinfo_viewVO">
+	select v.teacher_bno, v.image, v.nick, v.coment, v.category_name, v.dodate, l.pay, l.write_date, l.submonth
+	from teacher_info_view v, studentpaylist l
+	where v.teacher_bno = l.teacher_bno and l.member_bno = #{bno}
+	</select>
 	
 	<update id="teacherUpdate" parameterType="com.tonari.domain.TeacherVO">
 		update teacher set 
@@ -35,4 +74,12 @@
 		</if>
 		where bno = #{bno}
 	</update>
+	
+	<!-- 선생이 나의 학생 보기 -->
+	<select id="mystudentList" resultType="com.tonari.domain.StudentVO">
+	select v.bno, v.name, v.nick, l.write_date, l.submonth
+	from member v, studentpaylist l
+	where v.bno = l.member_bno and l.teacher_bno = #{bno}
+	</select>
+	
 </mapper>

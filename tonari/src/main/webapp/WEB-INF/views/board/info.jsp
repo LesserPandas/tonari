@@ -68,7 +68,7 @@ pageEncoding="UTF-8"%>
 								<strong style="font-size:18px;">${teacher.date }</strong>
 							</div>
 							<div class="pull-right">
-								<button class="button largeButton">1:1 チャット</button>
+								<button class="button largeButton" onclick="joinRoom(${teacher.teacher_bno},${nowUser.bno })">1:1 チャット</button>
 								<c:choose>
 									<c:when test="${like.teacher_bno==teacher.teacher_bno }">
 										<button class="pull-right squareButton likeButton likeButtonActive" 

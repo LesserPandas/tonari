@@ -303,17 +303,17 @@ function getMessageList(room, nick){
 }
 
 
-function joinRoom(bno){
+function joinRoom(teacherBno, myBno){
 	$.ajax({
 		type : 'get',
 		url : "/chat/joinroom",
 		data : {
-			bno: bno
+			bno: teacherBno
 		},
 		dataType : 'json',
 		success : function(data) {
 			var room = JSON.stringify(data);
-			stompClient.send('/chat/enter.message.'+room+'.'+bno +'.'+ ${nowUser.bno}, {}, JSON.stringify({content:'temp'}));
+			stompClient.send('/chat/enter.message.'+room+'.'+ teacherBno +'.'+ myBno, {}, JSON.stringify({content:'temp'}));
 		},
 		error : function() {
 			alert("통신에러");

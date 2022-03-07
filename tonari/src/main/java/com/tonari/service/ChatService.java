@@ -24,5 +24,7 @@ public interface ChatService {
 
 	public void deleteRoom(int me, int room);
 
+	public String getImage(int member_bno);
+
 	
 }

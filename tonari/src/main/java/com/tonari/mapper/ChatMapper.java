@@ -29,4 +29,6 @@ public interface ChatMapper {
 
 	void deleteRoom(@Param("sender") int sender, @Param("room") int room);
 
+	String getImage(int member_bno);
+
 }

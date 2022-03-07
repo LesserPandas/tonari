@@ -12,4 +12,7 @@ public class MyJoinRoomListVO {
 	private String content;
 	private Date write_date;
 	private int noreadcount;
+	
+	private String dateString;
+	private String image;
 }

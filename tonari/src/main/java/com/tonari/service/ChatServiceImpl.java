@@ -86,4 +86,9 @@ public class ChatServiceImpl implements ChatService {
 		mapper.deleteRoom(me, room);
 		
 	}
+	
+	@Override
+	public String getImage(int member_bno) {
+		return mapper.getImage(member_bno);
+	}
 }

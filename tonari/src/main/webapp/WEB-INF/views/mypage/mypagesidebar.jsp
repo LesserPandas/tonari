@@ -3,6 +3,7 @@
 <div class="sidebar col-md-3 col-sm-5">
 	<ul class="list-group margin-bottom-25 sidebar-menu">
 		<li class="list-group-item clearfix">
+
 			<h4 style="padding-top: 10px;">MyPage</h4>
 		</li>
 		<li class="list-group-item clearfix">
@@ -30,6 +31,8 @@
 			</li>
 			<li class="list-group-item clearfix">
 				<i class="fa fa-angle-right"></i><a href="/mypage/subResult">구독결과 화면</a>
+
+			
 			</li>
 		
 	</ul>

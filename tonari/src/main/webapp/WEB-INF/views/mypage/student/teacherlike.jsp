@@ -23,7 +23,7 @@ input[type="checkbox"]:checked {
 		<div class="row margin-bottom-40">
 			<!-- BEGIN CONTENT -->
 			<div class="col-md-12 col-sm-12">
-				<h1>좋아요한 선생 목록</h1>
+				<h1>お気に入りの先生リスト</h1>
 				<form class="" name="" method="post"
 					action="javascript:requestPay()" onSubmit="return go_save()">
 					<div class="goods-page">
@@ -33,17 +33,18 @@ input[type="checkbox"]:checked {
 								<table summary="Shopping cart">
 
 									<tr>
-										<th class="goods-page-image goods-page1">선택</th>
-										<th class="goods-page-image goods-page1">사진</th>
-										<th class="goods-page-description goods-page1">설명</th>
-										<th class="goods-page-ref-no goods-page1">과목</th>
-										<th class="goods-page-price goods-page1">가능 요일</th>
-										<th class="goods-page-price goods-page1">1회당 수강 금액</th>
-										<th class="goods-page-quantity goods-page1">기간(주)</th>
-										<th class="goods-page-total goods-page1" colspan="2">총 금액
+										<th class="goods-page-image goods-page1">選択</th>
+										<th class="goods-page-image goods-page1">写真</th>
+										<th class="goods-page-description goods-page1">説明</th>
+										<th class="goods-page-ref-no goods-page1">科目</th>
+										<th class="goods-page-price goods-page1">可能曜日</th>
+										<th class="goods-page-price goods-page1">1回あたり講義金額</th>
+										<th class="goods-page-quantity goods-page1">期限（週）</th>
+										<th class="goods-page-total goods-page1" colspan="2">総金額
 										</th>
 										<th class="goods-page-total goods-page1" colspan="2"></th>
 									</tr>
+
 									
 									<c:set var="idx" value="0" />
 									<c:forEach items="${like}" var="like">
@@ -60,8 +61,7 @@ input[type="checkbox"]:checked {
 												<h3>
 													<a href="javascript:;" id="nick" name="nick">${like.nick }</a>
 												</h3> <em><a
-													href="/board/info?teacher_bno=${like.teacher_bno }">선생님
-														이력</a></em>
+													href="/board/info?teacher_bno=${like.teacher_bno }">先生履歴</a></em>
 
 											</td>
 											<td class="goods-page-ref-no" id="category_name" style="text-align: center;   padding-top: 40px;    margin: 0 auto;"
@@ -110,7 +110,9 @@ input[type="checkbox"]:checked {
 
 							<div class="shopping-total">
 								<ul>
-									<li style="padding: 15px 0 15px 0;"><em>선택한 선생님 수</em> <strong class="person">0<span>명</span></strong>
+
+									<li style="padding: 15px 0 15px 0;"><em>選んだ先生</em> <strong class="person">0<span>人</span></strong>
+
 									</li>
 
 									<li class="shopping-total-price" style="padding: 15px 0 15px 0;"><em style=" font-size: 30px;">Total</em> <strong style=" font-size: 30px;"
@@ -118,16 +120,17 @@ input[type="checkbox"]:checked {
 								</ul>
 							</div>
 						</div>
+
 						<button class="btn btn-default" type="submit">
-							다른 선생찾으러가기 <i class="fa fa-shopping-cart"></i>
+						  他の先生を探す <i class="fa fa-shopping-cart"></i>
 						</button>
 						<button class="btn btn-primary" type="submit" style=" font-size: 20px;"
 							onclick="requestPay();">
-							결제 <i class="fa fa-check"></i>
+							支払い<i class="fa fa-check"></i>
 						</button>
 		
 					</div>
-					<!--  -->
+
 				</form>
 			</div>
 			<!-- END CONTENT -->
@@ -184,7 +187,7 @@ input[type="checkbox"]:checked {
 		$(".total_" + num).val(tot);
 
 		/* $(".total").html(tot + "("+amount+"일)"); */
-		$(".amount").html(amount + "개월");
+		$(".amount").html(amount + "ヶ月");
 
 		$(".total12").attr("value", tot);
 		
@@ -212,6 +215,7 @@ input[type="checkbox"]:checked {
 		$('.person').html(totalPerson + "名");
 		
 	}
+
 	
 	function addTotalbyCheckedList(num, subPrice){
 		if($('#tcheck_'+num).is(':checked')){
@@ -231,16 +235,18 @@ input[type="checkbox"]:checked {
 		IMP.init('imp79519178'); //가맹점 식별 코드 : https://docs.iamport.kr/prepare/index?lang=ko#check-accountinfo : a07308@naver.com / Ss3693693!
 
 		IMP.request_pay({
-			pg : 'inicis', // version 1.1.0부터 지원.
-			pay_method : 'card',
-			merchant_uid : 'merchant_' + new Date().getTime(),
-			name : '주문명:결제테스트',
-			amount : totalPrice, //판매 가격
-			buyer_email : 'iamport@siot.do',
-			buyer_name : '구매자이름',
-			buyer_tel : '010-4030-8107',
-			buyer_addr : '서울특별시 강남구 삼성동',
-			buyer_postcode : '123-456'
+      
+      pg : 'inicis', // version 1.1.0부터 지원.
+      pay_method : 'card',
+      merchant_uid : 'merchant_' + new Date().getTime(),
+      name : '注文名:支払いテスト',
+      amount : totalPrice, //판매 가격
+      buyer_email : 'iamport@siot.do',
+      buyer_name : '購入者名前',
+      buyer_tel : '010-4030-8107',
+      buyer_addr : 'ソウル特別市江南区三成洞',
+      buyer_postcode : '123-456'
+
 		}, function(rsp) {
 			if (rsp.success) {
 				
@@ -248,7 +254,7 @@ input[type="checkbox"]:checked {
 
 				location.href="/mypage/payteacherList";
 			} else {
-				var msg = '결제에 실패하였습니다. 다시 결제를 진행해주세요';
+				var msg = '支払いに失敗しました。もう一度お支払いをお願い致します。';
 				alert(msg);
 				location.href = "/mypage/like";
 				return;
@@ -285,10 +291,10 @@ input[type="checkbox"]:checked {
 				dataType : 'json',
 				success : function(data) {
 					var num = arrayList.length;
-					alert(num+"명의 선생님이 결제되었습니다.");
+					alert(num+"人の先生に受講申請しました。");
 				},
 				error : function() {
-					console.log("통신에러");
+					console.log("通信エラー");
 				}
 			})
 	}

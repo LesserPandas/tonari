@@ -304,7 +304,7 @@
 		<div class="row">
 			<div class="col-md-12 search-mg-0 bg-success">
 				<div style="padding: 10px; width: 50%; float: left; padding: 30px">
-					<h2>공지사항</h2>
+					<h2>お知らせ</h2>
 					<table class="table">
 						<colgroup>
 							<col style="width:15%;">
@@ -327,7 +327,7 @@
 					</table>
 				</div>
 				<div style="padding: 10px; width: 50%; float: left; padding: 30px">
-					<h2>이벤트</h2>
+					<h2>イベント</h2>
 					<table class="table">
 						<colgroup>
 							<col style="width:15%;">

@@ -42,7 +42,7 @@
 				<div class="col-md-3 col-sm-6 pre-footer-col">
 					<h2>Our Contacts</h2>
 					<address class="margin-bottom-20">
-						대전광역시 중구 계룡로 825 (용두동, 희영빌딩)
+						825, Gyeryong-ro, Jung-gu, Daejeon, Republic of Korea
 						<br> Email: <a
 							href="mailto:less3rpanda@gmail.com">less3rpanda@gmail.com</a><br>
 						Phone: <a href="skype:metronic"> 042-242-4412</a>

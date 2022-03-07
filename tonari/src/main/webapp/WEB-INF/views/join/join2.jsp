@@ -42,7 +42,7 @@
 										<div class="col-md-6 col-sm-6">
 										
 										
-										<h3>계정 정보</h3>
+										<h3>アカウント情報</h3>
 											<div class="form-group" style="width: 300px;">
 												<label for="nick">ニックネーム</label> <input type="text" id="nick"
 													name="nick" class="form-control" placeholder="英語、数字、特殊文字で作成してください。!">
@@ -65,7 +65,7 @@
 													id="pwdcheck" name="pwdcheck" class="form-control">
 											</div>
 										
-											<h3>개인 정보</h3>
+											<h3>個人情報</h3>
 											<div class="form-group" style="width: 300px;">
 												<label for="firstname" for="name">名前<span
 													class="require">*</span></label> <input type="text" id="name"

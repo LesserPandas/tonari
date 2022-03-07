@@ -8,7 +8,7 @@
 </head>
 <body>
 	<script>
-		alert("이미 선생님으로 등록이 되어 있습니다.");
+		alert("もう先生に登録されています。");
 		location.href="/mypage";
 	
 	</script>

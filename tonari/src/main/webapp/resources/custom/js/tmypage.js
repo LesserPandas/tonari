@@ -62,17 +62,17 @@ function chkjoin() {
 		return false;
 	}
 	if(title=="") {
-		alert("제목을 입력해주세요");
+		alert("タイトルを書いてください");
 		$("#title").focus();
 		return false;
 	}
 	if(content == "") {
-		alert("자기소개글을 적어주세요");
+		alert("自己紹介文を書いてください");
 		$("#content").focus();
 		return false;
 	}
 	if(coment == "") {
-		alert("한마디 글을 적어주세요");
+		alert("コメントを書いてください");
 		$("#coment").focus();
 		return false;
 	}
@@ -89,7 +89,7 @@ function date() {
 	});
 	
 	if(dodate == 0) {
-		alert("요일을 선택해주세요");
+		alert("日にちを選んでください");
 		return false;
 	}else {
 		$("#dodate").val(dodate);

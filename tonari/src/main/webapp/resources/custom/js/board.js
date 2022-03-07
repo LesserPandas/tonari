@@ -36,7 +36,7 @@ function writeReview() {
 
 function checkcomment(nocoment,content) {
 	if(nocoment == "" && content == "") {
-		alert("리뷰란이 공란입니다.");
+		alert("レビューを書いてください");
 		return false;
 	}
 	if(nocoment != "" && content != "") {
@@ -53,7 +53,7 @@ function checkcomment(nocoment,content) {
 
 function checkscore(score) {
 	if(score==undefined) {
-		alert("점수를 선택해주세요");
+		alert("点数を選択してください");
 		return false;
 	}
 	return true;

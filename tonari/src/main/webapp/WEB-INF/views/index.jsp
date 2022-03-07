@@ -9,20 +9,20 @@
 		<div class="container">
 			<div class="container-inner col-md-6 col-md-offset-3">
 				<h1>
-					내 주변 <span class="title-appeal">선생님</span> 찾기
+					となりの<span class="title-appeal">せんせい</span> さがし
 				</h1>
-				<em>내 주변 숨어있는 선생님을 찾아보세요</em>
+				<em>自分の周りに隠れている先生を探す</em>
 			</div>
 			<div class="search-box col-md-12"
 				style="padding-left: 80px; margin: 80px 0 0">
 				<form id="search" method="get" action="board/mainsearch">
 					<div class="col-md-3">
 						<div class="input-group">
-							<span class="input-group-addon btn-green">과목</span> <select
+							<span class="input-group-addon btn-green">科目</span> <select
 								class="form-control border-radius option-select ht-45" id="sel1"
 								name="category_bno">
-								<option value=>전체선택</option>
-								<option value="1">일본어</option>
+								<option value=>全体</option>
+								<option value="1">日本語</option>
 								<option value="2">Java</option>
 								<option value="3">Python</option>
 								<option value="4">Javascript</option>
@@ -34,10 +34,10 @@
 					</div>
 					<div class="col-md-2">
 						<div class="input-group">
-							<span class="input-group-addon btn-green">지역</span> <select
+							<span class="input-group-addon btn-green">地域</span> <select
 								class="form-control border-radius option-select ht-45" id="sel1"
 								name="dong">
-								<option value=>전체선택</option>
+								<option value=>全体</option>
 								<option>용두동</option>
 								<option>선화동</option>
 								<option>갈마동</option>
@@ -47,12 +47,11 @@
 					</div>
 					<div class="col-md-5 search-mg-15">
 						<div class="input-group">
-							<!-- <span class="input-group-addon btn-green">검색어</span> -->
 							<input type="text" class="form-control ht-45" name="keyword"
-								placeholder="입력" style="width: 435px; display: inline-block">
+								placeholder="入力" style="width: 435px; display: inline-block">
 							<span class="input-group-btn">
 								<button class="btn btn-primary btn-green ht-45" type="submit"
-									style="width: 100px">검색</button>
+									style="width: 100px">検索</button>
 							</span>
 						</div>
 					</div>
@@ -64,13 +63,13 @@
 		<div class="container" style="margin-top: 10px">
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="/board/search?type=category&&keyword=1" class="category-link underline green">일본어</a></li>
+					<li><a href="/board/search?type=category&&keyword=1" class="category-link underline green">日本語</a></li>
 					<li><a href="/board/search?type=category&&keyword=2" class="category-link underline green">Java</a></li>
 					<li><a href="/board/search?type=category&&keyword=3" class="category-link underline green">Python</a></li>
 					<li><a href="/board/search?type=category&&keyword=4" class="category-link underline green">Javascript</a></li>
 					<li><a href="/board/search?type=category&&keyword=5" class="category-link underline green">Spring</a></li>
 					<li><a href="/board/search?type=category&&keyword=6" class="category-link underline green">HTML5+CSS3</a></li>
-					<li><a href="/board/search?type=category&&keyword=7" class="category-link underline green">DB</a></li>
+					<li><a href="/board/search?type=category&&keyword=7" class="category-link underline green">Database</a></li>
 				</ul>
 			</div>
 		</div>
@@ -84,16 +83,16 @@
                <!-- Nav tabs -->
                <ul class="nav nav-tabs" role="tablist">
                   <li role="presentation" class="bg-white" >
-                     <a href="#recommend" aria-controls="recommend" role="tab" data-toggle="tab" id="recommendtab">추천</a>
+                     <a href="#recommend" aria-controls="recommend" role="tab" data-toggle="tab" id="recommendtab">推薦</a>
                   </li>
                   <li role="presentation" class="bg-white " >
-                     <a href="#hot" aria-controls="hot" role="tab" data-toggle="tab" id="hottab">인기</a>
+                     <a href="#hot" aria-controls="hot" role="tab" data-toggle="tab" id="hottab">人気</a>
                   </li>
                   <li role="presentation">
-                     <a href="#new" aria-controls="new" role="tab" data-toggle="tab">신규</a>
+                     <a href="#new" aria-controls="new" role="tab" data-toggle="tab">新規</a>
                   </li>
                   <li role="presentation">
-                     <a href="#location" aria-controls="location" role="tab" data-toggle="tab">내주변</a>
+                     <a href="#location" aria-controls="location" role="tab" data-toggle="tab">私の周り</a>
                   </li>
                </ul>
                <!-- Tab panes -->
@@ -226,7 +225,7 @@
                   <div role="tabpanel" class="tab-pane active" id="location">
                      <div class="col-md-12 sale-product">
                         <c:if test="${empty locationlist}">
-                           <h2 style="text-align: center;">로그인을 안했거나 주소지 설정을 안했어요!</h2>
+                           <h2 style="text-align: center;">ログインが必要にされるサービスです</h2>
                         </c:if>
                         <div class="owl-carousel owl-carousel5">
                            <c:forEach items="${locationlist}" var="locationlist">
@@ -305,7 +304,7 @@
 		<div class="row">
 			<div class="col-md-12 search-mg-0 bg-success">
 				<div style="padding: 10px; width: 50%; float: left; padding: 30px">
-					<h2>공지사항</h2>
+					<h2>お知らせ</h2>
 					<table class="table">
 						<colgroup>
 							<col style="width:15%;">
@@ -328,7 +327,7 @@
 					</table>
 				</div>
 				<div style="padding: 10px; width: 50%; float: left; padding: 30px">
-					<h2>이벤트</h2>
+					<h2>イベント</h2>
 					<table class="table">
 						<colgroup>
 							<col style="width:15%;">
@@ -350,32 +349,8 @@
 						</tbody>
 					</table>
 				</div>
-			</div> --%>
-			<!-- <div style="width: 50%; float: left; padding: 30px">
-						<h2>FAQ</h2>
-						<div class="input-group col-md-11" style="margin:15px 0">
-							<input type="text" class="form-control" placeholder="질문 검색하기"><span
-								class="input-group-btn"><button type="button"
-									class="btn btn-primary">검색</button></span>
-						</div>
-						<table class="table">
-							<tr>
-								<td>1</td>
-								<td>질문 예시1</td>
-								<td>2022/02/13</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>질문 예시2</td>
-								<td>2022/02/13</td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td>질문 예시3</td>
-								<td>2022/02/13</td>
-							</tr>
-						</table>
-					</div>-->
+			</div>
+
 		</div>
 	</div>
 <%@ include file="footer.jsp"%>

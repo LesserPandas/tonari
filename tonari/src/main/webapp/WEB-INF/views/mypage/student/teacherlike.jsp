@@ -48,8 +48,9 @@ input[type="checkbox"]:checked {
 									
 									<c:set var="idx" value="0" />
 									<c:forEach items="${like}" var="like">
-										<tr id="row${idx}" name="${like.teacher_bno }">
-											<td><input type="checkbox" onclick="totalcheck(${like.teacher_bno })" style="zoom: 2" name="tcheck"
+										<tr id="row${idx}" name="${like.teacher_bno }" style="padding: 10px 10px 10px 10px;   text-align: center;">
+											<td style="padding-left: 1%; padding-top: 3%;  text-align: center;">
+											<input type="checkbox" onclick="totalcheck(${like.teacher_bno })" style="zoom: 2 " name="tcheck"
 												id="tcheck_${like.teacher_bno }"></td>
 											<td class="goods-page-image "><a href="javascript:;"><img
 													src="${like.image }" alt="Berry Lace Dress"></a></td>
@@ -63,21 +64,21 @@ input[type="checkbox"]:checked {
 													href="/board/info?teacher_bno=${like.teacher_bno }">先生履歴</a></em>
 
 											</td>
-											<td class="goods-page-ref-no" id="category_name"
+											<td class="goods-page-ref-no" id="category_name" style="text-align: center;   padding-top: 40px;    margin: 0 auto;"
 												name="category_name"><strong>
 													${like.category_name } </strong></td>
 
-											<td class="goods-page-ref-no_${like.teacher_bno }"
-												name="${like.dodate}"><strong>${like.date }</strong></td>
+											<td class="goods-page-ref-no_${like.teacher_bno }" style="text-align: center;   padding-top: 40px;    margin: 0 auto;"
+												name="${like.dodate}"><strong style="font-size: 14px;">${like.date }</strong></td>
 
-											<td id="money_${like.teacher_bno }" class="goods-page-price"
+											<td id="money_${like.teacher_bno }" class="goods-page-price" style="text-align: center;   padding-top: 40px;    margin: 0 auto;"
 												name="${like.tmoney }"><strong> ${like.tmoney }<span>円</span>
 											</strong></td>
 
-											<td class="goods-page-quantity">
+											<td class="goods-page-quantity"  style="   text-align: center;    margin: 0px auto;    padding-left: 2%;">
 
 												<div class="product-quantity">
-													<input type="text" name="quantity" value="1"
+													<input type="text" name="quantity" value="1" 
 														class="quantity_${like.teacher_bno }"
 														style="border: none; background: #edeff1 !important; font: 300 23px 'Open Sans', sans-serif; color: #647484; height: 38px; width: 50px; text-align: center; padding: 5px;">
 
@@ -92,15 +93,14 @@ input[type="checkbox"]:checked {
 
 											</td>
 
-											<td class="goods-page-total" style="text-align: right;">
+											<td class="goods-page-total" style="text-align: right; text-align: cente; padding-top: 40px;    margin: 0 auto;">
 												<strong class="total_${like.teacher_bno }"  value="${like.tmoney * like.dodate }">${like.tmoney * like.dodate }<span>
 														円</span></strong>
 
 
 											</td>
 
-											<td class="del-goods-col"><a class="del-goods"
-												href="javascript:;"></a></td>
+											
 										</tr>
 										<c:set var="idx" value="${idx+1 }" />
 									</c:forEach>
@@ -110,11 +110,13 @@ input[type="checkbox"]:checked {
 
 							<div class="shopping-total">
 								<ul>
-									<li><em>選んだ先生</em> <strong class="person">0<span>人</span></strong>
+
+									<li style="padding: 15px 0 15px 0;"><em>選んだ先生</em> <strong class="person">0<span>人</span></strong>
+
 									</li>
 
-									<li class="shopping-total-price"><em>Total</em> <strong
-										class="price"><span id="total">0 円</span></strong></li>
+									<li class="shopping-total-price" style="padding: 15px 0 15px 0;"><em style=" font-size: 30px;">Total</em> <strong style=" font-size: 30px;"
+										class="price"><span id="total" style=" font-size: 30px;">0円 </span></strong></li>
 								</ul>
 							</div>
 						</div>
@@ -122,7 +124,7 @@ input[type="checkbox"]:checked {
 						<button class="btn btn-default" type="submit">
 						  他の先生を探す <i class="fa fa-shopping-cart"></i>
 						</button>
-						<button class="btn btn-primary" type="submit"
+						<button class="btn btn-primary" type="submit" style=" font-size: 20px;"
 							onclick="requestPay();">
 							支払い<i class="fa fa-check"></i>
 						</button>

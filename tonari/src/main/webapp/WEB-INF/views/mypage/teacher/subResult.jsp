@@ -28,6 +28,7 @@
                     <td class="goods-page-description">
 
                       <h3>${nowUser.nick }</h3>
+
                       <p><strong>一言</strong>${tvo.coment }</p>
                       <a href="/mypage/teacherUpdate">先生情報</a>
 
@@ -44,7 +45,7 @@
 
                     </td>
                     <td class="goods-page-total">
-                      <strong class="amount"><span>円</span></strong>
+                      <strong class="amount"><span>${subResult.submonth*1000}円</span></strong>
                       
                       
                     </td>
@@ -69,14 +70,7 @@
       </div>
     </div>
 <script>
-/* var submonth = null;
-var submonth2 = null;
-function payMonth(){
-	submonth = ${subResult.submonth};
-	submonth2 = parseInt(submonth);
-	var payMonth = submonth2*1000;
-	$(".payMonth").html(payMonth);
-}; */
+
 
 var month =${subResult.submonth};
 var amount= null;

@@ -8,7 +8,9 @@
         <div class="row margin-bottom-40">
           <!-- BEGIN CONTENT -->
           <div class="col-md-12 col-sm-12">
-            <h1>先生を要請する。</h1>
+
+            <h1 style="padding: 10px 0 10px 0;">先生を要請する。</h1>
+
             <div class="goods-page">
               <div class="goods-data clearfix">
                 <div class="table-wrapper-responsive">
@@ -27,7 +29,7 @@
                     <!-- <td class="goods-page-image">
                       <a href="javascript:;"><img src="assets/pages/img/products/model3.jpg" alt="Berry Lace Dress"></a>
                     </td> -->
-                    <td class="goods-page-description">
+                    <td class="goods-page-description" style="padding-top: 40px;">
                       <h3>${nowUser.nick}</h3>
                       <!-- <p><strong>한마디</strong> 개발자가 진짜 나랑 맞는 걸까?</p>
                       <a href="javascript:;">선생 정보</a> -->
@@ -49,15 +51,13 @@
 									
 						
                     </td>
-                    <td class="goods-page-price">
+                    <td class="goods-page-price" style="padding-top: 3%;">
                       <strong>1000<span>円</span></strong>
                     </td>
-                    <td class="goods-page-total">
+                    <td class="goods-page-total" style="padding-top: 3%;">
                       <strong class="total3" id="totalMonth"></strong>
                     </td>
-                    <td class="del-goods-col">
-                      <a class="del-goods" href="javascript:;">&nbsp;</a>
-                    </td>
+                    
                   </tr>
                  
                 
@@ -67,13 +67,13 @@
                 <div class="shopping-total">
                   <ul>
                     
-                    <li>
-                      <em>기간</em>
+                    <li style="padding: 15px 0 15px 0;">
+                      <em >기간</em>
                       <strong class="amount2"></strong>
                     </li>
-                    <li class="shopping-total-price">
-                      <em>Total</em>
-                      <strong class="total3"></strong>
+                    <li class="shopping-total-price" style="padding: 15px 0 15px 0;">
+                      <em  style=" font-size: 30px;">Total</em>
+                      <strong class="total3" style=" font-size: 30px;"></strong>
                     </li>
                   </ul>
                 </div>

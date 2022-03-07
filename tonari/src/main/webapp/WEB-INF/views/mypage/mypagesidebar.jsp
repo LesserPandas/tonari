@@ -3,36 +3,37 @@
 <div class="sidebar col-md-3 col-sm-5">
 	<ul class="list-group margin-bottom-25 sidebar-menu">
 		<li class="list-group-item clearfix">
-			<h4>マイページ</h4>
+
+			<h4 style="padding-top: 10px;">MyPage</h4>
 		</li>
 		<li class="list-group-item clearfix">
-			<i class="fa fa-angle-right"></i><a href="studentInfoModify">個人情報修正</a>
+			<i class="fa fa-angle-right"></i><a href="/mypage/studentinfo">개인정보 수정</a>
 		</li>
 		<li class="list-group-item clearfix">
-			<i class="fa fa-angle-right"></i><a href="teacherlike.jsp">お気に入りの先生閲覧</a>
+			<i class="fa fa-angle-right"></i><a href="/mypage/like">좋아요 한 선생님 보기</a>
 		</li>
 		<li class="list-group-item clearfix">
-			<i class="fa fa-angle-right"></i><a href="teacherlist.jsp">自分の先生閲覧【お払い済みの人のみ】</a>
+			<i class="fa fa-angle-right"></i><a href="/mypage/payteacherList">나의 선생님 보기</a>
 		</li>
 		<li class="list-group-item clearfix">
-			<i class="fa fa-angle-right"></i><a href="/mypage/teacherJoin">先生に登録</a>
+			<i class="fa fa-angle-right"></i><a href="/mypage/subscription">선생님으로 등록</a>
 		</li>
-		<li class="list-group-item clearfix">
-			<i class="fa fa-angle-right"></i><a href="subscription.jsp">(先生登録以降確認し、すぐにつながる）購読の画面</a>
-		</li>
-		<c:if test ="${1==1}"> <!-- 선생님일때 확인 -->  
+		
+		<!-- 선생님일때 확인 -->  
 			<li class="list-group-item clearfix">
-				<h4>先生メニュー</h4>
+				<h4 style="padding-top: 10px;">Teacher Menu</h4>
 			</li>
 			<li class="list-group-item clearfix">
-				<i class="fa fa-angle-right"></i><a href="/mypage/teacherModify">先生情報修正</a>
+				<i class="fa fa-angle-right"></i><a href="/mypage/teacherUpdate">선생 정보 수정</a>
 			</li>
 			<li class="list-group-item clearfix">
-				<i class="fa fa-angle-right"></i><a href="studentList.jsp">私の学生</a>
+				<i class="fa fa-angle-right"></i><a href="/mypage/studentList">나의 학생</a>
 			</li>
 			<li class="list-group-item clearfix">
-				<i class="fa fa-angle-right"></i><a href="subResult.jsp">購読結果画面</a>
+				<i class="fa fa-angle-right"></i><a href="/mypage/subResult">구독결과 화면</a>
+
+			
 			</li>
-		</c:if>
+		
 	</ul>
 </div>

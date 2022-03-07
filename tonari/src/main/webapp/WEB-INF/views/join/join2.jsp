@@ -193,6 +193,37 @@
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+
+function emailSend(){
+	let clientEmail = document.getElementById(elementld:'emailText').value;
+	let emailYN = isEamil(clientEmail); 
+	
+	if(emailYN == true){
+		
+		$.ajax({
+			type:"POST",
+			url:"api/member/email",
+			data:{userEmail:clientEmail},
+			success:function(data){
+				
+			},error :function(e){
+				alert("오류입니다. 잠시 후 다시 시도해주시길 바랍니다.");
+			}
+		});
+	}else{
+		alert('올바른 이메일 형식을 입력해주세요');
+	}
+	
+}
+
+function isEmail(asValue){
+	var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+	return regExp.test(asValue);
+}
+
+
+
+
 	// 우편번호 찾기 화면을 넣을 element
 	var element_layer = document.getElementById('layer');
 

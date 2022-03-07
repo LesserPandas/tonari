@@ -24,7 +24,7 @@
         <div class="row margin-bottom-40">
           <!-- BEGIN CONTENT -->
           <div class="col-md-12 col-sm-12">
-            <h1>좋아요한 선생 목록</h1>
+            <h1>お気に入りの先生リスト</h1>
             <div class="goods-page">
               <div class="goods-data clearfix">
                 <div class="table-wrapper-responsive">
@@ -32,13 +32,13 @@
                 <table summary="Shopping cart">
                 	
                   <tr>
-                  	<th class="goods-page-image goods-page1">선택</th>
-                    <th class="goods-page-image goods-page1">사진</th>
-                    <th class="goods-page-description goods-page1">설명</th>
-                    <th class="goods-page-ref-no goods-page1">과목</th>
-                    <th class="goods-page-quantity goods-page1">기간(일)</th>
-                    <th class="goods-page-price goods-page1">가격</th>
-                    <th class="goods-page-total goods-page1" colspan="2">총 가격  </th>
+                  	<th class="goods-page-image goods-page1">選択</th>
+                    <th class="goods-page-image goods-page1">写真</th>
+                    <th class="goods-page-description goods-page1">説明</th>
+                    <th class="goods-page-ref-no goods-page1">科目</th>
+                    <th class="goods-page-quantity goods-page1">期限(日にち)</th>
+                    <th class="goods-page-price goods-page1">金額</th>
+                    <th class="goods-page-total goods-page1" colspan="2">総合金額</th>
                      <th class="goods-page-total goods-page1" colspan="2"></th>
                   </tr>
                   <tr>
@@ -50,7 +50,7 @@
                        <p><strong></strong></p>
                       <h3><a href="javascript:;">${teacher.nick }</a></h3> 
                       <p><strong>${teacher.name }</strong> ${teacher.coment }</p>
-                      <em><a href="/board/info?board_bno=4">선생님 이력</a></em>
+                      <em><a href="/board/info?board_bno=4">先生履歴</a></em>
                      
                     </td>
                     <td class="goods-page-ref-no">
@@ -88,8 +88,8 @@
                 <div class="shopping-total">
                   <ul>
                     <li>
-                      <em>선택한 선생님 수</em>
-                      <strong class="price">3<span>명</span></strong>
+                      <em>選んだ先生数</em>
+                      <strong class="price">3<span>人</span></strong>
                     </li>
                     
                     <li class="shopping-total-price">
@@ -99,8 +99,8 @@
                   </ul>
                 </div>
               </div>
-              <button class="btn btn-default" type="submit" >다른 선생찾으러가기 <i class="fa fa-shopping-cart"></i></button>
-              <button class="btn btn-primary" type="submit" onclick="requestPay();">결제 <i class="fa fa-check"></i></button>
+              <button class="btn btn-default" type="submit" >他の先生を探す <i class="fa fa-shopping-cart"></i></button>
+              <button class="btn btn-primary" type="submit" onclick="requestPay();">お払い <i class="fa fa-check"></i></button>
             </div>
           </div>
           <!-- END CONTENT -->
@@ -122,7 +122,7 @@ $(document).ready(function() {
 		var amount = amount + n;
 		if(amount < 1) {
 			amount=1;
-			alert("1일 이상부터 수강이 가능합니다.!");
+			alert("一日以上から受講ができます。");
 		}
 		var tot = 1818 * amount;
 		$(".quantity").attr("value",amount);
@@ -150,22 +150,22 @@ $(document).ready(function() {
     	    pg : 'inicis', // version 1.1.0부터 지원.
     	    pay_method : 'card',
     	    merchant_uid : 'merchant_' + new Date().getTime(),
-    	    name : '주문명:결제테스트',
+    	    name : '注文名:支払いテスト',
     	    amount : 1, //판매 가격
     	    buyer_email : 'iamport@siot.do',
-    	    buyer_name : '구매자이름',
+    	    buyer_name : '購入者名前',
     	    buyer_tel : '010-4030-8107',
-    	    buyer_addr : '서울특별시 강남구 삼성동',
+    	    buyer_addr : 'ソウル特別市江南区三成洞',
     	    buyer_postcode : '123-456'
     	}, function(rsp) {
     	    if ( rsp.success ) {
-    	        var msg = '결제가 완료되었습니다.';
-    	        msg += '고유ID : ' + rsp.imp_uid;
-    	        msg += '상점 거래ID : ' + rsp.merchant_uid;
-    	        msg += '결제 금액 : ' + rsp.paid_amount;
-    	        msg += '카드 승인번호 : ' + rsp.apply_num;
+    	        var msg = 'お支払いができました。';
+    	        msg += '固有ID : ' + rsp.imp_uid;
+    	        msg += '商店取引ID : ' + rsp.merchant_uid;
+    	        msg += '支払い金額 : ' + rsp.paid_amount;
+    	        msg += 'カード承認番号 : ' + rsp.apply_num;
     	    } else {
-    	    	var msg = '결제에 실패하였습니다. 다시 결제를 진행해주세요';
+    	    	var msg = '支払いに失敗しました。もう一度お支払いをお願い致します。';
     	    	alert(msg);
     	    	 return;
     	    }

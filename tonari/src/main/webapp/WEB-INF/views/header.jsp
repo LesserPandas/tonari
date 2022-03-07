@@ -140,39 +140,9 @@
 		<div class="container">
 
 			<a class="site-logo" href="/"><img
-				src="/resources/assets/corporate/img/logos/logo-shop-green.png"
+				src="/resources/assets/corporate/img/logos/tonari_logo.jpeg"
 				alt="Metronic Shop UI"></a> <a href="javascript:void(0);"
 				class="mobi-toggler"><i class="fa fa-bars"></i></a>
-
-			<!-- BEGIN CART -->
-			<div class="top-cart-block">
-				<div class="top-cart-info">
-					<a href="javascript:void(0);" class="top-cart-info-count">新規アラ-ム
-						<span class="badge" style="border-radius: 10px !important;">42</span>
-					</a>
-				</div>
-				<i class="fa fa-bell"></i>
-
-				<div class="top-cart-content-wrapper">
-					<div class="top-cart-content">
-						<ul class="scroller" style="height: 250px;">
-
-							<li><a href="shop-item.html"><img
-									src="/resources/assets/pages/img/cart-img.jpg"
-									alt="Rolex Classic Watch" width="37" height="34"></a> <span
-								class="cart-content-count">x 1</span> <strong><a
-									href="shop-item.html">Rolex Classic Watch</a></strong> <em>$1230</em> <a
-								href="javascript:void(0);" class="del-goods">&nbsp;</a></li>
-
-						</ul>
-						<div class="text-right">
-							<a href="shop-shopping-cart.html" class="btn btn-default">View
-								Cart</a> <a href="shop-checkout.html" class="btn btn-primary">Checkout</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--END CART -->
 
 			<!-- BEGIN NAVIGATION -->
 			<div class="header-navigation">

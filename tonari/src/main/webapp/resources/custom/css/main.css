@@ -344,7 +344,7 @@
 }
 
 .category-link {
-	padding-top:28px !important;
+	padding-top:14px !important;
 	font-size:20px;
 	font-weight:100;
 	width:158px;
@@ -352,7 +352,6 @@
 	height:55px;
 	border-right:1px solid #373737;
 	color:#666 !important;
-	line-height:40px;
 }
 
 .category-link:hover {

@@ -14,7 +14,7 @@
 				<em>自分の周りに隠れている先生を探す</em>
 			</div>
 			<div class="search-box col-md-12"
-				style="padding-left: 80px; margin: 80px 0 0">
+				style="padding-left: 80px; margin: 120px 0 0">
 				<form id="search" method="get" action="board/mainsearch">
 					<div class="col-md-3">
 						<div class="input-group">

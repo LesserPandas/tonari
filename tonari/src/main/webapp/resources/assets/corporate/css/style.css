@@ -457,8 +457,7 @@ body.page-header-fixed {
   font-weight: 400;
 
   margin-right: 67px;
-  padding-top: 22px;
-  padding-bottom: 22px;
+  padding-top: 6px;
 }
 
 .header .mobi-toggler {
@@ -1107,10 +1106,10 @@ steps block and steps block elements
 .title-wrapper {
 	margin: -23px 0 0;
 	position: relative;
-	background: linear-gradient(#333, 10%, transparent),
+	background: linear-gradient(#333, 4%, transparent),
 	 url(../../pages/img/bg-main.jpg) no-repeat 100% 100%;
-	min-height: 550px;
-	padding-top: 150px;
+	min-height: 620px;
+	padding-top: 200px;
 	width: 100%;
 	overflow: hidden;
 }

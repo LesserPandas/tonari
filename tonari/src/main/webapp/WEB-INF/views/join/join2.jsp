@@ -8,11 +8,7 @@
 
 <div class="main">
 	<div class="container">
-		<ul class="breadcrumb">
-			<li><a href="index.html">Home</a></li>
-			<li><a href="">Store</a></li>
-			<li class="active">Checkout</li>
-		</ul>
+		
 		<!-- BEGIN SIDEBAR & CONTENT -->
 		<div class="row margin-bottom-40">
 			<!-- BEGIN CONTENT -->
@@ -160,12 +156,6 @@
 										<!--                       id="button-payment-address" -->
 										<!--                        onclick="go_save()">회원가입하기</button> -->
 										<button type="submit" class="btn btn-primary  pull-right">会員登録</button>
-										<div class="checkbox pull-right">
-											<label> <input type="checkbox"> I have read
-												and agree to the <a title="Privacy Policy"
-												href="javascript:;">Privacy Policy</a> &nbsp;&nbsp;&nbsp;
-											</label>
-										</div>
 
 									</div>
 
@@ -193,35 +183,6 @@
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-
-function emailSend(){
-	let clientEmail = document.getElementById(elementld:'emailText').value;
-	let emailYN = isEamil(clientEmail); 
-	
-	if(emailYN == true){
-		
-		$.ajax({
-			type:"POST",
-			url:"api/member/email",
-			data:{userEmail:clientEmail},
-			success:function(data){
-				
-			},error :function(e){
-				alert("오류입니다. 잠시 후 다시 시도해주시길 바랍니다.");
-			}
-		});
-	}else{
-		alert('올바른 이메일 형식을 입력해주세요');
-	}
-	
-}
-
-function isEmail(asValue){
-	var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-	return regExp.test(asValue);
-}
-
-
 
 
 	// 우편번호 찾기 화면을 넣을 element

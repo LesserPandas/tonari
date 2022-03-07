@@ -209,4 +209,4 @@
 </html>
 
 
-<%@ include file="chat/chat.jsp" %>
+<%@ include file="chat/chat2.jsp" %>

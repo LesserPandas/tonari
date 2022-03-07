@@ -12,7 +12,7 @@
 				<!-- BEGIN BOTTOM ABOUT BLOCK -->
 				<div class="col-md-3 col-sm-6 pre-footer-col">
 					<h2>隣の先生</h2>
-					<p>본 사이트는 내 주변의 선생님을 찾아 학생과 연결해주는 서비스를 제공하고 있습니다.</p>
+					<p>本社は自分の周辺の先生を探し、生徒と先生の橋を渡すサービスを提供しております</p>
 				</div>
 				<!-- END BOTTOM ABOUT BLOCK -->
 
@@ -20,14 +20,9 @@
 				<div class="col-md-3 col-sm-6 pre-footer-col">
 					<h2>何とかなる</h2>
 					<ul class="list-unstyled">
-						<li><i class="fa fa-angle-right"></i> <a href="contacts.html">사이트
-								소개</a></li>
-						<li><i class="fa fa-angle-right"></i> <a href="contacts.html">팀원
-								소개</a></li>
-						<li><i class="fa fa-angle-right"></i> <a href="javascript:;">업데이트
-								소식</a></li>
-						<!-- <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Shipping
-								&amp; Returns</a></li> -->
+						<li><i class="fa fa-angle-right"></i> <a href="contacts.html">サイト紹介</a></li>
+						<li><i class="fa fa-angle-right"></i> <a href="contacts.html">チームの紹介</a></li>
+						<li><i class="fa fa-angle-right"></i> <a href="javascript:;">アップデートのお知らせ</a></li>
 					</ul>
 				</div>
 				<!-- END INFO BLOCK -->
@@ -36,10 +31,9 @@
 				<div class="col-md-3 col-sm-6 pre-footer-col">
 					<h2>이용안내</h2>
 					<ul class="list-unstyled">
-						<li><i class="fa fa-angle-right"></i> <a href="contacts.html">개인정보처리방침</a></li>
-						<li><i class="fa fa-angle-right"></i> <a href="contacts.html">결제/구독
-								안내</a></li>
-						<li><i class="fa fa-angle-right"></i> <a href="javascript:;">고객센터</a></li>
+						<li><i class="fa fa-angle-right"></i> <a href="contacts.html">個人情報の処理方針</a></li>
+						<li><i class="fa fa-angle-right"></i> <a href="contacts.html">決済/購読</a></li>
+						<li><i class="fa fa-angle-right"></i> <a href="javascript:;">カスタマーセンター</a></li>
 					</ul>
 				</div>
 				<!-- END TWITTER BLOCK -->
@@ -70,18 +64,7 @@
 				<!-- END COPYRIGHT -->
 
 				<!-- BEGIN PAYMENTS -->
-				<div class="col-md-4 col-sm-4">
-					<!-- <ul class="list-unstyled list-inline pull-right">
-
-
-              <li><img src="/resources/assets/corporate/img/payments/western-union.jpg" alt="We accept Western Union" title="We accept Western Union"></li>
-              <li><img src="/resources/assets/corporate/img/payments/american-express.jpg" alt="We accept American Express" title="We accept American Express"></li>
-              <li><img src="/resources/assets/corporate/img/payments/MasterCard.jpg" alt="We accept MasterCard" title="We accept MasterCard"></li>
-              <li><img src="/resources/assets/corporate/img/payments/PayPal.jpg" alt="We accept PayPal" title="We accept PayPal"></li>
-              <li><img src="/resources/assets/corporate/img/payments/visa.jpg" alt="We accept Visa" title="We accept Visa"></li>
-
-            </ul> -->
-				</div>
+				<div class="col-md-4 col-sm-4"></div>
 				<!-- END PAYMENTS -->
 
 				<!-- BEGIN POWERED -->

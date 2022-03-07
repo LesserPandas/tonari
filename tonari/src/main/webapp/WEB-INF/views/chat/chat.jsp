@@ -13,7 +13,6 @@
 </head>
 <body>
 
-
 	<div class="container">
 		<div class="row chat-window col-xs-5 col-md-3" id="chat_window"
 			style="margin-left: 10px;">

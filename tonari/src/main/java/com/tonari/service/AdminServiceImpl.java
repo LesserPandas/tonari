@@ -20,7 +20,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class AdminServiceImpl implements AdminService {
 
-	@Setter(onMethod_ = @Autowired)
 	private AdminMapper mapper;
 
 	@Override

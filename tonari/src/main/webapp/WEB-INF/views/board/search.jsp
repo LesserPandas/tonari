@@ -128,7 +128,7 @@
 							<c:forEach var="num" begin="${pageMaker.startPage}"
 								end="${pageMaker.endPage }">
 								<li><a
-									href="search?pageNum=${num }&&type=${type}&&keyword=${keyword}">${num }</a>
+									href="search?pageNum=${num }&&type=${cri.type}&&keyword=${cri.keyword}">${num }</a>
 								</li>
 							</c:forEach>
 							<c:if test="${pageMaker.next }">

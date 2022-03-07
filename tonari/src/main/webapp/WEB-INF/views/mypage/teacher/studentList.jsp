@@ -19,19 +19,22 @@
 
 			<!-- BEGIN CONTENT -->
 			<div class="col-md-9 col-sm-7">
-				<h1>내 학생 목록</h1>
+				<h1>自分の学生リスト</h1>
 				<div class="goods-page">
 					<div class="goods-data clearfix">
 						<div class="table-wrapper-responsive">
 							<table summary="Shopping cart">
 								<tr>
-									<th class="goods-page-image">이름</th>
-									<th class="goods-page-description">설명</th>
-									<th class="goods-page-stock">수업시작일</th>
-									<th class="goods-page-price" colspan="2">수업기간(주)</th>
+
+									<th class="goods-page-image">名前</th>
+									<th class="goods-page-description">説明</th>
+									<th class="goods-page-stock">授業スタート</th>
+									<th class="goods-page-price" colspan="2">授業期限（週）</th>
+
 								</tr>
 								<c:forEach items="${last}" var="last">
 								<tr>
+
 									<td class="goods-page-stock">${last.name}</td>
 									<td class="goods-page-description">
 										<h3>
@@ -41,6 +44,7 @@
 									</td>
 									<td class="goods-page-stock">${last.write_date}</td>
 									<td class="goods-page-price"><strong>${last.submonth}</strong></td>
+
 									<td class="del-goods-col"><a class="del-good"
 										href="javascript:;">&nbsp;</a></td>
 								</tr>

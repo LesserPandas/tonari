@@ -7,8 +7,8 @@
 	<div class="container">
 		<ul class="breadcrumb">
 			<li><a href="/">Home</a></li>
-			<li><a href="/mypage">마이페이지</a></li>
-			<li class="active">선생님 등록</li>
+			<li><a href="/mypage">マイページ</a></li>
+			<li class="active">先生登録</li>
 		</ul>
 		<!-- BEGIN SIDEBAR & CONTENT -->
 		<div class="row margin-bottom-40">
@@ -31,7 +31,7 @@
 						<input type="hidden" name="member_bno" value="${info.bno }">
 						<input type="hidden" name="age" id="age">
 							<div class="col-md-6 col-sm-6">
-								<input class="form-control" type="text" id="title" name="title" placeholder="소개 타이틀">
+								<input class="form-control" type="text" id="title" name="title" placeholder="紹介タイトル">
 								<div class="price-availability-block clearfix">
 									<div class="price">
 										<strong>${nowUser.nick }</strong>
@@ -40,16 +40,16 @@
 								</div>
 								<div class="description">
 									<div class="form-group">
-										<label for="name">선생님의 한마디 <span class="require">*</span></label>
+										<label for="name">先生の一言<span class="require">*</span></label>
 										<input type="text" class="form-control" id="coment" name="coment"
-											placeholder="20글자 내외로 적으세요!">
+											placeholder="20字以内で書いてください。">
 									</div>
 								</div>
 								<div class="product-page-options">
 									<div class="pull-left">
-										<label class="control-label">과목 :</label> 
+										<label class="control-label">科目 :</label> 
 										<select class="form-control input-sm" name="category" id="category">
-												<option value="1">일본어</option>
+												<option value="1">日本語</option>
 												<option value="2">JAVA</option>
 												<option value="3">PYTHON</option>
 												<option value="4">JAVASCRIPT</option>
@@ -59,35 +59,35 @@
 											</select>
 									</div>
 									<div class="pull-left">
-										<label class="control-label">지역 :</label>
+										<label class="control-label">地域 :</label>
 										<strong style="">${info.gu }&nbsp;${info.dong }</strong>
 									</div>
 									<div class= "col-md-12" style="margin-top: 3px;">
 										<div class="row">
-										<label class="control-label">생년월일 :</label>
+										<label class="control-label">生年月日 :</label>
 											<select id="select_year" class="form-control input-sm" onchange="javascript:lastday();"> 
-												<option>년</option> 
+												<option>年</option> 
 											</select>
 											<select id="select_month" class="form-control input-sm" onchange="javascript:lastday();"> 
-												<option>월</option> 
+												<option>月</option> 
 											</select>
 											<select id="select_day" class="form-control input-sm"> 
-												<option>일</option> 
+												<option>日</option> 
 											</select>
 										</div>
 									</div>
 								</div>
 								<div class="form-group">
-									<p>수업이 가능한 날짜를 선택해 주세요!</p>
+									<p>受講可能な日にちを選んでください。</p>
 									<table class="teacherdate">
 										<tr>
-											<th>일</th>
-											<th>월</th>
-											<th>화</th>
-											<th>수</th>
-											<th>목</th>
-											<th>금</th>
-											<th>토</th>
+											<th>日</th>
+											<th>月</th>
+											<th>火</th>
+											<th>水</th>
+											<th>木</th>
+											<th>金</th>
+											<th>土</th>
 										</tr>
 										<tr class="">
 											<td>
@@ -125,27 +125,26 @@
 									<div class="form-group">
 										<div style="display:flex">
 											<input type="number" name="tmoney" id="howmuch" 
-											class="form-control howmuch" placeholder="하루 당 원하는 가격 입력">
+											class="form-control howmuch" placeholder="希望講義料金入力（一日）">
 											<span class="col-md-2 japanesemoney">円</span>
 										</div>
-										<label for="uploadFile">프로필 사진 선택<span class="require">*</span></label>
+										<label for="uploadFile">プロフィール写真選択<span class="require">*</span></label>
 										<input style="display: block;" type="file" id="uploadFile" name="uploadFile">
 									</div>
 								</div>
 							</div>
 							<div class="product-page-content">
 								<ul id="myTab" class="nav nav-tabs">
-									<li class=""><a href="#Reviews" data-toggle="tab">자기
-											소개</a></li>
+									<li class=""><a href="#Reviews" data-toggle="tab">自己紹介</a></li>
 								</ul>
 								<div id="myTabContent" class="tab-content">
 									<div class="formgroup">
-										<label for="review">자기소개글 작성<span class="require">*</span></label>
+										<label for="review">自己紹介作成<span class="require">*</span></label>
 										<textarea name="content" id="content" class="summernote"></textarea>
 									</div>
 
 									<div class="padding-top-20">
-										<button type="submit" class="btn btn-primary">저장</button>
+										<button type="submit" class="btn btn-primary">セーブ</button>
 									</div>
 								</div>
 							</div>
@@ -168,7 +167,7 @@
 function image(){
 	var uploadFile = document.getElementById("uploadFile").value;
 	if(uploadFile == null){
-		alert("사진을 등록해주세요");
+		alert("写真を登録してください。");
 		return false;
 	}
 }

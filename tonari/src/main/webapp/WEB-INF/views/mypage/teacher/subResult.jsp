@@ -7,28 +7,30 @@
         <div class="row margin-bottom-40">
           <!-- BEGIN CONTENT -->
           <div class="col-md-12 col-sm-12">
-            <h1>나의 구독 내역</h1>
+            <h1>自分の購読内訳</h1>
             <div class="goods-page">
               <div class="goods-data clearfix">
                 <div class="table-wrapper-responsive">
                 
                 <table summary="Shopping cart">
                   <tr>
-                    <th class="goods-page-image">사진</th>
-                    <th class="goods-page-description">설명</th>
-                    <th class="goods-page-ref-no">종목</th>
-                    <th class="goods-page-quantity">구독시작한 날짜</th>
-                    <th class="goods-page-price">구독 기간</th>
-                    <th class="goods-page-total" colspan="2">결제 가격</th>
+                    <th class="goods-page-image">写真</th>
+                    <th class="goods-page-description">説明</th>
+                    <th class="goods-page-ref-no">種目</th>
+                    <th class="goods-page-quantity">購読始めの日にち</th>
+                    <th class="goods-page-price">購読期限</th>
+                    <th class="goods-page-total" colspan="2">支払い金額</th>
                   </tr>
                   <tr>
                     <td class="goods-page-image">
                       <a href="javascript:;"><img id="preview-image" src="${tvo.image }" ><!-- alt="Berry Lace Dress" --></a>
                     </td>
                     <td class="goods-page-description">
+
                       <h3>${nowUser.nick }</h3>
-                      <p><strong>한마디</strong>${tvo.coment }</p>
-                      <a href="/mypage/teacherUpdate">상세 정보</a>
+                      <p><strong>一言</strong>${tvo.coment }</p>
+                      <a href="/mypage/teacherUpdate">先生情報</a>
+
                     </td>
                     <td class="goods-page-ref-no">
                       ${tvo.category_name }
@@ -37,7 +39,9 @@
                       <strong>${subResult.write_date}</strong>
                     </td>
                     <td class="goods-page-price">
-                      <strong>${subResult.submonth}<span>개월</span></strong>
+
+                      <strong>${subResult.submonth}<span>ヶ月</span></strong>
+
                     </td>
                     <td class="goods-page-total">
                       <strong class="amount"><span>円</span></strong>

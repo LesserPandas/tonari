@@ -9,7 +9,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="/resources/test/chat/style.css" rel="stylesheet">
 
-
 <script
 	src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script
@@ -21,7 +20,9 @@
 	<div class="fabs">
 
 
+
 		<div class="chat" id="chat-list" style="border-radius:20px">
+
 			<div class="chat_header">
 				<div class="chat_option">
 					<span class="chat_head">チャットリスト</span> <span
@@ -29,6 +30,7 @@
 						class="fullscreen zmdi zmdi-window-maximize"></i></span>
 				</div>
 			</div>
+
 
 			<div id="chat-list-body"
 				class="chat_body chat_converse chat-list-body" style="height: 459px">
@@ -46,8 +48,10 @@
 					</div>
 				</div>
 
+
 			</div>
 		</div>
+
 
 
 		<div class="chat block" id="chat-room" style="border-radius:20px">
@@ -55,20 +59,20 @@
 				<div class="chat_option">
 					<a href="javascript:controllChat(1)"><img src="/resources/test/chat/angle-left.png"></a> <span
 						class="chat_head chat_head_room" id="yourName">사람 이름</span> <span
+
 						id="chat_fullscreen_loader" class="chat_fullscreen_loader"><i
 						class="fullscreen zmdi zmdi-window-maximize"></i></span>
 
 				</div>
 
 			</div>
-			<div id="chat-room-body" class="chat_body chat_converse" style="overflow-y:scroll">
+
+			<div id="chat-room-body" class="chat_body chat_converse">
 				<span class="chat_msg_item chat_msg_item_admin"> 상대 메세지</span> <span
 					class="chat_msg_item chat_msg_item_user"> 내가 보낸 메세지</span>
-
 			</div>
 
 			<div class="fab_field">
-
 				<a id="fab_send" class="fab" href="javascript:message_send(${nowUser.bno })"><img src="/resources/test/chat/send.png"></a>
 				<textarea id="myMessage" name="chat_message"
 					placeholder="Send a message" class="chat_field chat_message"></textarea>
@@ -372,7 +376,6 @@
 			}
 		})
 	}
-	
 	
 </script>
 

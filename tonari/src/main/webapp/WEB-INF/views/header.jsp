@@ -110,20 +110,20 @@
 						<c:choose>
 						<c:when test="${empty nowUser}">
 						<li><a href="/">HOME</a></li>
-						<li><a href="/login">로그인</a></li>
-						<li><a href="/join">회원가입</a></li>
+						<li><a href="/login">ログイン</a></li>
+						<li><a href="/join">会員登録</a></li>
 						</c:when>
 						
 						<c:when test="${not empty nowUser}">
 						<!-- 닉네임 -->
-						<li>${nowUser.nick}님</li>
+						<li>${nowUser.nick}様</li>
 						
 						<!-- 홈으로 -->
 						<li><a href="/">HOME</a></li>
 						<!-- 마이페이지 -->
-						<li><a href="/mypage">마이페이지</a></li>
+						<li><a href="/mypage">マイページ</a></li>
 						<!-- 로그아웃 -->
-						<li><a href="/join/logout">로그아웃</a></li>
+						<li><a href="/join/logout">ログアウト</a></li>
 						</c:when>
 						</c:choose>
 					</ul>
@@ -140,89 +140,56 @@
 		<div class="container">
 
 			<a class="site-logo" href="/"><img
-				src="/resources/assets/corporate/img/logos/logo-shop-green.png"
+				src="/resources/assets/corporate/img/logos/tonari_logo.jpeg"
 				alt="Metronic Shop UI"></a> <a href="javascript:void(0);"
 				class="mobi-toggler"><i class="fa fa-bars"></i></a>
-
-			<!-- BEGIN CART -->
-			<div class="top-cart-block">
-				<div class="top-cart-info">
-					<a href="javascript:void(0);" class="top-cart-info-count">신규알림
-						<span class="badge" style="border-radius: 10px !important;">42</span>
-					</a>
-				</div>
-				<i class="fa fa-bell"></i>
-
-				<div class="top-cart-content-wrapper">
-					<div class="top-cart-content">
-						<ul class="scroller" style="height: 250px;">
-
-							<li><a href="shop-item.html"><img
-									src="/resources/assets/pages/img/cart-img.jpg"
-									alt="Rolex Classic Watch" width="37" height="34"></a> <span
-								class="cart-content-count">x 1</span> <strong><a
-									href="shop-item.html">Rolex Classic Watch</a></strong> <em>$1230</em> <a
-								href="javascript:void(0);" class="del-goods">&nbsp;</a></li>
-
-						</ul>
-						<div class="text-right">
-							<a href="shop-shopping-cart.html" class="btn btn-default">View
-								Cart</a> <a href="shop-checkout.html" class="btn btn-primary">Checkout</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--END CART -->
 
 			<!-- BEGIN NAVIGATION -->
 			<div class="header-navigation">
 				<ul>
 					<li class="dropdown dropdown-megamenu"><a
 						class="dropdown-toggle" data-toggle="dropdown" data-target="#"
-						href="javascript:;"> 전체메뉴 </a>
+						href="javascript:;"> 全体メニュー </a>
 						<ul class="dropdown-menu">
 							<li>
 								<div class="header-navigation-content">
 									<div class="row">
 										<div class="col-md-3 header-navigation-col">
-											<h4>카테고리</h4>
+											<h4>カテゴリ</h4>
 											<ul>
-												<li><a href="shop-product-list.html">일본어</a></li>
-												<li><a href="shop-product-list.html">JAVA</a></li>
-												<li><a href="shop-product-list.html">Python</a></li>
-												<li><a href="shop-product-list.html">Javascript</a></li>
-												<li><a href="shop-product-list.html">Spring</a></li>
-												<li><a href="shop-product-list.html">HTML5+CSS3</a></li>
-												<li><a href="shop-product-list.html">Database</a></li>
+												<li><a href="/board/search?type=category&&keyword=1">日本語</a></li>
+												<li><a href="/board/search?type=category&&keyword=2">JAVA</a></li>
+												<li><a href="/board/search?type=category&&keyword=3">Python</a></li>
+												<li><a href="/board/search?type=category&&keyword=4">Javascript</a></li>
+												<li><a href="/board/search?type=category&&keyword=5">Spring</a></li>
+												<li><a href="/board/search?type=category&&keyword=6">HTML5+CSS3</a></li>
+												<li><a href="/board/search?type=category&&keyword=7">Database</a></li>
 											</ul>
 										</div>
 										<div class="col-md-3 header-navigation-col">
-											<h4>강사찾기</h4>
+											<h4>先生検索</h4>
 											<ul>
-												<li><a href="shop-product-list.html">인기 강사</a></li>
-												<li><a href="shop-product-list.html">신규 강사</a></li>
-												<li><a href="shop-product-list.html">내 주변 강사</a></li>
-												<li><a href="shop-product-list.html">시간이 맞는 강사</a></li>
+												<li><a href="/board/search?type=orderby&&keyword=score&&snum=1">人気先生</a></li>
+												<li><a href="/board/search?type=orderby&&keyword=teacher&&snum=0">新しい先生</a></li>
+												<c:if test="${not empty nowUser }">
+													<li><a href="/board/search?type=area&&keyword=${nowUser.nick }&&snum=2">周りの先生</a></li>
+												</c:if>
 											</ul>
 										</div>
 										<div class="col-md-3 header-navigation-col">
-											<h4>게시판</h4>
+											<h4>掲示板</h4>
 											<ul>
-												<li><a href="shop-product-list.html">공지사항</a></li>
-												<li><a href="shop-product-list.html">이벤트</a></li>
-												<li><a href="shop-product-list.html">강사 블로그</a></li>
-												<li><a href="shop-product-list.html">즐겨찾기한 글</a></li>
-												<li><a href="shop-product-list.html">학습 후기</a></li>
+												<li><a href="/board/listboard?category=1">お知らせ</a></li>
+												<li><a href="/board/listboard?category=2">イベント</a></li>
 											</ul>
 										</div>
 										<div class="col-md-3 header-navigation-col">
-											<h4>마이페이지</h4>
+											<h4>マイページ</h4>
 											<ul>
-												<li><a href="mypage/studentInfoModify">개인정보 수정</a></li>
-												<li><a href="shop-product-list.html">결제 내역/관리</a></li>
-												<li><a href="shop-product-list.html">즐겨찾기한 강사</a></li>
-												<li><a href="shop-product-list.html">내 학생 보기 (강사)</a></li>
-												<li><a href="shop-product-list.html">강사 등록하기 (학생)</a></li>
+												<li><a href="/mypage/studentinfo">個人情報修正</a></li>
+												<li><a href="/mypage/like">お気に入りの先生</a></li>
+												<li><a href="/mypage/payteacherList">私の先生</a></li>
+												<li><a href="/mypage/subscription"><strong>先生に登録</strong></a></li>
 											</ul>
 										</div>
 									</div>
@@ -232,93 +199,44 @@
 
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" data-target="#" href="javascript:;">
-							카테고리 </a> <!-- BEGIN DROPDOWN MENU -->
+							カテゴリ</a> <!-- BEGIN DROPDOWN MENU -->
 						<ul class="dropdown-menu">
-							<li><a href="shop-product-list.html">일본어</a></li>
-							<li><a href="shop-product-list.html">JAVA</a></li>
-							<li><a href="shop-product-list.html">Python</a></li>
-							<li><a href="shop-product-list.html">Javascript</a></li>
-							<li><a href="shop-product-list.html">Spring</a></li>
-							<li><a href="shop-product-list.html">HTML5+CSS3</a></li>
-							<li><a href="shop-product-list.html">Database</a></li>
+							<li><a href="/board/search?type=category&&keyword=1">日本語</a></li>
+							<li><a href="/board/search?type=category&&keyword=2">JAVA</a></li>
+							<li><a href="/board/search?type=category&&keyword=3">Python</a></li>
+							<li><a href="/board/search?type=category&&keyword=4">Javascript</a></li>
+							<li><a href="/board/search?type=category&&keyword=5">Spring</a></li>
+							<li><a href="/board/search?type=category&&keyword=6">HTML5+CSS3</a></li>
+							<li><a href="/board/search?type=category&&keyword=7">Database</a></li>
 						</ul> <!-- END DROPDOWN MENU --></li>
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" data-target="#" href="javascript:;">
-							강사찾기 </a> <!-- BEGIN DROPDOWN MENU -->
+							先生検索 </a> <!-- BEGIN DROPDOWN MENU -->
 						<ul class="dropdown-menu">
-							<li><a href="shop-product-list.html">인기 강사</a></li>
-							<li><a href="shop-product-list.html">신규 강사</a></li>
-							<li><a href="shop-product-list.html">내 주변 강사</a></li>
-							<li><a href="shop-product-list.html">시간이 맞는 강사</a></li>
+							<li><a href="/board/search?type=orderby&&keyword=score&&snum=1">人気先生</a></li>
+							<li><a href="/board/search?type=orderby&&keyword=teacher&&snum=0">新しい先生</a></li>
+							<c:if test="${not empty nowUser }">
+								<li><a href="/board/search?type=area&&keyword=${nowUser.nick }&&snum=2">周りの先生</a></li>
+							</c:if>
 						</ul> <!-- END DROPDOWN MENU --></li>
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" data-target="#" href="javascript:;">
-							게시판 </a> <!-- BEGIN DROPDOWN MENU -->
+							掲示板 </a> <!-- BEGIN DROPDOWN MENU -->
 						<ul class="dropdown-menu">
-							<li><a href="shop-product-list.html">공지사항</a></li>
-							<li><a href="shop-product-list.html">이벤트</a></li>
-							<li><a href="shop-product-list.html">강사 블로그</a></li>
-							<li><a href="shop-product-list.html">즐겨찾기한 글</a></li>
-							<li><a href="shop-product-list.html">학습 후기</a></li>
+							<li><a href="/board/listboard?category=1">お知らせ</a></li>
+							<li><a href="/board/listboard?category=2">イベント</a></li>
 						</ul> <!-- END DROPDOWN MENU --></li>
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" data-target="#" href="javascript:;">
-							마이페이지 </a> <!-- BEGIN DROPDOWN MENU -->
+						data-toggle="dropdown" data-target="/mypage" href="/mypage">
+							マイページ </a> <!-- BEGIN DROPDOWN MENU -->
 						<ul class="dropdown-menu">
-							<li><a href="shop-product-list.html">개인정보 수정</a></li>
-							<li><a href="shop-product-list.html">결제 내역/관리</a></li>
-							<li><a href="shop-product-list.html">즐겨찾기한 강사</a></li>
-							<li><a href="shop-product-list.html">내 학생 보기 (강사)</a></li>
-							<li><a href="shop-product-list.html">강사 등록하기 (학생)</a></li>
-						</ul> <!-- END DROPDOWN MENU --></li>
 
-
-
-					<!-- 개발용 링크 넣기  -->
-
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" data-target="#" href="javascript:;">
-							테스트페이지 </a> <!-- BEGIN DROPDOWN MENU -->
-						<ul class="dropdown-menu">
-							<li>
-								<div class="row" style="width:400px;">
-									<div class="col-md-6">
-										<ul>
-											<li><h4 style="padding: 10px 10px 0">준희</h4></li>
-											<li><a href="/login">로그인</a></li>
-											<li><a href="/join">회원가입</a></li>
-											<li><a href="/mypage/teacherJoin">강사등록</a></li>
-											<li><a href="/mypage/teacherUpdate">강사정보수정</a></li>
-											<li><a href="/mypage/subscription">구독하기</a></li>
-											<li><a href="/mypage/subResult">구독결과</a></li>
-											<li><a href="/mypage/studentInfoModify">일반회원 정보 수정</a></li>
-											<li><a href="/mypage/like">선생님 찜한 목록</a></li>
-											<li><h4 style="padding: 10px 10px 0">찬호</h4></li>
-											<li><a href="javascript:joinRoom(2)">판다와 챗하기</a></li>
-											<li><a href="javascript:joinRoom(3)">래서와 챗하기</a></li>
-											<li><a href="javascript:joinRoom(4)">김과 챗하기</a></li>
-										</ul>
-									</div>
-
-									<div class="col-md-6">
-										<ul>
-											<li><h4 style="padding: 10px 10px 0">남현</h4></li>
-											<li><a href="/board/search?type=orderby&&keyword=teacher">강사 찾기</a></li>
-											<li><a href="/board/info?board_bno=4">강사 정보</a></li>
-
-											<li><h4 style="padding: 10px 10px 0">두홍</h4></li>
-						                    <li><a href="/admin">Admin-로그인</a></li>
-						                    <li><a href="/admin/memberlist">Admin-멤버리스트</a></li>
-						                    <li><a href="/admin/teacherlist">Admin-강사리스트</a></li>
-						                    <li><a href="/admin/board">Admin-게시판</a></li>
-						                    <li><a href="/admin/write">Admin-게시판 글작성</a></li>
-						                    <li><a href="/admin/update">Admin-게시판 글수정</a></li>
-						                    <li><a href="/admin/mail">Admin-메일</a></li>
-										</ul>
-									</div>
-								</div>
-							</li>
-						</ul> <!-- END DROPDOWN MENU --></li>
+							<li><a href="/join/studentinfologintest">個人情報修正</a></li>
+							<li><a href="/mypage/like">お気に入りの先生</a></li>
+							<li><a href="/mypage/payteacherList">私の先生</a></li>
+							<li><a href="/mypage/subscription"><strong>先生に登録</strong></a></li>
+						</ul> <!-- END DROPDOWN MENU -->
+					</li>
 
 				</ul>
 			</div>

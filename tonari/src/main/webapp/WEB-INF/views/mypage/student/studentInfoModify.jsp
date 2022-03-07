@@ -32,7 +32,7 @@
 								<h2 class="panel-title">
 									<a data-toggle="collapse" data-parent="#checkout-page"
 										href="#payment-address-content" class="accordion-toggle">
-										회원 정보 수정 </a>
+										会員情報修正 </a>
 								</h2>
 							</div>
 							<form class="" name="form1" method="post" >
@@ -42,50 +42,50 @@
 										<div class="col-md-6 col-sm-6">
 										
 										
-										<h3>계정 정보</h3>
+										<h3>アカウント情報</h3>
 											<div class="form-group" style="width: 300px;">
-												<label for="nick">닉네임</label> <input type="text" id="nick"
+												<label for="nick">ニックネーム</label> <input type="text" id="nick"
 													name="nick" class="form-control" value= "${member.nick}" >
 											</div>
 											<div class="form-group" style="width: 300px;">
-												<label for="email">E-Mail <span class="require">*</span></label>
+												<label for="email">メール <span class="require">*</span></label>
 												<input type="text" id="email" name="email"
 													class="form-control" value="${member.email}" readonly> <span
 													id="msg" style="display: block; padding: 5px 0;"></span>
 											</div>
 											<div class="form-group" style="width: 300px;">
-												<label for="password">Password <span class="require">*</span></label>
+												<label for="password">パスワード<span class="require">*</span></label>
 												<input type="password" id="passwd" name="passwd"
 													class="form-control" value="${passwd}">
 											</div>
 											<div class="form-group" style="width: 300px;">
-												<label for="password">Password check <span
+												<label for="password">パスワードチェック<span
 													class="require">*</span></label> <input type="password"
 													id="pwdcheck" name="pwdcheck" class="form-control">
 											</div>
 										
-											<h3>개인 정보</h3>
+											<h3>個人情報</h3>
 											<div class="form-group" style="width: 300px;">
-												<label for="firstname" for="name">이름 <span
+												<label for="firstname" for="name">名前 <span
 													class="require">*</span></label> <input type="text" id="name"
 													name="name" class="form-control" readonly value="${member.name}">
 											</div>
 											<div class="form-group" style="width: 300px;">
-												<label for="sex">성별 <span class="require">*</span></label>
+												<label for="sex">性別 <span class="require">*</span></label>
 												 <c:choose>
-												     <c:when test="${member.sex eq 'f'}"><input type="text" class="form-control" value="여자" readonly/></c:when>	
+												     <c:when test="${member.sex eq 'f'}"><input type="text" class="form-control" value="女" readonly/></c:when>	
 												 
 												  <c:otherwise>   											
-												    <input type="text" class="form-control" value="남자" readonly />												
+												    <input type="text" class="form-control" value="男" readonly />												
 												  </c:otherwise>  										
 												   </c:choose>	 
 												
 											
 											</div>
 											<div class="form-group" style="width: 300px;">
-												<label for="phone">전화번호<span class="require">*</span></label>
+												<label for="phone">電話番号<span class="require">*</span></label>
 												<input type="text" id="phone" id="phone" name="phone"
-													class="form-control" placeholder="전화번호를 입력해주세요."value="${member.phone}">
+													class="form-control" placeholder="電話番号を入力してください。."value="${member.phone}">
 											</div>
 
 
@@ -95,7 +95,7 @@
 									
 
 									<div class="col-md-6 col-sm-6">
-										<h3>주소</h3>
+										<h3>住所</h3>
 
 										<div id="layer"
 											style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch; ">
@@ -103,33 +103,33 @@
 												src="//t1.daumcdn.net/postcode/resource/images/close.png"
 												id="btnCloseLayer"
 												style="cursor: pointer; position: absolute; right: -3px; top: -3px; z-index: 1"
-												onclick="closeDaumPostcode()" alt="닫기 버튼">
+												onclick="closeDaumPostcode()" alt="閉める">
 										</div>
 										<div class="form-group" style="display: flex;">
 											<input type="text" name="zipcode" class="form-control"
-												id="sample2_postcode" placeholder="우편번호"
+												id="sample2_postcode" placeholder="郵便番号"
 												style="text-align: center; width: 150px; margin: 0px 5px 0px 0;" value="${member.zipcode}" readonly>
 											<input type="button" onclick="sample2_execDaumPostcode()"
-												value="우편번호 찾기" class="form-control" style="width: 300px;"><br>
+												value="郵便番号探し" class="form-control" style="width: 300px;"><br>
 										</div>
 										<div class="form-group" >
-											<label for="address1">주소</label> <input type="text"
-												id="sample2_address" name="address" placeholder="전체 주소"
+											<label for="address1">住所</label> <input type="text"
+												id="sample2_address" name="address" placeholder="全体住所"
 												class="form-control" style="width:300px" value="${member.address}" readonly><br>
 										</div>
 										<div class="form-group" style="display: flex;">
 
 											<input type="text" id="sample2_guAddr" name="gu"
-												placeholder="구" class="form-control"
+												placeholder="区" class="form-control"
 												style="width: 100px; text-align: center; margin: -20px 39px 0px 0;" value="${member.gu}" readonly>
 
 
 											<input type="text" id="sample2_extraAddress" name="dong"
-												placeholder="동" class="form-control"
+												placeholder="同" class="form-control"
 												style="width: 100px; text-align: center; margin: -20px 39px 0px 0;" value="${member.dong}" readonly>
 										</div>
 										<div class="form-group" style="width: 300px;">
-											<label for="address1">상세주소</label> <input type="text"
+											<label for="address1">詳細住所</label> <input type="text"
 												id="address1" name="o_addr" class="form-control" value="${member.o_addr}">
 										</div>
 										<!--  <div class="form-group">
@@ -161,7 +161,7 @@
 										<!--                       data-target="#shipping-address-content"  -->
 										<!--                       id="button-payment-address" -->
 										<!--                        onclick="go_save()">회원가입하기</button> -->
-										<button id="studentinfoModify" name="studentinfoModify" class="btn btn-primary  pull-right">정보 수정</button>
+										<button id="studentinfoModify" name="studentinfoModify" class="btn btn-primary  pull-right">情報修正</button>
 										<!-- <div class="checkbox pull-right">
 											<label> <input type="checkbox"> I have read
 												and agree to the <a title="Privacy Policy"
@@ -322,15 +322,15 @@
 	/* 내가 추가한 것 */
 	function go_save() {
 		if (document.formm.email.value == "") {
-			alert("이메일을 입력하세요.");
+			alert("メールを入力してください.");
 			document.formm.email.focus();
 			return false;
 		} else if (formm.passwd.value == "") {
-			alert("비밀번호를 입력하세요.");
+			alert("パスワードを入力してください.");
 			formm.passwd.foucs();
 			return false;
 		} else if (formm.passwd.value != formm.pwdcheck.value) {
-			alert("비밀번호가 일치 해야 합니다");
+			alert("パスワードが一致しません。");
 			formm.passwd.focus();
 			return false;
 		} else {
@@ -354,18 +354,18 @@
 	               console.log(cnt);
 	               if (cnt == 0) {
 	                  if ($("#nick").val() != "") {
-	                     alert("사용 가능한  닉네임 입니다");
+	                     alert("使用可能なニックネームです。");
 	                  }
 	               } else if (cnt == 1) {
 	                  if ($("#nick").val() != "") {
-	                     alert("사용 불가능한 닉네임 입니다");
+	                     alert("使用不可能なニックネームです。");
 	                     $("#nick").val("");
 	                     $("#nick").focus();
 	                  }
 	               }
 	            },
 	            error : function() {
-	               alert("통신에러");
+	               alert("通信エラー");
 	            }
 	         })
 	      })
@@ -378,7 +378,7 @@
 	<script>
 	    $(document).ready(function(){
 	        $("#studentinfoModify").click(function(){
-	           alert("수정완료 하였습니다.");
+	           alert("修正しました。");
 	            document.form1.action = "/join/studentinfoModify.do";
 	            document.form1.submit();
 	        });

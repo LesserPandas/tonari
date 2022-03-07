@@ -22,7 +22,7 @@
   
 <!-- 로그인 -->
   <select id="login" resultType="com.tonari.domain.MemberVO">
-    select nick, bno from member
+    select nick, bno, dong from member
     where email = #{email} and passwd = #{passwd}
   </select>
 <!-- 로그인 -->

@@ -124,22 +124,6 @@
 		<!-- <dependency> <groupId>javax.servlet</groupId> <artifactId>servlet-api</artifactId> 
 			<version>2.5</version> <scope>provided</scope> </dependency> -->
 
-		<!-- 결제관리 한준희 암튼 문제 있을 시 초밥 먹음 -->
-
-
-
-
-
-		<!-- 결제관리 한준희 암튼 문제 있을 시 초밥 먹음 -->
-
-
-
-
-
-
-
-
-
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -346,7 +330,6 @@
 			<version>31.0.1-jre</version>
 		</dependency>
 
-		<!-- 새우초밥 -->
 		<!-- https://mvnrepository.com/artifact/com.github.iamport/iamport-rest-client-java -->
 		<dependency>
 			<groupId>com.github.iamport</groupId>
@@ -369,9 +352,6 @@
 			<artifactId>spring-amqp</artifactId>
 			<version>2.1.8.RELEASE</version>
 		</dependency>
-
-
-
 
 		<dependency>
 			<groupId>io.projectreactor.spring</groupId>

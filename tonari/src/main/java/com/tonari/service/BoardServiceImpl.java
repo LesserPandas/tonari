@@ -1,13 +1,13 @@
 package com.tonari.service;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tonari.domain.Addr_searchVO;
-
 import com.tonari.domain.BoardVO;
 import com.tonari.domain.CategoryVO;
 import com.tonari.domain.LikeMarkVO;
@@ -19,8 +19,9 @@ import com.tonari.mapper.BoardMapper;
 import com.tonari.util.Criteria;
 
 import lombok.AllArgsConstructor;
-import lombok.Setter;
+import lombok.extern.log4j.Log4j;
 
+@Log4j
 @Service
 @AllArgsConstructor
 public class BoardServiceImpl implements BoardService {

@@ -8,7 +8,7 @@
 </head>
 <body>
 	<script>
-		alert("선생님 등록 후 이용 가능합니다.");
+		alert("先生登録後、ご利用できます。");
 		location.href="/mypage";
 	
 	</script>

@@ -352,6 +352,7 @@
 	height:55px;
 	border-right:1px solid #373737;
 	color:#666 !important;
+	line-height: 50px !important;
 }
 
 .category-link:hover {

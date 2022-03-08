@@ -2,6 +2,8 @@ package com.tonari.controller;
 
 
 
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +27,9 @@ import com.tonari.service.BoardService;
 import com.tonari.util.Criteria;
 
 import lombok.Setter;
+import lombok.extern.log4j.Log4j;
 
+@Log4j
 @Controller
 @RequestMapping("/board/*")
 public class BoardController {

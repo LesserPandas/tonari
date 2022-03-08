@@ -85,7 +85,7 @@ public class MypageController {
 
 	public String UploadImageFile(MultipartFile file) {
 		String url = "";
-		String uploadFolder = "c://upload";
+		String uploadFolder = "/Users/chanhokim/myFiles/upload";
 		String uploadFileName = file.getOriginalFilename();
 		// IE
 		uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("//") + 1);
@@ -98,7 +98,9 @@ public class MypageController {
 		File savefile = new File(uploadPath, uploadFileName);
 		try {
 			file.transferTo(savefile);
-			uploadFileName = (savefile.toString().substring(10));
+			uploadFileName = (savefile.toString().substring(32));
+			System.out.println("saveFILE : " + savefile.toString());
+			System.out.println("uploadFileName : " + uploadFileName);
 			url = "/upload/" + uploadFileName;
 		} catch (Exception e) {
 			e.printStackTrace();

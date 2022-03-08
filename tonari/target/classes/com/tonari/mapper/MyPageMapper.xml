@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="com.tonari.mapper.MyPageMapper">
-
 	<select id="tjoinpage"
 		resultType="com.tonari.domain.MemberAuthVO">
 		select * from member_auth_view where nick = #{nick}
@@ -25,7 +24,6 @@
 
 	<insert id="payInsert"
 		parameterType="com.tonari.domain.PayListVO">
-
 		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
 			select paylist_seq.nextval from dual
 		</selectKey>
@@ -33,6 +31,8 @@
 		values
 		(#{bno},#{member_bno},#{submonth},#{pay_check})
 	</insert>
+
+
 
 
 	<!-- 구독 결과 조회 -->
@@ -69,7 +69,7 @@
 		update teacher set 
 		content = #{content},category = #{category},coment = #{coment},dodate = #{dodate},
 		age = #{age},title = #{title},tmoney = #{tmoney}
-		<if test="image==null">
+		<if test="image!=null">
 			,image = #{image}
 		</if>
 		where bno = #{bno}

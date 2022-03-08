@@ -220,7 +220,7 @@ public class AdminController {
 	// 단체메일
 	@PostMapping("/sendMail")
 	public String sendMail(MailVO mail) {
-
+		try {
 		List<MailVO> mails = new ArrayList<>();
 		mails = service.selectMail();
 
@@ -243,6 +243,9 @@ public class AdminController {
 			};
 		}
 		mailSender.send(preparators);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 
 		return "redirect:/admin/memberlist";
 	}

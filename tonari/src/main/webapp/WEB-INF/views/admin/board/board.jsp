@@ -111,7 +111,7 @@
 												<td>お知らせ</td>
 											</c:if>
 											<c:if test="${boardlist.category==2}" >												
-												<td>홍보/이벤트</td>
+												<td>イベント</td>
 											</c:if>		
 												<td>${boardlist.title}</td>
 												<td>${boardlist.name}</td>

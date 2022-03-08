@@ -3,6 +3,7 @@ package com.tonari.mapper;
 import java.util.List;
 
 import com.tonari.domain.Addr_searchVO;
+import com.tonari.domain.BoardVO;
 import com.tonari.domain.CategoryVO;
 import com.tonari.domain.LikeMarkVO;
 import com.tonari.domain.ReviewVO;
@@ -29,8 +30,7 @@ public interface BoardMapper {
 	
 	public int total(Criteria cri);//전체 게시물 조회
 	
-	
-	
-	
-	
+	public List<TeacherSearch_viewVO> mainsearch(Criteria cri);
+	public BoardVO viewboard(int bno);
+	public List<BoardVO> listboard(BoardVO bvo);
 }

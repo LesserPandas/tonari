@@ -61,6 +61,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+
 :root {
   --blue: #324cdd;
   --indigo: #6610f2;
@@ -1428,7 +1429,11 @@ pre {
   background-clip: padding-box;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  
+  }   
+
+ 
   @media screen and (prefers-reduced-motion: reduce) {
     .form-control {
       transition: none; } }
@@ -1445,7 +1450,7 @@ pre {
     color: #f7fafc;
     opacity: 1; }
   .form-control:disabled, .form-control[readonly] {
-    background-color: #e9ecef;
+    background-color: #ffffff;
     opacity: 1; }
 
 select.form-control:focus::-ms-value {

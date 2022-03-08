@@ -4,6 +4,7 @@
 	url(https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic&subset=latin,cyrillic)
 	;
 
+
 ul li {
 	list-style: none;
 }
@@ -62,7 +63,9 @@ ul li {
 	margin: 15px auto 10;
 	opacity: 1;
 	visibility: visible;
+
 	z-index: 999;
+
 }
 
 .fab:nth-last-child(1) {
@@ -113,7 +116,9 @@ ul li {
 	-webkit-transition: all .2s ease-in-out;
 	transition: all .2s ease-in-out;
 	font-size: 12px;
+
 	display: none !important;
+
 }
 
 .chat_fullscreen {
@@ -162,6 +167,7 @@ ul li {
 }
 
 #chat-list.chat_ani {
+
 	-webkit-animation: zoomIn .2s cubic-bezier(.42, 0, .58, 1);
 	animation: zoomIn .2s cubic-bezier(.42, 0, .58, 1);
 }
@@ -185,6 +191,7 @@ ul li {
 }
 
 .profile_img {
+
 	border-radius: 50%;
 	width: 55px;
 	float: left;
@@ -238,6 +245,7 @@ ul li {
 }
 
 .chat_body li {
+
 	-webkit-animation: zoomIn .5s cubic-bezier(.42, 0, .58, 1);
 	animation: zoomIn .5s cubic-bezier(.42, 0, .58, 1);
 }
@@ -261,7 +269,9 @@ ul li {
 }
 
 .chat_head_room {
+
 	left: -15px;
+
 }
 
 .chat_field {
@@ -440,10 +450,12 @@ ul li {
 	display: block;
 	word-wrap: break-word;
 	border-radius: 3px;
+
 	clear: both;
 	z-index: 999;
 	text-align: left;
 }
+
 
 .status {
 	margin: 45px -50px 0 0;
@@ -656,16 +668,9 @@ strong.chat_time {
 
 
 
-
-
 %
 {
 -webkit-transform
-
-
-
-
-
 
 
 
@@ -682,11 +687,6 @@ strong.chat_time {
 
 
 
-
-
-
-
-
 scale
 
 
@@ -695,17 +695,7 @@ scale
 
 
 
-
-
-
-
-
 (
-
-
-
-
-
 
 
 
@@ -723,16 +713,7 @@ scale
 
 
 
-
-
-
-
 )
-
-
-
-
-
 
 
 
@@ -749,14 +730,7 @@ transform
 
 
 
-
-
-
 :
-
-
-
-
 
 
 
@@ -772,15 +746,7 @@ scale
 
 
 
-
-
-
-
 (
-
-
-
-
 
 
 
@@ -798,15 +764,7 @@ scale
 
 
 
-
-
-
-
 )
-
-
-
-
 
 
 
@@ -824,10 +782,6 @@ opacity
 
 
 
-
-
-
-
 :
 
 
@@ -837,16 +791,7 @@ opacity
 
 
 
-
-
-
-
 1
-
-
-
-
-
 
 
 
@@ -872,16 +817,9 @@ keyframes zoomIn { 0% {
 
 
 
-
-
-
-
 %
 {
 -webkit-transform
-
-
-
 
 
 
@@ -898,11 +836,6 @@ keyframes zoomIn { 0% {
 
 
 
-
-
-
-
-
 scale
 
 
@@ -911,17 +844,7 @@ scale
 
 
 
-
-
-
-
-
 (
-
-
-
-
-
 
 
 
@@ -938,15 +861,7 @@ scale
 
 
 
-
-
-
-
 )
-
-
-
-
 
 
 
@@ -963,16 +878,7 @@ transform
 
 
 
-
-
-
-
-
 :
-
-
-
-
 
 
 
@@ -989,10 +895,6 @@ scale
 
 
 
-
-
-
-
 (
 
 
@@ -1002,20 +904,11 @@ scale
 
 
 
-
-
-
 1
 
 
 
-
-
-
 )
-
-
-
 
 
 
@@ -1025,19 +918,10 @@ opacity
 
 
 
-
-
 :
 
 
-
-
-
-
 1
-
-
-
 
 
 
@@ -1055,22 +939,13 @@ opacity
 
 
 
-
-
-
 %
 {
 -webkit-transform
 
 
 
-
-
-
 :
-
-
-
 
 
 
@@ -1079,18 +954,11 @@ scale
 
 
 
-
-
 (
 
 
 
-
-
-
 1
-
-
 
 
 
@@ -1100,12 +968,7 @@ scale
 
 
 
-
-
 )
-
-
-
 
 
 
@@ -1114,27 +977,14 @@ transform
 
 
 
-
-
-
 :
-
-
-
 
 
 
 scale
 
 
-
-
-
-
 (
-
-
-
 
 
 
@@ -1142,19 +992,11 @@ scale
 
 
 
-
-
-
 .5
 
 
 
-
-
-
 )
-
-
 
 
 
@@ -1165,19 +1007,11 @@ opacity
 
 
 
-
-
 :
 
 
 
-
-
-
 1
-
-
-
 
 
 
@@ -1188,13 +1022,9 @@ opacity
 
 
 
-
-
 %
 {
 -webkit-transform
-
-
 
 
 
@@ -1203,12 +1033,7 @@ opacity
 
 
 
-
-
-
 scale
-
-
 
 
 
@@ -1217,19 +1042,12 @@ scale
 
 
 
-
-
-
 1
 
 
 
 
-
-
 )
-
-
 
 
 
@@ -1239,13 +1057,7 @@ transform
 
 
 
-
-
-
 :
-
-
-
 
 
 
@@ -1253,13 +1065,7 @@ scale
 
 
 
-
-
-
 (
-
-
-
 
 
 
@@ -1267,13 +1073,7 @@ scale
 
 
 
-
-
-
 )
-
-
-
 
 
 
@@ -1282,19 +1082,11 @@ opacity
 
 
 
-
-
-
 :
 
 
 
-
-
-
 0
-
-
 
 
 
@@ -1314,13 +1106,9 @@ keyframes load { 0% {
 
 
 
-
-
 %
 {
 -webkit-transform
-
-
 
 
 
@@ -1329,19 +1117,11 @@ keyframes load { 0% {
 
 
 
-
-
-
 scale
 
 
 
-
-
-
 (
-
-
 
 
 
@@ -1351,18 +1131,11 @@ scale
 
 
 
-
-
 .5
 
 
 
-
-
-
 )
-
-
 
 
 
@@ -1373,12 +1146,7 @@ transform
 
 
 
-
-
 :scale
-
-
-
 
 
 
@@ -1387,11 +1155,7 @@ transform
 
 
 
-
-
 1
-
-
 
 
 
@@ -1401,12 +1165,7 @@ transform
 
 
 
-
-
 )
-
-
-
 
 
 
@@ -1416,19 +1175,12 @@ opacity
 
 
 
-
-
 :
 
 
 
 
-
-
 1
-
-
-
 
 
 
@@ -1439,13 +1191,9 @@ opacity
 
 
 
-
-
 %
 {
 -webkit-transform
-
-
 
 
 
@@ -1454,12 +1202,7 @@ opacity
 
 
 
-
-
-
 scale
-
-
 
 
 
@@ -1469,19 +1212,12 @@ scale
 
 
 
-
-
 1
 
 
 
 
-
-
 )
-
-
-
 
 
 
@@ -1491,12 +1227,7 @@ transform
 
 
 
-
-
 :
-
-
-
 
 
 
@@ -1505,12 +1236,7 @@ scale
 
 
 
-
-
 (
-
-
-
 
 
 
@@ -1519,12 +1245,7 @@ scale
 
 
 
-
-
 )
-
-
-
 
 
 
@@ -1533,19 +1254,11 @@ opacity
 
 
 
-
-
-
 :
 
 
 
-
-
-
 0
-
-
 
 
 
@@ -1671,8 +1384,10 @@ keyframes ripple {
 .chat-image {
 	width: 45px;
 	height: 45px;
+
 	margin: 0 auto;
 	border: 1px solid #ccc;
+
 	border-radius: 50px !important;
 	border: 1px solid #999;
 }
@@ -1686,10 +1401,12 @@ keyframes ripple {
 	text-align: left;
 	line-height: 4px;
 	font-weight: 800;
+
 }
 
 .chat-message-body {
 	width: 55%;
+
 	height: 60px;
 	padding-top: 12px;
 	float: left;
@@ -1721,3 +1438,4 @@ keyframes ripple {
 .none {
 	display:none !important;
 }
+

@@ -47,7 +47,7 @@ pageEncoding="UTF-8"%>
 							<h1>${teacher.title }</h1>
 							<div class="price-availability-block clearfix">
 								<div class="price">
-									<strong>${teacher.nick }</strong>
+									<strong>${teacher.nick }</strong><span　>先生</span>
 								</div>
 							</div>
 							<div class="description">
@@ -67,7 +67,12 @@ pageEncoding="UTF-8"%>
 								<span style="font-size:16px;">出来る曜日:</span>
 								<strong style="font-size:18px;">${teacher.date }</strong>
 							</div>
+							<div>
+								<span style="font-size:16px;">講義料（1日）:</span>
+								<strong style="font-size:18px;color:#67bd3c;">${teacher.tmoney }円</strong>
+							</div>
 							<div class="pull-right">
+
 								<button class="button largeButton" onclick="joinRoom(${teacher.teacher_bno},${nowUser.bno })">1:1 チャット</button>
 								<c:choose>
 									<c:when test="${like.teacher_bno==teacher.teacher_bno }">
@@ -81,6 +86,7 @@ pageEncoding="UTF-8"%>
 										</button>
 									</c:otherwise>
 								</c:choose>
+
 							</div>
 							
 						</div>
@@ -102,8 +108,7 @@ pageEncoding="UTF-8"%>
 											<div class="review-item-submitted">
 												<strong style="display: inline">${review.nick }</strong>
 												<span class="pull-right" style="display:inline;" id="${review.nick}">
-													<img src = "/resources/custom/images/starTeacher.png" 
-													style="width: 17px; height: 17px;">
+													${review.star }
 												</span> 
 												<div class="rateit" data-rateit-value="5"
 													data-rateit-ispreset="true" data-rateit-readonly="true"></div>
@@ -172,11 +177,5 @@ pageEncoding="UTF-8"%>
 	<!-- END SIDEBAR & CONTENT -->
 	</div>
 </div>
-<script>
-$(document).ready(function(){
-	var stars = "${review}";
-	console.log(stars[0].score);
-})
-</script>
 <script src="/resources/custom/js/board.js" type="text/javascript"></script>
 <%@ include file ="../footer.jsp" %>

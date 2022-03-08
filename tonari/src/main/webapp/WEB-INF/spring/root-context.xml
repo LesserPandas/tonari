@@ -24,6 +24,7 @@
 		<property name="jdbcUrl" value="${db.url}"></property>
 		<property name="username" value="${db.username}"></property>
 		<property name="password" value="${db.password}"></property>
+
 	</bean>
 
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
@@ -61,5 +62,7 @@
 			</props>
 		</property>
 	</bean>
+
+
 
 </beans>

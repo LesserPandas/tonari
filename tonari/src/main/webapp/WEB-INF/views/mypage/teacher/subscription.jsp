@@ -8,24 +8,28 @@
         <div class="row margin-bottom-40">
           <!-- BEGIN CONTENT -->
           <div class="col-md-12 col-sm-12">
-            <h1>선생님 신청하기</h1>
+
+            <h1 style="padding: 10px 0 10px 0;">先生を要請する。</h1>
+
             <div class="goods-page">
               <div class="goods-data clearfix">
                 <div class="table-wrapper-responsive">
                 <table summary="Shopping cart">
                   <tr>
                    <!--  <th class="goods-page-image">사진</th> -->
-                    <th class="goods-page-description">닉네임</th>
+                    <th class="goods-page-description">ニックネーム</th>
                     <!-- <th class="goods-page-ref-no">종목</th> -->
-                    <th class="goods-page-quantity">기간</th>
-                    <th class="goods-page-price">금액</th>
-                    <th class="goods-page-total" colspan="2">금액</th>
+
+                    <th class="goods-page-quantity">期限</th>
+                    <th class="goods-page-price">金額</th>
+                    <th class="goods-page-total" colspan="2">金額</th>
+
                   </tr>
                   <tr>
                     <!-- <td class="goods-page-image">
                       <a href="javascript:;"><img src="assets/pages/img/products/model3.jpg" alt="Berry Lace Dress"></a>
                     </td> -->
-                    <td class="goods-page-description">
+                    <td class="goods-page-description" style="padding-top: 40px;">
                       <h3>${nowUser.nick}</h3>
                       <!-- <p><strong>한마디</strong> 개발자가 진짜 나랑 맞는 걸까?</p>
                       <a href="javascript:;">선생 정보</a> -->
@@ -47,15 +51,13 @@
 									
 						
                     </td>
-                    <td class="goods-page-price">
+                    <td class="goods-page-price" style="padding-top: 3%;">
                       <strong>1000<span>円</span></strong>
                     </td>
-                    <td class="goods-page-total">
+                    <td class="goods-page-total" style="padding-top: 3%;">
                       <strong class="total3" id="totalMonth"></strong>
                     </td>
-                    <td class="del-goods-col">
-                      <a class="del-goods" href="javascript:;">&nbsp;</a>
-                    </td>
+                    
                   </tr>
                  
                 
@@ -65,19 +67,19 @@
                 <div class="shopping-total">
                   <ul>
                     
-                    <li>
-                      <em>기간</em>
+                    <li style="padding: 15px 0 15px 0;">
+                      <em >기간</em>
                       <strong class="amount2"></strong>
                     </li>
-                    <li class="shopping-total-price">
-                      <em>Total</em>
-                      <strong class="total3"></strong>
+                    <li class="shopping-total-price" style="padding: 15px 0 15px 0;">
+                      <em  style=" font-size: 30px;">Total</em>
+                      <strong class="total3" style=" font-size: 30px;"></strong>
                     </li>
                   </ul>
                 </div>
               </div>
               <!-- <button class="btn btn-default" type="submit">다른 선생찾으러가기 <i class="fa fa-shopping-cart"></i></button> -->
-              <button class="btn btn-primary" type="submit" onclick="">결제 <i class="fa fa-check"></i></button>
+              <button class="btn btn-primary" type="submit" onclick="">支払い <i class="fa fa-check"></i></button>
             </div>
           </div>
           <!-- END CONTENT -->
@@ -86,6 +88,7 @@
       </div>
     </div>
 <script type="text/javascript">
+
 //내가 추가
 var amount = null;
 
@@ -97,7 +100,7 @@ $(document).ready(function() {
 		amount = amount + n;
 		if(amount < 1) {
 			amount=1;
-			alert("1일 이상부터 선택이 가능합니다!");
+			alert("一日以上から選択可能です。");
 		}
 		var tot = 1000 * amount;
 		
@@ -108,7 +111,9 @@ $(document).ready(function() {
 		$(".total2").html(tot);
 		 $(".total3").html(tot + "円"); 
 		/* $(".total").html(tot + "("+amount+"일)"); */
-		$(".amount2").html(amount+ "(개월)");
+
+		$(".amount2").html(amount+ "(ヶ月)");
+
 	}
 	total(0);
 	$(".plus1").on("click",function() {
@@ -135,28 +140,28 @@ function requestPay1() {
 	    pg : 'inicis', // version 1.1.0부터 지원.
 	    pay_method : 'card',
 	    merchant_uid : 'merchant_' + new Date().getTime(),
-	    name : '주문명:결제테스트',
+	    name : '注文名:支払いテスト',
 	    amount : getInnerText(), //판매 가격 : amount*1000
 	    buyer_email : 'iamport@siot.do',
-	    buyer_name : '구매자이름',
+	    buyer_name : '購入者名前',
 	    buyer_tel : '010-4030-8107',
-	    buyer_addr : '서울특별시 강남구 삼성동',
+	    buyer_addr : 'ソウル特別市江南区三成洞',
 	    buyer_postcode : '123-456'
 	}, function(rsp) {
 	    if ( rsp.success ) {
-	        var msg = '결제가 완료되었습니다.';
-	        msg += '닉네임 : ' + rsp.imp_uid;
-	        msg += '구독 개월 : ' + rsp.merchant_uid;
-	        msg += '결제 금액 : ' + getInnerText();
+	        var msg = 'お支払いができました';
+	        msg += 'ニックネーム : ' + rsp.imp_uid;
+	        msg += '購読ヶ月: ' + rsp.merchant_uid;
+	        msg += '支払い金額 : ' + getInnerText();
 	        var bno = ${nowUser.bno};
 	        console.log("msg" + msg);
 	        console.log("amount : " + amount);
-	        console.log("세션 번호: " + bno);
+	        console.log("セッション番号: " + bno);
 	        /* msg += '카드 승인번호 : ' + rsp.apply_num; */
 	        location.href = "/mypage/payMonthJoin?member_bno="+bno+"&submonth="+amount;
 	        /* 저장하는 컨트롤러 */
 	    } else {
-	        var msg = '결제에 실패하였습니다. 다시 결제를 진행해주세요';
+	        var msg = '支払いに失敗しました。もう一度お支払いをお願い致します。';
 	       /* msg += '에러내용 : ' + rsp.error_msg;  */
 	       alert(msg);
 	        location.href = "/mypage/subscription";

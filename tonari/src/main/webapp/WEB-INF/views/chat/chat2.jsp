@@ -80,25 +80,20 @@
 	</div>
 
 </body>
-<script src="/resources/test/chat/script.js"></script>
 
 <script>
-
 	window.member_bno = 0;
 	window.room_bno = 0;
 	window.nick = "";
 	window.stat = 1;
+	controllChat(-1, 0, 0, 0);
 	
-	controllChat(-1,0, 0, 0);
-
 	$('#prime').click(function() {
 		toggleFab();
 	});
 
 	//Toggle chat and links
 	function toggleFab() {
-		$('.prime').toggleClass('zmdi-comment-outline');
-		$('.prime').toggleClass('zmdi-close');
 		$('.prime').toggleClass('is-active');
 		$('.prime').toggleClass('is-visible');
 		$('#prime').toggleClass('is-float');
@@ -107,7 +102,6 @@
 		$('#chat-list').toggleClass('chat_ani');
 		controllChat(stat, 0, 0, 0);
 		stat = stat * -1;
-
 	}
 
 	function controllChat(hide, memberBno, room, nickname) {

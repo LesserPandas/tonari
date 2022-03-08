@@ -223,6 +223,8 @@
 </html>
 <%-- 
 <%@ include file="chat/chat.jsp"%> --%>
-<%@ include file="chat/chat2.jsp"%>
+<c:if test="${not empty nowUser }">
+	<%@ include file="chat/chat2.jsp"%>
+</c:if>
 <!-- <c:if test="${not empty nowUser}"> -->
 <!-- </c:if> -->

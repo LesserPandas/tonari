@@ -33,6 +33,8 @@
 	</insert>
 
 
+
+
 	<!-- 구독 결과 조회 -->
 	<select id="subResult" resultType="com.tonari.domain.PayListVO">
 		select * from paylist where

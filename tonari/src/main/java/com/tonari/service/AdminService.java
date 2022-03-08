@@ -2,8 +2,6 @@ package com.tonari.service;
 
 import java.util.List;
 
-import org.springframework.mail.javamail.MimeMessagePreparator;
-
 import com.tonari.domain.BoardVO;
 import com.tonari.domain.BoardlistVO;
 import com.tonari.domain.MailVO;
@@ -16,6 +14,9 @@ public interface AdminService {
 	//멤버리스트
 	
 	public List<MemberAuthVO> selectmemberlist();
+	//회원상세페이지
+	public MemberAuthVO memberview(String name);
+	
 	
 	public List<TeacherListVO> selectteacherlist();
 

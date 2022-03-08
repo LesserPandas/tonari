@@ -20,7 +20,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class AdminServiceImpl implements AdminService {
 
-	@Setter(onMethod_ = @Autowired)
 	private AdminMapper mapper;
 
 	@Override
@@ -54,8 +53,9 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public int permission(int bno) {
-		// TODO Auto-generated method stub
-		return mapper.permission(bno);
+		int result = mapper.permission(bno);
+		result = mapper.permission_auth(bno);
+		return result;
 	}
 	
 
@@ -105,6 +105,11 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public List<MailVO> selectMail() {
 		return mapper.selectMail();
+	}
+	@Override
+	public MemberAuthVO memberview(String name) {
+		// TODO Auto-generated method stub
+		return mapper.memberview(name);
 	}
 
 }

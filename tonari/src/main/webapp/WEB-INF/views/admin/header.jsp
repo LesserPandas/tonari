@@ -27,6 +27,42 @@
     <!-- Custom styles for this page -->
     <link href="/resources/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+
+
+
+
+
+
+
+<!-- 메인헤더 -->
+
+<!--- fonts for slider on the index page -->
+<!-- Fonts END -->
+
+<!-- Global styles START -->
+
+<!-- <link rel="stylesheet"
+	href="/resources/assets/plugins/bootstrap/css/bootstrap.min.css">
+Global styles END -->
+
+<!-- Page level plugin styles START -->
+<link rel="stylesheet" href="/resources/assets/pages/css/animate.css">
+<link rel="stylesheet"
+	href="/resources/assets/plugins/fancybox/source/jquery.fancybox.css">
+<link rel="stylesheet"
+	href="/resources/assets/plugins/owl.carousel/assets/owl.carousel.css">
+<!-- Page level plugin styles END -->
+
+
+
+
+
+
+
+
+
+
+
 </head>
 
 
@@ -50,7 +86,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="memberlist">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Main</span></a>
+                    <span>メイン</span></a>
             </li>
 
             <!-- Divider -->
@@ -66,34 +102,18 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                <i class="fas fa-fw fa-table"></i>
-                    <span>회원관리</span>
+                    <span>会員管理</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="memberlist">회원목록</a>
-                        <a class="collapse-item" href="teacherlist">강사목록</a>
+                        <a class="collapse-item" href="memberlist">会員リスト</a>
+                        <a class="collapse-item" href="teacherlist">先生リスト</a>
                     </div>
                 </div>
             </li>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                  <i class="fas fa-fw fa-chart-area"></i>
-                    <span>매출관리</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="sales">매출현황</a>
-                        <a class="collapse-item" href="teachersales">강사매출</a>
-                        <a class="collapse-item" href="studentsales">학생매출</a>
-                    </div>
-                </div>
-            </li>
+          
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -108,12 +128,12 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>게시판</span>
+                    <span>掲示板</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
-                           <a class="collapse-item" href="board">게시판관리</a>
+                           <a class="collapse-item" href="board">掲示板管理</a>
                     
                     </div>
                 </div>
@@ -123,14 +143,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="mail">
                      <i class="fas fa-fw fa-table"></i>
-                    <span>메일</span></a>
+                    <span>メール</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item active">
                 <a class="nav-link" href="login">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>로그아웃</span></a>
+                    <span>ログアウト</span></a>
             </li>
 
             <!-- Divider -->

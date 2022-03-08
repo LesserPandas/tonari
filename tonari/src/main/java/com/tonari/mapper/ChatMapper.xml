@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.tonari.mapper.ChatMapper">
+	
+	<!-- 채팅방 생성 -->
+	<insert id="createRoom">
+			INSERT INTO room (bno) VALUES (room_seq.nextval)
+	</insert>
+		<select id="newRoom" resultType="int">
+			SELECT bno FROM (SELECT bno FROM room ORDER BY bno DESC) WHERE rownum = 1
+	</select>
+		<select id="getRoom" resultType="com.tonari.domain.MyJoinRoomListVO">
+			SELECT j.member_bno, j.room_bno, m.nick, 
+			   r.content, r.write_date, r.noreadcount 
+			FROM joinroom j, member m, room r  
+			WHERE m.bno = j.member_bno 
+				AND j.member_bno != #{member_bno} 
+				AND j.ROOM_BNO = r.bno 
+				AND j.room_bno = #{room_bno}
+	</select>
+
+	<!-- 채팅방 참가 -->
+	<insert id="joinRoom">
+			INSERT INTO joinroom (bno, member_bno, room_bno) VALUES (joinroom_seq.nextval, #{member_bno}, #{room_bno})
+	</insert>
+	
+	<!-- 내 채팅방 리스트 가져오기 -->
+	<select id="myJoinRoomList"
+		resultType="com.tonari.domain.MyJoinRoomListVO">
+		SELECT j.member_bno, j.room_bno, m.nick, 
+			   r.content, r.write_date, r.noreadcount 
+		FROM joinroom j, member m, room r  
+		WHERE m.bno = j.member_bno 
+			AND j.member_bno != #{member_bno} 
+			AND j.ROOM_BNO = r.bno 
+			AND j.room_bno IN 
+			(
+				SELECT room_bno 
+				FROM joinroom 
+				WHERE member_bno = #{member_bno}
+			)
+		ORDER BY r.write_date DESC
+	</select>
+	
+	<!-- 메시지 저장 -->
+	<insert id="insertMessage">
+		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
+			SELECT message_seq.nextval FROM dual
+		</selectKey>
+		INSERT INTO message (bno, sender, content, write_date, room_bno) 
+		VALUES (#{bno}, #{sender}, #{content}, #{write_date}, #{room_bno})
+	</insert>
+	
+	<!-- 방 최근 메시지 업데이트 -->
+	<update id="updateMessageInRoom">
+		UPDATE room SET content = #{content}, write_date = #{write_date}
+		WHERE bno = #{room_bno}
+	</update>
+	
+	<!-- 메시지 리스트 5개 가져오기 -->
+	<select id="selectMessageList" resultType="com.tonari.domain.MessageVO">
+		<![CDATA[
+		SELECT *
+		FROM (
+			SELECT * 
+			FROM message
+			WHERE room_bno = #{room_bno}
+			ORDER BY write_date desc
+		)
+		WHERE rownum <= 10
+		ORDER BY rownum desc
+		]]>
+	</select>
+	
+	<select id="checkRoom" resultType="int">
+			SELECT nvl(max(a.ROOM_BNO), 0)  FROM JOINROOM a 
+			INNER JOIN joinroom b 
+			ON a.ROOM_BNO = b.ROOM_BNO AND a.MEMBER_BNO = #{sender} AND b.MEMBER_BNO = #{receiver}
+	</select>
+	
+	<update id="deleteRoom">
+			update joinroom set use_check = 0 where member_bno = #{sender} and room_bno = #{room}
+	</update>
+	
+	<select id="getImage" resultType="string">
+		select image from teacher_info_view where member_bno = #{member_bno}
+	</select>
+	
+</mapper>

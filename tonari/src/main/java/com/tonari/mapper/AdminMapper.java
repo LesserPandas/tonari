@@ -2,8 +2,6 @@ package com.tonari.mapper;
 
 import java.util.List;
 
-import org.springframework.mail.javamail.MimeMessagePreparator;
-
 import com.tonari.domain.BoardVO;
 import com.tonari.domain.BoardlistVO;
 import com.tonari.domain.MailVO;
@@ -15,6 +13,8 @@ import com.tonari.domain.TeacherPermissionListVO;
 public interface AdminMapper {
 
 	public List<MemberAuthVO> selectmemberlist();
+	
+	public void memberview(MemberAuthVO MemberAuth);
 	
 	public int delete(MemberAuthVO MemberAuth);
 	
@@ -42,7 +42,10 @@ public interface AdminMapper {
 	public MemberAuthVO login(MemberAuthVO MemberAuth);
 
 	public List<MailVO> selectMail();
+
+	public MemberAuthVO memberview(String name);
 	
+	public int permission_auth(int bno);
 	
 	
 }

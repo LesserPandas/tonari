@@ -1,11 +1,14 @@
 package com.tonari.controller;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 /*import org.springframework.security.crypto.password.PasswordEncoder;*/
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tonari.domain.MemberVO;
-import com.tonari.domain.PayListVO;
+
+import com.tonari.service.ChatService;
+
 import com.tonari.service.MemberService;
 
 import lombok.AllArgsConstructor;
@@ -32,9 +37,11 @@ public class MemberController {
 
 //	@Setter(onMethod_ = @Autowired)
 //	private PasswordEncoder pwencoder;
-
+	
+	private ChatService chatService;
+	
 	@PostMapping("/login")
-	 public String login(HttpServletRequest request, MemberVO mvo) {
+	 public String login(HttpServletRequest request, MemberVO mvo) throws IOException {
 		
 		//0) DB검색
 		MemberVO member = service.loginCheck(mvo); // nick
@@ -52,13 +59,13 @@ public class MemberController {
 			 */
 			
 			//3) 세션 유지시간 설정
-			/*
-			 * session.setMaxInactiveInterval(1800); // 1800 = 60s*30 (30분)
-			 */        
+			session.setMaxInactiveInterval(1800); // 1800 = 60s*30 (30분)
+			        
 			//4) 회원정보 설정
 			session.setAttribute("nowUser", member);
 			/* session.setAttribute(AUTH, member.getAuth()); */
 			/* session.setAttribute(AUTH_NAME, authName); */
+			chatService.setQueue(member.getBno());
 		} else {  
 			return "redirect:/join/loginerror"; }
 		
@@ -88,18 +95,12 @@ public class MemberController {
 	 * service.emailCheck(email); log.info(result); return result; }
 	 */
 
-	
+	//회원가입
 	  @PostMapping("/memberinsertpro.do") 
 	  public String register(MemberVO member,RedirectAttributes rttr) {
-			/*
-			 * log.info(member.getO_addr()); log.info(member.getGu());
-			 * log.info(member.getDong());
-			 */
-	 /* String inputPass = pwencoder.encode(member.getPasswd());*/
-	 /* member.setPasswd(inputPass);*/
-	  
+	
 	  service.register(member);
-	  //rttr.addFlashAttribute("result",member.getUserid()); return "redirect:/"; }
+	 
 	return"redirect:/";
 	
 	  }
@@ -155,11 +156,19 @@ public class MemberController {
     
     
     
+    @GetMapping("/studentinfologintest")
+	public String studentinfologintest(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		MemberVO mvo = (MemberVO) session.getAttribute("nowUser");
+		if (mvo == null) {
+			return "redirect: /login";
+		}
+		return "redirect:/mypage/studentinfo";
+	}
     
-    
-    @PostMapping("/studentinfoModify.do")
+    @PostMapping("/studentinfoModify")
     public String studentinfoModify(HttpServletRequest request, MemberVO vo){
-    	log.info("============== VO : " + vo);
+		/* log.info("============== VO : " + vo); */
     	service.studentinfoModify(vo);
     	HttpSession session = request.getSession();
     	MemberVO member = (MemberVO) session.getAttribute("nowUser");

@@ -76,36 +76,36 @@
         <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">관리자 글작성</h1>
+                    <h1 class="h3 mb-4 text-gray-800">管理者文作成</h1>
 <div class="row">
                           <form name="board" method="post" action="insert" onsubmit="return check()">
                           <input type="hidden" name="member_bno" id="member_bno" value="1">
                             <div class="col-lg-9">
                                 <div class="p-5">
                                      <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4" style="margin-left: 20%; font-size: 30px;">관리자 글작성</h1>
+                                        <h1 class="h4 text-gray-900 mb-4" style="margin-left: 20%; font-size: 30px;">管理者文作成</h1>
                                     </div>
                                 <div class="email-right-box">
                                     <div class="toolbar" role="toolbar">
                                     </div>
                                     <div class="compose-content mt-5">
                                         	<div class="form-group">
-                                                <input type="text" class="form-control bg-transparent" name="title" placeholder=" 제목">
+                                                <input type="text" class="form-control bg-transparent" name="title" placeholder="タイトル">
                                             </div>
                                             <div class="form-group">
-                                                <input type="text" class="form-control bg-transparent"   placeholder="관리자" readonly>
+                                                <input type="text" class="form-control bg-transparent"   placeholder="管理者" readonly>
                                             </div>
                                             <select name="category" style="margin-bottom: 1%;">
-                                            		<option value="1">공지사항</option>
-                                            		<option value="2">홍보/이벤트</option>
+                                            		<option value="1">お知らせ</option>
+                                            		<option value="2">公告/イベント</option>
                                             </select>
                                             <div class="form-group" >
-                                                <textarea class="textarea_editor form-control bg-light" id="summernote" rows="15" name="content" placeholder="내용"  ></textarea>
+                                                <textarea class="textarea_editor form-control bg-light" id="summernote" rows="15" name="content" placeholder="内容"  ></textarea>
                                             </div>
                                     </div>
                                     <div class="text-left m-t-15" style="margin-left: 32%; ">
-                                        <button type="submit" class="btn btn-primary m-b-30 m-t-15 f-s-14 p-l-20 p-r-20 m-r-10"> 글쓰기</button>
-                                        <button class="btn btn-dark m-b-30 m-t-15 f-s-14 p-l-20 p-r-20" type="button" onclick="history.back();"><i class="ti-close m-r-5 f-s-12"></i>취소</button>
+                                        <button type="submit" class="btn btn-primary m-b-30 m-t-15 f-s-14 p-l-20 p-r-20 m-r-10">書く</button>
+                                        <button class="btn btn-dark m-b-30 m-t-15 f-s-14 p-l-20 p-r-20" type="button" onclick="history.back();"><i class="ti-close m-r-5 f-s-12"></i>キャンセル</button>
                                     </div>
                                 </div>
                                                               

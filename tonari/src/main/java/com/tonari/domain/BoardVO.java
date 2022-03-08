@@ -1,7 +1,5 @@
 package com.tonari.domain;
 
-import java.sql.Date;
-
 import lombok.Data;
 
 @Data

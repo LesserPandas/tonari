@@ -7,39 +7,47 @@
         <div class="row margin-bottom-40">
           <!-- BEGIN CONTENT -->
           <div class="col-md-12 col-sm-12">
-            <h1>나의 구독 내역</h1>
+            <h1>自分の購読内訳</h1>
             <div class="goods-page">
               <div class="goods-data clearfix">
                 <div class="table-wrapper-responsive">
+                
                 <table summary="Shopping cart">
                   <tr>
-                    <th class="goods-page-image">사진</th>
-                    <th class="goods-page-description">설명</th>
-                    <th class="goods-page-ref-no">종목</th>
-                    <th class="goods-page-quantity">구독시작한 날짜</th>
-                    <th class="goods-page-price">구독 기간</th>
-                    <th class="goods-page-total" colspan="2">결제 가격</th>
+                    <th class="goods-page-image">写真</th>
+                    <th class="goods-page-description">説明</th>
+                    <th class="goods-page-ref-no">種目</th>
+                    <th class="goods-page-quantity">購読始めの日にち</th>
+                    <th class="goods-page-price">購読期限</th>
+                    <th class="goods-page-total" colspan="2">支払い金額</th>
                   </tr>
                   <tr>
                     <td class="goods-page-image">
-                      <a href="javascript:;"><img src="assets/pages/img/products/model3.jpg" alt="Berry Lace Dress"></a>
+                      <a href="javascript:;"><img id="preview-image" src="${tvo.image }" ><!-- alt="Berry Lace Dress" --></a>
                     </td>
                     <td class="goods-page-description">
-                      <h3>닉네임</h3>
-                      <p><strong>한마디</strong> 개발자가 진짜 나랑 맞는 걸까?</p>
-                      <a href="javascript:;">선생 정보</a>
+
+                      <h3>${nowUser.nick }</h3>
+
+                      <p><strong>一言</strong>${tvo.coment }</p>
+                      <a href="/mypage/teacherUpdate">先生情報</a>
+
                     </td>
                     <td class="goods-page-ref-no">
-                      javc2133
-                    </td>
-                    <td class="goods-page-quantity">
-                      <strong>21.07.21</strong>
+                      ${tvo.category_name }
                     </td>
                     <td class="goods-page-price">
-                      <strong>12<span>개월</span></strong>
+                      <strong>${subResult.write_date}</strong>
+                    </td>
+                    <td class="goods-page-price">
+
+                      <strong>${subResult.submonth}<span>ヶ月</span></strong>
+
                     </td>
                     <td class="goods-page-total">
-                      <strong>1818<span>円</span></strong>
+                      <strong class="amount"><span>${subResult.submonth*1000}円</span></strong>
+                      
+                      
                     </td>
                     <td class="del-goods-col">
                       <a class="del-goods" href="javascript:;">&nbsp;</a>
@@ -61,5 +69,26 @@
 
       </div>
     </div>
+<script>
 
+
+var month =${subResult.submonth};
+var amount= null;
+amount = 1000 * month;
+console.log(amount);
+/* $(document).ready(function() {
+	var total = function(n) {
+		var month =${subResult.submonth};
+		
+		month = parseInt(month);
+		
+
+		amount = month*1000;
+		
+		$(".amount").html(amount);
+	}
+
+}); */
+
+</script>
     <%@ include file="../../footer.jsp" %>

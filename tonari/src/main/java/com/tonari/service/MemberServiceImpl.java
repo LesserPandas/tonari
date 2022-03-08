@@ -12,7 +12,7 @@ import lombok.Setter;
 @Service
 @AllArgsConstructor
 public class MemberServiceImpl implements MemberService {
-	@Setter(onMethod_ = @Autowired)
+
 	private MemberMapper mapper;
 	
 	public int emailCheck(String email) {
@@ -36,7 +36,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberVO selectMember(String nick) {
 		MemberVO member = mapper.selectMember(nick);
-		System.out.println(member);
+		/* System.out.println(member); */
 		return member;
 	}
 	

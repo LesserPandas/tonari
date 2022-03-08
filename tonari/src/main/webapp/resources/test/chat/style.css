@@ -4,9 +4,6 @@
 	url(https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic&subset=latin,cyrillic)
 	;
 
-@import
-	url(https://zavoloklom.github.io/material-design-iconic-font/css/docs.md-iconic-font.min.css)
-	;
 
 ul li {
 	list-style: none;
@@ -66,6 +63,9 @@ ul li {
 	margin: 15px auto 10;
 	opacity: 1;
 	visibility: visible;
+
+	z-index: 999;
+
 }
 
 .fab:nth-last-child(1) {
@@ -116,6 +116,9 @@ ul li {
 	-webkit-transition: all .2s ease-in-out;
 	transition: all .2s ease-in-out;
 	font-size: 12px;
+
+	display: none !important;
+
 }
 
 .chat_fullscreen {
@@ -163,8 +166,8 @@ ul li {
 	opacity: 1;
 }
 
-#chat-list.is-visible {
-	
+#chat-list.chat_ani {
+
 	-webkit-animation: zoomIn .2s cubic-bezier(.42, 0, .58, 1);
 	animation: zoomIn .2s cubic-bezier(.42, 0, .58, 1);
 }
@@ -187,7 +190,8 @@ ul li {
 	padding-top: 6px;
 }
 
-.chat_option img {
+.profile_img {
+
 	border-radius: 50%;
 	width: 55px;
 	float: left;
@@ -240,7 +244,8 @@ ul li {
 	height: 450px;
 }
 
-.chat_login p, .chat_body li, p, a {
+.chat_body li {
+
 	-webkit-animation: zoomIn .5s cubic-bezier(.42, 0, .58, 1);
 	animation: zoomIn .5s cubic-bezier(.42, 0, .58, 1);
 }
@@ -264,7 +269,9 @@ ul li {
 }
 
 .chat_head_room {
-	left: -10px;
+
+	left: -15px;
+
 }
 
 .chat_field {
@@ -449,10 +456,6 @@ ul li {
 	text-align: left;
 }
 
-.chat_ani {
-	-webkit-animation: zoomIn .5s cubic-bezier(.42, 0, .58, 1);
-	animation: zoomIn .5s cubic-bezier(.42, 0, .58, 1);
-}
 
 .status {
 	margin: 45px -50px 0 0;
@@ -676,13 +679,7 @@ strong.chat_time {
 
 
 
-
-
-
 :
-
-
-
 
 
 
@@ -698,13 +695,7 @@ scale
 
 
 
-
-
-
 (
-
-
-
 
 
 
@@ -722,12 +713,7 @@ scale
 
 
 
-
-
 )
-
-
-
 
 
 
@@ -744,10 +730,7 @@ transform
 
 
 
-
 :
-
-
 
 
 
@@ -763,11 +746,7 @@ scale
 
 
 
-
-
 (
-
-
 
 
 
@@ -785,11 +764,7 @@ scale
 
 
 
-
-
 )
-
-
 
 
 
@@ -807,8 +782,6 @@ opacity
 
 
 
-
-
 :
 
 
@@ -818,12 +791,7 @@ opacity
 
 
 
-
-
 1
-
-
-
 
 
 
@@ -849,12 +817,9 @@ keyframes zoomIn { 0% {
 
 
 
-
-
 %
 {
 -webkit-transform
-
 
 
 
@@ -871,9 +836,6 @@ keyframes zoomIn { 0% {
 
 
 
-
-
-
 scale
 
 
@@ -882,13 +844,7 @@ scale
 
 
 
-
-
-
 (
-
-
-
 
 
 
@@ -905,11 +861,7 @@ scale
 
 
 
-
-
 )
-
-
 
 
 
@@ -926,12 +878,7 @@ transform
 
 
 
-
-
-
 :
-
-
 
 
 
@@ -948,10 +895,7 @@ scale
 
 
 
-
-
 (
-
 
 
 
@@ -964,9 +908,7 @@ scale
 
 
 
-
 )
-
 
 
 
@@ -979,10 +921,7 @@ opacity
 :
 
 
-
-
 1
-
 
 
 
@@ -1000,16 +939,13 @@ opacity
 
 
 
-
 %
 {
 -webkit-transform
 
 
 
-
 :
-
 
 
 
@@ -1019,7 +955,6 @@ scale
 
 
 (
-
 
 
 
@@ -1037,10 +972,8 @@ scale
 
 
 
-
 ;
 transform
-
 
 
 
@@ -1048,14 +981,10 @@ transform
 
 
 
-
 scale
 
 
-
-
 (
-
 
 
 
@@ -1063,9 +992,7 @@ scale
 
 
 
-
 .5
-
 
 
 
@@ -1084,9 +1011,7 @@ opacity
 
 
 
-
 1
-
 
 
 
@@ -1108,14 +1033,12 @@ opacity
 
 
 
-
 scale
 
 
 
 
 (
-
 
 
 
@@ -1134,9 +1057,7 @@ transform
 
 
 
-
 :
-
 
 
 
@@ -1144,9 +1065,7 @@ scale
 
 
 
-
 (
-
 
 
 
@@ -1154,9 +1073,7 @@ scale
 
 
 
-
 )
-
 
 
 
@@ -1165,9 +1082,7 @@ opacity
 
 
 
-
 :
-
 
 
 
@@ -1202,9 +1117,7 @@ keyframes load { 0% {
 
 
 
-
 scale
-
 
 
 
@@ -1219,7 +1132,6 @@ scale
 
 
 .5
-
 
 
 
@@ -1238,7 +1150,6 @@ transform
 
 
 
-
 (
 
 
@@ -1258,7 +1169,6 @@ transform
 
 
 
-
 ;
 opacity
 
@@ -1271,7 +1181,6 @@ opacity
 
 
 1
-
 
 
 
@@ -1293,7 +1202,6 @@ opacity
 
 
 
-
 scale
 
 
@@ -1310,7 +1218,6 @@ scale
 
 
 )
-
 
 
 
@@ -1324,14 +1231,12 @@ transform
 
 
 
-
 scale
 
 
 
 
 (
-
 
 
 
@@ -1344,15 +1249,12 @@ scale
 
 
 
-
 ;
 opacity
 
 
 
-
 :
-
 
 
 
@@ -1468,6 +1370,10 @@ keyframes ripple {
 	color: #bbb;
 }
 
+.chat-row {
+	height:70px;
+}
+
 .chat-profile {
 	width: 20%;
 	height: 60px;
@@ -1478,7 +1384,10 @@ keyframes ripple {
 .chat-image {
 	width: 45px;
 	height: 45px;
-	margin: 0 auto; border : 1px solid #999;
+
+	margin: 0 auto;
+	border: 1px solid #ccc;
+
 	border-radius: 50px !important;
 	border: 1px solid #999;
 }
@@ -1492,11 +1401,12 @@ keyframes ripple {
 	text-align: left;
 	line-height: 4px;
 	font-weight: 800;
-	
+
 }
 
 .chat-message-body {
-	width: 63.5%;
+	width: 55%;
+
 	height: 60px;
 	padding-top: 12px;
 	float: left;
@@ -1506,13 +1416,26 @@ keyframes ripple {
 	font-size: 14px;
 	text-align: left;
 	line-height: 12px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-break: break-all;
 }
 
 .chat-timeline {
-	width: 16.5%;
-	float:left;
+	width: 25%;
+	float: left;
 	text-align: right;
 	padding-right: 15px !important;
-	margin:0 auto;
-	padding-top:12px;
+	margin: 0 auto;
+	padding-top: 12px;
 }
+
+.block {
+	display: block !important;
+}
+
+.none {
+	display:none !important;
+}
+

@@ -4,7 +4,9 @@
 <link href="/resources/custom/css/main.css" rel="stylesheet">
 </head>
 <body>
+
 	 <div class="title-wrapper simple-linear ">
+
 		<!-- 메인 배너 이미지 -->
 		<div class="container">
 			<div class="container-inner col-md-6 col-md-offset-3">
@@ -50,8 +52,10 @@
 							<input type="text" class="form-control ht-45" name="keyword"
 								placeholder="入力" style="width: 435px; display: inline-block">
 							<span class="input-group-btn">
+
 								<button class="btn btn-primary btn-green ht-45" type="submit"
 									style="width: 100px">検索</button>
+
 							</span>
 						</div>
 					</div>
@@ -303,8 +307,10 @@
 	<div class="container" style="margin-bottom: 60px">
 		<div class="row">
 			<div class="col-md-12 search-mg-0 bg-success">
+
 				<div style="padding: 10px; width: 50%; float: left; padding: 30px">
 					<h2>お知らせ</h2>
+
 					<table class="table">
 						<colgroup>
 							<col style="width:15%;">

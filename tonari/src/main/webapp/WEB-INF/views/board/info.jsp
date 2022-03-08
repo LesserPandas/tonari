@@ -72,21 +72,21 @@ pageEncoding="UTF-8"%>
 								<strong style="font-size:18px;color:#67bd3c;">${teacher.tmoney }円</strong>
 							</div>
 							<div class="pull-right">
-								<button class="button largeButton">1:1 チャット</button>
-								<c:if test="${not empty nowUser }">
-									<c:choose>
-										<c:when test="${like.teacher_bno==teacher.teacher_bno }">
-											<button class="pull-right squareButton likeButton likeButtonActive" 
-												id="teacher_${teacher.teacher_bno}" onclick="like(${teacher.teacher_bno},${nowUser.bno })">♥
-											</button>
-										</c:when>
-										<c:otherwise>
-											<button class="pull-right squareButton likeButton " 
-												id="teacher_${teacher.teacher_bno}" onclick="like(${teacher.teacher_bno},${nowUser.bno })">♥
-											</button>
-										</c:otherwise>
-									</c:choose>
-								</c:if>
+
+								<button class="button largeButton" onclick="joinRoom(${teacher.teacher_bno},${nowUser.bno })">1:1 チャット</button>
+								<c:choose>
+									<c:when test="${like.teacher_bno==teacher.teacher_bno }">
+										<button class="pull-right squareButton likeButton likeButtonActive" 
+											id="teacher_${teacher.teacher_bno}" onclick="like(${teacher.teacher_bno},${nowUser.bno })">♥
+										</button>
+									</c:when>
+									<c:otherwise>
+										<button class="pull-right squareButton likeButton " 
+											id="teacher_${teacher.teacher_bno}" onclick="like(${teacher.teacher_bno},${nowUser.bno })">♥
+										</button>
+									</c:otherwise>
+								</c:choose>
+
 							</div>
 							
 						</div>

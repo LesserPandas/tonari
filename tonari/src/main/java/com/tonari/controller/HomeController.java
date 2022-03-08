@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+
 import com.tonari.domain.MemberVO;
 import com.tonari.service.BoardService;
 import com.tonari.service.HomeService;
@@ -44,20 +45,20 @@ public class HomeController {
 		model.addAttribute("review",hservice.review());
 		model.addAttribute("notice",hservice.board(1));
 		model.addAttribute("event",hservice.board(2));
+
 		return "index";
 	}
-	
-	
+
 	@GetMapping("/login")
 	public String login() {
 		return "/join/login";
 	}
-	
+
 	@GetMapping("/join")
 	public String join() {
 		return "/join/join2";
 	}
-	
+
 	@GetMapping("/mypage")
 	public String mypage(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
@@ -67,7 +68,7 @@ public class HomeController {
 		}
 		return "/mypage/mypage";
 	}
-	
+
 	@GetMapping("/admin")
 	public String admin() {
 		return "redirect:/admin/login";

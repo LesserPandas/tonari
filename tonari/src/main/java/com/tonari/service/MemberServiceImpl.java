@@ -12,7 +12,7 @@ import lombok.Setter;
 @Service
 @AllArgsConstructor
 public class MemberServiceImpl implements MemberService {
-	@Setter(onMethod_ = @Autowired)
+
 	private MemberMapper mapper;
 	
 	public int emailCheck(String email) {

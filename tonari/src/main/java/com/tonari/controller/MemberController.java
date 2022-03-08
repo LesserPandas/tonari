@@ -1,5 +1,7 @@
 package com.tonari.controller;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -15,6 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tonari.domain.MemberVO;
+
+import com.tonari.service.ChatService;
+
 import com.tonari.service.MemberService;
 
 import lombok.AllArgsConstructor;
@@ -32,9 +37,11 @@ public class MemberController {
 
 //	@Setter(onMethod_ = @Autowired)
 //	private PasswordEncoder pwencoder;
-
+	
+	private ChatService chatService;
+	
 	@PostMapping("/login")
-	 public String login(HttpServletRequest request, MemberVO mvo) {
+	 public String login(HttpServletRequest request, MemberVO mvo) throws IOException {
 		
 		//0) DB검색
 		MemberVO member = service.loginCheck(mvo); // nick
@@ -58,6 +65,7 @@ public class MemberController {
 			session.setAttribute("nowUser", member);
 			/* session.setAttribute(AUTH, member.getAuth()); */
 			/* session.setAttribute(AUTH_NAME, authName); */
+			chatService.setQueue(member.getBno());
 		} else {  
 			return "redirect:/join/loginerror"; }
 		

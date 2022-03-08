@@ -230,12 +230,14 @@
 						data-toggle="dropdown" data-target="/mypage" href="/mypage">
 							マイページ </a> <!-- BEGIN DROPDOWN MENU -->
 						<ul class="dropdown-menu">
+
 							<li><a href="/join/studentinfologintest">個人情報修正</a></li>
 							<li><a href="/mypage/like">お気に入りの先生</a></li>
 							<li><a href="/mypage/payteacherList">私の先生</a></li>
 							<li><a href="/mypage/subscription"><strong>先生に登録</strong></a></li>
 						</ul> <!-- END DROPDOWN MENU -->
 					</li>
+
 				</ul>
 			</div>
 			<!-- END NAVIGATION -->

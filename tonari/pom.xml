@@ -205,19 +205,37 @@
 			<version>1.16</version>
 		</dependency>
 
-		<!-- JSON 데이터를 처리하기 위한 라이브러리 -->
+
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.9.6</version>
+			<version>2.13.0</version>
 		</dependency>
 
-		<!-- xml처리를 위한 라이브러리 -->
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.13.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.13.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.dataformat</groupId>
 			<artifactId>jackson-dataformat-xml</artifactId>
-			<version>2.9.6</version>
+			<version>2.13.0</version>
 		</dependency>
+
+
+
 
 		<!-- 자바 객체를 JSON 타입의 문자열로 변환해야 할 때 -->
 		<dependency>
@@ -305,25 +323,82 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka -->
-		<dependency>
-			<groupId>org.apache.kafka</groupId>
-			<artifactId>kafka_2.13</artifactId>
-			<version>3.1.0</version>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.springframework.kafka/spring-kafka -->
-		<dependency>
-			<groupId>org.springframework.kafka</groupId>
-			<artifactId>spring-kafka</artifactId>
-			<version>2.8.2</version>
-		</dependency>
-
 		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>31.0.1-jre</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/com.github.iamport/iamport-rest-client-java -->
+		<dependency>
+			<groupId>com.github.iamport</groupId>
+			<artifactId>iamport-rest-client-java</artifactId>
+			<version>0.2.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.rabbitmq</groupId>
+			<artifactId>amqp-client</artifactId>
+			<version>5.4.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.amqp</groupId>
+			<artifactId>spring-rabbit</artifactId>
+			<version>2.1.8.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.amqp</groupId>
+			<artifactId>spring-amqp</artifactId>
+			<version>2.1.8.RELEASE</version>
+		</dependency>
+
+
+
+
+		<dependency>
+			<groupId>io.projectreactor.spring</groupId>
+			<artifactId>reactor-spring-context</artifactId>
+			<version>2.0.5.RELEASE</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.projectreactor.spring/reactor-spring-messaging -->
+		<dependency>
+			<groupId>io.projectreactor.spring</groupId>
+			<artifactId>reactor-spring-messaging</artifactId>
+			<version>2.0.7.RELEASE</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.projectreactor.spring/reactor-spring-core -->
+		<dependency>
+			<groupId>io.projectreactor.spring</groupId>
+			<artifactId>reactor-spring-core</artifactId>
+			<version>2.0.7.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectreactor</groupId>
+			<artifactId>reactor-tcp</artifactId>
+			<version>1.0.1.RELEASE</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-all</artifactId>
+			<version>4.1.74.Final</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/io.projectreactor.ipc/reactor-netty -->
+		<dependency>
+			<groupId>io.projectreactor.ipc</groupId>
+			<artifactId>reactor-netty</artifactId>
+			<version>0.7.15.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.projectreactor.netty</groupId>
+			<artifactId>reactor-netty</artifactId>
+			<version>0.8.11.RELEASE</version>
 		</dependency>
 
 

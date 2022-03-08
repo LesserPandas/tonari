@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit.xsd">
+
+	<rabbit:connection-factory
+		id="rabbitConnectionFactory" 
+		host="${rabbitmq.host}" 
+		port="${rabbitmq.port}"
+		username="${rabbitmq.username}" 
+		password="${rabbitmq.password}" 
+		virtual-host="${rabbitmq.virtual-host}"/>
+
+	<rabbit:admin connection-factory="rabbitConnectionFactory" />
+
+	<!-- Queue 등록 -->
+	<rabbit:queue name="myQueue" />
+
+	<!-- Queue 바인딩 -->
+<!-- 	<rabbit:direct-exchange name="myExchange">
+		<rabbit:bindings>
+			<rabbit:binding key="foo.bar" queue="myQueue" />
+		</rabbit:bindings>
+	</rabbit:direct-exchange>
+	 -->
+		<rabbit:topic-exchange name="myExchange">
+		<rabbit:bindings>
+			<rabbit:binding pattern="foo.*" queue="myQueue" />
+		</rabbit:bindings>
+	</rabbit:topic-exchange>
+
+	<!-- 메시지를 보내기 위한 template 설정 -->
+	<rabbit:template id="rabbitTemplate"
+		connection-factory="rabbitConnectionFactory" exchange="myExchange"
+		routing-key="foo.bar" retry-template="retryTemplate" />
+
+	<bean id="recoverer" class="com.tonari.exception.ErrorRecoverer" />
+
+	<!-- retry interceptor 설정 -->
+	<bean id="retryInterceptor"
+		class="org.springframework.amqp.rabbit.config.StatelessRetryOperationsInterceptorFactoryBean">
+		<property name="messageRecoverer" ref="recoverer" />
+		<property name="retryOperations" ref="retryTemplate" />
+	</bean>
+
+	<!-- 재시도를 위한 template 설정 -->
+	<bean id="retryTemplate"
+		class="org.springframework.retry.support.RetryTemplate">
+		<property name="backOffPolicy">
+			<!-- 재시도 시 간격 설정 -->
+			<bean
+				class="org.springframework.retry.backoff.ExponentialBackOffPolicy">
+				<property name="initialInterval" value="500" />
+				<property name="multiplier" value="2.0" />
+				<property name="maxInterval" value="20000" />
+			</bean>
+		</property>
+		<property name="retryPolicy">
+			<!-- 실패 시 재시도 횟수 설정 -->
+			<bean class="org.springframework.retry.policy.SimpleRetryPolicy">
+				<property name="maxAttempts" value="3" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="amqpMessageConverter" class="org.springframework.amqp.support.converter.Jackson2JsonMessageConverter"/>
+
+	<!-- 메시지 리스너 설정 -->
+	<rabbit:listener-container
+		connection-factory="rabbitConnectionFactory"
+		advice-chain="retryInterceptor"
+		message-converter="amqpMessageConverter">
+		<!-- 큐 myQueue 메시지는 bean id consumer의 method listen가 처리한다 -->
+		<rabbit:listener queues="myQueue" ref="ChatService" method="onMessage"/>
+	</rabbit:listener-container>
+	
+	<bean id="ChatService" class="com.tonari.service.ChatServiceImpl" />
+
+</beans>

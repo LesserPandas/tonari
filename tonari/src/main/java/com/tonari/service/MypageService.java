@@ -4,10 +4,12 @@ import java.util.List;
 
 import com.tonari.domain.MemberAuthVO;
 import com.tonari.domain.PayListVO;
+
 import com.tonari.domain.StudentVO;
 import com.tonari.domain.TeacherVO;
 import com.tonari.domain.Teacherinfo_viewVO;
 import com.tonari.domain.studentpaylistVO;
+
 
 public interface MypageService {
 

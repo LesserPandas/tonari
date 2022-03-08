@@ -7,15 +7,24 @@
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
+	<bean id="propertyPlaceholderConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>/WEB-INF/spring/config/jdbc.properties</value>
+				<value>/WEB-INF/spring/config/mail.properties</value>
+				<value>/WEB-INF/spring/config/rabbitmq.properties</value>
+			</list>
+		</property>
+	</bean>
+
 	<!-- Root Context: 스프링 프레임워크에서 관리해야 하는 객체를 설정하는 파일이다 -->
-	<!-- 연습 -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-		<property name="driverClassName"
-			value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
-		<property name="jdbcUrl"
-			value="jdbc:log4jdbc:oracle:thin:@10.211.55.3:1521:xe"></property>
-		<property name="username" value="tonari"></property>
-		<property name="password" value="1234"></property>
+		<property name="driverClassName" value="${db.driver}"></property>
+		<property name="jdbcUrl" value="${db.url}"></property>
+		<property name="username" value="${db.username}"></property>
+		<property name="password" value="${db.password}"></property>
+
 	</bean>
 
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
@@ -31,16 +40,21 @@
 		base-package="com.tonari.service" />
 	<mybatis-spring:scan
 		base-package="com.tonari.mapper" />
+	<context:component-scan
+		base-package="com.tonari.controller" />
+	<context:component-scan
+		base-package="com.tonari.exception" />
+	<context:component-scan
+		base-package="com.tonari.config" />
 
-
-<!-- 두홍메일 -->
+	<!-- 두홍메일 -->
 
 	<bean id="mailSender"
 		class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<property name="host" value="smtp.gmail.com" />
-		<property name="port" value="587" />
-		<property name="username" value="kdh353866@gmail.com" />
-		<property name="password" value="kdh@82230833" />
+		<property name="host" value="${mail.host}" />
+		<property name="port" value="${mail.port}" />
+		<property name="username" value="${mail.username}" />
+		<property name="password" value="${mail.password}" />
 		<property name="javaMailProperties">
 			<props>
 				<prop key="mail.smtp.auth">true</prop>

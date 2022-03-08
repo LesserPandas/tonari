@@ -14,9 +14,6 @@ import com.tonari.domain.Teacherinfo_viewVO;
 import com.tonari.domain.studentpaylistVO;
 import com.tonari.mapper.MyPageMapper;
 
-import lombok.extern.log4j.Log4j;
-
-@Log4j
 @Service
 public class MypageServiceImpl implements MypageService {
 	

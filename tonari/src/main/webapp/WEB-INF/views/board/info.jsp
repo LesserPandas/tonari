@@ -73,7 +73,7 @@ pageEncoding="UTF-8"%>
 							</div>
 							<div class="pull-right">
 
-								<button class="button largeButton" onclick="joinRoom(${teacher.teacher_bno},${nowUser.bno })">1:1 チャット</button>
+								<button class="button largeButton" onclick="joinRoom(${teacher.member_bno},${nowUser.bno })">1:1 チャット</button>
 								<c:choose>
 									<c:when test="${like.teacher_bno==teacher.teacher_bno }">
 										<button class="pull-right squareButton likeButton likeButtonActive" 

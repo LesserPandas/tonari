@@ -21,12 +21,10 @@
 	<div class="fabs">
 
 
-		<div class="chat" id="chat-list" style="border-radius:20px">
+		<div class="chat" id="chat-list" style="border-radius: 20px">
 			<div class="chat_header">
 				<div class="chat_option">
-					<span class="chat_head">チャットリスト</span> <span
-						id="chat_fullscreen_loader" class="chat_fullscreen_loader"><i
-						class="fullscreen zmdi zmdi-window-maximize"></i></span>
+					<span class="chat_head">チャットリスト</span>
 				</div>
 			</div>
 
@@ -50,18 +48,19 @@
 		</div>
 
 
-		<div class="chat block" id="chat-room" style="border-radius:20px">
+		<div class="chat block" id="chat-room" style="border-radius: 20px">
 			<div class="chat_header">
 				<div class="chat_option">
-					<a href="javascript:controllChat(1)"><img src="/resources/test/chat/angle-left.png"></a> <span
-						class="chat_head chat_head_room" id="yourName">사람 이름</span> <span
-						id="chat_fullscreen_loader" class="chat_fullscreen_loader"><i
-						class="fullscreen zmdi zmdi-window-maximize"></i></span>
+					<a href="javascript:controllChat(1)"
+						style="position: absolute; margin-left: 100px !important;"><img
+						src="/resources/test/chat/angle-left.png"></a> <span
+						class="chat_head chat_head_room" id="yourName">사람 이름</span>
 
 				</div>
 
 			</div>
-			<div id="chat-room-body" class="chat_body chat_converse" style="overflow-y:scroll">
+			<div id="chat-room-body" class="chat_body chat_converse"
+				style="overflow-y: scroll">
 				<span class="chat_msg_item chat_msg_item_admin"> 상대 메세지</span> <span
 					class="chat_msg_item chat_msg_item_user"> 내가 보낸 메세지</span>
 
@@ -69,14 +68,17 @@
 
 			<div class="fab_field">
 
-				<a id="fab_send" class="fab" href="javascript:message_send(${nowUser.bno })"><img src="/resources/test/chat/send.png"></a>
+				<a id="fab_send" class="fab"
+					href="javascript:message_send(${nowUser.bno })"><img
+					src="/resources/test/chat/send.png"></a>
 				<textarea id="myMessage" name="chat_message"
 					placeholder="Send a message" class="chat_field chat_message"></textarea>
 			</div>
 		</div>
 
 
-		<a id="prime" class="fab chat_tab"><img src="/resources/test/chat/chat.png" alt="" style="margin-top:14px;"></a>
+		<a id="prime" class="fab chat_tab"><img
+			src="/resources/test/chat/chat.png" alt="" style="margin-top: 14px;"></a>
 	</div>
 
 </body>
@@ -317,10 +319,10 @@
 			data : {
 				bno: bno
 			},
-			dataType : 'text',
+			dataType : 'json',
 			success : function(data) {
 				var room = JSON.stringify(data);
-				stompClient.send('/chat/enter.message.'+room+'.'+ bno +'.'+ nowUserNum, {}, JSON.stringify({content:'temp'}));
+				stompClient.send('/chat/enter.message.'+room+'.'+ bno +'.'+ nowUserNum, {}, JSON.stringify({content:'temp', write_date: new Date()}));
 				
 			},
 			error : function() {
@@ -347,7 +349,7 @@
 				
 				const html =	'<div class="chat-row">' +
 												'<div class="chat-profile">' +
-													'<div class="chat-image"></div>' +
+												'<div class="chat-image"><img class="chat-image" src="' + item.image + '"></div>' +
 												'</div>' +
 												'<div class="chat-message-body" onclick="controllChat(2,' + item.member_bno + ',' + item.room_bno + ',\'' + item.nick + '\')">' +
 													'<p class="chat-p chat-sender">' + item.nick + '</p>' +

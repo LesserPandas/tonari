@@ -167,7 +167,7 @@ input[type="checkbox"]:checked {
 		amount = amount + n;
 		if (amount < 1) {
 			amount = 1;
-			alert("1주일 이상부터 선택이 가능합니다!");
+			alert("1週間以上から選択ができます。");
 			return;
 		}
 		var day_count = $(".goods-page-ref-no_" + num).attr("name");
@@ -259,7 +259,6 @@ input[type="checkbox"]:checked {
 				location.href = "/mypage/like";
 				return;
 			}
-			alert(msg);
 		});
 
 	}

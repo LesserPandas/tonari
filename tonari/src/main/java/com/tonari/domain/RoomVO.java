@@ -11,4 +11,7 @@ public class RoomVO {
 	private Date write_date;
 	private int noreadcount;
 	private int use_check;
+	
+	private String dateString;
+	private String image;
 }

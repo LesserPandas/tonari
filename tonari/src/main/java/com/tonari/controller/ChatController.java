@@ -53,7 +53,6 @@ public class ChatController {
 		message.setContent("先生と話が始まりました.");
 		message.setRoom_bno(room);
 		message.setSender(me);
-		message.setWrite_date(new Date());
 
 		log.info(message);
 		template.convertAndSend(ChatConstants.CHAT_EXCHANGE_NAME, ChatConstants.ROUTING_KEY + me, message);
@@ -64,7 +63,7 @@ public class ChatController {
 	}
 
 	// 방 참가하기
-	@GetMapping(value = "joinroom", produces = "application/text; charset=utf8")
+	@GetMapping(value = "joinroom", produces = "application/json; charset=utf8")
 	public String joinroom(HttpServletRequest request, @RequestParam("bno") int you) {
 		int me = ((MemberVO) request.getSession().getAttribute("nowUser")).getBno();
 
@@ -72,7 +71,7 @@ public class ChatController {
 			return null;
 		} else {
 			int num = service.joinRoom(me, you);
-
+			log.info("방 정보  " + num);
 			Gson gson = new Gson();
 			String result = gson.toJson(num);
 
@@ -81,11 +80,14 @@ public class ChatController {
 
 	}
 
-	@GetMapping(value = "getroom", produces = "application/text; charset=utf8")
+	@GetMapping(value = "getroom", produces = "application/json; charset=utf8")
 	public String getRoom(HttpServletRequest request, @RequestParam("room") int room) {
 
 		int me = ((MemberVO) request.getSession().getAttribute("nowUser")).getBno();
 		MyJoinRoomListVO newRoom = service.getRoom(me, room);
+		SimpleDateFormat fm_today = new SimpleDateFormat("H時m分");
+		newRoom.setDateString(fm_today.format(new Date()));
+		newRoom.setImage(service.getImage(newRoom.getMember_bno()));
 
 		log.info("가져온 채팅방 정보 : " + newRoom);
 

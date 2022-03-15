@@ -276,8 +276,8 @@
          <!-- END SALE PRODUCT & NEW ARRIVALS -->
       </div>
    </div>
-
-	<section id="carousel" style="margin-bottom: 80px;">
+   
+	<section id="carousel">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
@@ -303,7 +303,13 @@
 			</div>
 		</div>
 	</section>
-
+	<div class="container" style="padding-bottom: 60px;">
+		<div class=row>
+			<div class="col-md-12">
+				<div id="map" style="height:350px;"></div>
+			</div>
+		</div>
+	</div>
 	<div class="container" style="margin-bottom: 60px">
 		<div class="row">
 			<div class="col-md-12 search-mg-0 bg-success">
@@ -362,7 +368,89 @@
 <%@ include file="footer.jsp"%>
 <script>
 	$(function(){
-		$("#hottab").click();
 		$("#recommendtab").click();
 	})
+</script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ae6a3a83bf1a447117ec01cf7c8f0b02&libraries=services"></script>
+<script>
+
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		mapOption = {
+			center: new kakao.maps.LatLng(37.56682, 126.97865), // 지도의 중심좌표
+			level: 4, // 지도의 확대 레벨
+			mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+		}; 
+	// 지도를 생성한다 
+	var map = new kakao.maps.Map(mapContainer, mapOption); 
+	var localaddress = "대전광역시 중구 용두동 35-17 희영빌딩";
+	var geocoder = new kakao.maps.services.Geocoder();
+	geocoder.addressSearch(localaddress, function(result, status) {
+		// 정상적으로 검색이 완료됐으면 
+		if (status === kakao.maps.services.Status.OK) {
+			var cent = new kakao.maps.LatLng(result[0].y, result[0].x);
+			// 결과값으로 받은 위치를 마커로 표시합니다
+			var marker = new kakao.maps.Marker({
+				map: map,
+				position: cent
+			})
+			map.setCenter(cent);
+		}
+	})
+	var teachers = ${teacherList};
+	console.log(teachers);
+	
+	 
+	var callback = function(result, status) {
+		if (status === kakao.maps.services.Status.OK) {
+			teacherdiv(result);
+		}
+	};
+	for(var i=0; i<teachers.length;i++){
+		geocoder.addressSearch(teachers[i].address, callback);
+	}
+	function teacherdiv(result){
+		var teachers = ${teacherList};
+		var content = "";
+		var address = result[0].address_name;
+		var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+		var marker = new kakao.maps.Marker({
+			map: map,
+			position: coords,
+			clickable: true
+		});	
+		var overlay = null;
+		for(var i=0; i<teachers.length;i++){
+			console.log(teachers[i].adress);
+			console.log(address);
+			if(teachers[i].address == address){
+				content =
+				'<div class="info">' + 
+					'<div class="title">' +teachers[i].nick+
+				'</div>' + 
+				'<div class="body" style="display:flex;">' + 
+					'<div class="img">' +
+						'<img src="'+teachers[i].image+'" width="73" height="70">' +
+					'</div>' + 
+					'<div class="desc">' + 
+						'<div class="ellipsis">'+teachers[i].category_name+'</div>' + 
+							'<div class="jibun ellipsis">'+teachers[i].address+'</div>' + 
+							'<div><a href="/board/info?teacher_bno='+teachers[i].teacher_bno+'">すぐ行く</a></div>' + 
+						'</div>' + 
+					'</div>' + 
+				'</div>';
+			}
+			var iwRemoveable = true;
+			var infowindow = new kakao.maps.InfoWindow({
+				content: content,
+				removable : iwRemoveable
+			});
+			 
+			kakao.maps.event.addListener(marker, 'click', function() {
+				// 마커 위에 인포윈도우를 표시합니다
+				infowindow.open(map, marker);
+			});
+		}
+	
+	}
+
 </script>

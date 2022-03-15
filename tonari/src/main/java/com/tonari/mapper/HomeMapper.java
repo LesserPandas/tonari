@@ -10,4 +10,5 @@ public interface HomeMapper {
 	public List<Review_viewVO> review();
 	public List<BoardlistVO> board(BoardlistVO bvo);
 	public List<TeacherSearch_viewVO> likelist();
+	public List<TeacherSearch_viewVO> teachers();
 }

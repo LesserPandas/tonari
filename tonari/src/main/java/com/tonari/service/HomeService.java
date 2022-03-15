@@ -11,4 +11,5 @@ public interface HomeService {
 	public List<Review_viewVO> review();
 	public List<BoardlistVO> board(int category);
 	public List<TeacherSearch_viewVO> likelist();
+	public List<TeacherSearch_viewVO> teachers();
 }

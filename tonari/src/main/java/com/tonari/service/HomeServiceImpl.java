@@ -47,4 +47,9 @@ public class HomeServiceImpl implements HomeService {
 	public List<TeacherSearch_viewVO> likelist() {
 		return mapper.likelist();
 	}
+	
+	@Override
+	public List<TeacherSearch_viewVO> teachers() {
+		return mapper.teachers();
+	}
 }

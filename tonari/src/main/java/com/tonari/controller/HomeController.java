@@ -1,5 +1,7 @@
 package com.tonari.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -7,8 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tonari.domain.MemberVO;
+import com.tonari.domain.TeacherSearch_viewVO;
+import com.tonari.domain.TeacherVO;
 import com.tonari.service.BoardService;
 import com.tonari.service.HomeService;
 import com.tonari.util.Criteria;
@@ -45,7 +49,15 @@ public class HomeController {
 		model.addAttribute("review",hservice.review());
 		model.addAttribute("notice",hservice.board(1));
 		model.addAttribute("event",hservice.board(2));
-
+		List<TeacherSearch_viewVO> list = hservice.teachers();
+		String jsonText = new String();
+		try {
+			ObjectMapper objectmapper = new ObjectMapper();
+			jsonText = objectmapper.writeValueAsString(list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("teacherList", jsonText);
 		return "index";
 	}
 

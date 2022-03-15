@@ -37,4 +37,7 @@
 		)where rn <9
 		]]>
 	</select>
+	<select id="teachers" resultType="com.tonari.domain.TeacherSearch_viewVO">
+		select * from TEACHER_SEARCH_VIEW
+	</select>
 </mapper>
